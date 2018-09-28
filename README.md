@@ -5,3 +5,4 @@ Link: http://localhost:8080/BBMWebApp/index.html <br><br>
 /Register หน้าสมัครสมาชิค <br>
 /Recovery หน้ากู้รหัสผ่าน <br>
 /Shoping หน้าซื้อของ <br>
+/Payment ชำระเงิน <br>
