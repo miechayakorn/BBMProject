@@ -1,6 +1,8 @@
 <h1>BBMWebApp </h1><br>
 <p>
-Link: http://localhost:8080/BBMWebApp/index.html <br><br>
+Link: http://localhost:8080/BBMWebApp/index.html <br>
+Board: https://app.gitkraken.com/glo/board/W69Ml4WGZA4AV_pa <br><br>
+
 /index หน้าแรก <br>
 /ErrorInfo.jsp หน้า 404 - FileNotFound <br>
 /Login หน้าLogin <br>
