@@ -5,22 +5,32 @@
  */
 package bbm.servlet;
 
+import bbm.jpa.model.MemberCustomer;
+import bbm.jpa.model.controller.MemberCustomerJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import javax.annotation.Resource;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.transaction.UserTransaction;
 
 /**
  *
  * @author Acer_E5
  */
 public class LoginServlet extends HttpServlet {
+@Resource
+UserTransaction utx;
 
+@PersistenceUnit(unitName = "BBMWebAppPU")
+EntityManagerFactory emf;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -33,22 +43,22 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-    String username = request.getParameter("username");
+    String username = request.getParameter("email");
         String password = request.getParameter("password");
         HttpSession session = request.getSession(false);
 
         if (username != null && password != null && username.length() > 0 && password.length() > 0) {
-            AccountJpaController accJPA = new AccountJpaController(utx, emf);
-            Account acc = accJPA.findAccount(username);
+            MemberCustomerJpaController memberJPA = new MemberCustomerJpaController(utx, emf);
+            MemberCustomer member = memberJPA.findMemberCustomer(username);
 
             password = cryptWithMD5(password);
-            if (acc != null) {
-                if (acc.getPassword().equals(password)) {
+            if (member != null) {
+                if (member.getPassword().equals(password)) {
 
                     if (session == null) {
                         session = request.getSession(true);
                     }
-                    session.setAttribute("account", acc);
+                    session.setAttribute("account", member);
                     response.sendRedirect("newUrl");
                     return;
                 } else {
@@ -58,7 +68,7 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("message", "Invalid user name or password !!");
             }
         }
-        getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
+        //getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
 
     }
     
