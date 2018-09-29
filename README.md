@@ -28,5 +28,5 @@ registerDate timestamp,
 activateKey varchar(40)not null,
 activateDate timestamp) ;
 </code><br>
-<code>insert into MemberCustomer values ('admin@mail.com','827ccbeea8a706c4c34a16891f84e7b') ;</code>
+<code>insert into MemberCustomer(email,password,registerdate,activatekey) values ('admin@mail.com','827ccbeea8a706c4c34a16891f84e7b','2018-09-29 15:13:36.630','8014892c0e83400') ;</code>
 <hr>
