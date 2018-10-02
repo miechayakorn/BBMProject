@@ -7,10 +7,12 @@ package bbm.servlet;
 
 import bbm.jpa.model.MemberCustomer;
 import bbm.jpa.model.controller.MemberCustomerJpaController;
+import bbm.jpa.model.controller.exceptions.RollbackFailureException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -18,14 +20,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
 
 /**
  *
  * @author Acer_E5
  */
-public class LoginServlet extends HttpServlet {
+public class ActivateServlet extends HttpServlet {
 
     @Resource
     UserTransaction utx;
@@ -44,51 +45,37 @@ public class LoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        HttpSession session = request.getSession(false);
+        String activateKey = request.getParameter("activateKey");
+        boolean isActivate = false;
 
-        if (email != null && password != null && email.length() > 0 && password.length() > 0) {
+        if (email != null && email.length() > 0 && activateKey != null && activateKey.length() > 0) {
             MemberCustomerJpaController memberJPA = new MemberCustomerJpaController(utx, emf);
             MemberCustomer member = memberJPA.findMemberCustomer(email);
+            try {
+                if (activateKey.equals(member.getActivatekey())) {
+                    member.setActivatedate(new Date());
+                    try {
+                        memberJPA.edit(member);
+                        isActivate = true;
 
-            password = cryptWithMD5(password);
-            if (member != null) {
-                if (member.getPassword().equals(password)) {
-
-                    if (session == null) {
-                        session = request.getSession(true);
+                    } catch (RollbackFailureException ex) {
+                        Logger.getLogger(ActivateServlet.class.getName()).log(Level.SEVERE, "jpa", ex);
+                    } catch (Exception ex) {
+                        Logger.getLogger(ActivateServlet.class.getName()).log(Level.SEVERE, "jpa", ex);
                     }
-                    session.setAttribute("account", member);
-                    response.sendRedirect("newUrl");
-                    return;
-                } else {
-                    request.setAttribute("message", "Invalid user name or password !!");
                 }
-            } else {
-                request.setAttribute("message", "Invalid user name or password !!");
+            } catch (Exception ex) {
+                request.setAttribute("isActivate", isActivate);
+                getServletContext().getRequestDispatcher("/RegisterMessage.jsp").forward(request, response);
+                return;
             }
+            request.setAttribute("userEmail", email);
+            request.setAttribute("isActivate", isActivate);
+            getServletContext().getRequestDispatcher("/RegisterMessage.jsp").forward(request, response);
+            return;
         }
-        //getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
-
-    }
-
-    public static String cryptWithMD5(String pass) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] passBytes = pass.getBytes();
-            md.reset();
-            byte[] digested = md.digest(passBytes);
-            StringBuffer sb = new StringBuffer();
-            for (int i = 0; i < digested.length; i++) {
-                sb.append(Integer.toHexString(0xff & digested[i]));
-            }
-            return sb.toString();
-        } catch (NoSuchAlgorithmException ex) {
-            System.out.println(ex);
-        }
-        return null;
+        response.sendRedirect("RegisterMessage.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
