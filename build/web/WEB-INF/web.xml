@@ -16,6 +16,10 @@
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>bbm.servlet.RegisterServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AccountRecoveryServlet</servlet-name>
+        <servlet-class>bbm.servlet.AccountRecoveryServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/Register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AccountRecoveryServlet</servlet-name>
+        <url-pattern>/Recovery</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

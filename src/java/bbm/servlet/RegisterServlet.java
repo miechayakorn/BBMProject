@@ -77,9 +77,6 @@ public class RegisterServlet extends HttpServlet {
             //getEmailInDB
             String getEmailInDB = memberCustomer.getEmail();
             request.setAttribute("getEmailInDB", getEmailInDB);
-            
-            getServletContext().getRequestDispatcher("/Register.jsp").forward(request, response);
-
         }
 
         getServletContext().getRequestDispatcher("/Register.jsp").forward(request, response);
