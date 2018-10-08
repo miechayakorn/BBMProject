@@ -7,6 +7,7 @@ package bbm.jpa.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Acer_E5
+ * @author Kridtakom
  */
 @Entity
 @Table(name = "MEMBERCUSTOMER")
@@ -31,6 +32,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "MemberCustomer.findAll", query = "SELECT m FROM MemberCustomer m")
     , @NamedQuery(name = "MemberCustomer.findByEmail", query = "SELECT m FROM MemberCustomer m WHERE m.email = :email")
     , @NamedQuery(name = "MemberCustomer.findByPassword", query = "SELECT m FROM MemberCustomer m WHERE m.password = :password")
+    , @NamedQuery(name = "MemberCustomer.findByName", query = "SELECT m FROM MemberCustomer m WHERE m.name = :name")
+    , @NamedQuery(name = "MemberCustomer.findBySurname", query = "SELECT m FROM MemberCustomer m WHERE m.surname = :surname")
+    , @NamedQuery(name = "MemberCustomer.findByPhone", query = "SELECT m FROM MemberCustomer m WHERE m.phone = :phone")
     , @NamedQuery(name = "MemberCustomer.findByRegisterdate", query = "SELECT m FROM MemberCustomer m WHERE m.registerdate = :registerdate")
     , @NamedQuery(name = "MemberCustomer.findByActivatekey", query = "SELECT m FROM MemberCustomer m WHERE m.activatekey = :activatekey")
     , @NamedQuery(name = "MemberCustomer.findByActivatedate", query = "SELECT m FROM MemberCustomer m WHERE m.activatedate = :activatedate")})
@@ -49,6 +53,22 @@ public class MemberCustomer implements Serializable {
     @Size(min = 1, max = 40)
     @Column(name = "PASSWORD")
     private String password;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 20)
+    @Column(name = "NAME")
+    private String name;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 30)
+    @Column(name = "SURNAME")
+    private String surname;
+    // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 10)
+    @Column(name = "PHONE")
+    private String phone;
     @Column(name = "REGISTERDATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date registerdate;
@@ -68,9 +88,22 @@ public class MemberCustomer implements Serializable {
         this.email = email;
     }
 
-    public MemberCustomer(String email, String password, String activatekey) {
+    public MemberCustomer(String email, String password, String name, String surname, String phone) {
         this.email = email;
         this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.phone = phone;
+        this.registerdate = new Date();
+        this.activatekey = UUID.randomUUID().toString().replace("-","").substring(0,15);
+    }
+
+    public MemberCustomer(String email, String password, String name, String surname, String phone, String activatekey) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.phone = phone;
         this.activatekey = activatekey;
     }
 
@@ -88,6 +121,30 @@ public class MemberCustomer implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public Date getRegisterdate() {
@@ -138,5 +195,5 @@ public class MemberCustomer implements Serializable {
     public String toString() {
         return "bbm.jpa.model.MemberCustomer[ email=" + email + " ]";
     }
-    
+
 }

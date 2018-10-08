@@ -7,9 +7,12 @@ package bbm.servlet;
 
 import bbm.jpa.model.MemberCustomer;
 import bbm.jpa.model.controller.MemberCustomerJpaController;
+import bbm.jpa.model.controller.exceptions.RollbackFailureException;
 import bbm.model.EncryptWithMd5;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -42,27 +45,36 @@ public class RegisterServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String user = request.getParameter("user");
-        String password = request.getParameter("password");
-        String phone = request.getParameter("phone");
+        
         String email = request.getParameter("email");
-        String fName = request.getParameter("name");
-        String lNname = request.getParameter("surname");
+        String password = request.getParameter("password");
+        String name = request.getParameter("name");
+        String surname = request.getParameter("surname");
+        String phone = request.getParameter("phone");
         
         HttpSession session = request.getSession(true);
 
-        if (user.trim().length() > 0 && password.trim().length() > 0 && phone.trim().length() > 0
-                && email.trim().length() > 0) {
+        if (email != null && email.trim().length() > 0 
+                && password != null && password.trim().length() > 0 
+                && name != null && name.trim().length() > 0
+                &&surname != null && surname.trim().length() >0
+                &&phone != null && phone.trim().length() > 0 ) {
+            
             MemberCustomerJpaController memberJPA = new MemberCustomerJpaController(utx, emf);
+            
             password = new EncryptWithMd5().encrypt(password);
-            
-            MemberCustomer memberCustomer = new MemberCustomer(email, password, lNname)
-            Account account = new Account(user, password, email, fName, lNname, phone);
+            MemberCustomer memberCustomer = new MemberCustomer(email, password, name, surname, phone);
+      
 
-            memberJPA.create(account); //ต้อง try catch อีก
+            try {
+                memberJPA.create(memberCustomer); 
+            } catch (RollbackFailureException ex) {
+                Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
-            session.setAttribute("account", account);
-            getServletContext().getRequestDispatcher("/Activate").forward(request, response);
+            getServletContext().getRequestDispatcher("/Activate").forward(request, response); //ของActivateServlet
 
         }
 

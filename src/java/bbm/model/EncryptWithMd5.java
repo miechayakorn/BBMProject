@@ -27,7 +27,7 @@ public class EncryptWithMd5 {
             for (int i = 0; i < digested.length; i++) {
                 sb.append(Integer.toHexString(0xff & digested[i]));
             }
-            return sb.toString();
+            return sb.toString().substring(0,39);
         } catch (NoSuchAlgorithmException ex) {
             System.out.println(ex);
         }
