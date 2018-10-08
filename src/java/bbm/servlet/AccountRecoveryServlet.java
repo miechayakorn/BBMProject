@@ -79,7 +79,7 @@ public class AccountRecoveryServlet extends HttpServlet {
                 }
             }
             request.setAttribute("status", status);
-            request.getServletContext().getRequestDispatcher("/RecoveryChangePassword.jsp").forward(request, response);
+            request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
             return;
         }
 
