@@ -74,7 +74,11 @@ public class RegisterServlet extends HttpServlet {
                 Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            getServletContext().getRequestDispatcher("/Activate").forward(request, response); //ของActivateServlet
+            //getEmailInDB
+            String getEmailInDB = memberCustomer.getEmail();
+            request.setAttribute("getEmailInDB", getEmailInDB);
+            
+            getServletContext().getRequestDispatcher("/Register.jsp").forward(request, response);
 
         }
 
