@@ -63,14 +63,14 @@ public class AccountRecoveryServlet extends HttpServlet {
         } else if (email != null && password != null && activateKey != null) {
             MemberCustomerJpaController memberJPA = new MemberCustomerJpaController(utx, emf);
             MemberCustomer member = memberJPA.findMemberCustomer(email);
-            boolean status = false;
+            String status = "RecovertFalse";
             
             if (member != null) {
                 try {
                     password = new EncryptWithMd5().encrypt(password);
                     member.setPassword(password);
                     memberJPA.edit(member);
-                    status = true;
+                    status = "RecovertTrue";
                     
                 } catch (RollbackFailureException ex) {
                     Logger.getLogger(AccountRecoveryServlet.class.getName()).log(Level.SEVERE, null, ex);

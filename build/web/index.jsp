@@ -14,14 +14,14 @@
     </head>
     <body>
         <c:choose>
-            <c:when test="${status == true}">
+            <c:when test="${status == 'RecovertTrue'}">
                 <div class="alert alert-success">
                     <strong>ยินดีต้อนรับการกลับมาของท่าน!!</strong> ในตอนนี้ท่านสามารถใช้รหัสผ่านใหม่ได้เรียบร้อยแล้ว
                 </div>
             </c:when>
-            <c:when test="${status == false}">
+            <c:when test="${status == 'RecovertFalse'}">
                 <div class="alert alert-danger">
-                    <strong>Danger!</strong> ไม่มี Email นี้ในระบบของเรา กรุณาลองใหม่
+                    <strong>Error!</strong> ไม่มี Email นี้ในระบบของเรา กรุณาลองใหม่
                 </div>
             </c:when>
             <c:otherwise>
