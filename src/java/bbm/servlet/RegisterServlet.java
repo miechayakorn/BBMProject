@@ -10,8 +10,6 @@ import bbm.jpa.model.controller.MemberCustomerJpaController;
 import bbm.model.EncryptWithMd5;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -26,14 +24,13 @@ import javax.transaction.UserTransaction;
  *
  * @author Acer_E5
  */
-public class LoginServlet extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
 
     @Resource
     UserTransaction utx;
 
     @PersistenceUnit(unitName = "BBMWebAppPU")
     EntityManagerFactory emf;
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -45,50 +42,31 @@ public class LoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String email = request.getParameter("email");
+        String user = request.getParameter("user");
         String password = request.getParameter("password");
-        HttpSession session = request.getSession(false);
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
+        String fName = request.getParameter("name");
+        String lNname = request.getParameter("surname");
+        
+        HttpSession session = request.getSession(true);
 
-        if (email != null && password != null && email.length() > 0 && password.length() > 0) {
+        if (user.trim().length() > 0 && password.trim().length() > 0 && phone.trim().length() > 0
+                && email.trim().length() > 0) {
             MemberCustomerJpaController memberJPA = new MemberCustomerJpaController(utx, emf);
-            MemberCustomer member = memberJPA.findMemberCustomer(email);
             password = new EncryptWithMd5().encrypt(password);
-            if (member != null) {
-                if (member.getPassword().equals(password)) {
+            
+            MemberCustomer memberCustomer = new MemberCustomer(email, password, lNname)
+            Account account = new Account(user, password, email, fName, lNname, phone);
 
-                    if (session == null) {
-                        session = request.getSession(true);
-                    }
-                    session.setAttribute("account", member);
-                    response.sendRedirect("newUrl");
-                    return;
-                } else {
-                    request.setAttribute("message", "Invalid user name or password !!");
-                }
-            } else {
-                request.setAttribute("message", "Invalid user name or password !!");
-            }
+            memberJPA.create(account); //ต้อง try catch อีก
+            
+            session.setAttribute("account", account);
+            getServletContext().getRequestDispatcher("/Activate").forward(request, response);
+
         }
-        //getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
 
-    }
-
-    public static String cryptWithMD5(String pass) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] passBytes = pass.getBytes();
-            md.reset();
-            byte[] digested = md.digest(passBytes);
-            StringBuffer sb = new StringBuffer();
-            for (int i = 0; i < digested.length; i++) {
-                sb.append(Integer.toHexString(0xff & digested[i]));
-            }
-            return sb.toString();
-        } catch (NoSuchAlgorithmException ex) {
-            System.out.println(ex);
-        }
-        return null;
+        getServletContext().getRequestDispatcher("/Register.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
