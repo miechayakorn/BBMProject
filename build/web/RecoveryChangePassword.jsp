@@ -14,21 +14,6 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     </head>
     <body>
-        <c:choose>
-            <c:when test="${status == true}">
-                <div class="alert alert-success">
-                    <strong>ยินดีต้อนรับการกลับมาของท่าน!!</strong> ในตอนนี้ท่านสามารถใช้รหัสผ่านใหม่ได้เรียบร้อยแล้ว
-                </div>
-            </c:when>
-            <c:when test="${status == false}">
-                <div class="alert alert-danger">
-                    <strong>Danger!</strong> ไม่มี Email นี้ในระบบของเรา กรุณาลองใหม่
-                </div>
-            </c:when>
-            <c:otherwise>
-
-            </c:otherwise>
-        </c:choose>
         <div class="">
             <div class="container">
                 <div class="row">

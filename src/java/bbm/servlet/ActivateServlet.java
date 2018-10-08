@@ -70,12 +70,10 @@ public class ActivateServlet extends HttpServlet {
                 getServletContext().getRequestDispatcher("/RegisterMessage.jsp").forward(request, response);
                 return;
             }
-            request.setAttribute("userEmail", email);
+            request.setAttribute("email", email);
             request.setAttribute("isActivate", isActivate);
-            getServletContext().getRequestDispatcher("/RegisterMessage.jsp").forward(request, response);
-            return;
         }
-        response.sendRedirect("RegisterMessage.jsp");
+        getServletContext().getRequestDispatcher("/RegisterMessage.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
