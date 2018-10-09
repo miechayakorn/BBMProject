@@ -15,19 +15,21 @@
     </head>
     <body>
         <c:choose>
-            <c:when test="${status == true}">
+            <c:when test="${status == 'RecovertTrue'}">
                 <div class="alert alert-success">
                     <strong>Success!!</strong> กรุณาตรวจสอบที่ Email ของท่านเพื่อเปลี่ยนรหัสผ่าน
                 </div>
             </c:when>
-            <c:when test="${status == false}">
-                <div class="alert alert-danger">
-                    <strong>Danger!</strong> ไม่มี Email นี้ในระบบของเรา กรุณาลองใหม่
+            <c:when test="${status == 'RecovertFalse'}">
+                <div class="alert alert-warning">
+                    <strong>Warning!</strong> ไม่มี Email นี้ในระบบของเรา กรุณาลองใหม่
                 </div>
             </c:when>
-            <c:otherwise>
-
-            </c:otherwise>
+            <c:when test="${status == 'ActivateKeyError'}">
+                <div class="alert alert-danger">
+                    <strong>ActivateKey Error!</strong> กรุณาทำรายการของท่านที่เว็บของเราใหม่อีกครั้ง
+                </div>
+            </c:when>
         </c:choose>
         <div class="">
             <div class="container">
@@ -48,7 +50,8 @@
                             </div>
                         </div>
                     </div>
-                </div></div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
