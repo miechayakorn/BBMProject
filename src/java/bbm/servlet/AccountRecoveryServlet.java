@@ -39,7 +39,7 @@ public class AccountRecoveryServlet extends HttpServlet {
 
                 if (member != null) {
                     try {
-                        member.setActivatekey(UUID.randomUUID().toString().replace("-", "").substring(0, 15));
+                        //member.setActivatekey(UUID.randomUUID().toString().replace("-", "").substring(0, 15));
                         memberJPA.edit(member);
                     } catch (RollbackFailureException ex) {
                         Logger.getLogger(AccountRecoveryServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -54,24 +54,31 @@ public class AccountRecoveryServlet extends HttpServlet {
             }
             request.getServletContext().getRequestDispatcher("/RecoverySendEmail.jsp").forward(request, response);
             return;
-            
+
         } else if (email != null && activateKey != null && password == null) {
-            request.setAttribute("email", email);
-            request.setAttribute("activateKey", activateKey);
-            request.getServletContext().getRequestDispatcher("/RecoveryChangePassword.jsp").forward(request, response);
-            return;
+            MemberCustomerJpaController memberJPA = new MemberCustomerJpaController(utx, emf);
+            MemberCustomer member = memberJPA.findMemberCustomer(email);
+            if (member.getActivatekey().equals(activateKey)) {
+                request.setAttribute("email", email);
+                request.setAttribute("activateKey", activateKey);
+                request.getServletContext().getRequestDispatcher("/RecoveryChangePassword.jsp").forward(request, response);
+                return;
+            }else{
+                
+            }
+
         } else if (email != null && password != null && activateKey != null) {
             MemberCustomerJpaController memberJPA = new MemberCustomerJpaController(utx, emf);
             MemberCustomer member = memberJPA.findMemberCustomer(email);
             boolean status = false;
-            
-            if (member != null) {
+
+            if (member.getActivatekey().equals(activateKey)) {
                 try {
                     password = new EncryptWithMd5().encrypt(password);
                     member.setPassword(password);
                     memberJPA.edit(member);
                     status = true;
-                    
+
                 } catch (RollbackFailureException ex) {
                     Logger.getLogger(AccountRecoveryServlet.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (Exception ex) {
