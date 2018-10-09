@@ -3,7 +3,9 @@ package bbm.servlet;
 import bbm.jpa.model.MemberCustomer;
 import bbm.jpa.model.controller.MemberCustomerJpaController;
 import bbm.jpa.model.controller.exceptions.RollbackFailureException;
+import bbm.model.EmailMessage;
 import bbm.model.EncryptWithMd5;
+import bbm.model.SendEmail;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
@@ -34,70 +36,82 @@ public class AccountRecoveryServlet extends HttpServlet {
 
         if (activateKey == null && password == null) {
             if (email != null && email.trim().length() > 0) {
-                String status = "RecovertFalse";
+                String status = "notEmail";
                 MemberCustomerJpaController memberJPA = new MemberCustomerJpaController(utx, emf);
                 MemberCustomer member = memberJPA.findMemberCustomer(email);
 
                 if (member != null) {
                     try {
-                        member.setActivatekey(UUID.randomUUID().toString().replace("-", "").substring(0, 15));
-                        memberJPA.edit(member);
+                        String activateKeyInDB = member.getActivatekey();
+
+                        //Send Email
+                        String em = new EmailMessage(email, activateKeyInDB, "Recovery").getMessageSend();
+                        int sendResult = SendEmail.send(email, em, "RecoveryPassword - BBMProject"); //SEND MAIL!
+                        if (sendResult == 0) { //IS SENDING EMAIL successful?
+                            memberJPA.edit(member);
+                        }
+
                     } catch (RollbackFailureException ex) {
                         Logger.getLogger(AccountRecoveryServlet.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (Exception ex) {
                         Logger.getLogger(AccountRecoveryServlet.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    status = "RecovertTrue";
+                    status = "RecoveryTrue";
                     request.setAttribute("status", status);
                 } else {
                     request.setAttribute("status", status);
                 }
             }
-            request.getServletContext().getRequestDispatcher("/RecoverySendEmail.jsp").forward(request, response);
-            return;
 
         } else if (email != null && activateKey != null && password == null) {
             MemberCustomerJpaController memberJPA = new MemberCustomerJpaController(utx, emf);
             MemberCustomer member = memberJPA.findMemberCustomer(email);
-            if (member.getActivatekey().equals(activateKey)) {
-                request.setAttribute("email", email);
-                request.setAttribute("activateKey", activateKey);
-                request.getServletContext().getRequestDispatcher("/RecoveryChangePassword.jsp").forward(request, response);
-                return;
-            } else {
-                request.setAttribute("status", "ActivateKeyError");
-                request.getServletContext().getRequestDispatcher("/RecoverySendEmail.jsp").forward(request, response);
-                return;
+
+            if (member != null) {
+                if (member.getActivatekey().equals(activateKey)) {
+                    request.setAttribute("email", email);
+                    request.setAttribute("activateKey", activateKey);
+                    request.getServletContext().getRequestDispatcher("/RecoveryChangePassword.jsp").forward(request, response);
+                    return;
+                }
             }
+            request.setAttribute("status", "ActivateKeyError");
+            request.getServletContext().getRequestDispatcher("/RecoverySendEmail.jsp").forward(request, response);
+            return;
 
         } else if (email != null && password != null && activateKey != null) {
             MemberCustomerJpaController memberJPA = new MemberCustomerJpaController(utx, emf);
             MemberCustomer member = memberJPA.findMemberCustomer(email);
-            String status = "RecovertFalse";
+            String status = "notEmail";
 
-            if (member.getActivatekey().equals(activateKey)) {
-                try {
-                    password = new EncryptWithMd5().encrypt(password);
-                    member.setPassword(password);
-                    member.setActivatekey(UUID.randomUUID().toString().replace("-", "").substring(0, 15));
-                    member.setActivatedate(new Date());
-                    memberJPA.edit(member);
-                    status = "RecovertTrue";
+            if (member != null) {
+                if (member.getActivatekey().equals(activateKey)) {
+                    try {
+                        password = new EncryptWithMd5().encrypt(password);
+                        member.setPassword(password);
+                        member.setActivatekey(UUID.randomUUID().toString().replace("-", "").substring(0, 15));
+                        member.setActivatedate(new Date());
+                        memberJPA.edit(member);
+                        status = "RecoveryTrue";
 
-                } catch (RollbackFailureException ex) {
-                    Logger.getLogger(AccountRecoveryServlet.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (Exception ex) {
-                    Logger.getLogger(AccountRecoveryServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (RollbackFailureException ex) {
+                        Logger.getLogger(AccountRecoveryServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (Exception ex) {
+                        Logger.getLogger(AccountRecoveryServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } else {
+                    request.setAttribute("status", "ActivateKeyError");
+                    request.getServletContext().getRequestDispatcher("/RecoverySendEmail.jsp").forward(request, response);
+                    return;
                 }
-            }else{
-                request.setAttribute("status", "ActivateKeyError");
-                request.getServletContext().getRequestDispatcher("/RecoverySendEmail.jsp").forward(request, response);
-                return;
             }
+
             request.setAttribute("status", status);
             request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
             return;
         }
+
+        request.getServletContext().getRequestDispatcher("/RecoverySendEmail.jsp").forward(request, response);
 
     }
 

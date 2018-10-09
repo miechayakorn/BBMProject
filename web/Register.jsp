@@ -15,13 +15,16 @@
     </head>
     <body>
         <c:choose>
-            <c:when test="${getEmailInDB != null}">
+            <c:when test="${status == 'statusTrue'}">
                 <div class="alert alert-success">
-                    <strong>Success!!</strong> กรุณา.. เช็คที่อีเมล์เพื่อ Activate
+                    <strong>Success!!</strong> กรุณา.. เช็คที่อีเมล์เพื่อ Activate | อีเมล์ของท่านที่ใช้ในการสมัคร คือ ${getEmailInDB}
                 </div>
             </c:when>
-            <c:otherwise>
-            </c:otherwise>
+            <c:when test="${status == 'UserHaveInDB'}">
+                <div class="alert alert-warning">
+                    <strong>Warning!</strong> มีชื่อผู้ใช้นี้ในระบบแล้ว
+                </div>
+            </c:when>
         </c:choose>
         <div class="">
         <div class="container">

@@ -104,6 +104,7 @@ public class MemberCustomer implements Serializable {
         this.name = name;
         this.surname = surname;
         this.phone = phone;
+        this.registerdate = new Date();
         this.activatekey = activatekey;
     }
 

@@ -15,12 +15,12 @@
     </head>
     <body>
         <c:choose>
-            <c:when test="${status == 'RecovertTrue'}">
+            <c:when test="${status == 'RecoveryTrue'}">
                 <div class="alert alert-success">
                     <strong>Success!!</strong> กรุณาตรวจสอบที่ Email ของท่านเพื่อเปลี่ยนรหัสผ่าน
                 </div>
             </c:when>
-            <c:when test="${status == 'RecovertFalse'}">
+            <c:when test="${status == 'RecoveryFalse'}">
                 <div class="alert alert-warning">
                     <strong>Warning!</strong> ไม่มี Email นี้ในระบบของเรา กรุณาลองใหม่
                 </div>
