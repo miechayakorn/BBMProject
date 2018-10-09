@@ -13,6 +13,7 @@ import bbm.model.EncryptWithMd5;
 import bbm.model.SendEmail;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
@@ -55,8 +56,6 @@ public class RegisterServlet extends HttpServlet {
         String surname = request.getParameter("surname");
         String phone = request.getParameter("phone");
 
-        HttpSession session = request.getSession(true);
-
         if (email != null && email.trim().length() > 0
                 && password != null && password.trim().length() > 0
                 && name != null && name.trim().length() > 0
@@ -65,17 +64,17 @@ public class RegisterServlet extends HttpServlet {
 
             MemberCustomerJpaController memberJPA = new MemberCustomerJpaController(utx, emf);
 
+            String activatekey = UUID.randomUUID().toString().replace("-", "").substring(0, 15);
             password = new EncryptWithMd5().encrypt(password);
-            MemberCustomer memberCustomer = new MemberCustomer(email, password, name, surname, phone);
+            MemberCustomer memberCustomer = new MemberCustomer(email, password, name, surname, phone, activatekey);
 
             try {
                 memberJPA.create(memberCustomer);
-                String em = new EmailMessage().getMessageSend();
-                boolean isMailSent = false;
-
-                int sendResult = SendEmail.send(email, em); //SEND MAIL!
+                
+                //Send Email
+                String em = new EmailMessage(email, activatekey , "Register").getMessageSend();
+                int sendResult = SendEmail.send(email, em , "ยินดีต้อนรับเข้าสู่ BBM Project"); //SEND MAIL!
                 if (sendResult == 0) { //IS SENDING EMAIL successful?
-                    isMailSent = true;
 
                     //getEmailInDB
                     String getEmailInDB = memberCustomer.getEmail();
@@ -84,7 +83,7 @@ public class RegisterServlet extends HttpServlet {
                     request.setAttribute("status", status);
                 }
             } catch (RollbackFailureException ex) {
-                System.out.println("มีชื่อผู้ใช้นี้ในระบบ");
+                //System.out.println("มีชื่อผู้ใช้นี้ในระบบ");
                 String status = "UserHaveInDB";
                 request.setAttribute("status", status);
 

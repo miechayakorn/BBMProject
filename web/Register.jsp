@@ -25,11 +25,6 @@
                     <strong>Warning!</strong> มีชื่อผู้ใช้นี้ในระบบแล้ว
                 </div>
             </c:when>
-            <c:otherwise>
-                <div class="alert alert-warning">
-                    <strong>Warning!</strong> ไม่มี Email นี้
-                </div>
-            </c:otherwise>
         </c:choose>
         <div class="">
         <div class="container">

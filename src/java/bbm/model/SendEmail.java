@@ -10,7 +10,7 @@ import javax.mail.internet.MimeMessage;
 
 public class SendEmail {
 
-    public static int send(String to, String msg) {
+    public static int send(String to, String msg ,String subject) {
         String username = "bbmproject.noreply@gmail.com";
         String password = "bbmloveint303";
         Properties props = new Properties();
@@ -30,7 +30,7 @@ public class SendEmail {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(username, "BBMProject-Support"));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-            message.setSubject("ยินดีต้อนรับเข้าสู่ BBM Priject");
+            message.setSubject(subject);
             message.setContent(msg, "text/html; charset=utf-8");
             Transport.send(message);
             return 0;

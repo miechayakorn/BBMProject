@@ -11,6 +11,7 @@ import bbm.jpa.model.controller.exceptions.RollbackFailureException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
@@ -47,33 +48,38 @@ public class ActivateServlet extends HttpServlet {
             throws ServletException, IOException {
         String email = request.getParameter("email");
         String activateKey = request.getParameter("activateKey");
-        boolean isActivate = false;
 
         if (email != null && email.length() > 0 && activateKey != null && activateKey.length() > 0) {
             MemberCustomerJpaController memberJPA = new MemberCustomerJpaController(utx, emf);
             MemberCustomer member = memberJPA.findMemberCustomer(email);
-            try {
-                if (activateKey.equals(member.getActivatekey())) {
+
+            if (member != null) {
+                String statusActivate = "ActivateFalse";
+                if (activateKey.equals(member.getActivatekey()) && email.equals(member.getEmail())) {
                     member.setActivatedate(new Date());
+                    member.setActivatekey(UUID.randomUUID().toString().replace("-", "").substring(0, 15));
                     try {
                         memberJPA.edit(member);
-                        isActivate = true;
-
+                        statusActivate = "ActivateTrue";
+                        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+                        return;
                     } catch (RollbackFailureException ex) {
                         Logger.getLogger(ActivateServlet.class.getName()).log(Level.SEVERE, "jpa", ex);
                     } catch (Exception ex) {
                         Logger.getLogger(ActivateServlet.class.getName()).log(Level.SEVERE, "jpa", ex);
                     }
+                } else {
+                    request.setAttribute("status", statusActivate);
+                    getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+                    return;
                 }
-            } catch (Exception ex) {
-                request.setAttribute("isActivate", isActivate);
-                getServletContext().getRequestDispatcher("/RegisterMessage.jsp").forward(request, response);
+            } else {
+                request.setAttribute("status", "notEmail");
+                getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
                 return;
             }
-            request.setAttribute("email", email);
-            request.setAttribute("isActivate", isActivate);
         }
-        getServletContext().getRequestDispatcher("/RegisterMessage.jsp").forward(request, response);
+        response.sendRedirect("/BBMProject");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
