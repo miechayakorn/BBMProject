@@ -60,6 +60,11 @@
                     <strong>Warning!</strong> ไม่มี Email นี้ในระบบของเรา กรุณาลองใหม่
                 </div>
             </c:when>
+            <c:when test="${status == 'notEmail'}">
+                <div class="alert alert-danger">
+                    <strong>Error!</strong> ไม่มี Email นี้ในระบบของเรา กรุณาลองใหม่
+                </div>
+            </c:when>
             <c:when test="${status == 'ActivateKeyError'}">
                 <div class="alert alert-danger">
                     <strong>ActivateKey Error!</strong> กรุณาทำรายการของท่านที่เว็บของเราใหม่อีกครั้ง

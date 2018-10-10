@@ -34,33 +34,31 @@ public class AccountRecoveryServlet extends HttpServlet {
         String activateKey = request.getParameter("activateKey");
         String password = request.getParameter("password");
 
-        if (activateKey == null && password == null) {
-            if (email != null && email.trim().length() > 0) {
-                String status = "notEmail";
-                MemberCustomerJpaController memberJPA = new MemberCustomerJpaController(utx, emf);
-                MemberCustomer member = memberJPA.findMemberCustomer(email);
+        if (activateKey == null && password == null && email != null) {
+            String status = "notEmail";
+            MemberCustomerJpaController memberJPA = new MemberCustomerJpaController(utx, emf);
+            MemberCustomer member = memberJPA.findMemberCustomer(email);
 
-                if (member != null) {
-                    try {
-                        String activateKeyInDB = member.getActivatekey();
+            if (member != null) {
+                try {
+                    String activateKeyInDB = member.getActivatekey();
 
-                        //Send Email
-                        String em = new EmailMessage(email, activateKeyInDB, "Recovery").getMessageSend();
-                        int sendResult = SendEmail.send(email, em, "RecoveryPassword - BBMProject"); //SEND MAIL!
-                        if (sendResult == 0) { //IS SENDING EMAIL successful?
-                            memberJPA.edit(member);
-                        }
-
-                    } catch (RollbackFailureException ex) {
-                        Logger.getLogger(AccountRecoveryServlet.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (Exception ex) {
-                        Logger.getLogger(AccountRecoveryServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    //Send Email
+                    String em = new EmailMessage(email, activateKeyInDB, "Recovery").getMessageSend();
+                    int sendResult = SendEmail.send(email, em, "RecoveryPassword - BBMProject"); //SEND MAIL!
+                    if (sendResult == 0) { //IS SENDING EMAIL successful?
+                        memberJPA.edit(member);
                     }
-                    status = "RecoveryTrue";
-                    request.setAttribute("status", status);
-                } else {
-                    request.setAttribute("status", status);
+
+                } catch (RollbackFailureException ex) {
+                    Logger.getLogger(AccountRecoveryServlet.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex) {
+                    Logger.getLogger(AccountRecoveryServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                status = "RecoveryTrue";
+                request.setAttribute("status", status);
+            } else {
+                request.setAttribute("status", status);
             }
 
         } else if (email != null && activateKey != null && password == null) {

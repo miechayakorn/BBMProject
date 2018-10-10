@@ -13,7 +13,7 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-        <title>JSP Page</title>
+        <title>Login Page</title>
         <style>
             .panel-heading {
                 padding: 5px 15px;
@@ -60,7 +60,7 @@
                                                     <span class="input-group-addon">
                                                         <i class="glyphicon glyphicon-user"></i>
                                                     </span> 
-                                                    <input class="form-control" placeholder="E-mail" name="eamil" type="text" autofocus required>
+                                                    <input class="form-control" placeholder="E-mail" name="email" type="text" autofocus required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
