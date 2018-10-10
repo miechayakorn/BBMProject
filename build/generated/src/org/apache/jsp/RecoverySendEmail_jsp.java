@@ -12,7 +12,6 @@ public final class RecoverySendEmail_jsp extends org.apache.jasper.runtime.HttpJ
   private static java.util.List<String> _jspx_dependants;
 
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_choose;
-  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_otherwise;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_when_test;
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
@@ -23,13 +22,11 @@ public final class RecoverySendEmail_jsp extends org.apache.jasper.runtime.HttpJ
 
   public void _jspInit() {
     _jspx_tagPool_c_choose = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-    _jspx_tagPool_c_otherwise = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_c_when_test = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
   }
 
   public void _jspDestroy() {
     _jspx_tagPool_c_choose.release();
-    _jspx_tagPool_c_otherwise.release();
     _jspx_tagPool_c_when_test.release();
   }
 
@@ -68,11 +65,49 @@ public final class RecoverySendEmail_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("        <title>Register Page</title>\r\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css\" integrity=\"sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO\" crossorigin=\"anonymous\">\r\n");
       out.write("    </head>\r\n");
+      out.write("    <style>\r\n");
+      out.write("        .overlay {\r\n");
+      out.write("            height: 100%;\r\n");
+      out.write("            width: 100%;\r\n");
+      out.write("            display: none;\r\n");
+      out.write("            position: fixed;\r\n");
+      out.write("            z-index: 1;\r\n");
+      out.write("            top: 0;\r\n");
+      out.write("            left: 0;\r\n");
+      out.write("            background-color: rgb(0,0,0);\r\n");
+      out.write("            background-color: rgba(0,0,0, 0.9);\r\n");
+      out.write("        }\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("        .loader {\r\n");
+      out.write("            border: 16px solid #f3f3f3;\r\n");
+      out.write("            border-radius: 50%;\r\n");
+      out.write("            border-top: 16px solid #3498db;\r\n");
+      out.write("            width: 120px;\r\n");
+      out.write("            height: 120px;\r\n");
+      out.write("            -webkit-animation: spin 2s linear infinite; /* Safari */\r\n");
+      out.write("            animation: spin 2s linear infinite;\r\n");
+      out.write("        }\r\n");
+      out.write("\r\n");
+      out.write("        /* Safari */\r\n");
+      out.write("        @-webkit-keyframes spin {\r\n");
+      out.write("            0% { -webkit-transform: rotate(0deg); }\r\n");
+      out.write("            100% { -webkit-transform: rotate(360deg); }\r\n");
+      out.write("        }\r\n");
+      out.write("\r\n");
+      out.write("        @keyframes spin {\r\n");
+      out.write("            0% { transform: rotate(0deg); }\r\n");
+      out.write("            100% { transform: rotate(360deg); }\r\n");
+      out.write("        }\r\n");
+      out.write("    </style>\r\n");
       out.write("    <body>\r\n");
       out.write("        ");
       if (_jspx_meth_c_choose_0(_jspx_page_context))
         return;
       out.write("\r\n");
+      out.write("        <div id=\"myOverlay\" class=\"overlay\">\r\n");
+      out.write("            <center><div class=\"loader\"></div></center>\r\n");
+      out.write("        </div>\r\n");
       out.write("        <div class=\"\">\r\n");
       out.write("            <div class=\"container\">\r\n");
       out.write("                <div class=\"row\">\r\n");
@@ -87,15 +122,25 @@ public final class RecoverySendEmail_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("                                        <input type=\"email\" name=\"email\" id=\"inputEmail\" class=\"form-control\" placeholder=\"Email address\" required autofocus>\r\n");
       out.write("                                        <br>\r\n");
       out.write("                                    </div>\r\n");
-      out.write("                                    <button class=\"btn btn-lg btn-primary btn-block text-uppercase\" type=\"submit\">Recovery</button>\r\n");
+      out.write("                                    <button class=\"btn btn-lg btn-primary btn-block text-uppercase\" onclick=\"openSearch()\" type=\"submit\">Recovery</button>\r\n");
       out.write("                                </form>\r\n");
       out.write("                            </div>\r\n");
       out.write("                        </div>\r\n");
       out.write("                    </div>\r\n");
-      out.write("                </div></div>\r\n");
+      out.write("                </div>\r\n");
+      out.write("            </div>\r\n");
       out.write("        </div>\r\n");
       out.write("    </body>\r\n");
       out.write("</html>\r\n");
+      out.write("<script>\r\n");
+      out.write("function openSearch() {\r\n");
+      out.write("    document.getElementById(\"myOverlay\").style.display = \"block\";\r\n");
+      out.write("}\r\n");
+      out.write("\r\n");
+      out.write("function closeSearch() {\r\n");
+      out.write("    document.getElementById(\"myOverlay\").style.display = \"none\";\r\n");
+      out.write("}\r\n");
+      out.write("</script>\r\n");
       out.write("\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
@@ -131,7 +176,7 @@ public final class RecoverySendEmail_jsp extends org.apache.jasper.runtime.HttpJ
           return true;
         out.write("\r\n");
         out.write("            ");
-        if (_jspx_meth_c_otherwise_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_choose_0, _jspx_page_context))
+        if (_jspx_meth_c_when_2((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_choose_0, _jspx_page_context))
           return true;
         out.write("\r\n");
         out.write("        ");
@@ -156,7 +201,7 @@ public final class RecoverySendEmail_jsp extends org.apache.jasper.runtime.HttpJ
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_when_0 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _jspx_tagPool_c_when_test.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_when_0.setPageContext(_jspx_page_context);
     _jspx_th_c_when_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_choose_0);
-    _jspx_th_c_when_0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${status == true}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
+    _jspx_th_c_when_0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${status == 'RecoveryTrue'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
     int _jspx_eval_c_when_0 = _jspx_th_c_when_0.doStartTag();
     if (_jspx_eval_c_when_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
@@ -186,13 +231,13 @@ public final class RecoverySendEmail_jsp extends org.apache.jasper.runtime.HttpJ
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_when_1 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _jspx_tagPool_c_when_test.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_when_1.setPageContext(_jspx_page_context);
     _jspx_th_c_when_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_choose_0);
-    _jspx_th_c_when_1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${status == false}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
+    _jspx_th_c_when_1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${status == 'RecoveryFalse'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
     int _jspx_eval_c_when_1 = _jspx_th_c_when_1.doStartTag();
     if (_jspx_eval_c_when_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("                <div class=\"alert alert-danger\">\r\n");
-        out.write("                    <strong>Danger!</strong> ไม่มี Email นี้ในระบบของเรา กรุณาลองใหม่\r\n");
+        out.write("                <div class=\"alert alert-warning\">\r\n");
+        out.write("                    <strong>Warning!</strong> ไม่มี Email นี้ในระบบของเรา กรุณาลองใหม่\r\n");
         out.write("                </div>\r\n");
         out.write("            ");
         int evalDoAfterBody = _jspx_th_c_when_1.doAfterBody();
@@ -208,30 +253,33 @@ public final class RecoverySendEmail_jsp extends org.apache.jasper.runtime.HttpJ
     return false;
   }
 
-  private boolean _jspx_meth_c_otherwise_0(javax.servlet.jsp.tagext.JspTag _jspx_th_c_choose_0, PageContext _jspx_page_context)
+  private boolean _jspx_meth_c_when_2(javax.servlet.jsp.tagext.JspTag _jspx_th_c_choose_0, PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
-    //  c:otherwise
-    org.apache.taglibs.standard.tag.common.core.OtherwiseTag _jspx_th_c_otherwise_0 = (org.apache.taglibs.standard.tag.common.core.OtherwiseTag) _jspx_tagPool_c_otherwise.get(org.apache.taglibs.standard.tag.common.core.OtherwiseTag.class);
-    _jspx_th_c_otherwise_0.setPageContext(_jspx_page_context);
-    _jspx_th_c_otherwise_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_choose_0);
-    int _jspx_eval_c_otherwise_0 = _jspx_th_c_otherwise_0.doStartTag();
-    if (_jspx_eval_c_otherwise_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+    //  c:when
+    org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_when_2 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _jspx_tagPool_c_when_test.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
+    _jspx_th_c_when_2.setPageContext(_jspx_page_context);
+    _jspx_th_c_when_2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_choose_0);
+    _jspx_th_c_when_2.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${status == 'ActivateKeyError'}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
+    int _jspx_eval_c_when_2 = _jspx_th_c_when_2.doStartTag();
+    if (_jspx_eval_c_when_2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\r\n");
+        out.write("                <div class=\"alert alert-danger\">\r\n");
+        out.write("                    <strong>ActivateKey Error!</strong> กรุณาทำรายการของท่านที่เว็บของเราใหม่อีกครั้ง\r\n");
+        out.write("                </div>\r\n");
         out.write("            ");
-        int evalDoAfterBody = _jspx_th_c_otherwise_0.doAfterBody();
+        int evalDoAfterBody = _jspx_th_c_when_2.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
       } while (true);
     }
-    if (_jspx_th_c_otherwise_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _jspx_tagPool_c_otherwise.reuse(_jspx_th_c_otherwise_0);
+    if (_jspx_th_c_when_2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_when_test.reuse(_jspx_th_c_when_2);
       return true;
     }
-    _jspx_tagPool_c_otherwise.reuse(_jspx_th_c_otherwise_0);
+    _jspx_tagPool_c_when_test.reuse(_jspx_th_c_when_2);
     return false;
   }
 }

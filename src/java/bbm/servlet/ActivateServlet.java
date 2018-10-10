@@ -61,6 +61,7 @@ public class ActivateServlet extends HttpServlet {
                     try {
                         memberJPA.edit(member);
                         statusActivate = "ActivateTrue";
+                        request.setAttribute("status", statusActivate);
                         getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
                         return;
                     } catch (RollbackFailureException ex) {
