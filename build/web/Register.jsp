@@ -57,7 +57,12 @@
             </c:when>
             <c:when test="${status == 'UserHaveInDB'}">
                 <div class="alert alert-warning">
-                    <strong>Warning!</strong> มีชื่อผู้ใช้นี้ในระบบแล้ว
+                    <strong>Warning!</strong> มี ${email} นี้ ในระบบของเราแล้ว
+                </div>
+            </c:when>
+            <c:when test="${status == 'errorException'}">
+                <div class="alert alert-danger">
+                    <strong>Something went wrong!</strong> มีบางอย่างผิดปกติ กรุณาลองใหม่อีกครั้ง
                 </div>
             </c:when>
         </c:choose>

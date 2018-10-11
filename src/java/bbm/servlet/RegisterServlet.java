@@ -84,12 +84,12 @@ public class RegisterServlet extends HttpServlet {
                 }
             } catch (RollbackFailureException ex) {
                 //System.out.println("มีชื่อผู้ใช้นี้ในระบบ");
-                String status = "UserHaveInDB";
-                request.setAttribute("status", status);
-
-                Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+                request.setAttribute("email", email);
+                request.setAttribute("status", "UserHaveInDB");
             } catch (Exception ex) {
-                Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("-------------------------------------");
+                request.setAttribute("email", email);
+                request.setAttribute("status", "errorException");
             }
 
         }
