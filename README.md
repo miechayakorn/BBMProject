@@ -28,3 +28,11 @@ create table MemberCustomer (email varchar(30) primary key, password varchar(40)
 ```sql
 insert into MemberCustomer (email,password,name,surname,phone,registerdate,activatekey) values ('admin@mail.com','827ccbeea8a706c4c34a16891f84e7b','bbm','project','0812345678','2018-09-29 15:13:36.630','8014892c0e83400');
 ```
+
+```MAIN FONT
+<link href="https://fonts.googleapis.com/css?family=Athiti" rel="stylesheet">
+font-family: 'Athiti', sans-serif;
+
+
+```MAIN COLOR
+#161925 #272838 #23395b #1f487e #3e6990
