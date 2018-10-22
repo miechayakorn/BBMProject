@@ -9,8 +9,60 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <style>
+            body{
+                background-image: url("error.jpeg");
+            }
+            .error {
+                margin: 0 auto;
+                text-align: center;
+                padding-top: 10%;
+            }
+
+            .error-code {
+                bottom: 60%;
+                color: #2d353c;
+                font-size: 96px;
+                line-height: 100px;
+            }
+
+            .error-desc {
+                font-size: 16px;
+                color: #647788;
+            }
+
+            .m-b-10 {
+                margin-bottom: 10px!important;
+            }
+
+            .m-b-20 {
+                margin-bottom: 18px!important;
+            }
+
+            .m-t-20 {
+                margin-top: 20px!important;
+            }
+
+        </style>
     </head>
     <body>
-        <div>Error Page</div>
+        <div class="error">
+            <div class="error-code m-b-10 m-t-20">404 <i class="fa fa-warning"></i></div>
+            <h3 class="font-bold">We couldn't find the page..</h3>
+
+            <div class="error-desc">
+                Sorry, but the page you are looking for was either not found or does not exist. <br/>
+                Try refreshing the page or click the button below to go back to the Homepage.
+                <div>
+                    <a class=" login-detail-panel-button btn" href="index.jsp">
+                        <i class="fa fa-arrow-left"></i>
+                        Go back to Homepage                        
+                    </a>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

@@ -52,7 +52,7 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <script src=\"//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js\"></script>\r\n");
       out.write("        <script src=\"//code.jquery.com/jquery-1.11.1.min.js\"></script>\r\n");
       out.write("\r\n");
-      out.write("        <title>JSP Page</title>\r\n");
+      out.write("        <title>Login Page</title>\r\n");
       out.write("        <style>\r\n");
       out.write("            .panel-heading {\r\n");
       out.write("                padding: 5px 15px;\r\n");
@@ -99,7 +99,7 @@ public final class Login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                                    <span class=\"input-group-addon\">\r\n");
       out.write("                                                        <i class=\"glyphicon glyphicon-user\"></i>\r\n");
       out.write("                                                    </span> \r\n");
-      out.write("                                                    <input class=\"form-control\" placeholder=\"E-mail\" name=\"eamil\" type=\"text\" autofocus required>\r\n");
+      out.write("                                                    <input class=\"form-control\" placeholder=\"E-mail\" name=\"email\" type=\"text\" autofocus required>\r\n");
       out.write("                                                </div>\r\n");
       out.write("                                            </div>\r\n");
       out.write("                                            <div class=\"form-group\">\r\n");
