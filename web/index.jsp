@@ -18,6 +18,7 @@
   <link rel="shortcut icon" href="assets/images/bbm-logo-122x122.png" type="image/x-icon">
   <meta name="description" content="">
   <title>Home</title>
+  <link href="https://fonts.googleapis.com/css?family=Athiti" rel="stylesheet">
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
   <link rel="stylesheet" href="assets/tether/tether.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
