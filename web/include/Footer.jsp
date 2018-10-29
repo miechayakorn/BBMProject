@@ -12,7 +12,7 @@
             <div class="col-md-3 col-sm-4">
                 <div class="mb-3 img-logo">
                     <a href="/BBMProject">
-                        <img src="assets/images/logo22.png" alt="Mobirise">
+                        <img src="assets/images/bbm-logo-122x122.png" alt="BBM Logo">
                     </a>
                 </div>
                 <a href="/BBMProject" class="text-white">
