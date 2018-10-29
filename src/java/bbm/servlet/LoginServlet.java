@@ -64,10 +64,10 @@ public class LoginServlet extends HttpServlet {
                     response.sendRedirect("newUrl");
                     return;
                 } else {
-                    request.setAttribute("message", "Invalid user name or password !!");   
+                    request.setAttribute("message", "Invalid username or password !!");   
                 }
             } else {
-                request.setAttribute("message", "Invalid user name or password !!");
+                request.setAttribute("message", "Invalid username or password !!");
             }
         }
         getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);

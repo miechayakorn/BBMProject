@@ -55,46 +55,16 @@
 
             </c:otherwise>
         </c:choose>
-        <section class="menu cid-r6ZFttHx66" id="menu2-c">
-
-
-
-            <nav class="navbar navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm bg-color transparent">
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <div class="hamburger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </button>
-                <div class="menu-logo">
-                    <div class="navbar-brand">
-                        <span class="navbar-logo">
-                            <a href="index.html">
-                                <img src="assets/images/bbm-logo-122x122.png" alt="Mobirise" title="">
-                            </a>
-                        </span>
-                        <span class="navbar-caption-wrap"><a class="navbar-caption display-4 text-white" href="index.html">
-                                BBM</a></span>
-                    </div>
-                </div>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav nav-dropdown display-4" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-white" href="Room.html" aria-expanded="false">รายละเอียดห้อง</a></li><li class="nav-item"><a class="nav-link link text-white" href="index.html#form4-k" aria-expanded="false">ข้อมูลโครงการ</a></li><li class="nav-item"><a class="nav-link link text-white" href="RemainingRoom.html" aria-expanded="false">จำนวนห้องที่เหลืออยู่</a></li></ul>
-                    <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary" href="Register.html">Register</a> <a class="btn btn-sm btn-primary" href="Login.html">
-                            Login</a> <a class="btn btn-sm btn-primary" href="MyAccount.html"><span class="mbri-user mbr-iconfont mbr-iconfont-btn"></span>
-                            My Account</a> <a class="btn btn-sm btn-secondary" href="https://mobirise.com/mobirise-free-mac.zip"><span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span></a></div>
-                </div>
-            </nav>
-        </section>
+        
+        <jsp:include page="include/Header.jsp"/>
 
         <section class="engine"><a href="https://mobirise.info/k">how to develop free website</a></section><section class="carousel slide cid-r6ZEUwHLOQ" data-interval="false" id="slider1-a">
 
 
 
-            <div class="full-screen"><div class="mbr-slider slide carousel" data-pause="true" data-keyboard="false" data-ride="carousel" data-interval="4000"><ol class="carousel-indicators"><li data-app-prevent-settings="" data-target="#slider1-a" class=" active" data-slide-to="0"></li><li data-app-prevent-settings="" data-target="#slider1-a" data-slide-to="1"></li><li data-app-prevent-settings="" data-target="#slider1-a" data-slide-to="2"></li></ol><div class="carousel-inner" role="listbox"><div class="carousel-item slider-fullscreen-image active" data-bg-video-slide="false" style="background-image: url(assets/images/1.jpg);"><div class="container container-slide"><div class="image_wrapper"><div class="mbr-overlay"></div><img src="assets/images/1.jpg"><div class="carousel-caption justify-content-center"><div class="col-10 align-center"><h2 class="mbr-fonts-style display-1">BBM - Condominium</h2><p class="lead mbr-text mbr-fonts-style display-5">รังสรรค์ความสุขกับทุกจังหวะของชีวิต ให้คุณได้เพลิดเพลินไปกับทุกกิจกรรมที่หลากหลาย ตลอด 24 ชั่วโมง พร้อมดื่มด่ำกับทัศนียภาพวิวเมืองที่ตัดเส้นขอบฟ้าในมุมมองที่ไม่เหมือนใคร</p><div class="mbr-section-btn" buttons="0"><a class="btn btn-success display-4" href="Room.html"><span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>View Room</a> </div></div></div></div></div></div><div class="carousel-item slider-fullscreen-image" data-bg-video-slide="https://www.youtube.com/watch?v=fwkKc6M60-0"><div class="mbr-overlay"></div><div class="container container-slide"><div class="image_wrapper"><img src="assets/images/2.jpg" style="opacity: 0;"><div class="carousel-caption justify-content-center"><div class="col-10 align-left"><h2 class="mbr-fonts-style display-1">THE Sculpture</h2><p class="lead mbr-text mbr-fonts-style display-5">สุนทรีย์แห่งประสบการณ์การใช้ชีวิตที่ผสมผสานการออกแบบอย่างมีเอกลักษณ์ระดับโรงแรม เนรมิตให้ทุกช่วงเวลาสำคัญของชีวิตเป็นช่วงเวลาสุดพิเศษ ด้วยสิ่งอำนวยความสะดวกที่ครบครันตอบสนองทุกฟังก์ชั่นการใช้งาน มอบประสบการณ์การใช้ชีวิตอย่างสมบูรณ์แบบ</p></div></div></div></div></div><div class="carousel-item slider-fullscreen-image" data-bg-video-slide="false" style="background-image: url(assets/images/3.jpg);"><div class="container container-slide"><div class="image_wrapper"><div class="mbr-overlay"></div><img src="assets/images/3.jpg"><div class="carousel-caption justify-content-center"><div class="col-10 align-right"><p class="lead mbr-text mbr-fonts-style display-5">เมื่อ “จินตนาการ” คือตัวแทนของความปรารถนา 
+            <div class="full-screen"><div class="mbr-slider slide carousel" data-pause="true" data-keyboard="false" data-ride="carousel" data-interval="4000"><ol class="carousel-indicators"><li data-app-prevent-settings="" data-target="#slider1-a" class=" active" data-slide-to="0"></li><li data-app-prevent-settings="" data-target="#slider1-a" data-slide-to="1"></li><li data-app-prevent-settings="" data-target="#slider1-a" data-slide-to="2"></li></ol><div class="carousel-inner" role="listbox"><div class="carousel-item slider-fullscreen-image active" data-bg-video-slide="false" style="background-image: url(assets/images/1.jpg);"><div class="container container-slide"><div class="image_wrapper"><div class="mbr-overlay"></div><img src="assets/images/1.jpg"><div class="carousel-caption justify-content-center"><div class="col-10 align-center"><h2 class="mbr-fonts-style display-1">BBM - Condominium</h2><p class="lead mbr-text mbr-fonts-style display-5">รังสรรค์ความสุขกับทุกจังหวะของชีวิต ให้คุณได้เพลิดเพลินไปกับทุกกิจกรรมที่หลากหลาย ตลอด 24 ชั่วโมง พร้อมดื่มด่ำกับทัศนียภาพวิวเมืองที่ตัดเส้นขอบฟ้าในมุมมองที่ไม่เหมือนใคร</p><div class="mbr-section-btn" buttons="0"><a class="btn btn-success display-4" href="Room.jsp"><span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>View Room</a> </div></div></div></div></div></div><div class="carousel-item slider-fullscreen-image" data-bg-video-slide="https://www.youtube.com/watch?v=fwkKc6M60-0"><div class="mbr-overlay"></div><div class="container container-slide"><div class="image_wrapper"><img src="assets/images/2.jpg" style="opacity: 0;"><div class="carousel-caption justify-content-center"><div class="col-10 align-left"><h2 class="mbr-fonts-style display-1">THE Sculpture</h2><p class="lead mbr-text mbr-fonts-style display-5">สุนทรีย์แห่งประสบการณ์การใช้ชีวิตที่ผสมผสานการออกแบบอย่างมีเอกลักษณ์ระดับโรงแรม เนรมิตให้ทุกช่วงเวลาสำคัญของชีวิตเป็นช่วงเวลาสุดพิเศษ ด้วยสิ่งอำนวยความสะดวกที่ครบครันตอบสนองทุกฟังก์ชั่นการใช้งาน มอบประสบการณ์การใช้ชีวิตอย่างสมบูรณ์แบบ</p></div></div></div></div></div><div class="carousel-item slider-fullscreen-image" data-bg-video-slide="false" style="background-image: url(assets/images/3.jpg);"><div class="container container-slide"><div class="image_wrapper"><div class="mbr-overlay"></div><img src="assets/images/3.jpg"><div class="carousel-caption justify-content-center"><div class="col-10 align-right"><p class="lead mbr-text mbr-fonts-style display-5">เมื่อ “จินตนาการ” คือตัวแทนของความปรารถนา 
                                                 <br>ในสังคมที่เร่งรีบและความต้องการที่หลากหลาย ก่อให้เกิดจินตนาการที่มีรูปแบบไม่ตายตัว 
-                                                <br>ไร้ขีดจำกัดและบางทีก็ไม่มีเหตุผล เพียงเพื่อตอบสนองทุกความเป็นคุณ&nbsp;</p><div class="mbr-section-btn" buttons="0"><a class="btn btn-info display-4" href="https://mobirise.com"><span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>Search</a> </div></div></div></div></div></div></div><a data-app-prevent-settings="" class="carousel-control carousel-control-prev" role="button" data-slide="prev" href="#slider1-a"><span aria-hidden="true" class="mbri-left mbr-iconfont"></span><span class="sr-only">Previous</span></a><a data-app-prevent-settings="" class="carousel-control carousel-control-next" role="button" data-slide="next" href="#slider1-a"><span aria-hidden="true" class="mbri-right mbr-iconfont"></span><span class="sr-only">Next</span></a></div></div>
+                                                <br>ไร้ขีดจำกัดและบางทีก็ไม่มีเหตุผล เพียงเพื่อตอบสนองทุกความเป็นคุณ&nbsp;</p><div class="mbr-section-btn" buttons="0"><a class="btn btn-info display-4" href="Search"><span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>Search</a> </div></div></div></div></div></div></div><a data-app-prevent-settings="" class="carousel-control carousel-control-prev" role="button" data-slide="prev" href="#slider1-a"><span aria-hidden="true" class="mbri-left mbr-iconfont"></span><span class="sr-only">Previous</span></a><a data-app-prevent-settings="" class="carousel-control carousel-control-next" role="button" data-slide="next" href="#slider1-a"><span aria-hidden="true" class="mbri-right mbr-iconfont"></span><span class="sr-only">Next</span></a></div></div>
 
         </section>
 
@@ -111,7 +81,7 @@
                         <div class="card-wrapper ">
                             <div class="card-img">
                                 <div class="mbr-overlay"></div>
-                                <div class="mbr-section-btn text-center"><a href="Room.html" class="btn btn-primary">
+                                <div class="mbr-section-btn text-center"><a href="Room.jsp" class="btn btn-primary">
                                         View</a></div>
                                 <img src="assets/images/a1-676x526.jpg" alt="Mobirise" title="">
                             </div>
@@ -125,7 +95,7 @@
                         <div class="card-wrapper">
                             <div class="card-img">
                                 <div class="mbr-overlay"></div>
-                                <div class="mbr-section-btn text-center"><a href="Room.html" class="btn btn-primary">
+                                <div class="mbr-section-btn text-center"><a href="Room.jsp" class="btn btn-primary">
                                         View</a></div>
                                 <img src="assets/images/b1-676x526.jpg" alt="Mobirise" title="">
                             </div>
@@ -140,7 +110,7 @@
                         <div class="card-wrapper">
                             <div class="card-img">
                                 <div class="mbr-overlay"></div>
-                                <div class="mbr-section-btn text-center"><a href="Room.html" class="btn btn-primary">
+                                <div class="mbr-section-btn text-center"><a href="Room.jsp" class="btn btn-primary">
                                         View</a></div>
                                 <img src="assets/images/c1-676x526.jpg" alt="Mobirise" title="">
                             </div>
@@ -217,7 +187,7 @@
             <div class="container">
                 <div class="row main justify-content-center">
                     <div class="media-container-column col-12 col-lg-3 col-md-4">
-                        <div class="mbr-section-btn align-left py-4"><a class="btn btn-primary display-4" href="RemainingRoom.html"><span class="mbri-rocket mbr-iconfont mbr-iconfont-btn"></span>Let Go!</a></div>
+                        <div class="mbr-section-btn align-left py-4"><a class="btn btn-primary display-4" href="RemainingRoom.jsp"><span class="mbri-rocket mbr-iconfont mbr-iconfont-btn"></span>Let Go!</a></div>
                     </div>
                     <div class="media-container-column title col-12 col-lg-7 col-md-6">
 
@@ -307,101 +277,7 @@
             </div>
         </section>
 
-        <section class="footer4 cid-r6ZN1bz4el" id="footer4-f">
-
-
-
-
-
-            <div class="container">
-                <div class="media-container-row content mbr-white">
-                    <div class="col-md-3 col-sm-4">
-                        <div class="mb-3 img-logo">
-                            <a href="https://mobirise.co/">
-                                <img src="assets/images/logo2.png" alt="Mobirise">
-                            </a>
-                        </div>
-                        <p class="mb-3 mbr-fonts-style foot-title display-7">
-                            HOME</p>
-                        <p class="mbr-text mbr-fonts-style mbr-links-column display-7"><strong><a href="index.html#form4-k" class="text-white">ข้อมูลโครงการ</a></strong><br><a href="room.html" class="text-white">ประเภทห้อง</a>
-                            <br><a href="RemainingRoom.html" target="_blank" class="text-white">จำนวนห้องที่เหลืออยู่</a></p>
-                    </div>
-                    <div class="col-md-4 col-sm-8">
-                        <p class="mb-4 foot-title mbr-fonts-style display-7"><strong>BBM -&nbsp;Condominium</strong></p>
-                        <p class="mbr-text mbr-fonts-style foot-text display-7">เติมเต็มทุกจินตนาการ สนุกสนานทุกการใช้ชีวิต</p>
-                    </div>
-                    <div class="col-md-4 offset-md-1 col-sm-12">
-                        <p class="mb-4 foot-title mbr-fonts-style display-7">
-                            SUBSCRIBE
-                        </p>
-                        <p class="mbr-text mbr-fonts-style form-text display-7">
-                            Get monthly updates and free resources.
-                        </p>
-                        <div class="media-container-column" data-form-type="formoid">
-                            <div data-form-alert="" hidden="" class="align-center">Thanks for filling out the form!</div>
-
-                            <form class="form-inline" action="https://mobirise.com/" method="post" data-form-title="Mobirise Form">
-                                <input type="hidden" value="NILGD4dOQy2N8D67w9zacK4PvfiZ3n2nI1hOhUWLOPgNEjYIO27VN74DzA1/1AR+s2LSfkxOVhNNKkuZfNvPNIwC2NwvFlI/aZE87Ny6ReDNSl3nbGHN4jlD87GHvQxK" data-form-email="true">
-                                <div class="form-group">
-                                    <input type="email" class="form-control input-sm input-inverse my-2" name="email" required="" data-form-field="Email" placeholder="Email" id="email-footer4-f">
-                                </div>
-                                <div class="input-group-btn m-2"><button href="" class="btn btn-primary display-4" type="submit" role="button">Subscribe</button></div>
-                            </form>
-                        </div>
-                        <p class="mb-4 mbr-fonts-style foot-title display-7">
-                            CONNECT WITH US
-                        </p>
-                        <div class="social-list pl-0 mb-0">
-                            <div class="soc-item">
-
-                                <span class="mbr-iconfont mbr-iconfont-social socicon-twitter socicon" style="color: rgb(118, 118, 118); fill: rgb(118, 118, 118);"></span>
-
-                            </div>
-                            <div class="soc-item">
-
-                                <span class="mbr-iconfont mbr-iconfont-social socicon-facebook socicon" style="color: rgb(118, 118, 118); fill: rgb(118, 118, 118);"></span>
-
-                            </div>
-                            <div class="soc-item">
-
-                                <span class="mbr-iconfont mbr-iconfont-social socicon-youtube socicon" style="color: rgb(118, 118, 118); fill: rgb(118, 118, 118);"></span>
-
-                            </div>
-                            <div class="soc-item">
-
-                                <span class="mbr-iconfont mbr-iconfont-social socicon-instagram socicon" style="color: rgb(118, 118, 118); fill: rgb(118, 118, 118);"></span>
-
-                            </div>
-                            <div class="soc-item">
-
-                                <span class="mbr-iconfont mbr-iconfont-social socicon-googleplus socicon" style="color: rgb(118, 118, 118); fill: rgb(118, 118, 118);"></span>
-
-                            </div>
-                            <div class="soc-item">
-
-                                <span class="mbr-iconfont mbr-iconfont-social socicon-behance socicon" style="color: rgb(118, 118, 118); fill: rgb(118, 118, 118);"></span>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-lower">
-                    <div class="media-container-row">
-                        <div class="col-sm-12">
-                            <hr>
-                        </div>
-                    </div>
-                    <div class="media-container-row mbr-white">
-                        <div class="col-sm-12 copyright">
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                © Copyright 2018 (BBM)Condominium- All Rights Reserved
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+        <jsp:include page="include/Footer.jsp"/>
 
         <script src="assets/web/assets/jquery/jquery.min.js"></script>
         <script src="assets/popper/popper.min.js"></script>
