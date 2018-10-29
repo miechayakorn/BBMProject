@@ -31,9 +31,9 @@
             <ul class="navbar-nav nav-dropdown display-4" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-white" href="Room.jsp" aria-expanded="false">รายละเอียดห้อง</a></li><li class="nav-item"><a class="nav-link link text-white" href="/BBMProject/#form4-k" aria-expanded="false">ข้อมูลโครงการ</a></li><li class="nav-item"><a class="nav-link link text-white" href="RemainingRoom.jsp" aria-expanded="false">จำนวนห้องที่เหลืออยู่</a></li></ul>
             <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary" href="Register">Register</a> <a class="btn btn-sm btn-primary" href="Login.jsp">
                     Login</a> <a class="btn btn-sm btn-primary" href="MyAccount.jsp"><span class="mbri-user mbr-iconfont mbr-iconfont-btn"></span>
-                    My Account</a> <a class="btn btn-sm btn-secondary" href="search"><span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span></a></div>
-            <a class="btn btn-sm btn-primary" href="#"><p style="color: #EE4035">100</p><img src="assets/images/condo-icon.png" width="30px" /></a>
-            
+                    My Account</a> <a class="btn btn-sm btn-secondary" href="search"><span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span></a>
+                    <a class="btn btn-sm btn-warning" href="#"><p style="color: #EE4035">100</p><img src="assets/images/condo-icon.png" width="30px" /></a>
+            </div>
         </div>
     </nav>
 </section>
