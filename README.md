@@ -23,14 +23,6 @@
 ***Pass:*** 12345  
 
 ```sql
-create table MemberCustomer (email varchar(30) primary key, password varchar(40)not null, name varchar(20)not null, surname varchar(30)not null, phone varchar(10)not null, registerDate timestamp not null, activateKey varchar(40)not null, activateDate timestamp); 
-```
-```sql
-insert into MemberCustomer (email,password,name,surname,phone,registerdate,activatekey) values ('admin@mail.com','827ccbeea8a706c4c34a16891f84e7b','bbm','project','0812345678','2018-09-29 15:13:36.630','8014892c0e83400');
-```
-
-##Edit
-```sql
 create table customer (
 customerId int primary key,
 name varchar(40) not null,
@@ -38,9 +30,9 @@ surname varchar(50) not null,
 phone int not null,
 idcard int not null,
 address varchar(255) not null);
+```
 
-
-
+```sql
 create table account (
 email varchar(40) primary key,
 password varchar(40) not null,
@@ -49,21 +41,27 @@ registerDate timestamp not null,
 activateKey varchar(40)not null,
 activateDate timestamp,
 FOREIGN KEY (customerId) REFERENCES customer(customerId));
+```
 
-
-
+```sql
 create table room (
 roomNumber int primary key,
 floor int not null,
-)
+size varchar(100),
+type char check (type in ('A','B','C')),
+customerId int ,
+FOREIGN KEY (customerId) REFERENCES customer(customerId)
+);
+```
 
-
+```sql
 create table history (
-customerId int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+historyId int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1) primary key,
 roomNumber int not null,
 price int not null,
-purchaseDate timestamp
-FOREIGN KEY (customerId) REFERENCES customer(customerId)
+purchaseDate timestamp,
+customerId int ,
+FOREIGN KEY (customerId) REFERENCES customer(customerId),
 FOREIGN KEY (roomNumber) REFERENCES room(roomNumber)
 );
 ```
