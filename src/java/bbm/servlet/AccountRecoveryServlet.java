@@ -1,7 +1,8 @@
 package bbm.servlet;
 
-import bbm.jpa.model.MemberCustomer;
-import bbm.jpa.model.controller.MemberCustomerJpaController;
+
+import bbm.jpa.model.Account;
+import bbm.jpa.model.controller.AccountJpaController;
 import bbm.jpa.model.controller.exceptions.RollbackFailureException;
 import bbm.model.EmailMessage;
 import bbm.model.EncryptWithMd5;
@@ -36,18 +37,18 @@ public class AccountRecoveryServlet extends HttpServlet {
 
         if (activateKey == null && password == null && email != null) {
             String status = "notEmail";
-            MemberCustomerJpaController memberJPA = new MemberCustomerJpaController(utx, emf);
-            MemberCustomer member = memberJPA.findMemberCustomer(email);
+            AccountJpaController accountJpaCtrl= new AccountJpaController(utx, emf);
+            Account  account = accountJpaCtrl.findAccount(email);
 
-            if (member != null) {
+            if (account != null) {
                 try {
-                    String activateKeyInDB = member.getActivatekey();
+                    String activateKeyInDB = account.getActivatekey();
 
                     //Send Email
                     String em = new EmailMessage(email, activateKeyInDB, "Recovery").getMessageSend();
                     int sendResult = SendEmail.send(email, em, "RecoveryPassword - BBMProject"); //SEND MAIL!
                     if (sendResult == 0) { //IS SENDING EMAIL successful?
-                        memberJPA.edit(member);
+                        accountJpaCtrl.edit(account);
                     }
 
                 } catch (RollbackFailureException ex) {
@@ -62,11 +63,11 @@ public class AccountRecoveryServlet extends HttpServlet {
             }
 
         } else if (email != null && activateKey != null && password == null) {
-            MemberCustomerJpaController memberJPA = new MemberCustomerJpaController(utx, emf);
-            MemberCustomer member = memberJPA.findMemberCustomer(email);
+             AccountJpaController accountJpaCtrl= new AccountJpaController(utx, emf);
+            Account  account = accountJpaCtrl.findAccount(email);
 
-            if (member != null) {
-                if (member.getActivatekey().equals(activateKey)) {
+            if (account != null) {
+                if (account.getActivatekey().equals(activateKey)) {
                     request.setAttribute("email", email);
                     request.setAttribute("activateKey", activateKey);
                     request.getServletContext().getRequestDispatcher("/RecoveryChangePassword.jsp").forward(request, response);
@@ -78,18 +79,18 @@ public class AccountRecoveryServlet extends HttpServlet {
             return;
 
         } else if (email != null && password != null && activateKey != null) {
-            MemberCustomerJpaController memberJPA = new MemberCustomerJpaController(utx, emf);
-            MemberCustomer member = memberJPA.findMemberCustomer(email);
+             AccountJpaController accountJpaCtrl= new AccountJpaController(utx, emf);
+            Account  account = accountJpaCtrl.findAccount(email);
             String status = "notEmail";
 
-            if (member != null) {
-                if (member.getActivatekey().equals(activateKey)) {
+            if (account != null) {
+                if (account.getActivatekey().equals(activateKey)) {
                     try {
                         password = new EncryptWithMd5().encrypt(password);
-                        member.setPassword(password);
-                        member.setActivatekey(UUID.randomUUID().toString().replace("-", "").substring(0, 15));
-                        member.setActivatedate(new Date());
-                        memberJPA.edit(member);
+                        account.setPassword(password);
+                        account.setActivatekey(UUID.randomUUID().toString().replace("-", "").substring(0, 15));
+                        account.setActivatedate(new Date());
+                        accountJpaCtrl.edit(account);
                         status = "RecoveryTrue";
 
                     } catch (RollbackFailureException ex) {

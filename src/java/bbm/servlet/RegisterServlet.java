@@ -5,14 +5,18 @@
  */
 package bbm.servlet;
 
-import bbm.jpa.model.MemberCustomer;
-import bbm.jpa.model.controller.MemberCustomerJpaController;
+
+import bbm.jpa.model.Account;
+import bbm.jpa.model.Customer;
+import bbm.jpa.model.controller.AccountJpaController;
+import bbm.jpa.model.controller.CustomerJpaController;
 import bbm.jpa.model.controller.exceptions.RollbackFailureException;
 import bbm.model.EmailMessage;
 import bbm.model.EncryptWithMd5;
 import bbm.model.SendEmail;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -55,6 +59,9 @@ public class RegisterServlet extends HttpServlet {
         String name = request.getParameter("name");
         String surname = request.getParameter("surname");
         String phone = request.getParameter("phone");
+        String idcard = request.getParameter("idcard");
+        String address = request.getParameter("address");
+       
 
         if (email != null && email.trim().length() > 0
                 && password != null && password.trim().length() > 0
@@ -62,22 +69,27 @@ public class RegisterServlet extends HttpServlet {
                 && surname != null && surname.trim().length() > 0
                 && phone != null && phone.trim().length() > 0) {
 
-            MemberCustomerJpaController memberJPA = new MemberCustomerJpaController(utx, emf);
+            AccountJpaController accountJpaCtrl= new AccountJpaController(utx, emf);
+            
 
             String activatekey = UUID.randomUUID().toString().replace("-", "").substring(0, 15);
             password = new EncryptWithMd5().encrypt(password);
-            MemberCustomer memberCustomer = new MemberCustomer(email, password, name, surname, phone, activatekey);
+            Account account = new Account(email, password, new Date(), activatekey);
+            //after create account successfull will create customer
+            
+            CustomerJpaController customerJpaCtrl = new CustomerJpaController(utx, emf);
+            Customer customer = new Customer(name, surname, Integer.parseInt(phone),Integer.parseInt(idcard), address);
 
             try {
-                memberJPA.create(memberCustomer);
-                
+                accountJpaCtrl.create(account);
+                customerJpaCtrl.create(customer);
                 //Send Email
                 String em = new EmailMessage(email, activatekey , "Register").getMessageSend();
                 int sendResult = SendEmail.send(email, em , "ยินดีต้อนรับเข้าสู่ BBM Project"); //SEND MAIL!
                 if (sendResult == 0) { //IS SENDING EMAIL successful?
 
                     //getEmailInDB
-                    String getEmailInDB = memberCustomer.getEmail();
+                    String getEmailInDB = account.getEmail();
                     request.setAttribute("getEmailInDB", getEmailInDB);
                     String status = "statusTrue";
                     request.setAttribute("status", status);

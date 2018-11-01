@@ -5,8 +5,9 @@
  */
 package bbm.servlet;
 
-import bbm.jpa.model.MemberCustomer;
-import bbm.jpa.model.controller.MemberCustomerJpaController;
+
+import bbm.jpa.model.Account;
+import bbm.jpa.model.controller.AccountJpaController;
 import bbm.model.EncryptWithMd5;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -51,16 +52,16 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
 
         if (email != null && password != null && email.length() > 0 && password.length() > 0) {
-            MemberCustomerJpaController memberJPA = new MemberCustomerJpaController(utx, emf);
-            MemberCustomer member = memberJPA.findMemberCustomer(email);
+            AccountJpaController accountJpaCtrl= new AccountJpaController(utx, emf);
+            Account  account = accountJpaCtrl.findAccount(email);
             password = new EncryptWithMd5().encrypt(password);
-            if (member != null) {
-                if (member.getPassword().equals(password)) {
+            if (account != null) {
+                if (account.getPassword().equals(password)) {
 
                     if (session == null) {
                         session = request.getSession(true);
                     }
-                    session.setAttribute("account", member);
+                    session.setAttribute("account", account);
                     response.sendRedirect("newUrl");
                     return;
                 } else {
