@@ -36,10 +36,10 @@ address varchar(255) not null);
 create table account (
 email varchar(40) primary key,
 password varchar(40) not null,
-customerId int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 registerDate timestamp not null,
 activateKey varchar(40)not null,
 activateDate timestamp,
+customerId int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 FOREIGN KEY (customerId) REFERENCES customer(customerId));
 ```
 
@@ -57,10 +57,10 @@ FOREIGN KEY (customerId) REFERENCES customer(customerId)
 ```sql
 create table history (
 historyId int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1) primary key,
-roomNumber int not null,
 price int not null,
 purchaseDate timestamp,
 customerId int ,
+roomNumber int not null,
 FOREIGN KEY (customerId) REFERENCES customer(customerId),
 FOREIGN KEY (roomNumber) REFERENCES room(roomNumber)
 );
