@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i);
+@import url(https://fonts.googleapis.com/css?family=Athiti");
 
 
 
@@ -6,8 +6,7 @@
 
 
 body {
-  font-style: normal;
-  line-height: 1.5;
+  font-weight: bold;
 }
 .mbr-section-title {
   font-style: normal;
@@ -21,35 +20,35 @@ body {
   line-height: 1.6;
 }
 .display-1 {
-  font-family: 'Rubik', sans-serif;
+font-family: 'Athiti', sans-serif;
   font-size: 4.25rem;
 }
 .display-1 > .mbr-iconfont {
   font-size: 6.8rem;
 }
 .display-2 {
-  font-family: 'Rubik', sans-serif;
+font-family: 'Athiti', sans-serif;
   font-size: 3rem;
 }
 .display-2 > .mbr-iconfont {
   font-size: 4.8rem;
 }
 .display-4 {
-  font-family: 'Rubik', sans-serif;
+font-family: 'Athiti', sans-serif;
   font-size: 1rem;
 }
 .display-4 > .mbr-iconfont {
   font-size: 1.6rem;
 }
 .display-5 {
-  font-family: 'Rubik', sans-serif;
+font-family: 'Athiti', sans-serif;
   font-size: 1.5rem;
 }
 .display-5 > .mbr-iconfont {
   font-size: 2.4rem;
 }
 .display-7 {
-  font-family: 'Rubik', sans-serif;
+font-family: 'Athiti', sans-serif;
   font-size: 1rem;
 }
 .display-7 > .mbr-iconfont {
@@ -659,7 +658,7 @@ a:hover {
   background-color: #f5f5f5;
   box-shadow: none;
   color: #565656;
-  font-family: 'Rubik', sans-serif;
+font-family: 'Athiti', sans-serif;
   font-size: 1rem;
   line-height: 1.43;
   min-height: 3.5em;
@@ -1405,7 +1404,7 @@ body {
   padding: 0.4rem 1.5rem;
   display: inline-flex;
   align-items: center;
-  font-family: 'Rubik', sans-serif;
+font-family: 'Athiti', sans-serif;
 }
 .cid-r6ZFttHx66 .btn .mbr-iconfont {
   font-size: 1.6rem;
@@ -2134,7 +2133,7 @@ body {
 }
 .cid-r6ZZHv1vwP .google-map [data-state-details] {
   color: #6b6763;
-  font-family: Montserrat;
+font-family: 'Athiti', sans-serif;
   height: 1.5em;
   margin-top: -0.75em;
   padding-left: 1.25rem;
@@ -2512,7 +2511,7 @@ body {
   padding: 0.4rem 1.5rem;
   display: inline-flex;
   align-items: center;
-  font-family: 'Rubik', sans-serif;
+font-family: 'Athiti', sans-serif;
 }
 .cid-r6ZFttHx66 .btn .mbr-iconfont {
   font-size: 1.6rem;
@@ -2991,7 +2990,7 @@ body {
   padding: 0.4rem 1.5rem;
   display: inline-flex;
   align-items: center;
-  font-family: 'Rubik', sans-serif;
+font-family: 'Athiti', sans-serif;
 }
 .cid-r6ZFttHx66 .btn .mbr-iconfont {
   font-size: 1.6rem;
@@ -3497,7 +3496,7 @@ body {
   padding: 0.4rem 1.5rem;
   display: inline-flex;
   align-items: center;
-  font-family: 'Rubik', sans-serif;
+font-family: 'Athiti', sans-serif;
 }
 .cid-r6ZFttHx66 .btn .mbr-iconfont {
   font-size: 1.6rem;
@@ -4038,7 +4037,7 @@ body {
   padding: 0.4rem 1.5rem;
   display: inline-flex;
   align-items: center;
-  font-family: 'Rubik', sans-serif;
+font-family: 'Athiti', sans-serif;
 }
 .cid-r6ZFttHx66 .btn .mbr-iconfont {
   font-size: 1.6rem;
@@ -4517,7 +4516,7 @@ body {
   padding: 0.4rem 1.5rem;
   display: inline-flex;
   align-items: center;
-  font-family: 'Rubik', sans-serif;
+font-family: 'Athiti', sans-serif;
 }
 .cid-r6ZFttHx66 .btn .mbr-iconfont {
   font-size: 1.6rem;

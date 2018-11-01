@@ -32,7 +32,7 @@
             <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary" href="Register">Register</a> <a class="btn btn-sm btn-primary" href="Login.jsp">
                     Login</a> <a class="btn btn-sm btn-primary" href="MyAccount.jsp"><span class="mbri-user mbr-iconfont mbr-iconfont-btn"></span>
                     My Account</a> <a class="btn btn-sm btn-secondary" href="search"><span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span></a>
-                    <a class="btn btn-sm btn-warning" href="#"><p style="color: #EE4035">100</p><img src="assets/images/condo-icon.png" width="30px" /></a>
+                    <a class="btn btn-sm btn-warning" href="#"><p style="color: #FFFFFF ; margin-top: 15px ; font-weight:bold;">100&nbsp;<img src="assets/images/condo-icon.png" width="30px" /></p></a>
             </div>
         </div>
     </nav>

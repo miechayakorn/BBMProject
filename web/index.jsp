@@ -149,7 +149,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="google-map"><iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU&amp;q=place_id:ChIJn6wOs6lZwokRLKy1iqRcoKw" allowfullscreen=""></iframe></div>
+                        <div class="google-map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5482.754248689906!2d100.53521005781704!3d13.664287423297003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2a251bb6b0cf1%3A0xf656e94ff13324ad!2z4Lih4Lir4Liy4Lin4Li04LiX4Lii4Liy4Lil4Lix4Lii4LmA4LiX4LiE4LmC4LiZ4LmC4Lil4Lii4Li14Lie4Lij4Liw4LiI4Lit4Lih4LmA4LiB4Lil4LmJ4Liy4LiY4LiZ4Lia4Li44Lij4Li1!5e0!3m2!1sth!2sth!4v1541069580727" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe></div>
                     </div>
                     <div class="col-md-6">
                         <h2 class="pb-3 align-left mbr-fonts-style display-2">ที่ตั้ง และข้อมูลการติดต่อ</h2>
@@ -167,7 +167,7 @@
                                         ที่อยู่
                                     </strong></h5>
                                 <p class="mbr-text align-left mbr-fonts-style display-7">บริษัท บีบีเอม คอนโดมิเนียม จำกัด (มหาชน) 
-                                    <br>126 ถนน ประชาอุทิศ แขวง บางมด เขต ทุ่งครุ กรุงเทพมหานคร 10140&nbsp;<br>
+                                    <br>126 ถนนประชาอุทิศ แขวงบางมด เขตทุ่งครุ กรุงเทพมหานคร 10140 &nbsp;<br>
                                     <br><strong>โทร</strong> : 01 234 5555,02 345 6666-1 ,02 345 6666-2<br><strong>แฟกซ์</strong> : 01 234 5555,02 345 6666-33<br><strong>อีเมล์</strong> :&nbsp;bbmproject.noreply@gmail.com</p>
                             </div>
                         </div>
