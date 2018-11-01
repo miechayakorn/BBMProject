@@ -36,10 +36,10 @@ address varchar(255) not null);
 create table account (
 email varchar(40) primary key,
 password varchar(40) not null,
-customerId int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 registerDate timestamp not null,
 activateKey varchar(40)not null,
 activateDate timestamp,
+customerId int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 FOREIGN KEY (customerId) REFERENCES customer(customerId));
 ```
 
@@ -57,10 +57,10 @@ FOREIGN KEY (customerId) REFERENCES customer(customerId)
 ```sql
 create table history (
 historyId int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1) primary key,
-roomNumber int not null,
 price int not null,
 purchaseDate timestamp,
 customerId int ,
+roomNumber int not null,
 FOREIGN KEY (customerId) REFERENCES customer(customerId),
 FOREIGN KEY (roomNumber) REFERENCES room(roomNumber)
 );
@@ -73,3 +73,9 @@ font-family: 'Athiti', sans-serif;
 
 MAIN COLOR
 #161925 #272838 #23395b #1f487e #3e6990
+
+
+
+
+GOOGLE MAPS API
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3877.1075395961643!2d100.49168871485426!3d13.651221803294094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2a251bb6b0cf1%3A0xf656e94ff13324ad!2z4Lih4Lir4Liy4Lin4Li04LiX4Lii4Liy4Lil4Lix4Lii4LmA4LiX4LiE4LmC4LiZ4LmC4Lil4Lii4Li14Lie4Lij4Liw4LiI4Lit4Lih4LmA4LiB4Lil4LmJ4Liy4LiY4LiZ4Lia4Li44Lij4Li1!5e0!3m2!1sth!2sth!4v1541069121306" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
