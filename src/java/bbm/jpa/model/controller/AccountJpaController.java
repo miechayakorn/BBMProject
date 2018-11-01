@@ -5,27 +5,28 @@
  */
 package bbm.jpa.model.controller;
 
-import bbm.jpa.model.MemberCustomer;
-import bbm.jpa.model.controller.exceptions.NonexistentEntityException;
-import bbm.jpa.model.controller.exceptions.PreexistingEntityException;
-import bbm.jpa.model.controller.exceptions.RollbackFailureException;
+import bbm.jpa.model.Account;
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import bbm.jpa.model.Customer;
+import bbm.jpa.model.controller.exceptions.NonexistentEntityException;
+import bbm.jpa.model.controller.exceptions.PreexistingEntityException;
+import bbm.jpa.model.controller.exceptions.RollbackFailureException;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.transaction.UserTransaction;
 
 /**
  *
- * @author Kridtakom
+ * @author Student
  */
-public class MemberCustomerJpaController implements Serializable {
+public class AccountJpaController implements Serializable {
 
-    public MemberCustomerJpaController(UserTransaction utx, EntityManagerFactory emf) {
+    public AccountJpaController(UserTransaction utx, EntityManagerFactory emf) {
         this.utx = utx;
         this.emf = emf;
     }
@@ -36,12 +37,21 @@ public class MemberCustomerJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(MemberCustomer memberCustomer) throws PreexistingEntityException, RollbackFailureException, Exception {
+    public void create(Account account) throws PreexistingEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
             utx.begin();
             em = getEntityManager();
-            em.persist(memberCustomer);
+            Customer customerid = account.getCustomerid();
+            if (customerid != null) {
+                customerid = em.getReference(customerid.getClass(), customerid.getCustomerid());
+                account.setCustomerid(customerid);
+            }
+            em.persist(account);
+            if (customerid != null) {
+                customerid.getAccountList().add(account);
+                customerid = em.merge(customerid);
+            }
             utx.commit();
         } catch (Exception ex) {
             try {
@@ -49,8 +59,8 @@ public class MemberCustomerJpaController implements Serializable {
             } catch (Exception re) {
                 throw new RollbackFailureException("An error occurred attempting to roll back the transaction.", re);
             }
-            if (findMemberCustomer(memberCustomer.getEmail()) != null) {
-                throw new PreexistingEntityException("MemberCustomer " + memberCustomer + " already exists.", ex);
+            if (findAccount(account.getEmail()) != null) {
+                throw new PreexistingEntityException("Account " + account + " already exists.", ex);
             }
             throw ex;
         } finally {
@@ -60,12 +70,27 @@ public class MemberCustomerJpaController implements Serializable {
         }
     }
 
-    public void edit(MemberCustomer memberCustomer) throws NonexistentEntityException, RollbackFailureException, Exception {
+    public void edit(Account account) throws NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
             utx.begin();
             em = getEntityManager();
-            memberCustomer = em.merge(memberCustomer);
+            Account persistentAccount = em.find(Account.class, account.getEmail());
+            Customer customeridOld = persistentAccount.getCustomerid();
+            Customer customeridNew = account.getCustomerid();
+            if (customeridNew != null) {
+                customeridNew = em.getReference(customeridNew.getClass(), customeridNew.getCustomerid());
+                account.setCustomerid(customeridNew);
+            }
+            account = em.merge(account);
+            if (customeridOld != null && !customeridOld.equals(customeridNew)) {
+                customeridOld.getAccountList().remove(account);
+                customeridOld = em.merge(customeridOld);
+            }
+            if (customeridNew != null && !customeridNew.equals(customeridOld)) {
+                customeridNew.getAccountList().add(account);
+                customeridNew = em.merge(customeridNew);
+            }
             utx.commit();
         } catch (Exception ex) {
             try {
@@ -75,9 +100,9 @@ public class MemberCustomerJpaController implements Serializable {
             }
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                String id = memberCustomer.getEmail();
-                if (findMemberCustomer(id) == null) {
-                    throw new NonexistentEntityException("The memberCustomer with id " + id + " no longer exists.");
+                String id = account.getEmail();
+                if (findAccount(id) == null) {
+                    throw new NonexistentEntityException("The account with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -93,14 +118,19 @@ public class MemberCustomerJpaController implements Serializable {
         try {
             utx.begin();
             em = getEntityManager();
-            MemberCustomer memberCustomer;
+            Account account;
             try {
-                memberCustomer = em.getReference(MemberCustomer.class, id);
-                memberCustomer.getEmail();
+                account = em.getReference(Account.class, id);
+                account.getEmail();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The memberCustomer with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The account with id " + id + " no longer exists.", enfe);
             }
-            em.remove(memberCustomer);
+            Customer customerid = account.getCustomerid();
+            if (customerid != null) {
+                customerid.getAccountList().remove(account);
+                customerid = em.merge(customerid);
+            }
+            em.remove(account);
             utx.commit();
         } catch (Exception ex) {
             try {
@@ -116,19 +146,19 @@ public class MemberCustomerJpaController implements Serializable {
         }
     }
 
-    public List<MemberCustomer> findMemberCustomerEntities() {
-        return findMemberCustomerEntities(true, -1, -1);
+    public List<Account> findAccountEntities() {
+        return findAccountEntities(true, -1, -1);
     }
 
-    public List<MemberCustomer> findMemberCustomerEntities(int maxResults, int firstResult) {
-        return findMemberCustomerEntities(false, maxResults, firstResult);
+    public List<Account> findAccountEntities(int maxResults, int firstResult) {
+        return findAccountEntities(false, maxResults, firstResult);
     }
 
-    private List<MemberCustomer> findMemberCustomerEntities(boolean all, int maxResults, int firstResult) {
+    private List<Account> findAccountEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(MemberCustomer.class));
+            cq.select(cq.from(Account.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -140,20 +170,20 @@ public class MemberCustomerJpaController implements Serializable {
         }
     }
 
-    public MemberCustomer findMemberCustomer(String id) {
+    public Account findAccount(String id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(MemberCustomer.class, id);
+            return em.find(Account.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getMemberCustomerCount() {
+    public int getAccountCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<MemberCustomer> rt = cq.from(MemberCustomer.class);
+            Root<Account> rt = cq.from(Account.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();

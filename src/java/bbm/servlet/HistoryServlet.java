@@ -6,14 +6,11 @@
 package bbm.servlet;
 
 import bbm.jpa.model.Account;
+import bbm.jpa.model.History;
 import bbm.jpa.model.controller.AccountJpaController;
-import bbm.jpa.model.controller.exceptions.RollbackFailureException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
-import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -26,13 +23,12 @@ import javax.transaction.UserTransaction;
 
 /**
  *
- * @author Acer_E5
+ * @author Student
  */
-public class ActivateServlet extends HttpServlet {
+public class HistoryServlet extends HttpServlet {
 
     @Resource
     UserTransaction utx;
-
     @PersistenceUnit(unitName = "BBMWebAppPU")
     EntityManagerFactory emf;
 
@@ -47,42 +43,34 @@ public class ActivateServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String activateKey = request.getParameter("activateKey");
-  
-        
-        if (email != null && email.length() > 0 && activateKey != null && activateKey.length() > 0) {
-            AccountJpaController accountJpaCtrl= new AccountJpaController(utx, emf);
-            Account  account = accountJpaCtrl.findAccount(email);
+        HttpSession session = request.getSession(false);
 
-            if (account != null) {
-                String statusActivate = "ActivateFalse";
-                if (activateKey.equals(account.getActivatekey()) && email.equals(account.getEmail())) {
-                    account.setActivatedate(new Date());
-                    account.setActivatekey(UUID.randomUUID().toString().replace("-", "").substring(0, 15));
-                    try {
-                        accountJpaCtrl.edit(account);
-                        statusActivate = "ActivateTrue";
-                        request.setAttribute("status", statusActivate);
-                        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-                        return;
-                    } catch (RollbackFailureException ex) {
-                        Logger.getLogger(ActivateServlet.class.getName()).log(Level.SEVERE, "jpa", ex);
-                    } catch (Exception ex) {
-                        Logger.getLogger(ActivateServlet.class.getName()).log(Level.SEVERE, "jpa", ex);
-                    }
-                } else {
-                    request.setAttribute("status", statusActivate);
-                    getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-                    return;
-                }
-            } else {
-                request.setAttribute("status", "notEmail");
-                getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+        if (session == null) {
+            response.sendRedirect("Login");
+            return;
+        }
+        try {
+            if (session.getAttribute("account") == null) {
+                response.sendRedirect("Login");
+                System.out.println("---------------------------------------------try");
                 return;
             }
+        } catch (Exception ex) {
+                response.sendRedirect("Login");
+                System.out.println("---------------------------------------------catch");
+                return;
         }
-        response.sendRedirect("/BBMProject");
+
+        Account accountSession = (Account) session.getAttribute("account");
+        AccountJpaController accountJpaCtrl = new AccountJpaController(utx, emf);
+        Account account = accountJpaCtrl.findAccount(accountSession.getEmail());
+        if (account != null) {
+            List<History> listHistory = account.getCustomerid().getHistoryList();
+            session.setAttribute("listHistory", listHistory);
+            getServletContext().getRequestDispatcher("/History.jsp").forward(request, response);
+            return;
+        }
+        response.sendRedirect("Login");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -7,11 +7,12 @@ package bbm.jpa.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.UUID;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -23,29 +24,26 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Kridtakom
+ * @author Student
  */
 @Entity
-@Table(name = "MEMBERCUSTOMER")
+@Table(name = "ACCOUNT")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "MemberCustomer.findAll", query = "SELECT m FROM MemberCustomer m")
-    , @NamedQuery(name = "MemberCustomer.findByEmail", query = "SELECT m FROM MemberCustomer m WHERE m.email = :email")
-    , @NamedQuery(name = "MemberCustomer.findByPassword", query = "SELECT m FROM MemberCustomer m WHERE m.password = :password")
-    , @NamedQuery(name = "MemberCustomer.findByName", query = "SELECT m FROM MemberCustomer m WHERE m.name = :name")
-    , @NamedQuery(name = "MemberCustomer.findBySurname", query = "SELECT m FROM MemberCustomer m WHERE m.surname = :surname")
-    , @NamedQuery(name = "MemberCustomer.findByPhone", query = "SELECT m FROM MemberCustomer m WHERE m.phone = :phone")
-    , @NamedQuery(name = "MemberCustomer.findByRegisterdate", query = "SELECT m FROM MemberCustomer m WHERE m.registerdate = :registerdate")
-    , @NamedQuery(name = "MemberCustomer.findByActivatekey", query = "SELECT m FROM MemberCustomer m WHERE m.activatekey = :activatekey")
-    , @NamedQuery(name = "MemberCustomer.findByActivatedate", query = "SELECT m FROM MemberCustomer m WHERE m.activatedate = :activatedate")})
-public class MemberCustomer implements Serializable {
+    @NamedQuery(name = "Account.findAll", query = "SELECT a FROM Account a")
+    , @NamedQuery(name = "Account.findByEmail", query = "SELECT a FROM Account a WHERE a.email = :email")
+    , @NamedQuery(name = "Account.findByPassword", query = "SELECT a FROM Account a WHERE a.password = :password")
+    , @NamedQuery(name = "Account.findByRegisterdate", query = "SELECT a FROM Account a WHERE a.registerdate = :registerdate")
+    , @NamedQuery(name = "Account.findByActivatekey", query = "SELECT a FROM Account a WHERE a.activatekey = :activatekey")
+    , @NamedQuery(name = "Account.findByActivatedate", query = "SELECT a FROM Account a WHERE a.activatedate = :activatedate")})
+public class Account implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Id
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 30)
+    @Size(min = 1, max = 40)
     @Column(name = "EMAIL")
     private String email;
     @Basic(optional = false)
@@ -55,20 +53,6 @@ public class MemberCustomer implements Serializable {
     private String password;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 20)
-    @Column(name = "NAME")
-    private String name;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "SURNAME")
-    private String surname;
-    // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 10)
-    @Column(name = "PHONE")
-    private String phone;
     @Column(name = "REGISTERDATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date registerdate;
@@ -80,31 +64,21 @@ public class MemberCustomer implements Serializable {
     @Column(name = "ACTIVATEDATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date activatedate;
+    @JoinColumn(name = "CUSTOMERID", referencedColumnName = "CUSTOMERID")
+    @ManyToOne(optional = false)
+    private Customer customerid;
 
-    public MemberCustomer() {
+    public Account() {
     }
 
-    public MemberCustomer(String email) {
+    public Account(String email) {
         this.email = email;
     }
 
-    public MemberCustomer(String email, String password, String name, String surname, String phone) {
-        this.email = email;
-        this.password = password;
-        this.name = name;
-        this.surname = surname;
-        this.phone = phone;
-        this.registerdate = new Date();
-        this.activatekey = UUID.randomUUID().toString().replace("-","").substring(0,15);
-    }
-
-    public MemberCustomer(String email, String password, String name, String surname, String phone, String activatekey) {
+    public Account(String email, String password, Date registerdate, String activatekey) {
         this.email = email;
         this.password = password;
-        this.name = name;
-        this.surname = surname;
-        this.phone = phone;
-        this.registerdate = new Date();
+        this.registerdate = registerdate;
         this.activatekey = activatekey;
     }
 
@@ -122,30 +96,6 @@ public class MemberCustomer implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 
     public Date getRegisterdate() {
@@ -172,6 +122,14 @@ public class MemberCustomer implements Serializable {
         this.activatedate = activatedate;
     }
 
+    public Customer getCustomerid() {
+        return customerid;
+    }
+
+    public void setCustomerid(Customer customerid) {
+        this.customerid = customerid;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -182,10 +140,10 @@ public class MemberCustomer implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof MemberCustomer)) {
+        if (!(object instanceof Account)) {
             return false;
         }
-        MemberCustomer other = (MemberCustomer) object;
+        Account other = (Account) object;
         if ((this.email == null && other.email != null) || (this.email != null && !this.email.equals(other.email))) {
             return false;
         }
@@ -194,7 +152,7 @@ public class MemberCustomer implements Serializable {
 
     @Override
     public String toString() {
-        return "bbm.jpa.model.MemberCustomer[ email=" + email + " ]";
+        return "bbm.jpa.model.Account[ email=" + email + " ]";
     }
-
+    
 }
