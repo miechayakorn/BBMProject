@@ -15,6 +15,7 @@ import bbm.jpa.model.Customer;
 import bbm.jpa.model.controller.exceptions.NonexistentEntityException;
 import bbm.jpa.model.controller.exceptions.PreexistingEntityException;
 import bbm.jpa.model.controller.exceptions.RollbackFailureException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -38,19 +39,28 @@ public class AccountJpaController implements Serializable {
     }
 
     public void create(Account account) throws PreexistingEntityException, RollbackFailureException, Exception {
+        if (account.getCustomerList() == null) {
+            account.setCustomerList(new ArrayList<Customer>());
+        }
         EntityManager em = null;
         try {
             utx.begin();
             em = getEntityManager();
-            Customer customerid = account.getCustomerid();
-            if (customerid != null) {
-                customerid = em.getReference(customerid.getClass(), customerid.getCustomerid());
-                account.setCustomerid(customerid);
+            List<Customer> attachedCustomerList = new ArrayList<Customer>();
+            for (Customer customerListCustomerToAttach : account.getCustomerList()) {
+                customerListCustomerToAttach = em.getReference(customerListCustomerToAttach.getClass(), customerListCustomerToAttach.getCustomerid());
+                attachedCustomerList.add(customerListCustomerToAttach);
             }
+            account.setCustomerList(attachedCustomerList);
             em.persist(account);
-            if (customerid != null) {
-                customerid.getAccountList().add(account);
-                customerid = em.merge(customerid);
+            for (Customer customerListCustomer : account.getCustomerList()) {
+                Account oldEmailOfCustomerListCustomer = customerListCustomer.getEmail();
+                customerListCustomer.setEmail(account);
+                customerListCustomer = em.merge(customerListCustomer);
+                if (oldEmailOfCustomerListCustomer != null) {
+                    oldEmailOfCustomerListCustomer.getCustomerList().remove(customerListCustomer);
+                    oldEmailOfCustomerListCustomer = em.merge(oldEmailOfCustomerListCustomer);
+                }
             }
             utx.commit();
         } catch (Exception ex) {
@@ -76,20 +86,32 @@ public class AccountJpaController implements Serializable {
             utx.begin();
             em = getEntityManager();
             Account persistentAccount = em.find(Account.class, account.getEmail());
-            Customer customeridOld = persistentAccount.getCustomerid();
-            Customer customeridNew = account.getCustomerid();
-            if (customeridNew != null) {
-                customeridNew = em.getReference(customeridNew.getClass(), customeridNew.getCustomerid());
-                account.setCustomerid(customeridNew);
+            List<Customer> customerListOld = persistentAccount.getCustomerList();
+            List<Customer> customerListNew = account.getCustomerList();
+            List<Customer> attachedCustomerListNew = new ArrayList<Customer>();
+            for (Customer customerListNewCustomerToAttach : customerListNew) {
+                customerListNewCustomerToAttach = em.getReference(customerListNewCustomerToAttach.getClass(), customerListNewCustomerToAttach.getCustomerid());
+                attachedCustomerListNew.add(customerListNewCustomerToAttach);
             }
+            customerListNew = attachedCustomerListNew;
+            account.setCustomerList(customerListNew);
             account = em.merge(account);
-            if (customeridOld != null && !customeridOld.equals(customeridNew)) {
-                customeridOld.getAccountList().remove(account);
-                customeridOld = em.merge(customeridOld);
+            for (Customer customerListOldCustomer : customerListOld) {
+                if (!customerListNew.contains(customerListOldCustomer)) {
+                    customerListOldCustomer.setEmail(null);
+                    customerListOldCustomer = em.merge(customerListOldCustomer);
+                }
             }
-            if (customeridNew != null && !customeridNew.equals(customeridOld)) {
-                customeridNew.getAccountList().add(account);
-                customeridNew = em.merge(customeridNew);
+            for (Customer customerListNewCustomer : customerListNew) {
+                if (!customerListOld.contains(customerListNewCustomer)) {
+                    Account oldEmailOfCustomerListNewCustomer = customerListNewCustomer.getEmail();
+                    customerListNewCustomer.setEmail(account);
+                    customerListNewCustomer = em.merge(customerListNewCustomer);
+                    if (oldEmailOfCustomerListNewCustomer != null && !oldEmailOfCustomerListNewCustomer.equals(account)) {
+                        oldEmailOfCustomerListNewCustomer.getCustomerList().remove(customerListNewCustomer);
+                        oldEmailOfCustomerListNewCustomer = em.merge(oldEmailOfCustomerListNewCustomer);
+                    }
+                }
             }
             utx.commit();
         } catch (Exception ex) {
@@ -125,10 +147,10 @@ public class AccountJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The account with id " + id + " no longer exists.", enfe);
             }
-            Customer customerid = account.getCustomerid();
-            if (customerid != null) {
-                customerid.getAccountList().remove(account);
-                customerid = em.merge(customerid);
+            List<Customer> customerList = account.getCustomerList();
+            for (Customer customerListCustomer : customerList) {
+                customerListCustomer.setEmail(null);
+                customerListCustomer = em.merge(customerListCustomer);
             }
             em.remove(account);
             utx.commit();

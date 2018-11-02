@@ -63,37 +63,37 @@ public class RegisterServlet extends HttpServlet {
         String address = request.getParameter("address");
        
 
-        if (email != null && email.trim().length() > 0
-                && password != null && password.trim().length() > 0
-                && name != null && name.trim().length() > 0
-                && surname != null && surname.trim().length() > 0
-                && phone != null && phone.trim().length() > 0) {
-
-            AccountJpaController accountJpaCtrl= new AccountJpaController(utx, emf);
+        if (email != null && email.trim().length() > 0 && password != null && password.trim().length() > 0 &&
+            name != null && name.trim().length() > 0 && surname != null && surname.trim().length() > 0 &&
+            phone != null && phone.trim().length() > 0 && idcard != null && idcard.trim().length() > 0 &&
+            address != null && address.trim().length() > 0) {
             
-
             String activatekey = UUID.randomUUID().toString().replace("-", "").substring(0, 15);
             password = new EncryptWithMd5().encrypt(password);
-            Account account = new Account(email, password, new Date(), activatekey);
-            //after create account successfull will create customer
             
-            CustomerJpaController customerJpaCtrl = new CustomerJpaController(utx, emf);
-            Customer customer = new Customer(name, surname, Integer.parseInt(phone),Integer.parseInt(idcard), address);
+            AccountJpaController accountJpaCtrl = new AccountJpaController(utx, emf);
+            Account account = new Account(email, password, new Date(), activatekey);
+            
 
             try {
                 accountJpaCtrl.create(account);
+                
+                CustomerJpaController customerJpaCtrl = new CustomerJpaController(utx, emf);
+                Customer customer = new Customer(name, surname, phone, idcard, address);
+                customer.setEmail(account);
                 customerJpaCtrl.create(customer);
+                
                 //Send Email
-                String em = new EmailMessage(email, activatekey , "Register").getMessageSend();
+                /*String em = new EmailMessage(email, activatekey , "Register").getMessageSend();
                 int sendResult = SendEmail.send(email, em , "ยินดีต้อนรับเข้าสู่ BBM Project"); //SEND MAIL!
-                if (sendResult == 0) { //IS SENDING EMAIL successful?
+                if (sendResult == 0) { //IS SENDING EMAIL successful?*/
 
                     //getEmailInDB
                     String getEmailInDB = account.getEmail();
                     request.setAttribute("getEmailInDB", getEmailInDB);
                     String status = "statusTrue";
                     request.setAttribute("status", status);
-                }
+                /*}*/
             } catch (RollbackFailureException ex) {
                 //System.out.println("มีชื่อผู้ใช้นี้ในระบบ");
                 request.setAttribute("email", email);

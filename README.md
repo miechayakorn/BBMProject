@@ -23,24 +23,24 @@
 ***Pass:*** 12345  
 
 ```sql
-create table customer (
-customerId int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1) primary key,
-name varchar(40) not null,
-surname varchar(50) not null,
-phone int not null,
-idcard int not null,
-address varchar(255) not null);
-```
-
-```sql
 create table account (
 email varchar(40) primary key,
 password varchar(40) not null,
 registerDate timestamp not null,
 activateKey varchar(40)not null,
-activateDate timestamp,
-customerId int,
-FOREIGN KEY (customerId) REFERENCES customer(customerId));
+activateDate timestamp);
+```
+
+```sql
+create table customer (
+customerId int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1) primary key,
+name varchar(40) not null,
+surname varchar(50) not null,
+phone varchar(20) not null,
+idcard varchar(13) not null,
+address varchar(255) not null,
+email varchar(40),
+FOREIGN KEY (email) REFERENCES account(email));
 ```
 
 ```sql
@@ -50,8 +50,8 @@ floor int not null,
 size varchar(100),
 type char check (type in ('A','B','C')),
 customerId int ,
-FOREIGN KEY (customerId) REFERENCES customer(customerId)
-);
+available char(1) check (available in ('F' , 'T')),
+FOREIGN KEY (customerId) REFERENCES customer(customerId));
 ```
 
 ```sql
@@ -62,8 +62,7 @@ purchaseDate timestamp,
 customerId int ,
 roomNumber int not null,
 FOREIGN KEY (customerId) REFERENCES customer(customerId),
-FOREIGN KEY (roomNumber) REFERENCES room(roomNumber)
-);
+FOREIGN KEY (roomNumber) REFERENCES room(roomNumber));
 ```
 
 ```css

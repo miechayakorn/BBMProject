@@ -45,29 +45,28 @@ public class HistoryServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
 
-        if (session == null) {
-            response.sendRedirect("Login");
-            return;
-        }
-        try {
-            if (session.getAttribute("account") == null) {
+        if (session != null) {
+            try {
+                if (session.getAttribute("account") == null) {
+                    response.sendRedirect("Login");
+
+                    return;
+                }
+            } catch (Exception ex) {
                 response.sendRedirect("Login");
-                System.out.println("---------------------------------------------try");
+
                 return;
             }
-        } catch (Exception ex) {
-                response.sendRedirect("Login");
-                System.out.println("---------------------------------------------catch");
+            Account accountSession = (Account) session.getAttribute("account");
+            AccountJpaController accountJpaCtrl = new AccountJpaController(utx, emf);
+            Account account = accountJpaCtrl.findAccount(accountSession.getEmail());
+            if (account != null) {
+                List<History> listHistory = account.getCustomerid().getHistoryList();
+                session.setAttribute("listHistory", listHistory);
+                getServletContext().getRequestDispatcher("/History.jsp").forward(request, response);
                 return;
-        }
-
-        Account accountSession = (Account) session.getAttribute("account");
-        AccountJpaController accountJpaCtrl = new AccountJpaController(utx, emf);
-        Account account = accountJpaCtrl.findAccount(accountSession.getEmail());
-        if (account != null) {
-            List<History> listHistory = account.getCustomerid().getHistoryList();
-            session.setAttribute("listHistory", listHistory);
-            getServletContext().getRequestDispatcher("/History.jsp").forward(request, response);
+            }
+            response.sendRedirect("Login");
             return;
         }
         response.sendRedirect("Login");

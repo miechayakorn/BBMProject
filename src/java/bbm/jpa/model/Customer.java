@@ -8,10 +8,13 @@ package bbm.jpa.model;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -40,8 +43,8 @@ public class Customer implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "CUSTOMERID")
     private Integer customerid;
     @Basic(optional = false)
@@ -54,21 +57,25 @@ public class Customer implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "SURNAME")
     private String surname;
+    // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 20)
     @Column(name = "PHONE")
-    private int phone;
+    private String phone;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 13)
     @Column(name = "IDCARD")
-    private int idcard;
+    private String idcard;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
     @Column(name = "ADDRESS")
     private String address;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customerid")
-    private List<Account> accountList;
+    @JoinColumn(name = "EMAIL", referencedColumnName = "EMAIL")
+    @ManyToOne
+    private Account email;
     @OneToMany(mappedBy = "customerid")
     private List<Room> roomList;
     @OneToMany(mappedBy = "customerid")
@@ -81,7 +88,7 @@ public class Customer implements Serializable {
         this.customerid = customerid;
     }
 
-    public Customer(Integer customerid, String name, String surname, int phone, int idcard, String address) {
+    public Customer(Integer customerid, String name, String surname, String phone, String idcard, String address) {
         this.customerid = customerid;
         this.name = name;
         this.surname = surname;
@@ -89,7 +96,8 @@ public class Customer implements Serializable {
         this.idcard = idcard;
         this.address = address;
     }
-     public Customer( String name, String surname, int phone, int idcard, String address) {
+    
+    public Customer(String name, String surname, String phone, String idcard, String address) {
         this.name = name;
         this.surname = surname;
         this.phone = phone;
@@ -121,19 +129,19 @@ public class Customer implements Serializable {
         this.surname = surname;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    public int getIdcard() {
+    public String getIdcard() {
         return idcard;
     }
 
-    public void setIdcard(int idcard) {
+    public void setIdcard(String idcard) {
         this.idcard = idcard;
     }
 
@@ -145,13 +153,12 @@ public class Customer implements Serializable {
         this.address = address;
     }
 
-    @XmlTransient
-    public List<Account> getAccountList() {
-        return accountList;
+    public Account getEmail() {
+        return email;
     }
 
-    public void setAccountList(List<Account> accountList) {
-        this.accountList = accountList;
+    public void setEmail(Account email) {
+        this.email = email;
     }
 
     @XmlTransient
