@@ -36,8 +36,8 @@ create table customer (
 customerId int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1) primary key,
 name varchar(40) not null,
 surname varchar(50) not null,
-phone int not null,
-idcard int not null,
+phone varchar(20) not null,
+idcard varchar(13) not null,
 address varchar(255) not null,
 email varchar(40),
 FOREIGN KEY (email) REFERENCES account(email));
