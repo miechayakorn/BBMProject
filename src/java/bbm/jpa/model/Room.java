@@ -35,7 +35,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Room.findByRoomnumber", query = "SELECT r FROM Room r WHERE r.roomnumber = :roomnumber")
     , @NamedQuery(name = "Room.findByFloor", query = "SELECT r FROM Room r WHERE r.floor = :floor")
     , @NamedQuery(name = "Room.findBySize", query = "SELECT r FROM Room r WHERE r.size = :size")
-    , @NamedQuery(name = "Room.findByType", query = "SELECT r FROM Room r WHERE r.type = :type")})
+    , @NamedQuery(name = "Room.findByType", query = "SELECT r FROM Room r WHERE r.type = :type")
+    , @NamedQuery(name = "Room.findByAvailable", query = "SELECT r FROM Room r WHERE r.available = :available")})
 public class Room implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -53,6 +54,8 @@ public class Room implements Serializable {
     private String size;
     @Column(name = "TYPE")
     private Character type;
+    @Column(name = "AVAILABLE")
+    private Character available;
     @JoinColumn(name = "CUSTOMERID", referencedColumnName = "CUSTOMERID")
     @ManyToOne
     private Customer customerid;
@@ -101,6 +104,14 @@ public class Room implements Serializable {
 
     public void setType(Character type) {
         this.type = type;
+    }
+
+    public Character getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Character available) {
+        this.available = available;
     }
 
     public Customer getCustomerid() {

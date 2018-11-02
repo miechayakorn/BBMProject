@@ -75,7 +75,7 @@ public class RegisterServlet extends HttpServlet {
                 accountJpaCtrl.create(account);
                 
                 CustomerJpaController customerJpaCtrl = new CustomerJpaController(utx, emf);
-                Customer customer = new Customer(name, surname, Integer.parseInt(phone), Integer.parseInt(idcard), address);
+                Customer customer = new Customer(name, surname, phone, idcard, address);
                 customer.setEmail(account);
                 customerJpaCtrl.create(customer);
                 
