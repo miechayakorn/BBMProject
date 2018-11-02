@@ -12,13 +12,11 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import bbm.jpa.model.Account;
 import bbm.jpa.model.Customer;
+import bbm.jpa.model.Room;
 import java.util.ArrayList;
 import java.util.List;
-import bbm.jpa.model.Room;
 import bbm.jpa.model.History;
-import bbm.jpa.model.controller.exceptions.IllegalOrphanException;
 import bbm.jpa.model.controller.exceptions.NonexistentEntityException;
-import bbm.jpa.model.controller.exceptions.PreexistingEntityException;
 import bbm.jpa.model.controller.exceptions.RollbackFailureException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -41,10 +39,7 @@ public class CustomerJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Customer customer) throws PreexistingEntityException, RollbackFailureException, Exception {
-        if (customer.getAccountList() == null) {
-            customer.setAccountList(new ArrayList<Account>());
-        }
+    public void create(Customer customer) throws RollbackFailureException, Exception {
         if (customer.getRoomList() == null) {
             customer.setRoomList(new ArrayList<Room>());
         }
@@ -55,12 +50,11 @@ public class CustomerJpaController implements Serializable {
         try {
             utx.begin();
             em = getEntityManager();
-            List<Account> attachedAccountList = new ArrayList<Account>();
-            for (Account accountListAccountToAttach : customer.getAccountList()) {
-                accountListAccountToAttach = em.getReference(accountListAccountToAttach.getClass(), accountListAccountToAttach.getEmail());
-                attachedAccountList.add(accountListAccountToAttach);
+            Account email = customer.getEmail();
+            if (email != null) {
+                email = em.getReference(email.getClass(), email.getEmail());
+                customer.setEmail(email);
             }
-            customer.setAccountList(attachedAccountList);
             List<Room> attachedRoomList = new ArrayList<Room>();
             for (Room roomListRoomToAttach : customer.getRoomList()) {
                 roomListRoomToAttach = em.getReference(roomListRoomToAttach.getClass(), roomListRoomToAttach.getRoomnumber());
@@ -74,14 +68,9 @@ public class CustomerJpaController implements Serializable {
             }
             customer.setHistoryList(attachedHistoryList);
             em.persist(customer);
-            for (Account accountListAccount : customer.getAccountList()) {
-                Customer oldCustomeridOfAccountListAccount = accountListAccount.getCustomerid();
-                accountListAccount.setCustomerid(customer);
-                accountListAccount = em.merge(accountListAccount);
-                if (oldCustomeridOfAccountListAccount != null) {
-                    oldCustomeridOfAccountListAccount.getAccountList().remove(accountListAccount);
-                    oldCustomeridOfAccountListAccount = em.merge(oldCustomeridOfAccountListAccount);
-                }
+            if (email != null) {
+                email.getCustomerList().add(customer);
+                email = em.merge(email);
             }
             for (Room roomListRoom : customer.getRoomList()) {
                 Customer oldCustomeridOfRoomListRoom = roomListRoom.getCustomerid();
@@ -108,9 +97,6 @@ public class CustomerJpaController implements Serializable {
             } catch (Exception re) {
                 throw new RollbackFailureException("An error occurred attempting to roll back the transaction.", re);
             }
-            if (findCustomer(customer.getCustomerid()) != null) {
-                throw new PreexistingEntityException("Customer " + customer + " already exists.", ex);
-            }
             throw ex;
         } finally {
             if (em != null) {
@@ -119,37 +105,22 @@ public class CustomerJpaController implements Serializable {
         }
     }
 
-    public void edit(Customer customer) throws IllegalOrphanException, NonexistentEntityException, RollbackFailureException, Exception {
+    public void edit(Customer customer) throws NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
             utx.begin();
             em = getEntityManager();
             Customer persistentCustomer = em.find(Customer.class, customer.getCustomerid());
-            List<Account> accountListOld = persistentCustomer.getAccountList();
-            List<Account> accountListNew = customer.getAccountList();
+            Account emailOld = persistentCustomer.getEmail();
+            Account emailNew = customer.getEmail();
             List<Room> roomListOld = persistentCustomer.getRoomList();
             List<Room> roomListNew = customer.getRoomList();
             List<History> historyListOld = persistentCustomer.getHistoryList();
             List<History> historyListNew = customer.getHistoryList();
-            List<String> illegalOrphanMessages = null;
-            for (Account accountListOldAccount : accountListOld) {
-                if (!accountListNew.contains(accountListOldAccount)) {
-                    if (illegalOrphanMessages == null) {
-                        illegalOrphanMessages = new ArrayList<String>();
-                    }
-                    illegalOrphanMessages.add("You must retain Account " + accountListOldAccount + " since its customerid field is not nullable.");
-                }
+            if (emailNew != null) {
+                emailNew = em.getReference(emailNew.getClass(), emailNew.getEmail());
+                customer.setEmail(emailNew);
             }
-            if (illegalOrphanMessages != null) {
-                throw new IllegalOrphanException(illegalOrphanMessages);
-            }
-            List<Account> attachedAccountListNew = new ArrayList<Account>();
-            for (Account accountListNewAccountToAttach : accountListNew) {
-                accountListNewAccountToAttach = em.getReference(accountListNewAccountToAttach.getClass(), accountListNewAccountToAttach.getEmail());
-                attachedAccountListNew.add(accountListNewAccountToAttach);
-            }
-            accountListNew = attachedAccountListNew;
-            customer.setAccountList(accountListNew);
             List<Room> attachedRoomListNew = new ArrayList<Room>();
             for (Room roomListNewRoomToAttach : roomListNew) {
                 roomListNewRoomToAttach = em.getReference(roomListNewRoomToAttach.getClass(), roomListNewRoomToAttach.getRoomnumber());
@@ -165,16 +136,13 @@ public class CustomerJpaController implements Serializable {
             historyListNew = attachedHistoryListNew;
             customer.setHistoryList(historyListNew);
             customer = em.merge(customer);
-            for (Account accountListNewAccount : accountListNew) {
-                if (!accountListOld.contains(accountListNewAccount)) {
-                    Customer oldCustomeridOfAccountListNewAccount = accountListNewAccount.getCustomerid();
-                    accountListNewAccount.setCustomerid(customer);
-                    accountListNewAccount = em.merge(accountListNewAccount);
-                    if (oldCustomeridOfAccountListNewAccount != null && !oldCustomeridOfAccountListNewAccount.equals(customer)) {
-                        oldCustomeridOfAccountListNewAccount.getAccountList().remove(accountListNewAccount);
-                        oldCustomeridOfAccountListNewAccount = em.merge(oldCustomeridOfAccountListNewAccount);
-                    }
-                }
+            if (emailOld != null && !emailOld.equals(emailNew)) {
+                emailOld.getCustomerList().remove(customer);
+                emailOld = em.merge(emailOld);
+            }
+            if (emailNew != null && !emailNew.equals(emailOld)) {
+                emailNew.getCustomerList().add(customer);
+                emailNew = em.merge(emailNew);
             }
             for (Room roomListOldRoom : roomListOld) {
                 if (!roomListNew.contains(roomListOldRoom)) {
@@ -232,7 +200,7 @@ public class CustomerJpaController implements Serializable {
         }
     }
 
-    public void destroy(Integer id) throws IllegalOrphanException, NonexistentEntityException, RollbackFailureException, Exception {
+    public void destroy(Integer id) throws NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
             utx.begin();
@@ -244,16 +212,10 @@ public class CustomerJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The customer with id " + id + " no longer exists.", enfe);
             }
-            List<String> illegalOrphanMessages = null;
-            List<Account> accountListOrphanCheck = customer.getAccountList();
-            for (Account accountListOrphanCheckAccount : accountListOrphanCheck) {
-                if (illegalOrphanMessages == null) {
-                    illegalOrphanMessages = new ArrayList<String>();
-                }
-                illegalOrphanMessages.add("This Customer (" + customer + ") cannot be destroyed since the Account " + accountListOrphanCheckAccount + " in its accountList field has a non-nullable customerid field.");
-            }
-            if (illegalOrphanMessages != null) {
-                throw new IllegalOrphanException(illegalOrphanMessages);
+            Account email = customer.getEmail();
+            if (email != null) {
+                email.getCustomerList().remove(customer);
+                email = em.merge(email);
             }
             List<Room> roomList = customer.getRoomList();
             for (Room roomListRoom : roomList) {

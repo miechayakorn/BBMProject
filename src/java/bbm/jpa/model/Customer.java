@@ -8,10 +8,13 @@ package bbm.jpa.model;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -40,8 +43,8 @@ public class Customer implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "CUSTOMERID")
     private Integer customerid;
     @Basic(optional = false)
@@ -67,8 +70,9 @@ public class Customer implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "ADDRESS")
     private String address;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customerid")
-    private List<Account> accountList;
+    @JoinColumn(name = "EMAIL", referencedColumnName = "EMAIL")
+    @ManyToOne
+    private Account email;
     @OneToMany(mappedBy = "customerid")
     private List<Room> roomList;
     @OneToMany(mappedBy = "customerid")
@@ -89,7 +93,8 @@ public class Customer implements Serializable {
         this.idcard = idcard;
         this.address = address;
     }
-     public Customer( String name, String surname, int phone, int idcard, String address) {
+    
+    public Customer(String name, String surname, int phone, int idcard, String address) {
         this.name = name;
         this.surname = surname;
         this.phone = phone;
@@ -145,13 +150,12 @@ public class Customer implements Serializable {
         this.address = address;
     }
 
-    @XmlTransient
-    public List<Account> getAccountList() {
-        return accountList;
+    public Account getEmail() {
+        return email;
     }
 
-    public void setAccountList(List<Account> accountList) {
-        this.accountList = accountList;
+    public void setEmail(Account email) {
+        this.email = email;
     }
 
     @XmlTransient
