@@ -63,7 +63,11 @@ public class RegisterServlet extends HttpServlet {
         String address = request.getParameter("address");
        
 
-        if (email != null && email.trim().length() > 0) {
+        if (email != null && email.trim().length() > 0 && password != null && password.trim().length() > 0 &&
+            name != null && name.trim().length() > 0 && surname != null && surname.trim().length() > 0 &&
+            phone != null && phone.trim().length() > 0 && idcard != null && idcard.trim().length() > 0 &&
+            address != null && address.trim().length() > 0) {
+            
             String activatekey = UUID.randomUUID().toString().replace("-", "").substring(0, 15);
             password = new EncryptWithMd5().encrypt(password);
             
