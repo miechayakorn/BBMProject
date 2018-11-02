@@ -164,6 +164,7 @@ body {
     color: #ffffff !important;
     background-color: #2d8fb0 !important;
     border-color: #2d8fb0 !important;
+    
 }
 .btn-secondary,
 .btn-secondary:active {
@@ -2849,7 +2850,7 @@ body {
 .cid-r70beVYQb0 {
     padding-top: 120px;
     padding-bottom: 120px;
-    background: linear-gradient(45deg, #149dcc, #ff84c9);
+    background-image: url("pexels-photo-250659.jpg");
 }
 .cid-r70beVYQb0 .mbr-section-subtitle {
     font-style: italic;
@@ -4378,7 +4379,7 @@ body {
 .cid-r7MmAIxkys {
     padding-top: 120px;
     padding-bottom: 120px;
-    background: linear-gradient(45deg, #7ffbb5, #3b81c4);
+    background-image: url("apartment-architectural-design-architecture-434139.jpg");
 }
 .cid-r7MmAIxkys .mbr-section-subtitle {
     font-style: italic;

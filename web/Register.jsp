@@ -180,6 +180,8 @@
         <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
         <script src="assets/theme/js/script.js"></script>
         <script src="assets/formoid/formoid.min.js"></script>
+        
+       
     </body>
     <script>
         function openSearch() {

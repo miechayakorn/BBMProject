@@ -40,8 +40,6 @@
                 <div class="media-container-column mbr-white col-md-12">
 
                     <h1 class="mbr-section-title py-3 mbr-fonts-style display-2"><strong>Remaining Room - จำนวนห้องที่เหลืออยู่</strong></h1>
-
-
                 </div>
             </div>
 

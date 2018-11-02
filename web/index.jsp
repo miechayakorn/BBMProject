@@ -12,22 +12,22 @@
         <title>JSP Page</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v4.8.6, mobirise.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <link rel="shortcut icon" href="assets/images/bbm-logo-122x122.png" type="image/x-icon">
-  <meta name="description" content="">
-  <title>Home</title>
-  <link href="https://fonts.googleapis.com/css?family=Athiti" rel="stylesheet">
-  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
-  <link rel="stylesheet" href="assets/tether/tether.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/socicon/css/styles.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="generator" content="Mobirise v4.8.6, mobirise.com">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+        <link rel="shortcut icon" href="assets/images/bbm-logo-122x122.png" type="image/x-icon">
+        <meta name="description" content="">
+        <title>Home</title>
+        <link href="https://fonts.googleapis.com/css?family=Athiti" rel="stylesheet">
+        <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+        <link rel="stylesheet" href="assets/tether/tether.min.css">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+        <link rel="stylesheet" href="assets/dropdown/css/style.css">
+        <link rel="stylesheet" href="assets/socicon/css/styles.css">
+        <link rel="stylesheet" href="assets/theme/css/style.css">
+        <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
     </head>
     <body>
         <c:choose>
@@ -55,7 +55,7 @@
 
             </c:otherwise>
         </c:choose>
-        
+
         <jsp:include page="include/Header.jsp"/>
 
         <section class="engine"><a href="https://mobirise.info/k">how to develop free website</a></section><section class="carousel slide cid-r6ZEUwHLOQ" data-interval="false" id="slider1-a">
@@ -205,8 +205,8 @@
             <div class="container mb-5">
                 <div class="media-container-row">
                     <div class="col-12 align-center">
-                        <h2 class="mbr-section-title pb-3 mbr-fonts-style display-1">
-                            ข้อมูลผู้ถือหุ้น</h2>
+                        <h2 class="mbr-section-title pb-3 mbr-fonts-style display-1"> <strong>
+                                ข้อมูลผู้ถือหุ้น</strong></h2>
                         <h3 class="mbr-section-subtitle mbr-light mbr-fonts-style display-5">มุ่งมั่นพัฒนาและจัดหาที่พักอาศัย รวมถึงส่งเสริมกิจกรรมไลฟ์สไตล์ 
                             <div>และประสบการณ์ที่มีเอกลักษณ์เฉพาะตัว เราพร้อมเป็นส่วนหนึ่งของชุมชนของคุณ 
                             </div><div>และพร้อมที่จะดูแลคุณทั้งในวันนี้ พรุ่งนี้ และตลอดไป</div></h3>

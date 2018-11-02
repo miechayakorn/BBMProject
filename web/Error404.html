@@ -10,11 +10,14 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link href="https://fonts.googleapis.com/css?family=Athiti" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <style>
             body{
                 background-image: url("error.jpeg");
+                font-family: 'Athiti', sans-serif;
             }
             .error {
                 margin: 0 auto;
@@ -48,18 +51,19 @@ and open the template in the editor.
 
         </style>
     </head>
-    <body>
+    <body class="animated bounceInDown">
         <div class="error">
-            <div class="error-code m-b-10 m-t-20">404 <i class="fa fa-warning"></i></div>
-            <h3 class="font-bold">We couldn't find the page..</h3>
+            <img src="404-error.png" alt="errorpic" />
+            <!--<div class="error-code m-b-10 m-t-20">404 <i class="fa fa-warning"></i></div>-->
+            <h3 class="font-bold"><strong>We couldn't find the page..</strong></h3>
 
             <div class="error-desc">
-                Sorry, but the page you are looking for was either not found or does not exist. <br/>
-                Try refreshing the page or click the button below to go back to the Homepage.
+                <strong>Sorry, but the page you are looking for was either not found or does not exist. <br/>
+                    Try refreshing the page or click the button below to go back to the Homepage. </strong>
                 <div>
                     <a class=" login-detail-panel-button btn" href="index.jsp">
                         <i class="fa fa-arrow-left"></i>
-                        Go back to Homepage                        
+                        <strong>Go back to Homepage</strong>                        
                     </a>
                 </div>
             </div>
