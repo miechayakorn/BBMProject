@@ -1,6 +1,6 @@
 # BBMWebApp
 
-- Link: [http://localhost:8080/BBMWebApp/index.html](http://localhost:8080/BBMWebApp/index.html)
+- Link: [http://localhost:8080/BBMProject/](http://localhost:8080/BBMProject/)
 - Board: [https://app.gitkraken.com/glo/board/W69Ml4WGZA4AV_pa](https://app.gitkraken.com/glo/board/W69Ml4WGZA4AV_pa)
 
 /index หน้าแรก  
@@ -24,7 +24,7 @@
 
 ```sql
 create table customer (
-customerId int primary key,
+customerId int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1) primary key,
 name varchar(40) not null,
 surname varchar(50) not null,
 phone int not null,
@@ -39,7 +39,7 @@ password varchar(40) not null,
 registerDate timestamp not null,
 activateKey varchar(40)not null,
 activateDate timestamp,
-customerId int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+customerId int,
 FOREIGN KEY (customerId) REFERENCES customer(customerId));
 ```
 
