@@ -25,6 +25,8 @@
         <link rel="stylesheet" href="assets/socicon/css/styles.css">
         <link rel="stylesheet" href="assets/theme/css/style.css">
         <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+
     </head>
     <body>
         <jsp:include page="include/Header.jsp"/>
@@ -48,8 +50,11 @@
 
         </section>
 
-        <jsp:include page="include/Footer.jsp"/>
+
         
+
+        <jsp:include page="include/Footer.jsp"/>
+
         <script src="assets/web/assets/jquery/jquery.min.js"></script>
         <script src="assets/popper/popper.min.js"></script>
         <script src="assets/tether/tether.min.js"></script>

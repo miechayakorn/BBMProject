@@ -67,8 +67,8 @@ public class LoginServlet extends HttpServlet {
                     Customer customer = customerJpaCtrl.findByEmail(email);
                     if(customer != null){
                         session.setAttribute("customer", customer);
-                        session.setAttribute("account", account);
-                        getServletContext().getRequestDispatcher("/newUrl").forward(request, response);
+                        
+                        response.sendRedirect("/BBMProject");
                         return;  
                     }else{
                      getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
