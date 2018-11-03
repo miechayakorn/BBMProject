@@ -103,6 +103,188 @@
         <section class="cid-r7Mkamc2Bv" id="social-buttons3-15">
 
 
+            <section class="features11 cid-r8k2AeRkY3" id="features11-1e">
+
+
+
+
+
+                <div class="container">   
+                    <div class="col-md-12">
+                        <div class="media-container-row">
+                            <div class="mbr-figure" style="width: 50%;">
+                                <img src="assets/images/05.jpg" alt="Mobirise">
+                            </div>
+                            <div class=" align-left aside-content">
+                                <h2 class="mbr-title pt-2 mbr-fonts-style display-2">1 Bedroom (Type A)</h2>
+                                <div class="mbr-section-text">
+                                    <p class="mbr-text mb-5 pt-3 mbr-light mbr-fonts-style display-5">
+                                        Floor area 23.80-24.30 Sq.M.
+                                    </p>
+                                </div>
+
+                                <div class="block-content">
+                                    <div class="card p-3 pr-3">
+                                        <div class="media">
+                                            <div class=" align-self-center card-img pb-3">
+                                                <span class="mbri-extension mbr-iconfont"></span>
+                                            </div>     
+                                            <div class="media-body">
+                                                <h4 class="card-title mbr-fonts-style display-7">
+                                                    Over 400 Amazing Blocks
+                                                </h4>
+                                            </div>
+                                        </div>                
+
+                                        <div class="card-box">
+
+                                        </div>
+                                    </div>
+
+                                    <div class="card p-3 pr-3">
+                                        <div class="media">
+                                            <div class="align-self-center card-img pb-3">
+                                                <span class="mbri-drag-n-drop2 mbr-iconfont"></span>
+                                            </div>     
+                                            <div class="media-body">
+                                                <h4 class="card-title mbr-fonts-style display-7">
+                                                    Easy and Simple to Use
+                                                </h4>
+                                            </div>
+                                        </div>                
+
+                                        <div class="card-box">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>          
+            </section>
+
+            <section class="features11 cid-r8k2AMJlG2" id="features11-1f">
+
+
+
+
+
+                <div class="container">   
+                    <div class="col-md-12">
+                        <div class="media-container-row">
+                            <div class="mbr-figure" style="width: 50%;">
+                                <img src="assets/images/05.jpg" alt="Mobirise">
+                            </div>
+                            <div class=" align-left aside-content">
+                                <h2 class="mbr-title pt-2 mbr-fonts-style display-2">1 Bedroom (Type B)</h2>
+                                <div class="mbr-section-text">
+                                    <p class="mbr-text mb-5 pt-3 mbr-light mbr-fonts-style display-5">
+                                        Floor area 23.80-24.30 Sq.M.
+                                    </p>
+                                </div>
+
+                                <div class="block-content">
+                                    <div class="card p-3 pr-3">
+                                        <div class="media">
+                                            <div class=" align-self-center card-img pb-3">
+                                                <span class="mbri-extension mbr-iconfont"></span>
+                                            </div>     
+                                            <div class="media-body">
+                                                <h4 class="card-title mbr-fonts-style display-7">
+                                                    Over 400 Amazing Blocks
+                                                </h4>
+                                            </div>
+                                        </div>                
+
+                                        <div class="card-box">
+
+                                        </div>
+                                    </div>
+
+                                    <div class="card p-3 pr-3">
+                                        <div class="media">
+                                            <div class="align-self-center card-img pb-3">
+                                                <span class="mbri-drag-n-drop2 mbr-iconfont"></span>
+                                            </div>     
+                                            <div class="media-body">
+                                                <h4 class="card-title mbr-fonts-style display-7">
+                                                    Easy and Simple to Use
+                                                </h4>
+                                            </div>
+                                        </div>                
+
+                                        <div class="card-box">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>          
+            </section>
+
+            <section class="features11 cid-r8k2Bk7FSh" id="features11-1g">
+
+
+
+
+
+                <div class="container">   
+                    <div class="col-md-12">
+                        <div class="media-container-row">
+                            <div class="mbr-figure" style="width: 50%;">
+                                <img src="assets/images/05.jpg" alt="Mobirise">
+                            </div>
+                            <div class=" align-left aside-content">
+                                <h2 class="mbr-title pt-2 mbr-fonts-style display-2">1 Bedroom (Type B)</h2>
+                                <div class="mbr-section-text">
+                                    <p class="mbr-text mb-5 pt-3 mbr-light mbr-fonts-style display-5">
+                                        Floor area 23.80-24.30 Sq.M.
+                                    </p>
+                                </div>
+
+                                <div class="block-content">
+                                    <div class="card p-3 pr-3">
+                                        <div class="media">
+                                            <div class=" align-self-center card-img pb-3">
+                                                <span class="mbri-extension mbr-iconfont"></span>
+                                            </div>     
+                                            <div class="media-body">
+                                                <h4 class="card-title mbr-fonts-style display-7">
+                                                    Over 400 Amazing Blocks
+                                                </h4>
+                                            </div>
+                                        </div>                
+
+                                        <div class="card-box">
+
+                                        </div>
+                                    </div>
+
+                                    <div class="card p-3 pr-3">
+                                        <div class="media">
+                                            <div class="align-self-center card-img pb-3">
+                                                <span class="mbri-drag-n-drop2 mbr-iconfont"></span>
+                                            </div>     
+                                            <div class="media-body">
+                                                <h4 class="card-title mbr-fonts-style display-7">
+                                                    Easy and Simple to Use
+                                                </h4>
+                                            </div>
+                                        </div>                
+
+                                        <div class="card-box">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>          
+            </section>
 
 
 

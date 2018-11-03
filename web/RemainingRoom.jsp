@@ -46,8 +46,18 @@
 
         </section>
 
-        <jsp:include page="include/Footer.jsp"/>
+        <div class="container">
+            <div class="media-container-row">
+                <div class="col-md-8 align-center">
+                    <div style="width: 500px;">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <jsp:include page="include/Footer.jsp"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
         <script src="assets/web/assets/jquery/jquery.min.js"></script>
         <script src="assets/popper/popper.min.js"></script>
         <script src="assets/tether/tether.min.js"></script>
@@ -59,3 +69,27 @@
         <script src="assets/formoid/formoid.min.js"></script>
     </body>
 </html>
+<script>
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ["ห้องที่ขาย", "จำนวนห้องที่เหลือ"],
+            datasets: [{
+                    data: [102, 19],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)'
+                    ],
+                }]
+        },
+        options: {
+            rotation: 1 * Math.PI,
+            circumference: 1 * Math.PI
+        }
+    });
+</script>
