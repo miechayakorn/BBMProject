@@ -7,7 +7,9 @@ package bbm.servlet;
 
 
 import bbm.jpa.model.Account;
+import bbm.jpa.model.Customer;
 import bbm.jpa.model.controller.AccountJpaController;
+import bbm.jpa.model.controller.CustomerJpaController;
 import bbm.model.EncryptWithMd5;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -61,9 +63,17 @@ public class LoginServlet extends HttpServlet {
                     if (session == null) {
                         session = request.getSession(true);
                     }
-                    session.setAttribute("account", account);
-                    response.sendRedirect("newUrl");
-                    return;
+                    CustomerJpaController customerJpaCtrl = new CustomerJpaController(utx, emf);
+                    Customer customer = customerJpaCtrl.findByEmail(email);
+                    if(customer != null){
+                        session.setAttribute("customer", customer);
+                        session.setAttribute("account", account);
+                        getServletContext().getRequestDispatcher("/newUrl").forward(request, response);
+                        return;  
+                    }else{
+                     getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
+                     return;
+                    }
                 } else {
                     request.setAttribute("message", "Invalid username or password !!");   
                 }
