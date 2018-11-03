@@ -81,7 +81,7 @@
                         <div class="card-wrapper ">
                             <div class="card-img">
                                 <div class="mbr-overlay"></div>
-                                <div class="mbr-section-btn text-center"><a href="Room.jsp" class="btn btn-primary">
+                                <div class="mbr-section-btn text-center"><a href="Room.jsp#features11-1e" class="btn btn-primary">
                                         View</a></div>
                                 <img src="assets/images/a1-676x526.jpg" alt="Mobirise" title="">
                             </div>
@@ -95,7 +95,7 @@
                         <div class="card-wrapper">
                             <div class="card-img">
                                 <div class="mbr-overlay"></div>
-                                <div class="mbr-section-btn text-center"><a href="Room.jsp" class="btn btn-primary">
+                                <div class="mbr-section-btn text-center"><a href="Room.jsp#features11-1f" class="btn btn-primary">
                                         View</a></div>
                                 <img src="assets/images/b1-676x526.jpg" alt="Mobirise" title="">
                             </div>
@@ -110,7 +110,7 @@
                         <div class="card-wrapper">
                             <div class="card-img">
                                 <div class="mbr-overlay"></div>
-                                <div class="mbr-section-btn text-center"><a href="Room.jsp" class="btn btn-primary">
+                                <div class="mbr-section-btn text-center"><a href="Room.jsp#features11-1g" class="btn btn-primary">
                                         View</a></div>
                                 <img src="assets/images/c1-676x526.jpg" alt="Mobirise" title="">
                             </div>
