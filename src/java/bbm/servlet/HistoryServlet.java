@@ -6,8 +6,10 @@
 package bbm.servlet;
 
 import bbm.jpa.model.Account;
+import bbm.jpa.model.Customer;
 import bbm.jpa.model.History;
 import bbm.jpa.model.controller.AccountJpaController;
+import bbm.jpa.model.controller.CustomerJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -43,33 +45,26 @@ public class HistoryServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         HttpSession session = request.getSession(false);
 
         if (session != null) {
-            try {
-                if (session.getAttribute("account") == null) {
-                    response.sendRedirect("Login");
+            Customer cusSession = (Customer) session.getAttribute("customer");
 
+            if (cusSession != null) {
+                CustomerJpaController customerJpaCtrl = new CustomerJpaController(utx, emf);
+                Customer customer = customerJpaCtrl.findCustomer(cusSession.getCustomerid());
+                
+                if (customer != null) {
+                    List<History> listHistory = customer.getHistoryList();
+                    session.setAttribute("listHistory", listHistory);
+                    getServletContext().getRequestDispatcher("/History.jsp").forward(request, response);
                     return;
                 }
-            } catch (Exception ex) {
-                response.sendRedirect("Login");
-
-                return;
             }
-            Account accountSession = (Account) session.getAttribute("account");
-            AccountJpaController accountJpaCtrl = new AccountJpaController(utx, emf);
-            Account account = accountJpaCtrl.findAccount(accountSession.getEmail());
-            if (account != null) {
-                List<History> listHistory = account.getCustomerid().getHistoryList();
-                session.setAttribute("listHistory", listHistory);
-                getServletContext().getRequestDispatcher("/History.jsp").forward(request, response);
-                return;
-            }
-            response.sendRedirect("Login");
-            return;
         }
         response.sendRedirect("Login");
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
