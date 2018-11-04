@@ -63,7 +63,7 @@
             <div class="container align-right">
                 <div class="row">
                     <div class="mbr-white col-lg-8 col-md-7 content-container">
-                        <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">Please Sign In</h1>
+                        <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">Please Log In</h1>
                         <p class="mbr-text pb-3 mbr-fonts-style display-5">กรุณา.. เข้าสู่ระบบ</p>
                     </div>
                     <div class="col-lg-4 col-md-5">

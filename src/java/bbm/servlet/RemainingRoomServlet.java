@@ -7,18 +7,26 @@ package bbm.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.annotation.Resource;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.transaction.UserTransaction;
 
 /**
  *
  * @author Acer_E5
  */
-public class LogoutServlet extends HttpServlet {
+public class RemainingRoomServlet extends HttpServlet {
 
+    @Resource
+    UserTransaction utx;
+
+    @PersistenceUnit(unitName = "BBMWebAppPU")
+    EntityManagerFactory emf;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -30,12 +38,9 @@ public class LogoutServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            session.invalidate();
-        }
-        response.sendRedirect("/BBMProject");
-        return;
+        request.setAttribute("remaining", "100");
+        request.setAttribute("sold", "10");
+        getServletContext().getRequestDispatcher("/RemainingRoom.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

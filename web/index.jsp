@@ -62,7 +62,7 @@
 
 
 
-            <div class="full-screen"><div class="mbr-slider slide carousel" data-pause="true" data-keyboard="false" data-ride="carousel" data-interval="4000"><ol class="carousel-indicators"><li data-app-prevent-settings="" data-target="#slider1-a" class=" active" data-slide-to="0"></li><li data-app-prevent-settings="" data-target="#slider1-a" data-slide-to="1"></li><li data-app-prevent-settings="" data-target="#slider1-a" data-slide-to="2"></li></ol><div class="carousel-inner" role="listbox"><div class="carousel-item slider-fullscreen-image active" data-bg-video-slide="false" style="background-image: url(assets/images/1.jpg);"><div class="container container-slide"><div class="image_wrapper"><div class="mbr-overlay"></div><img src="assets/images/1.jpg"><div class="carousel-caption justify-content-center"><div class="col-10 align-center"><h2 class="mbr-fonts-style display-1" style="font-weight:bold">BBM - Condominium</h2><p class="lead mbr-text mbr-fonts-style display-5">รังสรรค์ความสุขกับทุกจังหวะของชีวิต ให้คุณได้เพลิดเพลินไปกับทุกกิจกรรมที่หลากหลาย ตลอด 24 ชั่วโมง พร้อมดื่มด่ำกับทัศนียภาพวิวเมืองที่ตัดเส้นขอบฟ้าในมุมมองที่ไม่เหมือนใคร</p><div class="mbr-section-btn" buttons="0"><a class="btn btn-success display-4" href="Room.jsp"><span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>View Room</a> </div></div></div></div></div></div><div class="carousel-item slider-fullscreen-image" data-bg-video-slide="https://www.youtube.com/watch?v=fwkKc6M60-0"><div class="mbr-overlay"></div><div class="container container-slide"><div class="image_wrapper"><img src="assets/images/2.jpg" style="opacity: 0;"><div class="carousel-caption justify-content-center"><div class="col-10 align-left"><h2 class="mbr-fonts-style display-1" style="font-weight:bold">THE Sculpture</h2><p class="lead mbr-text mbr-fonts-style display-5">สุนทรีย์แห่งประสบการณ์การใช้ชีวิตที่ผสมผสานการออกแบบอย่างมีเอกลักษณ์ระดับโรงแรม เนรมิตให้ทุกช่วงเวลาสำคัญของชีวิตเป็นช่วงเวลาสุดพิเศษ ด้วยสิ่งอำนวยความสะดวกที่ครบครันตอบสนองทุกฟังก์ชั่นการใช้งาน มอบประสบการณ์การใช้ชีวิตอย่างสมบูรณ์แบบ</p></div></div></div></div></div><div class="carousel-item slider-fullscreen-image" data-bg-video-slide="false" style="background-image: url(assets/images/3.jpg);"><div class="container container-slide"><div class="image_wrapper"><div class="mbr-overlay"></div><img src="assets/images/3.jpg"><div class="carousel-caption justify-content-center"><div class="col-10 align-right"><p class="lead mbr-text mbr-fonts-style display-5">เมื่อ <strong>“จินตนาการ”</strong> คือตัวแทนของความปรารถนา 
+            <div class="full-screen"><div class="mbr-slider slide carousel" data-pause="true" data-keyboard="false" data-ride="carousel" data-interval="4000"><ol class="carousel-indicators"><li data-app-prevent-settings="" data-target="#slider1-a" class=" active" data-slide-to="0"></li><li data-app-prevent-settings="" data-target="#slider1-a" data-slide-to="1"></li><li data-app-prevent-settings="" data-target="#slider1-a" data-slide-to="2"></li></ol><div class="carousel-inner" role="listbox"><div class="carousel-item slider-fullscreen-image active" data-bg-video-slide="false" style="background-image: url(assets/images/1.jpg);"><div class="container container-slide"><div class="image_wrapper"><div class="mbr-overlay"></div><img src="assets/images/1.jpg"><div class="carousel-caption justify-content-center"><div class="col-10 align-center"><h2 class="mbr-fonts-style display-1" style="font-weight:bold">BBM - Condominium</h2><p class="lead mbr-text mbr-fonts-style display-5">รังสรรค์ความสุขกับทุกจังหวะของชีวิต ให้คุณได้เพลิดเพลินไปกับทุกกิจกรรมที่หลากหลาย ตลอด 24 ชั่วโมง พร้อมดื่มด่ำกับทัศนียภาพวิวเมืองที่ตัดเส้นขอบฟ้าในมุมมองที่ไม่เหมือนใคร</p><div class="mbr-section-btn" buttons="0"><a class="btn btn-success display-4" href="Room"><span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>View Room</a> </div></div></div></div></div></div><div class="carousel-item slider-fullscreen-image" data-bg-video-slide="https://www.youtube.com/watch?v=fwkKc6M60-0"><div class="mbr-overlay"></div><div class="container container-slide"><div class="image_wrapper"><img src="assets/images/2.jpg" style="opacity: 0;"><div class="carousel-caption justify-content-center"><div class="col-10 align-left"><h2 class="mbr-fonts-style display-1" style="font-weight:bold">THE Sculpture</h2><p class="lead mbr-text mbr-fonts-style display-5">สุนทรีย์แห่งประสบการณ์การใช้ชีวิตที่ผสมผสานการออกแบบอย่างมีเอกลักษณ์ระดับโรงแรม เนรมิตให้ทุกช่วงเวลาสำคัญของชีวิตเป็นช่วงเวลาสุดพิเศษ ด้วยสิ่งอำนวยความสะดวกที่ครบครันตอบสนองทุกฟังก์ชั่นการใช้งาน มอบประสบการณ์การใช้ชีวิตอย่างสมบูรณ์แบบ</p></div></div></div></div></div><div class="carousel-item slider-fullscreen-image" data-bg-video-slide="false" style="background-image: url(assets/images/3.jpg);"><div class="container container-slide"><div class="image_wrapper"><div class="mbr-overlay"></div><img src="assets/images/3.jpg"><div class="carousel-caption justify-content-center"><div class="col-10 align-right"><p class="lead mbr-text mbr-fonts-style display-5">เมื่อ <strong>“จินตนาการ”</strong> คือตัวแทนของความปรารถนา 
                                                 <br>ในสังคมที่เร่งรีบและความต้องการที่หลากหลาย ก่อให้เกิดจินตนาการที่มีรูปแบบไม่ตายตัว 
                                                 <br>ไร้ขีดจำกัดและบางทีก็ไม่มีเหตุผล เพียงเพื่อตอบสนองทุกความเป็นคุณ&nbsp;</p><div class="mbr-section-btn" buttons="0"><a class="btn btn-info display-4" href="Search"><span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>Search</a> </div></div></div></div></div></div></div><a data-app-prevent-settings="" class="carousel-control carousel-control-prev" role="button" data-slide="prev" href="#slider1-a"><span aria-hidden="true" class="mbri-left mbr-iconfont"></span><span class="sr-only">Previous</span></a><a data-app-prevent-settings="" class="carousel-control carousel-control-next" role="button" data-slide="next" href="#slider1-a"><span aria-hidden="true" class="mbri-right mbr-iconfont"></span><span class="sr-only">Next</span></a></div></div>
 
@@ -81,7 +81,7 @@
                         <div class="card-wrapper ">
                             <div class="card-img">
                                 <div class="mbr-overlay"></div>
-                                <div class="mbr-section-btn text-center"><a href="Room.jsp#features11-1e" class="btn btn-primary">
+                                <div class="mbr-section-btn text-center"><a href="Room#features11-1e" class="btn btn-primary">
                                         View</a></div>
                                 <img src="assets/images/a1-676x526.jpg" alt="Mobirise" title="">
                             </div>
@@ -95,13 +95,13 @@
                         <div class="card-wrapper">
                             <div class="card-img">
                                 <div class="mbr-overlay"></div>
-                                <div class="mbr-section-btn text-center"><a href="Room.jsp#features11-1f" class="btn btn-primary">
+                                <div class="mbr-section-btn text-center"><a href="Room#features11-1f" class="btn btn-primary">
                                         View</a></div>
                                 <img src="assets/images/b1-676x526.jpg" alt="Mobirise" title="">
                             </div>
                             <div class="card-box">
                                 <h4 class="card-title mbr-fonts-style display-7">Type B</h4>
-
+                                
                             </div>
                         </div>
                     </div>
@@ -110,7 +110,7 @@
                         <div class="card-wrapper">
                             <div class="card-img">
                                 <div class="mbr-overlay"></div>
-                                <div class="mbr-section-btn text-center"><a href="Room.jsp#features11-1g" class="btn btn-primary">
+                                <div class="mbr-section-btn text-center"><a href="Room#features11-1g" class="btn btn-primary">
                                         View</a></div>
                                 <img src="assets/images/c1-676x526.jpg" alt="Mobirise" title="">
                             </div>
@@ -187,7 +187,7 @@
             <div class="container">
                 <div class="row main justify-content-center">
                     <div class="media-container-column col-12 col-lg-3 col-md-4">
-                        <div class="mbr-section-btn align-left py-4"><a class="btn btn-primary display-4" href="RemainingRoom.jsp"><span class="mbri-rocket mbr-iconfont mbr-iconfont-btn"></span>Let Go!</a></div>
+                        <div class="mbr-section-btn align-left py-4"><a class="btn btn-primary display-4" href="RemainingRoom"><span class="mbri-rocket mbr-iconfont mbr-iconfont-btn"></span>Let Go!</a></div>
                     </div>
                     <div class="media-container-column title col-12 col-lg-7 col-md-6">
 

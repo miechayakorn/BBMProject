@@ -38,23 +38,25 @@
 
             <div class="container align-left">
                 <div class="media-container-column mbr-white col-md-12">
-
                     <h1 class="mbr-section-title py-3 mbr-fonts-style display-2"><strong>Remaining Room - จำนวนห้องที่เหลืออยู่</strong></h1>
-                </div>
-            </div>
-
-
-        </section>
-
-        <div class="container">
-            <div class="media-container-row">
-                <div class="col-md-8 align-center">
-                    <div style="width: 500px;">
-                        <canvas id="myChart"></canvas>
+                    <div class="container">
+                        <div class="media-container-row">
+                            <div class="col-md-8 align-center">
+                                <div style="width: 30">
+                                    <canvas id="myChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="mbr-arrow hidden-sm-down" aria-hidden="true">
+                <a href="#next">
+                    <i class="mbri-down mbr-iconfont"></i>
+                </a>
+            </div>
+        </section>
+
 
         <jsp:include page="include/Footer.jsp"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
@@ -74,22 +76,29 @@
     var myChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ["ห้องที่ขาย", "จำนวนห้องที่เหลือ"],
+            labels: ["ห้องที่ขายแล้ว", "จำนวนห้องที่เหลือ"],
             datasets: [{
-                    data: [102, 19],
+                    data: ['${remaining}', '${sold}'],
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
+                        '#e91e63',
+                        '#66bb6a',
                     ],
                     borderColor: [
-                        'rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)'
+                        '#e91e63',
+                        '#66bb6a'
                     ],
                 }]
         },
         options: {
             rotation: 1 * Math.PI,
-            circumference: 1 * Math.PI
+            circumference: 1 * Math.PI,
+            legend: {
+            labels: {
+                fontColor: "white",
+                fontSize: 18,
+                fontFamily: "Athiti",
+            }
+        },
         }
     });
 </script>

@@ -20,8 +20,8 @@
                         HOME
                 </p>
                 </a>    
-                <p class="mbr-text mbr-fonts-style mbr-links-column display-7"><strong><a href="/BBMProject/#form4-k" class="text-white">ข้อมูลโครงการ</a></strong><br><a href="room.html" class="text-white">ประเภทห้อง</a>
-                    <br><a href="RemainingRoom.jsp" target="_blank" class="text-white">จำนวนห้องที่เหลืออยู่</a></p>
+                <p class="mbr-text mbr-fonts-style mbr-links-column display-7"><strong><a href="/BBMProject/#form4-k" class="text-white">ข้อมูลโครงการ</a></strong><br><a href="Room" class="text-white">รายละเอียดห้อง</a>
+                    <br><a href="RemainingRoom" target="_blank" class="text-white">จำนวนห้องที่เหลืออยู่</a></p>
             </div>
             <div class="col-md-4 col-sm-8">
                 <p class="mb-4 foot-title mbr-fonts-style display-7"><strong>BBM -&nbsp;Condominium</strong></p>

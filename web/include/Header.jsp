@@ -28,21 +28,28 @@
             </div>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav nav-dropdown display-4" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-white" href="Room.jsp" aria-expanded="false">รายละเอียดห้อง</a></li><li class="nav-item"><a class="nav-link link text-white" href="/BBMProject/#form4-k" aria-expanded="false">ข้อมูลโครงการ</a></li><li class="nav-item"><a class="nav-link link text-white" href="RemainingRoom.jsp" aria-expanded="false">จำนวนห้องที่เหลืออยู่</a></li></ul>
+            <ul class="navbar-nav nav-dropdown display-4" data-app-modern-menu="true">
+                <li class="nav-item"><a class="nav-link link text-white" href="Room" aria-expanded="false">รายละเอียดห้อง</a></li>
+                <li class="nav-item"><a class="nav-link link text-white" href="RemainingRoom" aria-expanded="false">จำนวนห้องที่เหลืออยู่</a></li>
+                <li class="nav-item"><a class="nav-link link text-white" href="/BBMProject/#form4-k" aria-expanded="false">ข้อมูลโครงการ</a></li>
+            </ul>
             <div class="navbar-buttons mbr-section-btn">
                 <c:if test="${empty sessionScope.customer}">
                     <a class="btn btn-sm btn-primary" href="Register">Register</a> 
-                    <a class="btn btn-sm btn-primary" href="Login.jsp"> Login</a>   
+                    <a class="btn btn-sm btn-primary" href="Login"> Login</a>   
                 </c:if>
-                <a class="btn btn-sm btn-secondary" href="search"><span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span></a>
-                <a class="btn btn-sm btn-warning" href="#"><p style="color: #FFFFFF ; margin-top: 15px ; font-weight:bold;">100&nbsp;<img src="assets/images/condo-icon.png" width="30px" /></p></a>    
-                 <c:if test="${not empty sessionScope.customer}">
-                    <a class="btn btn-sm btn-primary" href="MyAccount.jsp"><span class="mbri-user mbr-iconfont mbr-iconfont-btn"></span> 
-                      ${sessionScope.customer.getName()}
-                    </c:if>    
-                     
-                </a> 
-                
+                <a class="btn btn-sm btn-secondary" href="Search"><span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span></a>
+                <a class="btn btn-sm btn-warning" href="#" style="border-radius:12px; "><p style="color: #FFFFFF ; margin-top: 15px ; font-weight:bold;">100&nbsp;<img src="assets/images/condo-icon.png" width="30px" /></p></a>    
+                <c:if test="${not empty sessionScope.customer}">
+                    <a class="btn btn-sm btn-primary nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="mbri-user mbr-iconfont mbr-iconfont-btn"></span>    Welcome :   ${sessionScope.customer.getName()}</a>
+                    <div class="dropdown-content dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="Logout">Logout</a>
+                    </div>
+                </c:if>        
+                               
             </div>
         </div>
     </nav>
