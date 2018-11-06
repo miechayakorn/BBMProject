@@ -82,6 +82,7 @@
                                 <c:if test="${message == null}">
                                     <p style="color: red;">${message}</p>
                                 </c:if>
+                                <a style="color: blue;" href="Recovery">Forget Password</a><br>
                                 <span class="input-group-btn"><button href="" type="submit" class="btn btn-form btn-success display-4"><span class="mobi-mbri mobi-mbri-user-2 mbr-iconfont mbr-iconfont-btn"></span>Login</button></span>
                             </form>
                         </div>
