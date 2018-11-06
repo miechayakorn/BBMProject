@@ -92,15 +92,16 @@
                                 </div>
                             </c:when>
                         </c:choose>
+                        
                     </div>
-                    <div class="col-12  mbr-white">
+                    <div class="col-12 form-container mbr-white">
                         <form class="form-signin" action="Recovery">
                             <div class="form-label-group">
                                 <label>Email address</label>
                                 <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                                 <br>
                             </div>
-                            <button class="btn btn-lg btn-primary btn-block text-uppercase" onclick="openSearch()" type="submit">Recovery</button>
+                            <button type="submit" class="btn btn-primary btn-lg"  onclick="openSearch()">Reset your password</button>
                         </form>
                     </div>
                 </div>

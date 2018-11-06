@@ -14,7 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
         <link rel="shortcut icon" href="assets/images/bbm-logo-122x122.png" type="image/x-icon">
         <meta name="description" content="">
-        <title>Recovery Password | BBMProject</title>
+        <title>Account Recovery | BBMProject</title>
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
         <link rel="stylesheet" href="assets/tether/tether.min.css">
@@ -36,7 +36,7 @@
             <div class="container align-center">
                 <div class="row">
                     <div class="mbr-white col-lg-12 col-md-12 content-container">
-                        <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">Recovery Password
+                        <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">Account Recovery
                             <p class="mbr-text pb-3 mbr-fonts-style display-5">กู้รหัสผ่าน</p></h1>
                     </div>
                     <div class="col-12 mbr-white">
@@ -52,7 +52,7 @@
                                 <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
                                 <br>
                             </div>
-                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Change Password</button>
+                            <button class="btn btn-primary btn-lg" type="submit">Change Password</button>
                         </form>
                     </div>
                 </div>
