@@ -1,6 +1,5 @@
 package bbm.servlet;
 
-
 import bbm.jpa.model.Account;
 import bbm.jpa.model.controller.AccountJpaController;
 import bbm.jpa.model.controller.exceptions.RollbackFailureException;
@@ -37,8 +36,8 @@ public class AccountRecoveryServlet extends HttpServlet {
 
         if (activateKey == null && password == null && email != null) {
             String status = "notEmail";
-            AccountJpaController accountJpaCtrl= new AccountJpaController(utx, emf);
-            Account  account = accountJpaCtrl.findAccount(email);
+            AccountJpaController accountJpaCtrl = new AccountJpaController(utx, emf);
+            Account account = accountJpaCtrl.findAccount(email);
 
             if (account != null) {
                 /*try {
@@ -63,8 +62,8 @@ public class AccountRecoveryServlet extends HttpServlet {
             }
 
         } else if (email != null && activateKey != null && password == null) {
-             AccountJpaController accountJpaCtrl= new AccountJpaController(utx, emf);
-            Account  account = accountJpaCtrl.findAccount(email);
+            AccountJpaController accountJpaCtrl = new AccountJpaController(utx, emf);
+            Account account = accountJpaCtrl.findAccount(email);
 
             if (account != null) {
                 if (account.getActivatekey().equals(activateKey)) {
@@ -72,15 +71,20 @@ public class AccountRecoveryServlet extends HttpServlet {
                     request.setAttribute("activateKey", activateKey);
                     request.getServletContext().getRequestDispatcher("/RecoveryChangePassword.jsp").forward(request, response);
                     return;
+                } else {
+                    request.setAttribute("status", "ActivateKeyError");
+                    request.getServletContext().getRequestDispatcher("/RecoverySendEmail.jsp").forward(request, response);
+                    return;
                 }
+            } else {
+                request.setAttribute("status", "notEmail");
+                request.getServletContext().getRequestDispatcher("/RecoverySendEmail.jsp").forward(request, response);
+                return;
             }
-            request.setAttribute("status", "ActivateKeyError");
-            request.getServletContext().getRequestDispatcher("/RecoverySendEmail.jsp").forward(request, response);
-            return;
 
         } else if (email != null && password != null && activateKey != null) {
-             AccountJpaController accountJpaCtrl= new AccountJpaController(utx, emf);
-            Account  account = accountJpaCtrl.findAccount(email);
+            AccountJpaController accountJpaCtrl = new AccountJpaController(utx, emf);
+            Account account = accountJpaCtrl.findAccount(email);
             String status = "notEmail";
 
             if (account != null) {
@@ -103,6 +107,10 @@ public class AccountRecoveryServlet extends HttpServlet {
                     request.getServletContext().getRequestDispatcher("/RecoverySendEmail.jsp").forward(request, response);
                     return;
                 }
+            } else {
+                request.setAttribute("status", "notEmail");
+                request.getServletContext().getRequestDispatcher("/RecoverySendEmail.jsp").forward(request, response);
+                return;
             }
 
             request.setAttribute("status", status);
