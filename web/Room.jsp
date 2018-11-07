@@ -100,194 +100,188 @@
             </div>
         </section>
 
+
+
+
+        <section class="features11 cid-r7074fmFzA" id="features11-1e">
+            <div class=container>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="content-box">
+                            <div class="mbr-figure img-box left">
+                                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                    </ol>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img class="d-block w-100" src="assets/images/A/A1.jpg" alt="First slide">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>1 Bedroom (Type A)</h5>
+                                                <p>Floor area 23.80-24.30 Sq.M.</p>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img class="d-block w-100" src="assets/images/A/A2.jpg" alt="Second slide">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img class="d-block w-100" src="assets/images/A/A3.jpg" alt="Third slide">
+                                        </div>
+                                    </div>
+                                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="content-box">
+                            <h2 class="mbr-title pt-2 mbr-fonts-style display-2">1 Bedroom (Type A)</h2>
+                            <div class="mbr-section-text">
+                                <p class="mbr-text mb-5 pt-3 mbr-light mbr-fonts-style display-5">
+                                    Floor area 23.80-24.30 Sq.M.
+                                </p>
+                            </div>
+                            <img src="assets/images/A/A.jpg" width="70%" alt="Type A">
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="mbr-figure" style="width: 50%;">
+                        <iframe width='853' height='480' frameborder=0 allowfullscreen src='https://my.matterport.com/show/?m=bHGM1ASVk6U&qs=1&mls=1'></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features11 cid-r7074fmFzA" id="features11-1f">
+            <div class=container>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="content-box">
+                            <div class="mbr-figure img-box left">
+                                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                    </ol>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img class="d-block w-100" src="assets/images/B/B1.jpg" alt="First slide">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>1 Bedroom (Type B)</h5>
+                                                <p>Floor area 26.20-27.10 Sq.M.</p>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img class="d-block w-100" src="assets/images/B/B2.jpg" alt="Second slide">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img class="d-block w-100" src="assets/images/B/B3.jpg" alt="Third slide">
+                                        </div>
+                                    </div>
+                                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="content-box">
+                            <h2 class="mbr-title pt-2 mbr-fonts-style display-2">1 Bedroom (Type B)</h2>
+                            <div class="mbr-section-text">
+                                <p class="mbr-text mb-5 pt-3 mbr-light mbr-fonts-style display-5">
+                                    Floor area 26.20-27.10 Sq.M.
+                                </p>
+                            </div>
+                            <img src="assets/images/B/B.jpg" width="70%" alt="Type B">
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="mbr-figure" style="width: 50%;">
+                        <iframe width='853' height='480' frameborder=0 allowfullscreen src='https://my.matterport.com/show/?m=K9wckGYcPxG&qs=1&mls=1'></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features11 cid-r7074fmFzA" id="features11-1g">
+            <div class=container>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="content-box">
+                            <div class="mbr-figure img-box left">
+                                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                    </ol>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img class="d-block w-100" src="assets/images/C/C1.jpg" alt="First slide">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>1 Bedroom (Type C)</h5>
+                                                <p>Floor area 34.30-35.00 Sq.M.</p>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img class="d-block w-100" src="assets/images/C/C2.jpg" alt="Second slide">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img class="d-block w-100" src="assets/images/C/C3.jpg" alt="Third slide">
+                                        </div>
+                                    </div>
+                                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="content-box">
+                            <h2 class="mbr-title pt-2 mbr-fonts-style display-2">1 Bedroom (Type C)</h2>
+                            <div class="mbr-section-text">
+                                <p class="mbr-text mb-5 pt-3 mbr-light mbr-fonts-style display-5">
+                                    Floor area 34.30-35.00 Sq.M.
+                                </p>
+                            </div>
+                            <img src="assets/images/C/C.jpg" width="70%" alt="Type C">
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="mbr-figure" style="width: 50%;">
+                        <iframe width='853' height='480' frameborder=0 allowfullscreen src='https://my.matterport.com/show/?m=XFDr6W5DBee&qs=1&mls=1'></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
         <section class="cid-r7Mkamc2Bv" id="social-buttons3-15">
-
-
-            <section class="features11 cid-r8k2AeRkY3" id="features11-1e">
-
-
-
-
-
-                <div class="container">   
-                    <div class="col-md-12">
-                        <div class="media-container-row">
-                            <div class="mbr-figure" style="width: 50%;">
-                                <img src="assets/images/05.jpg" alt="Mobirise">
-                            </div>
-                            <div class=" align-left aside-content">
-                                <h2 class="mbr-title pt-2 mbr-fonts-style display-2">1 Bedroom (Type A)</h2>
-                                <div class="mbr-section-text">
-                                    <p class="mbr-text mb-5 pt-3 mbr-light mbr-fonts-style display-5">
-                                        Floor area 23.80-24.30 Sq.M.
-                                    </p>
-                                </div>
-
-                                <div class="block-content">
-                                    <div class="card p-3 pr-3">
-                                        <div class="media">
-                                            <div class=" align-self-center card-img pb-3">
-                                                <span class="mbri-extension mbr-iconfont"></span>
-                                            </div>     
-                                            <div class="media-body">
-                                                <h4 class="card-title mbr-fonts-style display-7">
-                                                    Over 400 Amazing Blocks
-                                                </h4>
-                                            </div>
-                                        </div>                
-
-                                        <div class="card-box">
-
-                                        </div>
-                                    </div>
-
-                                    <div class="card p-3 pr-3">
-                                        <div class="media">
-                                            <div class="align-self-center card-img pb-3">
-                                                <span class="mbri-drag-n-drop2 mbr-iconfont"></span>
-                                            </div>     
-                                            <div class="media-body">
-                                                <h4 class="card-title mbr-fonts-style display-7">
-                                                    Easy and Simple to Use
-                                                </h4>
-                                            </div>
-                                        </div>                
-
-                                        <div class="card-box">
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                </div>          
-            </section>
-
-            <section class="features11 cid-r8k2AMJlG2" id="features11-1f">
-
-
-
-
-
-                <div class="container">   
-                    <div class="col-md-12">
-                        <div class="media-container-row">
-                            <div class="mbr-figure" style="width: 50%;">
-                                <img src="assets/images/05.jpg" alt="Mobirise">
-                            </div>
-                            <div class=" align-left aside-content">
-                                <h2 class="mbr-title pt-2 mbr-fonts-style display-2">1 Bedroom (Type B)</h2>
-                                <div class="mbr-section-text">
-                                    <p class="mbr-text mb-5 pt-3 mbr-light mbr-fonts-style display-5">
-                                        Floor area 23.80-24.30 Sq.M.
-                                    </p>
-                                </div>
-
-                                <div class="block-content">
-                                    <div class="card p-3 pr-3">
-                                        <div class="media">
-                                            <div class=" align-self-center card-img pb-3">
-                                                <span class="mbri-extension mbr-iconfont"></span>
-                                            </div>     
-                                            <div class="media-body">
-                                                <h4 class="card-title mbr-fonts-style display-7">
-                                                    Over 400 Amazing Blocks
-                                                </h4>
-                                            </div>
-                                        </div>                
-
-                                        <div class="card-box">
-
-                                        </div>
-                                    </div>
-
-                                    <div class="card p-3 pr-3">
-                                        <div class="media">
-                                            <div class="align-self-center card-img pb-3">
-                                                <span class="mbri-drag-n-drop2 mbr-iconfont"></span>
-                                            </div>     
-                                            <div class="media-body">
-                                                <h4 class="card-title mbr-fonts-style display-7">
-                                                    Easy and Simple to Use
-                                                </h4>
-                                            </div>
-                                        </div>                
-
-                                        <div class="card-box">
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                </div>          
-            </section>
-
-            <section class="features11 cid-r8k2Bk7FSh" id="features11-1g">
-
-
-
-
-
-                <div class="container">   
-                    <div class="col-md-12">
-                        <div class="media-container-row">
-                            <div class="mbr-figure" style="width: 50%;">
-                                <img src="assets/images/05.jpg" alt="Mobirise">
-                            </div>
-                            <div class=" align-left aside-content">
-                                <h2 class="mbr-title pt-2 mbr-fonts-style display-2">1 Bedroom (Type B)</h2>
-                                <div class="mbr-section-text">
-                                    <p class="mbr-text mb-5 pt-3 mbr-light mbr-fonts-style display-5">
-                                        Floor area 23.80-24.30 Sq.M.
-                                    </p>
-                                </div>
-
-                                <div class="block-content">
-                                    <div class="card p-3 pr-3">
-                                        <div class="media">
-                                            <div class=" align-self-center card-img pb-3">
-                                                <span class="mbri-extension mbr-iconfont"></span>
-                                            </div>     
-                                            <div class="media-body">
-                                                <h4 class="card-title mbr-fonts-style display-7">
-                                                    Over 400 Amazing Blocks
-                                                </h4>
-                                            </div>
-                                        </div>                
-
-                                        <div class="card-box">
-
-                                        </div>
-                                    </div>
-
-                                    <div class="card p-3 pr-3">
-                                        <div class="media">
-                                            <div class="align-self-center card-img pb-3">
-                                                <span class="mbri-drag-n-drop2 mbr-iconfont"></span>
-                                            </div>     
-                                            <div class="media-body">
-                                                <h4 class="card-title mbr-fonts-style display-7">
-                                                    Easy and Simple to Use
-                                                </h4>
-                                            </div>
-                                        </div>                
-
-                                        <div class="card-box">
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                </div>          
-            </section>
-
-
-
             <div class="container">
                 <div class="media-container-row">
                     <div class="col-md-8 align-center">
@@ -323,7 +317,6 @@
                 </div>
             </div>
         </section>
-
         <jsp:include page="include/Footer.jsp"/>
 
         <script src="assets/web/assets/jquery/jquery.min.js"></script>
