@@ -43,7 +43,7 @@
                         <div class="media-container-row">
                             <div class="col-md-8 align-center">
                                 <div style="width: 30">
-                                    <canvas id="myChart"></canvas>
+                                    <canvas id="myChart"> </canvas>
                                 </div>
                             </div>
                         </div>
@@ -80,12 +80,12 @@
             datasets: [{
                     data: ['${remaining}', '${sold}'],
                     backgroundColor: [
-                        '#e91e63',
-                        '#66bb6a',
+                        '#F17872',
+                        '#F3C758',
                     ],
                     borderColor: [
-                        '#e91e63',
-                        '#66bb6a'
+                        '#F17872',
+                        '#F3C758',
                     ],
                 }]
         },
@@ -95,8 +95,9 @@
             legend: {
             labels: {
                 fontColor: "white",
-                fontSize: 18,
-                fontFamily: "Athiti",
+                fontSize: 22,
+                fontFamily: "Athiti"
+               
             }
         },
         }
