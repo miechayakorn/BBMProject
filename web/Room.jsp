@@ -107,6 +107,7 @@
             <div class=container>
                 <div class="row">
                     <div class="col-md-6">
+                        <center><h2 class="mbr-title pt-2 mbr-fonts-style display-2">1 Bedroom (Type A)</h2></center>
                         <div class="content-box">
                             <div class="mbr-figure img-box left">
                                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -144,19 +145,30 @@
                     </div>
                     <div class="col-md-6">
                         <div class="content-box">
-                            <h2 class="mbr-title pt-2 mbr-fonts-style display-2">1 Bedroom (Type A)</h2>
                             <div class="mbr-section-text">
-                                <p class="mbr-text mb-5 pt-3 mbr-light mbr-fonts-style display-5">
+                                <p class="mbr-text pt-3 mbr-light mbr-fonts-style display-5">
                                     Floor area 23.80-24.30 Sq.M.
                                 </p>
                             </div>
-                            <img src="assets/images/A/A.jpg" width="70%" alt="Type A">
+                            <div class="container">
+                                <!--Size dropdown menu-->
+                                <select id="size_select" class="form-control">
+                                    <option value="option1" class="form-control">Picture Detail</option>
+                                    <option value="option2" class="form-control">3D Room Detail</option>
+                                </select>
+
+                                <!--Size dropdown content-->
+                                <div id="option1" class="size_chart">
+                                    <br>
+                                    <img src="assets/images/A/A.jpg" width="100%" alt="Type A">
+                                </div>
+                                <div id="option2" class="size_chart">
+                                    <div class="mbr-figure">
+                                        <iframe width='360' height='360' frameborder=0 allowfullscreen src='https://my.matterport.com/show/?m=bHGM1ASVk6U&qs=1&mls=1'></iframe>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="mbr-figure" style="width: 50%;">
-                        <iframe width='853' height='480' frameborder=0 allowfullscreen src='https://my.matterport.com/show/?m=bHGM1ASVk6U&qs=1&mls=1'></iframe>
                     </div>
                 </div>
             </div>
@@ -166,6 +178,7 @@
             <div class=container>
                 <div class="row">
                     <div class="col-md-6">
+                        <center><h2 class="mbr-title pt-2 mbr-fonts-style display-2">1 Bedroom (Type B)</h2></center>
                         <div class="content-box">
                             <div class="mbr-figure img-box left">
                                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -203,19 +216,30 @@
                     </div>
                     <div class="col-md-6">
                         <div class="content-box">
-                            <h2 class="mbr-title pt-2 mbr-fonts-style display-2">1 Bedroom (Type B)</h2>
                             <div class="mbr-section-text">
                                 <p class="mbr-text mb-5 pt-3 mbr-light mbr-fonts-style display-5">
                                     Floor area 26.20-27.10 Sq.M.
                                 </p>
                             </div>
-                            <img src="assets/images/B/B.jpg" width="70%" alt="Type B">
+                            <div class="container">
+                                <!--Size dropdown menu-->
+                                <select id="size_select" class="form-control">
+                                    <option value="option1" class="form-control">Picture Detail</option>
+                                    <option value="option2" class="form-control">3D Room Detail</option>
+                                </select>
+
+                                <!--Size dropdown content-->
+                                <div id="option1" class="size_chart">
+                                    <br>
+                                    <img src="assets/images/B/B.jpg" width="100%" alt="Type B">
+                                </div>
+                                <div id="option2" class="size_chart">
+                                    <div class="mbr-figure">
+                                        <iframe width='360' height='360' frameborder=0 allowfullscreen src='https://my.matterport.com/show/?m=K9wckGYcPxG&qs=1&mls=1'></iframe>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="mbr-figure" style="width: 50%;">
-                        <iframe width='853' height='480' frameborder=0 allowfullscreen src='https://my.matterport.com/show/?m=K9wckGYcPxG&qs=1&mls=1'></iframe>
                     </div>
                 </div>
             </div>
@@ -225,6 +249,7 @@
             <div class=container>
                 <div class="row">
                     <div class="col-md-6">
+                        <center><h2 class="mbr-title pt-2 mbr-fonts-style display-2">1 Bedroom (Type C)</h2></center>
                         <div class="content-box">
                             <div class="mbr-figure img-box left">
                                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -262,19 +287,30 @@
                     </div>
                     <div class="col-md-6">
                         <div class="content-box">
-                            <h2 class="mbr-title pt-2 mbr-fonts-style display-2">1 Bedroom (Type C)</h2>
                             <div class="mbr-section-text">
                                 <p class="mbr-text mb-5 pt-3 mbr-light mbr-fonts-style display-5">
                                     Floor area 34.30-35.00 Sq.M.
                                 </p>
                             </div>
-                            <img src="assets/images/C/C.jpg" width="70%" alt="Type C">
+                            <div class="container">
+                                <!--Size dropdown menu-->
+                                <select id="size_select" class="form-control">
+                                    <option value="option1" class="form-control">Picture Detail</option>
+                                    <option value="option2" class="form-control">3D Room Detail</option>
+                                </select>
+
+                                <!--Size dropdown content-->
+                                <div id="option1" class="size_chart">
+                                    <br>
+                                    <img src="assets/images/B/B.jpg" width="100%" alt="Type B">
+                                </div>
+                                <div id="option2" class="size_chart">
+                                    <div class="mbr-figure">
+                                        <iframe width='360' height='360' frameborder=0 allowfullscreen src='https://my.matterport.com/show/?m=XFDr6W5DBee&qs=1&mls=1'></iframe>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="mbr-figure" style="width: 50%;">
-                        <iframe width='853' height='480' frameborder=0 allowfullscreen src='https://my.matterport.com/show/?m=XFDr6W5DBee&qs=1&mls=1'></iframe>
                     </div>
                 </div>
             </div>
@@ -332,4 +368,23 @@
         <script src="assets/theme/js/script.js"></script>
         <script src="assets/formoid/formoid.min.js"></script>
     </body>
+    <script>
+        $(document).ready(function () {
+
+            //hides dropdown content
+            $(".size_chart").hide();
+
+            //unhides first option content
+            $("#option1").show();
+
+            //listen to dropdown for change
+            $("#size_select").change(function () {
+                //rehide content on change
+                $('.size_chart').hide();
+                //unhides current item
+                $('#' + $(this).val()).show();
+            });
+
+        });
+    </script>
 </html>
