@@ -44,7 +44,7 @@
                     <div class="btn-group">
                         <a class="btn btn-sm btn-primary nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="mbri-user mbr-iconfont mbr-iconfont-btn"></span>    Welcome :   ${sessionScope.customer.getName()}</a>
                         <div class="dropdown-content dropdown-menu mx-4" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">My Account</a>
+                            <a class="dropdown-item" href="MyAccount">My Account</a>
                             <a class="dropdown-item" href="#">History</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="Logout">Logout</a>

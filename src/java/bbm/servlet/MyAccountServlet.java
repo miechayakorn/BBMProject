@@ -5,16 +5,11 @@
  */
 package bbm.servlet;
 
-
-import bbm.jpa.model.Account;
 import bbm.jpa.model.Customer;
 import bbm.jpa.model.controller.AccountJpaController;
 import bbm.jpa.model.controller.CustomerJpaController;
-import bbm.model.EncryptWithMd5;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -27,16 +22,11 @@ import javax.transaction.UserTransaction;
 
 /**
  *
- * @author Acer_E5
+ * @author Kridtakom
  */
-public class LoginServlet extends HttpServlet {
-
-    @Resource
-    UserTransaction utx;
-
-    @PersistenceUnit(unitName = "BBMWebAppPU")
-    EntityManagerFactory emf;
-
+public class MyAccountServlet extends HttpServlet {
+    @Resource UserTransaction utx;
+    @PersistenceUnit (unitName = "BBMWebAppPU") EntityManagerFactory emf;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -48,40 +38,22 @@ public class LoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
+        
         HttpSession session = request.getSession(false);
-
-        if (email != null && password != null && email.length() > 0 && password.length() > 0) {
-            AccountJpaController accountJpaCtrl= new AccountJpaController(utx, emf);
-            Account  account = accountJpaCtrl.findAccount(email);
-            password = new EncryptWithMd5().encrypt(password);
-            if (account != null) {
-                if (account.getPassword().equals(password)) {
-
-                    if (session == null) {
-                        session = request.getSession(true);
-                    }
-                    CustomerJpaController customerJpaCtrl = new CustomerJpaController(utx, emf);
-                    Customer customer = customerJpaCtrl.findByEmail(email);
-                    if(customer != null){
-                        session.setAttribute("customer", customer);
-                        response.sendRedirect("/BBMProject");
-                        return;  
-                    }else{
-                     getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
-                     return;
-                    }
-                } else {
-                    request.setAttribute("message", "Invalid username or password !!");   
+        
+        if (session != null) {
+            Customer cusSession = (Customer) session.getAttribute("customer");
+            if(cusSession != null){
+                CustomerJpaController customerJpaCtrl = new CustomerJpaController(utx, emf);
+                Customer customer =  customerJpaCtrl.findCustomer(cusSession.getCustomerid());
+                if(customer != null){
+                    session.setAttribute("customer", customer);
+                    getServletContext().getRequestDispatcher("/MyAccount.jsp").forward(request, response);
+                    return;
                 }
-            } else {
-                request.setAttribute("message", "Invalid username or password !!");
             }
         }
-        getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
-
+        response.sendRedirect("Login");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

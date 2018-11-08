@@ -1,13 +1,13 @@
 <%-- 
-    Document   : MyAccount
-    Created on : Oct 29, 2018, 4:02:20 PM
-    Author     : Student
+    Document   : History
+    Created on : 8 พ.ย. 2561, 18:20:13
+    Author     : Kridtakom
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
+     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
         <link rel="shortcut icon" href="assets/images/bbm-logo-122x122.png" type="image/x-icon">
         <meta name="description" content="">
-        <title>MyAccount</title>
+        <title>History</title>
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
         <link rel="stylesheet" href="assets/tether/tether.min.css">
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -47,7 +47,7 @@
             <div class="container align-left">
                 <div class="media-container-column mbr-white col-md-12">
 
-                    <h1 class="mbr-section-title py-3 mbr-fonts-style display-1"><strong>My Account</strong></h1>
+                    <h1 class="mbr-section-title py-3 mbr-fonts-style display-1"><strong>History</strong></h1>
 
 
                 </div>
