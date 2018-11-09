@@ -25,19 +25,13 @@
         <link rel="stylesheet" href="assets/socicon/css/styles.css">
         <link rel="stylesheet" href="assets/theme/css/style.css">
         <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-        <style>
-            #footBar{
-                position:fixed; 
-                bottom:0; 
-                width: 100%;
-            }
-        </style>
+
 
     </head>
     <body>
         <jsp:include page="include/Header.jsp"/>
 
-        <section class="engine"><a href="https://mobirise.info/u">bootstrap responsive templates</a></section><section class="header11 cid-r7MmAIxkys" id="header11-1a">
+        <section class="header11 cid-r7MmAIxkys" id="header11-1a">
 
             <!-- Block parameters controls (Blue "Gear" panel) -->
 
@@ -55,12 +49,83 @@
 
 
         </section>
-        
+        <div>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+            sadsadsad <br>
+        </div>
 
 
         
 
-        <div id="footBar"><jsp:include page="include/Footer.jsp"/></div>
+       <jsp:include page="include/Footer.jsp"/>
 
         <script src="assets/web/assets/jquery/jquery.min.js"></script>
         <script src="assets/popper/popper.min.js"></script>
