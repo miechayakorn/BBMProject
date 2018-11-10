@@ -5,8 +5,11 @@
  */
 package bbm.servlet;
 
+import bbm.jpa.model.Room;
+import bbm.jpa.model.controller.RoomJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -27,6 +30,7 @@ public class RemainingRoomServlet extends HttpServlet {
 
     @PersistenceUnit(unitName = "BBMWebAppPU")
     EntityManagerFactory emf;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,8 +42,23 @@ public class RemainingRoomServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("remaining", "100");
-        request.setAttribute("sold", "10");
+        
+        RoomJpaController roomJpa = new RoomJpaController(utx, emf);
+        List<Room> room = roomJpa.searchRoomStatus();
+        
+        int available = 0;
+        int notAvailable = 0;
+        for (Room roomLoop : room) {
+            if (roomLoop.getAvailable() == 'T') {
+                available++;
+            }
+            if (roomLoop.getAvailable() == 'F') {
+                notAvailable++;
+            }
+        }
+        
+        request.setAttribute("remaining", available);
+        request.setAttribute("sold", notAvailable);
         getServletContext().getRequestDispatcher("/RemainingRoom.jsp").forward(request, response);
     }
 
