@@ -147,22 +147,22 @@
                         <div class="content-box">
                             <div class="mbr-section-text">
                                 <p class="mbr-text pt-3 mbr-light mbr-fonts-style display-5">
-                                    Floor area 23.80-24.30 Sq.M.
+                                    Floor area 23.80-24.30 Sq.M. <a class="btn btn-sm btn-secondary" href="RemainingRoom?type=A">Search (Type A)</a>
                                 </p>
                             </div>
                             <div class="container">
                                 <!--Size dropdown menu-->
-                                <select id="size_select" class="form-control">
-                                    <option value="option1" class="form-control">Picture Detail</option>
-                                    <option value="option2" class="form-control">3D Room Detail</option>
+                                <select id="A_size_select" class="form-control">
+                                    <option value="A_option1" class="form-control">Picture Detail</option>
+                                    <option value="A_option2" class="form-control">3D Room Detail</option>
                                 </select>
 
                                 <!--Size dropdown content-->
-                                <div id="option1" class="size_chart">
+                                <div id="A_option1" class="A_size_chart">
                                     <br>
                                     <img src="assets/images/A/A.jpg" width="100%" alt="Type A">
                                 </div>
-                                <div id="option2" class="size_chart">
+                                <div id="A_option2" class="A_size_chart">
                                     <div class="mbr-figure">
                                         <iframe width='360' height='360' frameborder=0 allowfullscreen src='https://my.matterport.com/show/?m=bHGM1ASVk6U&qs=1&mls=1'></iframe>
                                     </div>
@@ -218,22 +218,22 @@
                         <div class="content-box">
                             <div class="mbr-section-text">
                                 <p class="mbr-text mb-5 pt-3 mbr-light mbr-fonts-style display-5">
-                                    Floor area 26.20-27.10 Sq.M.
+                                    Floor area 26.20-27.10 Sq.M. <a class="btn btn-sm btn-secondary" href="RemainingRoom?type=B">Search (Type B)</a>
                                 </p>
                             </div>
                             <div class="container">
                                 <!--Size dropdown menu-->
-                                <select id="size_select" class="form-control">
-                                    <option value="option1" class="form-control">Picture Detail</option>
-                                    <option value="option2" class="form-control">3D Room Detail</option>
+                                <select id="B_size_select" class="form-control">
+                                    <option value="B_option1" class="form-control">Picture Detail</option>
+                                    <option value="B_option2" class="form-control">3D Room Detail</option>
                                 </select>
 
                                 <!--Size dropdown content-->
-                                <div id="option1" class="size_chart">
+                                <div id="B_option1" class="B_size_chart">
                                     <br>
                                     <img src="assets/images/B/B.jpg" width="100%" alt="Type B">
                                 </div>
-                                <div id="option2" class="size_chart">
+                                <div id="B_option2" class="B_size_chart">
                                     <div class="mbr-figure">
                                         <iframe width='360' height='360' frameborder=0 allowfullscreen src='https://my.matterport.com/show/?m=K9wckGYcPxG&qs=1&mls=1'></iframe>
                                     </div>
@@ -289,22 +289,22 @@
                         <div class="content-box">
                             <div class="mbr-section-text">
                                 <p class="mbr-text mb-5 pt-3 mbr-light mbr-fonts-style display-5">
-                                    Floor area 34.30-35.00 Sq.M.
+                                    Floor area 34.30-35.00 Sq.M. <a class="btn btn-sm btn-secondary" href="RemainingRoom?type=C">Search (Type C)</a>
                                 </p>
                             </div>
                             <div class="container">
                                 <!--Size dropdown menu-->
-                                <select id="size_select" class="form-control">
-                                    <option value="option1" class="form-control">Picture Detail</option>
-                                    <option value="option2" class="form-control">3D Room Detail</option>
+                                <select id="C_size_select" class="form-control">
+                                    <option value="C_option1" class="form-control">Picture Detail</option>
+                                    <option value="C_option2" class="form-control">3D Room Detail</option>
                                 </select>
 
                                 <!--Size dropdown content-->
-                                <div id="option1" class="size_chart">
+                                <div id="C_option1" class="C_size_chart">
                                     <br>
                                     <img src="assets/images/B/B.jpg" width="100%" alt="Type B">
                                 </div>
-                                <div id="option2" class="size_chart">
+                                <div id="C_option2" class="C_size_chart">
                                     <div class="mbr-figure">
                                         <iframe width='360' height='360' frameborder=0 allowfullscreen src='https://my.matterport.com/show/?m=XFDr6W5DBee&qs=1&mls=1'></iframe>
                                     </div>
@@ -372,16 +372,34 @@
         $(document).ready(function () {
 
             //hides dropdown content
-            $(".size_chart").hide();
+            $(".A_size_chart").hide();
 
             //unhides first option content
-            $("#option1").show();
+            $("#A_option1").show();
 
             //listen to dropdown for change
-            $("#size_select").change(function () {
+            $("#A_size_select").change(function () {
                 //rehide content on change
-                $('.size_chart').hide();
+                $('.A_size_chart').hide();
                 //unhides current item
+                $('#' + $(this).val()).show();
+            });
+
+        });
+        $(document).ready(function () {
+            $(".B_size_chart").hide();
+            $("#B_option1").show();
+            $("#B_size_select").change(function () {
+                $('.B_size_chart').hide();
+                $('#' + $(this).val()).show();
+            });
+
+        });
+        $(document).ready(function () {
+            $(".C_size_chart").hide();
+            $("#C_option1").show();
+            $("#C_size_select").change(function () {
+                $('.C_size_chart').hide();
                 $('#' + $(this).val()).show();
             });
 

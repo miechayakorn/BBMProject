@@ -81,11 +81,11 @@
                     data: ['${remaining}', '${sold}'],
                     backgroundColor: [
                         '#F17872',
-                        '#F3C758',
+                        '#00A572',
                     ],
                     borderColor: [
                         '#F17872',
-                        '#F3C758',
+                        '#00A572',
                     ],
                 }]
         },
