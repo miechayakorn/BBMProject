@@ -42,7 +42,7 @@
                     <div class="container">
                         <div class="media-container-row">
                             <div class="col-md-8 align-center">
-                                <div style="width: 30">
+                                <div style="width: 30; margin-top: 10px;">
                                     <canvas id="myChart"> </canvas>
                                 </div>
                             </div>
