@@ -302,7 +302,7 @@
                                 <!--Size dropdown content-->
                                 <div id="C_option1" class="C_size_chart">
                                     <br>
-                                    <img src="assets/images/B/B.jpg" width="100%" alt="Type B">
+                                    <img src="assets/images/C/C.jpg" width="100%" alt="Type B">
                                 </div>
                                 <div id="C_option2" class="C_size_chart">
                                     <div class="mbr-figure">
