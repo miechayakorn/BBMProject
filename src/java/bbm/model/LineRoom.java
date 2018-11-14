@@ -52,7 +52,7 @@ public class LineRoom {
         this.quantity = quantity;
     }
 
-    public double totalPrice() {
+    public double getTotalPrice() {
         return this.salePrice * this.quantity;
     }
 

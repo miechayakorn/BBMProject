@@ -7,7 +7,11 @@ package bbm.model;
 
 import bbm.jpa.model.Room;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import static java.util.Collections.list;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import static jdk.nashorn.internal.objects.NativeArray.map;
 
@@ -35,14 +39,31 @@ public class BigCart implements Serializable {
 
     public void remove(Integer productCode) {
         this.remove(productCode);
-
     }
 
-    public boolean remove(Room r) {
+    public void remove(Room r) {
         cart.remove(r.getRoomnumber());
-        return true;
     }
     
+    public double getTotalPrice(){
+        double sumPrice = 0;
+        Collection <LineRoom> lineroom = cart.values();
+        for (LineRoom lineRoom : lineroom) {
+            sumPrice += lineRoom.getTotalPrice();
+        }
+        return sumPrice;
+    }
     
-
+    public int getQuantity(){
+        int sum = 0;
+        Collection <LineRoom> lineroom = cart.values();
+        for (LineRoom lineRoom : lineroom) {
+            sum += lineRoom.getQuantity();
+        }
+        return sum;
+    }
+    
+    public List getLineRoom(){
+        return new ArrayList(cart.values());
+    }
 }
