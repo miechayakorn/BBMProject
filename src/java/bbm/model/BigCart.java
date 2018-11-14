@@ -17,17 +17,32 @@ import static jdk.nashorn.internal.objects.NativeArray.map;
  */
 public class BigCart implements Serializable {
 
-    private Map<String, LineRoom> cart;
+    private Map<Integer, LineRoom> cart;
 
     public BigCart() {
         cart = new HashMap();
     }
 
-    public void add(Room r) {
+    public boolean add(Room r) {
         LineRoom line = cart.get(r.getRoomnumber());
-        if (r.getAvailable().equals('u')) {
-            cart.
+        if (r.getAvailable() == 0) {
+            cart.put(r.getRoomnumber(), new LineRoom(r));
+            return true;
+        } else {
+            return false;
         }
     }
+
+    public void remove(Integer productCode) {
+        this.remove(productCode);
+
+    }
+
+    public boolean remove(Room r) {
+        cart.remove(r.getRoomnumber());
+        return true;
+    }
+    
+    
 
 }

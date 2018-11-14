@@ -24,7 +24,7 @@ import javax.transaction.UserTransaction;
 
 /**
  *
- * @author Student
+ * @author Kridtakom
  */
 public class CustomerJpaController implements Serializable {
 
@@ -271,16 +271,6 @@ public class CustomerJpaController implements Serializable {
         EntityManager em = getEntityManager();
         try {
             return em.find(Customer.class, id);
-        } finally {
-            em.close();
-        }
-    }
-    public Customer findByEmail(String email) {
-        EntityManager em = getEntityManager();
-        try {
-            Query query =em.createNamedQuery("Customer.findByEmail");
-            query.setParameter("email", email);
-            return (Customer) query.getSingleResult();
         } finally {
             em.close();
         }

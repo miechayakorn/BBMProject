@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Student
+ * @author Kridtakom
  */
 @Entity
 @Table(name = "CUSTOMER")
@@ -38,9 +38,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Customer.findBySurname", query = "SELECT c FROM Customer c WHERE c.surname = :surname")
     , @NamedQuery(name = "Customer.findByPhone", query = "SELECT c FROM Customer c WHERE c.phone = :phone")
     , @NamedQuery(name = "Customer.findByIdcard", query = "SELECT c FROM Customer c WHERE c.idcard = :idcard")
-    , @NamedQuery(name = "Customer.findByAddress", query = "SELECT c FROM Customer c WHERE c.address = :address")
-    , @NamedQuery(name = "Customer.findByEmail", query = "SELECT c FROM Customer c WHERE c.email.email = :email")
-    })
+    , @NamedQuery(name = "Customer.findByAddress", query = "SELECT c FROM Customer c WHERE c.address = :address")})
 public class Customer implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -92,14 +90,6 @@ public class Customer implements Serializable {
 
     public Customer(Integer customerid, String name, String surname, String phone, String idcard, String address) {
         this.customerid = customerid;
-        this.name = name;
-        this.surname = surname;
-        this.phone = phone;
-        this.idcard = idcard;
-        this.address = address;
-    }
-    
-    public Customer(String name, String surname, String phone, String idcard, String address) {
         this.name = name;
         this.surname = surname;
         this.phone = phone;

@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Student
+ * @author Kridtakom
  */
 @Entity
 @Table(name = "ROOM")
@@ -34,10 +34,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Room.findAll", query = "SELECT r FROM Room r")
     , @NamedQuery(name = "Room.findByRoomnumber", query = "SELECT r FROM Room r WHERE r.roomnumber = :roomnumber")
     , @NamedQuery(name = "Room.findByFloor", query = "SELECT r FROM Room r WHERE r.floor = :floor")
-    , @NamedQuery(name = "Room.findBySize", query = "SELECT r FROM Room r WHERE r.size = :size")
-    , @NamedQuery(name = "Room.findByType", query = "SELECT r FROM Room r WHERE r.type = :type")
+    , @NamedQuery(name = "Room.findBySizeroom", query = "SELECT r FROM Room r WHERE r.sizeroom = :sizeroom")
+    , @NamedQuery(name = "Room.findByTyperoom", query = "SELECT r FROM Room r WHERE r.typeroom = :typeroom")
     , @NamedQuery(name = "Room.findByAvailable", query = "SELECT r FROM Room r WHERE r.available = :available")
-    , @NamedQuery(name = "Room.searchStatus", query = "SELECT r.available FROM Room r")})
+    , @NamedQuery(name = "Room.findByBedroom", query = "SELECT r FROM Room r WHERE r.bedroom = :bedroom")
+    , @NamedQuery(name = "Room.findByToilet", query = "SELECT r FROM Room r WHERE r.toilet = :toilet")
+    , @NamedQuery(name = "Room.findByPrice", query = "SELECT r FROM Room r WHERE r.price = :price")})
 public class Room implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -50,13 +52,32 @@ public class Room implements Serializable {
     @NotNull
     @Column(name = "FLOOR")
     private int floor;
-    @Size(max = 100)
-    @Column(name = "SIZE")
-    private String size;
-    @Column(name = "TYPE")
-    private Character type;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 100)
+    @Column(name = "SIZEROOM")
+    private String sizeroom;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 1)
+    @Column(name = "TYPEROOM")
+    private String typeroom;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "AVAILABLE")
-    private Character available;
+    private int available;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "BEDROOM")
+    private int bedroom;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "TOILET")
+    private int toilet;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "PRICE")
+    private double price;
     @JoinColumn(name = "CUSTOMERID", referencedColumnName = "CUSTOMERID")
     @ManyToOne
     private Customer customerid;
@@ -70,9 +91,15 @@ public class Room implements Serializable {
         this.roomnumber = roomnumber;
     }
 
-    public Room(Integer roomnumber, int floor) {
+    public Room(Integer roomnumber, int floor, String sizeroom, String typeroom, int available, int bedroom, int toilet, double price) {
         this.roomnumber = roomnumber;
         this.floor = floor;
+        this.sizeroom = sizeroom;
+        this.typeroom = typeroom;
+        this.available = available;
+        this.bedroom = bedroom;
+        this.toilet = toilet;
+        this.price = price;
     }
 
     public Integer getRoomnumber() {
@@ -91,28 +118,52 @@ public class Room implements Serializable {
         this.floor = floor;
     }
 
-    public String getSize() {
-        return size;
+    public String getSizeroom() {
+        return sizeroom;
     }
 
-    public void setSize(String size) {
-        this.size = size;
+    public void setSizeroom(String sizeroom) {
+        this.sizeroom = sizeroom;
     }
 
-    public Character getType() {
-        return type;
+    public String getTyperoom() {
+        return typeroom;
     }
 
-    public void setType(Character type) {
-        this.type = type;
+    public void setTyperoom(String typeroom) {
+        this.typeroom = typeroom;
     }
 
-    public Character getAvailable() {
+    public int getAvailable() {
         return available;
     }
 
-    public void setAvailable(Character available) {
+    public void setAvailable(int available) {
         this.available = available;
+    }
+
+    public int getBedroom() {
+        return bedroom;
+    }
+
+    public void setBedroom(int bedroom) {
+        this.bedroom = bedroom;
+    }
+
+    public int getToilet() {
+        return toilet;
+    }
+
+    public void setToilet(int toilet) {
+        this.toilet = toilet;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public Customer getCustomerid() {
@@ -156,5 +207,5 @@ public class Room implements Serializable {
     public String toString() {
         return "bbm.jpa.model.Room[ roomnumber=" + roomnumber + " ]";
     }
-
+    
 }
