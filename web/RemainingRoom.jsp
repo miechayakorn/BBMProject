@@ -79,6 +79,7 @@
             }
 
         </style>
+
     </head>
     <body>
         <jsp:include page="include/Header.jsp"/>
@@ -108,6 +109,30 @@
         </section>
         <section class="cid-r7074fmFzA">
             <div class="container">
+                <div class="row p-4">    
+                    <div class="col-12">
+                        <form action="Search">
+                            <div class="input-group">
+                                <div class="input-group-btn search-panel">
+                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                                        <span id="search_concept">Filter by</span> <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li class="form-control"><a href="#size">Size</a></li>
+                                        <li class="form-control"><a href="#type">Type</a></li>
+                                        <li class="form-control"><a href="#reather_than">Greather than ></a></li>
+                                        <li class="form-control"><a href="#less_than">Less than < </a></li>
+                                    </ul>
+                                </div>
+                                <input type="hidden" name="method" value="all" id="search_param">         
+                                <input type="text" class="form-control" name="value" placeholder="Search term...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-sm" type="submit"><img src="https://png.icons8.com/color/search" width="50%"></button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="seatSelection">
@@ -194,12 +219,12 @@
                     </div>
 
                 </div>
-                
+
             </div>
             <div class="container">
                 <div class="col-12">
                     <center>
-                    <span>Subtotal: CA$</span><span class="txtSubTotal">0.00</span><br /><button id="btnCheckout" name="btnCheckout" class="btn btn-primary"> Check out </button>
+                        <span>Subtotal: CA$</span><span class="txtSubTotal">0.00</span><br /><button id="btnCheckout" name="btnCheckout" class="btn btn-primary"> Check out </button>
                     </center>
                 </div>
             </div>
@@ -354,4 +379,13 @@
                 $('#seatsList li').remove();
             }
     );
+    $(document).ready(function (e) {
+        $('.search-panel .dropdown-menu').find('a').click(function (e) {
+            e.preventDefault();
+            var param = $(this).attr("href").replace("#", "");
+            var concept = $(this).text();
+            $('.search-panel span#search_concept').text(concept);
+            $('.input-group #search_param').val(param);
+        });
+    });
 </script>
