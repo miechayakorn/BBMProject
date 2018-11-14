@@ -106,22 +106,11 @@
                 </a>
             </div>
         </section>
-
-        <div class="seats">
-            <table>
-                <tr>
-
-                </tr>
-            </table>
-            <div class="seatSelection">
-                <p class="seatSection">
-                    Your first
-                    <span class="freeSeats">2</span> seats selected will be Free.<br /> You can add more seats and proceed to check out.
-                </p>
-
-                <table>
-                    <tr>
-                        <td>
+        <section class="cid-r7074fmFzA">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="seatSelection">
                             <div class="seatsChart">
                                 <div class="seatRow">
                                     <div class="seatRowNumber">
@@ -193,44 +182,47 @@
                                     <div id="5_7" role="checkbox" value="28" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">7</div>
                                     <div id="5_8" role="checkbox" value="28" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">8</div>
                                 </div>
-                        </td>
-                        <td>
-                            <div class="seatsReceipt">
-                                <p><strong>Selected Seats: <span class="seatsAmount" />0 </span></strong> <button id="btnClear" class="btn">Clear</button></p>
-                                <ul id="seatsList" class="nav nav-stacked"></ul>
                             </div>
-                        </td>
-                    </tr>
-                </table>
 
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="seatsReceipt">
+                            <p><strong>Selected Seats: <span class="seatsAmount" />0 </span></strong> <button id="btnClear" class="btn">Clear</button></p>
+                            <ul id="seatsList" class="nav nav-stacked"></ul>
+                        </div>
+                    </div>
 
-
+                </div>
+                
             </div>
-        </div>
-
-        <div class="checkout col-lg-offset-6">
-            <span>Subtotal: CA$</span><span class="txtSubTotal">0.00</span><br /><button id="btnCheckout" name="btnCheckout" class="btn btn-primary"> Check out </button>
-        </div>
-    </div>
-
-
-
-
+            <div class="container">
+                <div class="col-12">
+                    <center>
+                    <span>Subtotal: CA$</span><span class="txtSubTotal">0.00</span><br /><button id="btnCheckout" name="btnCheckout" class="btn btn-primary"> Check out </button>
+                    </center>
+                </div>
+            </div>
+        </section>
 
 
 
-    <jsp:include page="include/Footer.jsp"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
-    <script src="assets/web/assets/jquery/jquery.min.js"></script>
-    <script src="assets/popper/popper.min.js"></script>
-    <script src="assets/tether/tether.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/smoothscroll/smooth-scroll.js"></script>
-    <script src="assets/dropdown/js/script.min.js"></script>
-    <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
-    <script src="assets/theme/js/script.js"></script>
-    <script src="assets/formoid/formoid.min.js"></script>
-</body>
+
+
+
+
+        <jsp:include page="include/Footer.jsp"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+        <script src="assets/web/assets/jquery/jquery.min.js"></script>
+        <script src="assets/popper/popper.min.js"></script>
+        <script src="assets/tether/tether.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/smoothscroll/smooth-scroll.js"></script>
+        <script src="assets/dropdown/js/script.min.js"></script>
+        <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+        <script src="assets/theme/js/script.js"></script>
+        <script src="assets/formoid/formoid.min.js"></script>
+    </body>
 </html>
 <script>
     var ctx = document.getElementById("myChart");
