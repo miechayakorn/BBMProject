@@ -48,14 +48,22 @@ public class RemainingRoomServlet extends HttpServlet {
         System.out.println(room);
         int available = 0;
         int notAvailable = 0;
-        for (Room roomLoop : room) {
+        /*for (Room roomLoop : room) {
             if (roomLoop.getAvailable() == 0) {
                 available++;
             }
             if (roomLoop.getAvailable() == 1) {
                 notAvailable++;
             }
-        }
+        }*/
+//        for (int i = 0; i < room.size(); i++) {
+//            if ((room.get(i)).getAvailable() == 0) {
+//                available++;
+//            }
+//            if ((room.get(i)).getAvailable() == 1) {
+//                notAvailable++;
+//            }
+//        }
         
         request.setAttribute("remaining", available);
         request.setAttribute("sold", notAvailable);
