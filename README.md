@@ -47,20 +47,23 @@ FOREIGN KEY (email) REFERENCES account(email));
 create table room (
 roomNumber int primary key,
 floor int not null,
-size varchar(100),
-type char check (type in ('A','B','C')),
+sizeroom varchar(100) not null,
+typeroom varchar(1) check (typeroom in ('A','B','C')) not null,
+available int check (available in (0,1)) not null,
+bedroom int not null,
+toilet int not null,
+price double not null,
 customerId int ,
-available char(1) check (available in ('F' , 'T')),
 FOREIGN KEY (customerId) REFERENCES customer(customerId));
 ```
 
 ```sql
 create table history (
 historyId int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1) primary key,
+roomNumber int not null,
 price int not null,
 purchaseDate timestamp,
 customerId int ,
-roomNumber int not null,
 FOREIGN KEY (customerId) REFERENCES customer(customerId),
 FOREIGN KEY (roomNumber) REFERENCES room(roomNumber));
 ```
