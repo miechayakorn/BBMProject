@@ -27,16 +27,6 @@
         <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
         <link rel="stylesheet" href="assets/mobirise/css/Search.css" type="text/css">
     </head>
-    <style>
-        input[type='number'] {
-            -moz-appearance:textfield;
-        }
-
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-        }
-    </style>
     <body>
         <jsp:include page="include/Header.jsp"/>
         <section class="cid-r7074fmFzB">
@@ -49,25 +39,9 @@
                             <form action="Search">
                             <div class="col-12 col-md-12">
                                 Room Number  : &nbsp;&nbsp;
-                                <div id="search-wrapper">
-                                    <input type="number" name="roomNumber" id="search" placeholder="Search something..." />
-                                    <div id="close-icon"></div>
-                                </div>
+                                Filter by price interval: <b>€ 10</b> <input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/> <b>€ 1000</b>
                             </div><br>
-                            <div class="col-12 col-md-12">
-                                Room Number  : &nbsp;&nbsp;
-                                <div id="search-wrapper">
-                                    <input type="number" name="roomNumber" id="search" placeholder="Search something..." />
-                                    <div id="close-icon"></div>
-                                </div>
-                            </div><br>
-                            <div class="col-12 col-md-12">
-                                Room Number  : &nbsp;&nbsp;
-                                <div id="search-wrapper">
-                                    <input type="number" name="roomNumber" id="search" placeholder="Search something..." />
-                                    <div id="close-icon"></div>
-                                </div>
-                            </div>
+                            
                             </form>
                         </div>
                     </div>
@@ -89,35 +63,9 @@
         <script src="assets/sociallikes/social-likes.js"></script>
         <script src="assets/theme/js/script.js"></script>
         <script src="assets/formoid/formoid.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.2.3/bootstrap-slider.min.js"></script>
+        <script>
+            $("#ex2").slider({});
+        </script>
     </body>
-    <script>
-        'use strict';
-
-        var search = document.getElementById('search'),
-                searchWrapper = document.getElementById('search-wrapper'),
-                closeIcon = document.getElementById('close-icon');
-
-// Input focus
-        search.onfocus = function () {
-            searchWrapper.classList.add('search-expanded');
-            this.addEventListener('transitionend', function () {
-                closeIcon.style.display = 'block';
-            });
-        }
-
-// Input blur
-        search.onblur = function () {
-
-            searchWrapper.classList.remove('search-expanded');
-            closeIcon.classList.add('closing');
-
-            this.addEventListener('transitionend', function () {
-                closeIcon.classList.remove('closing');
-                closeIcon.style.display = 'none';
-            });
-
-        }
-
-
-    </script>
 </html>

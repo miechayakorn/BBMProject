@@ -45,14 +45,14 @@ public class RemainingRoomServlet extends HttpServlet {
         
         RoomJpaController roomJpa = new RoomJpaController(utx, emf);
         List<Room> room = roomJpa.searchRoomStatus();
-        
+        System.out.println(room);
         int available = 0;
         int notAvailable = 0;
         for (Room roomLoop : room) {
-            if (roomLoop.getAvailable() == 'T') {
+            if (roomLoop.getAvailable() == 0) {
                 available++;
             }
-            if (roomLoop.getAvailable() == 'F') {
+            if (roomLoop.getAvailable() == 1) {
                 notAvailable++;
             }
         }

@@ -10,21 +10,17 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.2.3/css/bootstrap-slider.min.css" />
     </head>
     <body>
-        <select id="dynamic_select">
-            <option value="" selected>Filter By Author</option>
-            <option value="https://www.google.com">Google</option>
-            <option value="https://www.youtube.com">YouTube</option>
-            <option value="https://www.bing.com">Bing</option>
-        </select>
+        <br><br>
+        Filter by price interval: <b>€ 10</b> <input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/> <b>€ 1000</b>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.2.3/bootstrap-slider.js"></script>
     </body>
     <script>
-        $(function(){
-      $('#dynamic_select').on('change', function () {
-          var url = $(this).find('option:selected').val(); // get selected value
-          window.location = url; // redirect
-      });
-    });
+
+// Without JQuery
+var slider = new Slider('#ex2', {});
     </script>
 </html>

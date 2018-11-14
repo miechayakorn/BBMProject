@@ -39,7 +39,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Room.findByAvailable", query = "SELECT r FROM Room r WHERE r.available = :available")
     , @NamedQuery(name = "Room.findByBedroom", query = "SELECT r FROM Room r WHERE r.bedroom = :bedroom")
     , @NamedQuery(name = "Room.findByToilet", query = "SELECT r FROM Room r WHERE r.toilet = :toilet")
-    , @NamedQuery(name = "Room.findByPrice", query = "SELECT r FROM Room r WHERE r.price = :price")})
+    , @NamedQuery(name = "Room.findByPrice", query = "SELECT r FROM Room r WHERE r.price = :price")
+    , @NamedQuery(name = "Room.searchStatus", query = "SELECT r.available FROM Room r")})
+
 public class Room implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -207,5 +209,5 @@ public class Room implements Serializable {
     public String toString() {
         return "bbm.jpa.model.Room[ roomnumber=" + roomnumber + " ]";
     }
-    
+
 }
