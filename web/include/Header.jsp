@@ -39,7 +39,7 @@
                     <a class="btn btn-sm btn-primary" href="Login"> Login</a>   
                 </c:if>
                 <a class="btn btn-sm btn-secondary" href="Search"><span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span></a>
-                <a class="btn btn-sm btn-warning p-3" href="#" style="border-radius:12px; "><!--<p style="color: #FFFFFF ; margin-top: 15px ; font-weight:bold;">-->100&nbsp;<img src="assets/images/condo-icon.png" width="30px" /><!--</p>--></a>    
+                <a class="btn btn-sm btn-warning p-3" href="#" style="border-radius:12px; ">100&nbsp;<img src="assets/images/condo-icon.png" width="30px" /></a>    
                         <c:if test="${not empty sessionScope.customer}">
                     <div class="btn-group">
                         <a class="btn btn-sm btn-primary nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="mbri-user mbr-iconfont mbr-iconfont-btn"></span>    Welcome :   ${sessionScope.customer.getName()}</a>
