@@ -252,6 +252,113 @@ public class RoomJpaController implements Serializable {
             em.close();
         }
     }
+    
+    public List<Room> searchByFloor1() {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createNamedQuery("Room.searchByFloor1");
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+    
+    public List<Room> searchByFloor2() {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createNamedQuery("Room.searchByFloor2");
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+    
+    public List<Room> searchByFloor3() {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createNamedQuery("Room.searchByFloor3");
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+    
+    public List<Room> searchByFloor4() {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createNamedQuery("Room.searchByFloor4");
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+    
+    public List<Room> searchByFloor5() {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createNamedQuery("Room.searchByFloor5");
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+    public List<Room> searchByFloor6() {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createNamedQuery("Room.searchByFloor6");
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+    public List<Room> searchByFloor7() {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createNamedQuery("Room.searchByFloor7");
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+    public List<Room> searchByFloor8() {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createNamedQuery("Room.searchByFloor8");
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+    public List<Room> findBySizeRoom(String sizeRoom) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query =em.createNamedQuery("Room.findBySizeroom");
+            query.setParameter("sizeroom", sizeRoom);
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+    public List<Room> findByTypeRoom(String typeRoom) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query =em.createNamedQuery("Room.findByTyperoom");
+            query.setParameter("typeroom", typeRoom);
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+    public List<Room> findByPriceMoreThan(double price) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query =em.createNamedQuery("Room.findByPriceMoreThan");
+            query.setParameter("price", price);
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
 
     public int getRoomCount() {
         EntityManager em = getEntityManager();
