@@ -4,6 +4,7 @@
     Author     : Student
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -114,17 +115,16 @@
                         <form action="Search">
                             <div class="input-group">
                                 <div class="input-group-btn search-panel">
-                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
-                                        <span id="search_concept">Filter by</span> <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li class="form-control"><a href="#size">Size</a></li>
-                                        <li class="form-control"><a href="#type">Type</a></li>
-                                        <li class="form-control"><a href="#reather_than">Greather than ></a></li>
-                                        <li class="form-control"><a href="#less_than">Less than < </a></li>
-                                    </ul>
+
+                                    <select name="search" id="mySearch" class = "btn dropdown-toggle border" >
+                                        <option value="size">Size</option>
+                                        <option value="type">Type</option>
+                                        <option value="more_than">Greather than</option>
+                                        <option value="less_than">Less than</option>
+                                    </select>
                                 </div>
-                                <input type="hidden" name="method" value="all" id="search_param">         
+
+
                                 <input type="text" class="form-control" name="value" placeholder="Search term...">
                                 <span class="input-group-btn">
                                     <button class="btn btn-sm" type="submit"><img src="https://png.icons8.com/color/search" width="50%"></button>
@@ -139,82 +139,86 @@
                             <div class="seatsChart">
                                 <div class="seatRow">
                                     <div class="seatRowNumber">
-                                        Row 1
+                                        Floor 8
                                     </div>
-                                    <div id="1_1" title="" role="checkbox" value="45" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber seatUnavailable">1</div>
-                                    <div id="1_2" role="checkbox" value="45" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">2</div>
-                                    <div id="1_3" role="checkbox" value="45" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">3</div>
-                                    <div id="1_4" role="checkbox" value="45" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber seatUnavailable">4</div>
-                                    <div id="1_5" role="checkbox" value="45" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">5</div>
-                                    <div id="1_6" role="checkbox" value="45" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber  ">6</div>
-                                    <div id="1_7" role="checkbox" value="45" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">7</div>
-                                    <div id="1_8" role="checkbox" value="45" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">8</div>
-
+                                    <c:forEach  items="${floor8List}" var="floor8List" varStatus="vs">
+                                        <div id="8_${vs.count}_${floor8List.roomnumber}" title="" role="checkbox" value="${floor8List.price}" aria-checked="false" focusable="true" tabindex="-1" class="seatNumber ${floor8List.available == 1 ?"seatUnavailable":""}">${floor8List.roomnumber}</div>
+                                    </c:forEach>
 
                                 </div>
                                 <div class="seatRow">
                                     <div class="seatRowNumber">
-                                        Row 2
+                                        Floor 7
                                     </div>
-                                    <div id="2_1" role="checkbox" value="42" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">1</div>
-                                    <div id="2_2" role="checkbox" value="42" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber seatUnavailable">2</div>
-                                    <div id="2_3" role="checkbox" value="42" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">3</div>
-                                    <div id="2_4" role="checkbox" value="42" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">4</div>
-                                    <div id="2_5" role="checkbox" value="42" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">5</div>
-                                    <div id="2_6" role="checkbox" value="42" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber  ">6</div>
-                                    <div id="2_7" role="checkbox" value="42" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">7</div>
-                                    <div id="2_8" role="checkbox" value="42" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber seatUnavailable">8</div>
+                                    <c:forEach  items="${floor7List}" var="floor7List" varStatus="vs">
+                                        <div id="7_${vs.count}_${floor7List.roomnumber}" title="" role="checkbox" value="${floor7List.price}" aria-checked="false" focusable="true" tabindex="-1" class="seatNumber ${floor7List.available == 1 ?"seatUnavailable":""}">${floor7List.roomnumber}</div>
+                                    </c:forEach>
 
                                 </div>
                                 <div class="seatRow">
                                     <div class="seatRowNumber">
-                                        Row 3
+                                        Floor 6
                                     </div>
-                                    <div id="3_1" role="checkbox" value="38" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber seatUnavailable">1</div>
-                                    <div id="3_2" role="checkbox" value="38" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">2</div>
-                                    <div id="3_3" role="checkbox" value="38" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber seatUnavailable">3</div>
-                                    <div id="3_4" role="checkbox" value="38" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">4</div>
-                                    <div id="3_5" role="checkbox" value="38" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber seatUnavailable">5</div>
-                                    <div id="3_6" role="checkbox" value="38" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber  ">6</div>
-                                    <div id="3_7" role="checkbox" value="38" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">7</div>
-                                    <div id="3_8" role="checkbox" value="38" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">8</div>
+                                    <c:forEach  items="${floor6List}" var="floor6List" varStatus="vs">
+                                        <div id="6_${vs.count}_${floor6List.roomnumber}" title="" role="checkbox" value="${floor6List.price}" aria-checked="false" focusable="true" tabindex="-1" class="seatNumber ${floor6List.available == 1 ?"seatUnavailable":""}">${floor6List.roomnumber}</div>
+                                    </c:forEach>
 
                                 </div>
                                 <div class="seatRow">
                                     <div class="seatRowNumber">
-                                        Row 4
+                                        Floor 5
                                     </div>
-                                    <div id="4_1" role="checkbox" value="30" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">1</div>
-                                    <div id="4_2" role="checkbox" value="30" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">2</div>
-                                    <div id="4_3" role="checkbox" value="30" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">3</div>
-                                    <div id="4_4" role="checkbox" value="30" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">4</div>
-                                    <div id="4_5" role="checkbox" value="30" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">5</div>
-                                    <div id="4_6" role="checkbox" value="30" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber seatUnavailable ">6</div>
-                                    <div id="4_7" role="checkbox" value="30" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">7</div>
-                                    <div id="4_8" role="checkbox" value="30" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">8</div>
+                                    <c:forEach  items="${floor5List}" var="floor5List" varStatus="vs">
+                                        <div id="5_${vs.count}_${floor5List.roomnumber}" title="" role="checkbox" value="${floor5List.price}" aria-checked="false" focusable="true" tabindex="-1" class="seatNumber ${floor5List.available == 1 ?"seatUnavailable":""}">${floor5List.roomnumber}</div>
+                                    </c:forEach>
 
                                 </div>
                                 <div class="seatRow">
                                     <div class="seatRowNumber">
-                                        Row 5
+                                        Floor 4
                                     </div>
-                                    <div id="5_1" role="checkbox" value="28" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber seatUnavailable">1</div>
-                                    <div id="5_2" role="checkbox" value="28" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">2</div>
-                                    <div id="5_3" role="checkbox" value="28" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">3</div>
-                                    <div id="5_4" role="checkbox" value="28" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber seatUnavailable">4</div>
-                                    <div id="5_5" role="checkbox" value="28" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">5</div>
-                                    <div id="5_6" role="checkbox" value="28" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber seatUnavailable ">6</div>
-                                    <div id="5_7" role="checkbox" value="28" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">7</div>
-                                    <div id="5_8" role="checkbox" value="28" aria-checked="false" focusable="true" tabindex="-1" class=" seatNumber ">8</div>
+                                    <c:forEach  items="${floor4List}" var="floor4List" varStatus="vs">
+                                        <div id="4_${vs.count}_${floor4List.roomnumber}" title="" role="checkbox" value="${floor4List.price}" aria-checked="false" focusable="true" tabindex="-1" class="seatNumber ${floor4List.available == 1 ?"seatUnavailable":""}">${floor4List.roomnumber}</div>
+                                    </c:forEach>
+
+                                </div>
+                                <div class="seatRow">
+                                    <div class="seatRowNumber">
+                                        Floor 3
+                                    </div>
+                                    <c:forEach  items="${floor3List}" var="floor3List" varStatus="vs">
+                                        <div id="3_${vs.count}_${floor3List.roomnumber}" title="" role="checkbox" value="${floor3List.price}" aria-checked="false" focusable="true" tabindex="-1" class="seatNumber ${floor3List.available == 1 ?"seatUnavailable":""}">${floor3List.roomnumber}</div>
+                                    </c:forEach>
+
+                                </div>
+                                <div class="seatRow">
+                                    <div class="seatRowNumber">
+                                        Floor 2
+                                    </div>
+                                    <c:forEach  items="${floor2List}" var="floor2List" varStatus="vs">
+                                        <div id="2_${vs.count}_${floor2List.roomnumber}" title="" role="checkbox" value="${floor2List.price}" aria-checked="false" focusable="true" tabindex="-1" class="seatNumber ${floor2List.available == 1 ?"seatUnavailable":""}">${floor2List.roomnumber}</div>
+                                    </c:forEach>
+
+                                </div>
+                                <div class="seatRow">
+                                    <div class="seatRowNumber">
+                                        Floor 1
+                                    </div>
+                                    <c:forEach  items="${floor1List}" var="floor1List" varStatus="vs">
+                                        <div id="1_${vs.count}_${floor1List.roomnumber}" title="" role="checkbox" value="${floor1List.price}" aria-checked="false" focusable="true" tabindex="-1" class="seatNumber ${floor1List.available == 1 ?"seatUnavailable":""}">${floor1List.roomnumber}</div>
+                                    </c:forEach>
+
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="seatsReceipt">
                             <p><strong>Selected Seats: <span class="seatsAmount" />0 </span></strong> <button id="btnClear" class="btn">Clear</button></p>
-                            <ul id="seatsList" class="nav nav-stacked"></ul>
+                            <form action="RemainingRoom" method="get">
+                                <ul id="seatsList" class="nav nav-stacked"></ul>
+                                <span>Total Price : </span><span class="txtSubTotal">0.00</span><br /><input id="btnCheckout" type="submit" name="btnCheckout" class="btn btn-primary" value="Check out">
+                            </form>
                         </div>
                     </div>
 
@@ -224,7 +228,8 @@
             <div class="container">
                 <div class="col-12">
                     <center>
-                        <span>Subtotal: CA$</span><span class="txtSubTotal">0.00</span><br /><button id="btnCheckout" name="btnCheckout" class="btn btn-primary"> Check out </button>
+
+
                     </center>
                 </div>
             </div>
@@ -299,7 +304,7 @@
                         var thisId = $(this).attr('id');
                         var id = thisId.split("_");
                         var price = $(this).attr('value');
-                        var seatDetails = "Row: " + id[0] + " Seat:" + id[1] + " Price:CA$:" + price;
+                        var seatDetails = " ROOMNUMBER:" + id[2] + " Price:Baht:" + price;
 
 
                         var freeSeats = parseInt($('.freeSeats').first().text());
@@ -311,7 +316,7 @@
                         }
 
                         // Adding this seat to the list
-                        var seatDetails = "Row: " + id[0] + " Seat:" + id[1] + " Price:CA$:" + price;
+                        var seatDetails = '<input type="hidden"  name="room" value=' + id[2] + '>' + " ROOMNUMBER:" + id[2] + " Price:Baht:" + price;
                         $("#seatsList").append('<li value=' + price + ' class=' + thisId + '>' + seatDetails + "  " + "<button id='remove:" + thisId + "'+ class='btn btn-default btn-sm removeSeat' value='" + price + "'><strong>X</strong></button></li>");
                         $(this).addClass("seatSelected");
 
@@ -339,7 +344,7 @@
                     var id = $(this).attr('id');
                     var id = id.split("_");
                     var price = $(this).attr('value');
-                    var tooltip = "Row: " + id[0] + " Seat:" + id[1] + " Price:CA$:" + price;
+                    var tooltip = "FLOOR: " + id[0] + " ROOM:" + id[1] + " Price:Baht:" + price;
 
                     $(this).prop('title', tooltip);
                 } else

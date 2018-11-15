@@ -402,6 +402,7 @@
                 border-radius: 12px;
                 transition: all .3s;
             }
+
         </style>
 
     </head>
@@ -409,11 +410,6 @@
         <jsp:include page="include/Header.jsp"/>
 
         <section class="header11 cid-r7MmAIxkys" id="header11-1a">
-
-            <!-- Block parameters controls (Blue "Gear" panel) -->
-
-            <!-- End block parameters -->
-
 
             <div class="container align-left">
                 <div class="media-container-column mbr-white col-md-12">
@@ -426,23 +422,23 @@
 
 
         </section>
-        <div class="wrapper">
 
+        <div class="wrapper">
 
             <div class="profile-card js-profile-card">
                 <div class="profile-card__img">
-                    <img src="${img}" alt="profile card">
+                    <img src="user.png"<!--${img}--> alt="profile card">
                 </div>
 
                 <div class="profile-card__cnt js-profile-cnt">
-                    <div class="profile-card__name">${name}name  surname${surname}</div>
-                    <div class="profile-card__txt">IDCARD${idcard}</div>
+                    <div class="profile-card__name">${sessionScope.customer.getName()} ${sessionScope.customer.getSurname()}</div>
+                    <div class="profile-card__txt">IDCARD ${sessionScope.customer.getIdcard()}</div>
                     <div class="profile-card-loc">
                         <div class="col-2">
                             Email: 
                         </div> 
                         <div class="col-10">
-                            <input type="text" class="form-control" value="${email}"><br>
+                            <input type="text" class="form-control" placeholder ="${sessionScope.customer.getEmail().getEmail()}" p><br>
                         </div> 
                     </div>
                     <div class="profile-card-loc">
@@ -450,7 +446,7 @@
                             Phone:  
                         </div> 
                         <div class="col-10">
-                            <input type="text" class="form-control" value="${phone}"><br>
+                            <input type="text" class="form-control" placeholder ="${sessionScope.customer.getPhone()}"><br>
                         </div> 
                     </div>
                     <div class="profile-card-loc">
@@ -458,7 +454,7 @@
                             Address:  
                         </div> 
                         <div class="col-10">
-                            <textarea type="text" class="form-control" name="address" rows="4">${address}</textarea>
+                            <textarea type="text" class="form-control" name="address" rows="4">${sessionScope.customer.getAddress()}</textarea>
                         </div> 
                     </div>
 
@@ -491,6 +487,8 @@
             </div>
 
         </div>
+
+
 
 
 

@@ -5,19 +5,29 @@
  */
 package bbm.servlet;
 
+import bbm.jpa.model.Room;
+import bbm.jpa.model.controller.RoomJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.annotation.Resource;
+import javax.persistence.Entity;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.transaction.UserTransaction;
 
 /**
  *
  * @author Acer_E5
  */
 public class SearchServlet extends HttpServlet {
-
+    @Resource UserTransaction utx;
+    @PersistenceUnit(unitName = "BBMWebAppPU") EntityManagerFactory emf;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -29,6 +39,55 @@ public class SearchServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String search =request.getParameter("search");
+        String value =request.getParameter("value");
+        HttpSession session = request.getSession(true);
+        
+        
+        switch (search){
+            case "size" : 
+                if(value != null ){
+                    RoomJpaController roomJpaCtrl = new RoomJpaController(utx, emf);
+                    value = value+"Sq.M";
+                    List<Room> sizeRoom = roomJpaCtrl.findBySizeRoom(value);
+                    for (Room room : sizeRoom) {
+                        System.out.println(room.getRoomnumber());
+                    }
+                    request.setAttribute("sizeRoom", sizeRoom);
+                    request.getRequestDispatcher("/#").forward(request, response);
+                    return;
+                } 
+                break ;
+            case "type" :
+                if (value != null && value.length()<2) {
+                    RoomJpaController roomJpaCtrl = new RoomJpaController(utx, emf);
+                    value = value.toUpperCase();
+                    List<Room> typeRoom = roomJpaCtrl.findByTypeRoom(value);
+                    for (Room room : typeRoom) {
+                        System.out.println(room.getRoomnumber()+"  "+room.getTyperoom());
+                    }
+                    request.setAttribute("typeRoom", typeRoom);
+                    request.getRequestDispatcher("/#").forward(request, response);
+                    return;
+                }
+                break ;
+            case "rather_than" :
+                double price = Double.parseDouble(value);
+                //System.out.println("---------------------------------------");
+                if (price >0 ) {
+                   // System.out.println("2505200");
+                    RoomJpaController roomJpaCtrl = new RoomJpaController(utx, emf);
+                    List<Room> priceRoomMore = roomJpaCtrl.findByPriceMoreThan(price);
+                    for (Room room : priceRoomMore) {
+                        System.out.println(room.getRoomnumber()+"  "+room.getTyperoom());
+                    }
+                    request.setAttribute("priceRoomMore", priceRoomMore);
+                    request.getRequestDispatcher("/#").forward(request, response);
+                    return;
+                }
+                break ;
+        };
+        
         
         getServletContext().getRequestDispatcher("/RemainingRoom.jsp").forward(request, response);
     }
