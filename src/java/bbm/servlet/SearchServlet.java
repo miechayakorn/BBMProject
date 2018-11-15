@@ -71,11 +71,9 @@ public class SearchServlet extends HttpServlet {
                     return;
                 }
                 break ;
-            case "rather_than" :
+            case "grather_than" :
                 double price = Double.parseDouble(value);
-                //System.out.println("---------------------------------------");
                 if (price >0 ) {
-                   // System.out.println("2505200");
                     RoomJpaController roomJpaCtrl = new RoomJpaController(utx, emf);
                     List<Room> priceRoomMore = roomJpaCtrl.findByPriceMoreThan(price);
                     for (Room room : priceRoomMore) {

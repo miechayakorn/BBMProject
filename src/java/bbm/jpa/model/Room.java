@@ -40,7 +40,6 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Room.findByBedroom", query = "SELECT r FROM Room r WHERE r.bedroom = :bedroom")
     , @NamedQuery(name = "Room.findByToilet", query = "SELECT r FROM Room r WHERE r.toilet = :toilet")
     , @NamedQuery(name = "Room.findByPrice", query = "SELECT r FROM Room r WHERE r.price = :price")
-    , @NamedQuery(name = "Room.searchStatus", query = "SELECT r.available FROM Room r")
     , @NamedQuery(name = "Room.searchByFloor1", query = "SELECT r FROM Room r WHERE r.floor = 1")
     , @NamedQuery(name = "Room.searchByFloor2", query = "SELECT r FROM Room r WHERE r.floor = 2")
     , @NamedQuery(name = "Room.searchByFloor3", query = "SELECT r FROM Room r WHERE r.floor = 3")

@@ -44,28 +44,23 @@ public class RemainingRoomServlet extends HttpServlet {
             throws ServletException, IOException {
         
         RoomJpaController roomJpa = new RoomJpaController(utx, emf);
-        List<Room> room = roomJpa.searchRoomStatus();
-       // String roomSelect = request.getParameter("room");
-      
-       //System.out.println(room);
+        List<Room> roomAvailable = roomJpa.searchRoomStatus(0);
+        List<Room> roomNotAvailable = roomJpa.searchRoomStatus(1);
         int available = 0;
         int notAvailable = 0;
-        /*for (Room roomLoop : room) {
+        for (Room roomLoop : roomAvailable) {
             if (roomLoop.getAvailable() == 0) {
                 available++;
-            }
+            } 
+        }
+        for (Room roomLoop : roomNotAvailable) {
             if (roomLoop.getAvailable() == 1) {
                 notAvailable++;
-            }
-        }*/
-//        for (int i = 0; i < room.size(); i++) {
-//            if ((room.get(i)).getAvailable() == 0) {
-//                available++;
-//            }
-//            if ((room.get(i)).getAvailable() == 1) {
-//                notAvailable++;
-//            }
-//        }
+            } 
+        }
+        request.setAttribute("remaining", available);
+        request.setAttribute("sold", notAvailable);
+        
         List<Room> roomByFloor1 = roomJpa.searchByFloor1();
         List<Room> roomByFloor2 = roomJpa.searchByFloor2();
         List<Room> roomByFloor3 = roomJpa.searchByFloor3();

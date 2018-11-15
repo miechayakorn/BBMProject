@@ -119,7 +119,7 @@
                                     <select name="search" id="mySearch" class = "btn dropdown-toggle border" >
                                         <option value="size">Size</option>
                                         <option value="type">Type</option>
-                                        <option value="more_than">Greather than</option>
+                                        <option value="grather_than">Greather than</option>
                                         <option value="less_than">Less than</option>
                                     </select>
                                 </div>
@@ -134,7 +134,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-12 col-md-8">
                         <div class="seatSelection">
                             <div class="seatsChart">
                                 <div class="seatRow">
@@ -212,27 +212,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-12 col-md-4">
                         <div class="seatsReceipt">
-                            <p><strong>Selected Seats: <span class="seatsAmount" />0 </span></strong> <button id="btnClear" class="btn">Clear</button></p>
+                            <p><strong>Selected Room: <span class="seatsAmount" />0 </span></strong> <button id="btnClear" class="btn">Clear</button></p>
                             <form action="RemainingRoom" method="get">
                                 <ul id="seatsList" class="nav nav-stacked"></ul>
-                                <span>Total Price : </span><span class="txtSubTotal">0.00</span><br /><input id="btnCheckout" type="submit" name="btnCheckout" class="btn btn-primary" value="Check out">
+                                <br>
+                                <p>-------------------------------</p>
+                                <span>Total Price : </span><span class="txtSubTotal">0.00</span>฿<br />
                             </form>
                         </div>
                     </div>
-
                 </div>
-
-            </div>
-            <div class="container">
-                <div class="col-12">
-                    <center>
-
-
-                    </center>
-                </div>
-            </div>
         </section>
 
 
@@ -261,7 +252,7 @@
         data: {
             labels: ["ห้องที่ขายแล้ว", "จำนวนห้องที่เหลือ"],
             datasets: [{
-                    data: ['${remaining}', '${sold}'],
+                    data: ['${sold}', '${remaining}'],
                     backgroundColor: [
                         '#F17872',
                         '#00A572',
@@ -304,7 +295,7 @@
                         var thisId = $(this).attr('id');
                         var id = thisId.split("_");
                         var price = $(this).attr('value');
-                        var seatDetails = " ROOMNUMBER:" + id[2] + " Price:Baht:" + price;
+                        var seatDetails = " ROOMNUMBER:" + id[2] + " Price:" + price +"Baht";
 
 
                         var freeSeats = parseInt($('.freeSeats').first().text());
@@ -316,8 +307,8 @@
                         }
 
                         // Adding this seat to the list
-                        var seatDetails = '<input type="hidden"  name="room" value=' + id[2] + '>' + " ROOMNUMBER:" + id[2] + " Price:Baht:" + price;
-                        $("#seatsList").append('<li value=' + price + ' class=' + thisId + '>' + seatDetails + "  " + "<button id='remove:" + thisId + "'+ class='btn btn-default btn-sm removeSeat' value='" + price + "'><strong>X</strong></button></li>");
+                        var seatDetails = '<input type="hidden"  name="room" value=' + id[2] + '>' + " ROOMNUMBER:" + id[2] + " Price:" + price +' ฿'+ '<br> <input id="btnCheckout" type="submit" class="btn-sm btn-primary" value="Add Room">';
+                        $("#seatsList").append('<form action="RemainingRoom" method="get"><li value=' + price + ' class=' + thisId + '>' + seatDetails + "  " + "<button id='remove:" + thisId + "'+ class='btn btn-default btn-sm removeSeat' value='" + price + "'><strong>X</strong></button></li></form>");
                         $(this).addClass("seatSelected");
 
                         addToCheckout(price);

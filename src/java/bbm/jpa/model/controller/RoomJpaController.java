@@ -243,10 +243,11 @@ public class RoomJpaController implements Serializable {
         }
     }
     
-    public List<Room> searchRoomStatus() {
+    public List<Room> searchRoomStatus(int checkAvailable) {
         EntityManager em = getEntityManager();
         try {
-            Query query = em.createNamedQuery("Room.searchStatus");
+            Query query = em.createNamedQuery("Room.findByAvailable");
+            query.setParameter("available", checkAvailable);
             return query.getResultList();
         } finally {
             em.close();

@@ -427,7 +427,7 @@
 
             <div class="profile-card js-profile-card">
                 <div class="profile-card__img">
-                    <img src="user.png"<!--${img}--> alt="profile card">
+                    <img src="assets/images/user.png"<!--${img}--> alt="profile card">
                 </div>
 
                 <div class="profile-card__cnt js-profile-cnt">
