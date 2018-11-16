@@ -360,6 +360,16 @@ public class RoomJpaController implements Serializable {
             em.close();
         }
     }
+    public List<Room> findByPriceLessThan(double price) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query =em.createNamedQuery("Room.findByPriceLessThan");
+            query.setParameter("price", price);
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
 
     public int getRoomCount() {
         EntityManager em = getEntityManager();

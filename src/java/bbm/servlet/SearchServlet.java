@@ -72,10 +72,10 @@ public class SearchServlet extends HttpServlet {
                 }
                 break ;
             case "grather_than" :
-                double price = Double.parseDouble(value);
-                if (price >0 ) {
+                double priceMore = Double.parseDouble(value);
+                if (priceMore >0 ) {
                     RoomJpaController roomJpaCtrl = new RoomJpaController(utx, emf);
-                    List<Room> priceRoomMore = roomJpaCtrl.findByPriceMoreThan(price);
+                    List<Room> priceRoomMore = roomJpaCtrl.findByPriceMoreThan(priceMore);
                     for (Room room : priceRoomMore) {
                         System.out.println(room.getRoomnumber()+"  "+room.getTyperoom());
                     }
@@ -84,9 +84,22 @@ public class SearchServlet extends HttpServlet {
                     return;
                 }
                 break ;
+            case "less_than" :
+                double priceLess = Double.parseDouble(value);
+                if (priceLess >0 ) {
+                    RoomJpaController roomJpaCtrl = new RoomJpaController(utx, emf);
+                    List<Room> priceRoomLess = roomJpaCtrl.findByPriceLessThan(priceLess);
+                    for (Room priceRoomLes : priceRoomLess) {
+                        System.out.println(priceRoomLes);
+                    }
+                    request.setAttribute("priceRoomLess", priceRoomLess);
+                    request.getRequestDispatcher("/#").forward(request, response);
+                    return;
+                }
+                break ;
+              
         };
-        
-        
+          
         getServletContext().getRequestDispatcher("/RemainingRoom.jsp").forward(request, response);
     }
 

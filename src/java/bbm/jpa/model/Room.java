@@ -48,8 +48,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Room.searchByFloor6", query = "SELECT r FROM Room r WHERE r.floor = 6")
     , @NamedQuery(name = "Room.searchByFloor7", query = "SELECT r FROM Room r WHERE r.floor = 7")
     , @NamedQuery(name = "Room.searchByFloor8", query = "SELECT r FROM Room r WHERE r.floor = 8")
-    , @NamedQuery(name = "Room.findByPriceMoreThan", query = "SELECT r FROM Room r WHERE r.price >= :price")
-    , @NamedQuery(name = "Room.findByPriceLessThan", query = "SELECT r FROM Room r WHERE r.price <= :price")
+    , @NamedQuery(name = "Room.findByPriceMoreThan", query = "SELECT r FROM Room r WHERE r.price > :price")
+    , @NamedQuery(name = "Room.findByPriceLessThan", query = "SELECT r FROM Room r WHERE r.price < :price")
 })
 
 public class Room implements Serializable {

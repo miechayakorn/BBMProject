@@ -52,12 +52,11 @@
                 <table id="example" class="ui celled table" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>History Id</th>
+                            <th>Room Number</th>
+                            <th>Type</th>
+                            <th>Price</th>
+                            <th>Date</th>
                         </tr>
                     </thead>
                     <tbody>
