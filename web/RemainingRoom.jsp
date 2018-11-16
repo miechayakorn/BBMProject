@@ -215,7 +215,7 @@
                     <div class="col-12 col-md-4">
                         <div class="seatsReceipt">
                             <p><strong>Selected Room: <span class="seatsAmount" />0 </span></strong> <button id="btnClear" class="btn">Clear</button></p>
-                            <form action="RemainingRoom" method="get">
+                            <form action="AddRoomToCart" method="post">
                                 <ul id="seatsList" class="nav nav-stacked"></ul>
                                 <br>
                                 <p>-------------------------------</p>
@@ -307,8 +307,8 @@
                         }
 
                         // Adding this seat to the list
-                        var seatDetails = '<input type="hidden"  name="room" value=' + id[2] + '>' + " ROOMNUMBER:" + id[2] + " Price:" + price +' ฿'+ '<br> <input id="btnCheckout" type="submit" class="btn-sm btn-primary" value="Add Room">';
-                        $("#seatsList").append('<form action="RemainingRoom" method="get"><li value=' + price + ' class=' + thisId + '>' + seatDetails + "  " + "<button id='remove:" + thisId + "'+ class='btn btn-default btn-sm removeSeat' value='" + price + "'><strong>X</strong></button></li></form>");
+                        var seatDetails = '<input type="hidden"  name="roomnumber" value=' + id[2] + '>' + " ROOMNUMBER:" + id[2] + " Price:" + price +' ฿'+ '<br> <input id="btnCheckout" type="submit" class="btn-sm btn-primary" value="Add Room">';
+                        $("#seatsList").append('<li value=' + price + ' class=' + thisId + '>' + seatDetails + "  " + "<button id='remove:" + thisId + "'+ class='btn btn-default btn-sm removeSeat' value='" + price + "'><strong>X</strong></button></li>");
                         $(this).addClass("seatSelected");
 
                         addToCheckout(price);
