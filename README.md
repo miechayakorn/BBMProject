@@ -23,6 +23,13 @@
 ***Pass:*** 12345  
 
 ```sql
+DROP TABLE HISTORY;
+DROP TABLE ROOM;
+DROP TABLE CUSTOMER;
+DROP TABLE ACCOUNT;
+```
+
+```sql
 create table account (
 email varchar(40) primary key,
 password varchar(40) not null,
