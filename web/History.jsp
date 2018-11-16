@@ -34,17 +34,21 @@
     <body>
         <jsp:include page="include/Header.jsp"/>
 
+        <section class="engine"><a href="https://mobirise.info/j">website templates</a></section>
         <section class="header11 cid-r7MmAIxkys" id="header11-1a">
             <div class="container align-left" style="margin-bottom: 50px;">
                 <div class="media-container-column mbr-white col-md-12">
-                    <h1 class="mbr-section-title py-3 mbr-fonts-style display-1"><strong >History</strong></h1>
+                    <h1 class="mbr-section-title py-3 mbr-fonts-style display-1"><strong>History - ประวัติการซื้อขาย</strong></h1>
                 </div>
             </div>
+            
+            
+            
             <section class="history" style="padding: 70px; width: 85%;
-                     background-color: rgb(255,255,255,0.59);
+                     background-color: rgb(150,150,150,0.5);
                      margin: auto;
-                     font-family: 'Kanit', sans-serif;
-                     font-size: 15px;">
+                     font-family: 'Athiti', sans-serif;
+                     font-size: 16px;">
                 <table id="example" class="ui celled table" style="width:100%">
                     <thead>
                         <tr>

@@ -63,19 +63,12 @@
         
         <jsp:include page="include/Header.jsp"/>
 
-        <section class="engine"><a href="https://mobirise.info/j">website templates</a></section><section class="header11 cid-r706ZXr5MO" id="header11-o">
-
-            <!-- Block parameters controls (Blue "Gear" panel) -->     
-
-            <!-- End block parameters -->
-
-
+        <section class="engine"><a href="https://mobirise.info/j">website templates</a></section>
+        <section class="header11 cid-r706ZXr5MO" id="header11-o">
             <div class="container align-left">
                 <div class="media-container-column mbr-white col-md-12">
-
-                    <h1 class="mbr-section-title py-3 mbr-fonts-style display-1"><strong>Register - สมัครสมาชิก</strong></h1>
-
-
+                    <h1 class="mbr-section-title py-3 mbr-fonts-style display-1" style="color: #F2F2F2">
+                        <strong>Register - สมัครสมาชิก</strong></h1>
                 </div>
             </div>
 
