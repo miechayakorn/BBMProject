@@ -4,6 +4,7 @@
     Author     : Kridtakom
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -79,11 +80,8 @@
                                         <input type="password" class="form-control px-3" name="password" placeholder="Password" id="phone-header15-12">
                                     </div>
                                 </div>
-                                <c:if test="${message == null}">
-                                    <p style="color: red;">${message}</p>
-                                </c:if>
                                 <a style="color: #fff3cd; font-family: 'Athiti';" href="Recovery">Forget Password</a><br>
-                                <span class="input-group-btn"><button href="" type="submit" class="btn btn-form btn-success display-4"><span class="mobi-mbri mobi-mbri-user-2 mbr-iconfont mbr-iconfont-btn"></span>Login</button></span>
+                                <span class="input-group-btn"><button href="" type="submit" class="btn btn-form btn-success display-4" onclick="InvalidMessage()"><span class="mobi-mbri mobi-mbri-user-2 mbr-iconfont mbr-iconfont-btn"></span>Login</button></span>
                             </form>
                         </div>
                     </div>
@@ -102,7 +100,24 @@
         <script src="assets/smoothscroll/smooth-scroll.js"></script>
         <script src="assets/theme/js/script.js"></script>
         <script src="assets/formoid/formoid.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script>
+                                    $(document).ready(function () {
+                                        InvalidMessage();
+                                    });
+            <c:if test="${message != null}">
+                                    function InvalidMessage() {
+                                        swal({
+                                            title: "Are you sure?",
+                                            text: "Once deleted, you will not be able to recover this imaginary file!",
+                                            icon: "warning",
+                                            buttons: true,
+                                            dangerMode: true,
+                                        });
+                                    }
+            </c:if>
 
+        </script>
 
     </body>
 </html>
