@@ -1,16 +1,24 @@
-# BBMWebApp
+# BBMProject - Condominium
 
 - Link: [http://localhost:8080/BBMProject/](http://localhost:8080/BBMProject/)
 - Board: [https://app.gitkraken.com/glo/board/W69Ml4WGZA4AV_pa](https://app.gitkraken.com/glo/board/W69Ml4WGZA4AV_pa)
 
+## Sitemap
 /index หน้าแรก  
 /ErrorInfo.jsp หน้า 404 - FileNotFound  
 /Login หน้าLogin  
 /Register หน้าสมัครสมาชิก  
 /Activate? หน้าactivatecodeจากemail  
 /Recovery หน้ากู้รหัสผ่าน  
-/Shoping หน้าซื้อของ  
-/Item?id=12 แสดงรายละเอียดข้อมูลสินค้าidนั้นๆ  
+/Room รายละเอียดห้อง  
+/RemainingRoom จำนวนห้องที่เหลืออยู่  
+/Search? ค้นหาตาม Size Type Greather_than Less_than  
+/ShowCart แสดง Room ที่ Add  
+/Item?id=12 แสดงรายละเอียดข้อมูลRoom นั้นๆ  
+/Checkout ชำระเงิน  
+/MyAccount แสดงรายละเอียดข้อมูลของบัญชี  
+/History ประวัติการซื้อห้อง  
+/Logout ออกจากระบบ  
 
 ## DB Connection
 
@@ -19,7 +27,7 @@
 ***Password:*** bbm  
 
 ## Run sql - Register
-***email:*** admin@mail.com  
+***email:*** bbm@mail.com  
 ***Pass:*** 12345  
 
 ```sql
@@ -73,6 +81,13 @@ purchaseDate timestamp,
 customerId int ,
 FOREIGN KEY (customerId) REFERENCES customer(customerId),
 FOREIGN KEY (roomNumber) REFERENCES room(roomNumber));
+```
+
+```sql
+INSERT INTO BBM.ACCOUNT (EMAIL, PASSWORD, REGISTERDATE, ACTIVATEKEY, ACTIVATEDATE) 
+	VALUES ('bbm@mail.com', '827ccbeea8a706c4c34a16891f84e7b', '2018-11-17 11:12:50.216', '339c60505bb8488', '2018-11-17 11:13:04.48');
+INSERT INTO BBM.CUSTOMER ("NAME", SURNAME, PHONE, IDCARD, ADDRESS, EMAIL) 
+	VALUES ('BBM', 'Project', '0812345678', '0123123456789', 'บริษัท บีบีเอม คอนโดมิเนียม จำกัด (มหาชน) 126 ถนนประชาอุทิศ แขวงบางมด เขตทุ่งครุ กรุงเทพมหานคร 10140', 'bbm@mail.com')
 ```
 
 ```sql
@@ -149,9 +164,4 @@ font-family: 'Athiti', sans-serif;
 
 MAIN COLOR
 #161925 #272838 #23395b #1f487e #3e6990
-
-
-
-
-GOOGLE MAPS API
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3877.1075395961643!2d100.49168871485426!3d13.651221803294094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2a251bb6b0cf1%3A0xf656e94ff13324ad!2z4Lih4Lir4Liy4Lin4Li04LiX4Lii4Liy4Lil4Lix4Lii4LmA4LiX4LiE4LmC4LiZ4LmC4Lil4Lii4Li14Lie4Lij4Liw4LiI4Lit4Lih4LmA4LiB4Lil4LmJ4Liy4LiY4LiZ4Lia4Li44Lij4Li1!5e0!3m2!1sth!2sth!4v1541069121306" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+```
