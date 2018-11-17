@@ -5,19 +5,30 @@
  */
 package bbm.servlet;
 
+import bbm.jpa.model.Customer;
+import bbm.jpa.model.controller.CustomerJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.annotation.Resource;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.transaction.UserTransaction;
 
 /**
  *
- * @author INT303
+ * @author Acer_E5
  */
-public class PaymentServlet extends HttpServlet {
+public class CheckoutServlet extends HttpServlet {
 
+    @Resource
+    UserTransaction utx;
+    @PersistenceUnit(unitName = "BBMWebAppPU")
+    EntityManagerFactory emf;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -29,19 +40,29 @@ public class PaymentServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet PaymentServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet PaymentServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String[] roomnumber = request.getParameterValues("roomnumber");
+        HttpSession session = request.getSession(false);
+        
+        if (session != null) {
+            Customer custSession = (Customer) session.getAttribute("customer");
+
+            if (custSession != null) {
+                CustomerJpaController customerJpaCtrl = new CustomerJpaController(utx, emf);
+                Customer customer = customerJpaCtrl.findCustomer(custSession.getCustomerid());
+                if (customer != null) {
+                    if (roomnumber != null) {
+                        for (int i = 0; i < roomnumber.length; i++) {
+                            System.out.println(roomnumber[i]);
+                        }
+                    }
+                    
+                    
+                    
+                    getServletContext().getRequestDispatcher("/Checkout.jsp").forward(request, response);
+                }
+            }
         }
+        response.sendRedirect("Login");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

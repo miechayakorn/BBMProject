@@ -49,8 +49,8 @@
         <servlet-class>bbm.servlet.ShowCartServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PaymentServlet</servlet-name>
-        <servlet-class>bbm.servlet.PaymentServlet</servlet-class>
+        <servlet-name>CheckoutServlet</servlet-name>
+        <servlet-class>bbm.servlet.CheckoutServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -101,8 +101,8 @@
         <url-pattern>/ShowCart</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PaymentServlet</servlet-name>
-        <url-pattern>/Payment</url-pattern>
+        <servlet-name>CheckoutServlet</servlet-name>
+        <url-pattern>/Checkout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
