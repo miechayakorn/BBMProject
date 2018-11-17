@@ -4,21 +4,20 @@
 - Board: [https://app.gitkraken.com/glo/board/W69Ml4WGZA4AV_pa](https://app.gitkraken.com/glo/board/W69Ml4WGZA4AV_pa)
 
 ## Sitemap
-/index หน้าแรก  
-/ErrorInfo.jsp หน้า 404 - FileNotFound  
-/Login หน้าLogin  
-/Register หน้าสมัครสมาชิก  
-/Activate? หน้าactivatecodeจากemail  
-/Recovery หน้ากู้รหัสผ่าน  
-/Room รายละเอียดห้อง  
-/RemainingRoom จำนวนห้องที่เหลืออยู่  
-/Search? ค้นหาตาม Size Type Greather_than Less_than  
-/ShowCart แสดง Room ที่ Add  
-/Item?id=12 แสดงรายละเอียดข้อมูลRoom นั้นๆ  
-/Checkout ชำระเงิน  
-/MyAccount แสดงรายละเอียดข้อมูลของบัญชี  
-/History ประวัติการซื้อห้อง  
-/Logout ออกจากระบบ  
+**/index** หน้าแรก  
+**/ErrorInfo.jsp** หน้า 404 - FileNotFound  
+**/Login** หน้าLogin  
+**/Register** หน้าสมัครสมาชิก  
+**/Activate?** หน้าactivatecodeจากemail  
+**/Recovery** หน้ากู้รหัสผ่าน  
+**/Room** รายละเอียดห้อง  
+**/RemainingRoom** จำนวนห้องที่เหลืออยู่  
+**/Search?** ค้นหาตาม Size Type Greather_than Less_than  
+**/ShowCart** แสดง Room ที่ Add  
+**/Checkout** ชำระเงิน  
+**/MyAccount** แสดงรายละเอียดข้อมูลของบัญชี  
+**/History** ประวัติการซื้อห้อง  
+**/Logout** ออกจากระบบ  
 
 ## DB Connection
 
@@ -27,8 +26,8 @@
 ***Password:*** bbm  
 
 ## Run sql - Register
-***email:*** bbm@mail.com  
-***Pass:*** 12345  
+**Email:** bbm@mail.com  
+**Pass:** 12345  
 
 ```sql
 DROP TABLE HISTORY;
@@ -87,7 +86,7 @@ FOREIGN KEY (roomNumber) REFERENCES room(roomNumber));
 INSERT INTO BBM.ACCOUNT (EMAIL, PASSWORD, REGISTERDATE, ACTIVATEKEY, ACTIVATEDATE) 
 	VALUES ('bbm@mail.com', '827ccbeea8a706c4c34a16891f84e7b', '2018-11-17 11:12:50.216', '339c60505bb8488', '2018-11-17 11:13:04.48');
 INSERT INTO BBM.CUSTOMER ("NAME", SURNAME, PHONE, IDCARD, ADDRESS, EMAIL) 
-	VALUES ('BBM', 'Project', '0812345678', '0123123456789', 'บริษัท บีบีเอม คอนโดมิเนียม จำกัด (มหาชน) 126 ถนนประชาอุทิศ แขวงบางมด เขตทุ่งครุ กรุงเทพมหานคร 10140', 'bbm@mail.com')
+	VALUES ('BBM', 'Project', '0812345678', '0123123456789', 'บริษัท บีบีเอม คอนโดมิเนียม จำกัด (มหาชน) 126 ถนนประชาอุทิศ แขวงบางมด เขตทุ่งครุ กรุงเทพมหานคร 10140', 'bbm@mail.com');
 ```
 
 ```sql
