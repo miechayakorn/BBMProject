@@ -147,7 +147,7 @@
                         <div class="content-box">
                             <div class="mbr-section-text">
                                 <p class="mbr-text pt-3 mbr-light mbr-fonts-style display-5">
-                                    Floor area 23.80-24.30 Sq.M. <a class="btn btn-sm btn-secondary" href="RemainingRoom?type=A">Search (Type A)</a>
+                                    Floor area 23.80-24.30 Sq.M. <a class="btn btn-sm btn-secondary" href="Search?search=type&value=A#selectRoom">Search (Type A)</a>
                                 </p>
                             </div>
                             <div class="container">
@@ -218,7 +218,7 @@
                         <div class="content-box">
                             <div class="mbr-section-text">
                                 <p class="mbr-text mb-5 pt-3 mbr-light mbr-fonts-style display-5">
-                                    Floor area 26.20-27.10 Sq.M. <a class="btn btn-sm btn-secondary" href="RemainingRoom?type=B">Search (Type B)</a>
+                                    Floor area 26.20-27.10 Sq.M. <a class="btn btn-sm btn-secondary" href="Search?search=type&value=B#selectRoom">Search (Type B)</a>
                                 </p>
                             </div>
                             <div class="container">
@@ -289,7 +289,7 @@
                         <div class="content-box">
                             <div class="mbr-section-text">
                                 <p class="mbr-text mb-5 pt-3 mbr-light mbr-fonts-style display-5">
-                                    Floor area 34.30-35.00 Sq.M. <a class="btn btn-sm btn-secondary" href="RemainingRoom?type=C">Search (Type C)</a>
+                                    Floor area 34.30-35.00 Sq.M. <a class="btn btn-sm btn-secondary" href="Search?search=type&value=C#selectRoom">Search (Type C)</a>
                                 </p>
                             </div>
                             <div class="container">

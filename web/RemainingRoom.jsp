@@ -108,7 +108,7 @@
                 </a>
             </div>
         </section>
-        <section class="cid-r7074fmFzA">
+        <section class="cid-r7074fmFzA" id="selectRoom">
             <div class="container">
                 <div class="row p-4">    
                     <div class="col-12">
@@ -117,10 +117,10 @@
                                 <div class="input-group-btn search-panel">
 
                                     <select name="search" id="mySearch" class = "btn dropdown-toggle border" >
-                                        <option value="size">Size</option>
-                                        <option value="type">Type</option>
-                                        <option value="grather_than">Greather than</option>
-                                        <option value="less_than">Less than</option>
+                                        <option value="size">Size (Sq.M.)</option>
+                                        <option value="type">Type ( A | B | C )</option>
+                                        <option value="grather_than">Greather than (฿)</option>
+                                        <option value="less_than">Less than (฿)</option>
                                     </select>
                                 </div>
 
@@ -134,7 +134,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-md-8">
+                    <div class="col-12 col-md-7">
                         <div class="seatSelection">
                             <div class="seatsChart">
                                 <div class="seatRow">
@@ -252,8 +252,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-4">
-                        <div class="seatsReceipt">
+                    <div class="col-12 col-md-5">
+                        <div class="seatsReceipt rounded" style="margin-top: 10px;">
+                            <div class="seatNumber " style="">ห้องที่สามารถจองได้</div> <div class="seatNumber " style="background-color: #FFF633;">ห้องที่ค้นหา</div> <div class="seatNumber seatUnavailable" >ห้องที่ถูกซื้อแล้ว</div><br><br>
                             <p><strong>Selected Room: <span class="seatsAmount" />0 </span></strong> <button id="btnClear" class="btn">Clear</button></p>
                             <form action="AddRoomToCart" method="post">
                                 <ul id="seatsList" class="nav nav-stacked"></ul>
@@ -264,6 +265,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </section>
 
 
