@@ -158,11 +158,6 @@
             font-weight: 300;
         }
 
-        .paypal__item-name {
-            color: #aaa;
-            font-weight: 300;
-        }
-
         .paypal__item-price {
             float: right;
             letter-spacing: 1px;
@@ -344,44 +339,35 @@
                     <div class="paypal__subheader-wrapper">
                         <div class="paypal__subheader">
                             <h1 class="paypal__username">${sessionScope.customer.name}  ${sessionScope.customer.surname}, Hi </h1>
-                            <span class="paypal__help-text">You've purchased one (1) item from our store:</span>
+                            <span class="paypal__help-text">You've purchased from [BBM - Condominium] WebSite:</span>
                         </div>
                     </div>
+                    <form action="Checkout">
+                        <div class="paypal__cart">
+                            <h2 class="paypal__cart-title">Cart:</h2>
 
-                    <div class="paypal__cart">
-                        <h2 class="paypal__cart-title">Cart:</h2>
+                            <ul class="paypal__cart-list">
+                                <c:forEach var="cartList" items="${sessionScope.cart.lineRoom}" varStatus="vs">
+                                    <li class="paypal__cart-item">
+                                        <span class="paypal__index">${vs.count}</span>
+                                        <span class="paypal__item-name"><img src="assets/images/${cartList.room.typeroom}/${cartList.room.typeroom}1.jpg" width="100px;" style="border-radius: 8px;" >&nbsp; ${cartList.room.roomnumber}</span>
+                                        <span class="paypal__item-price"><br>${cartList.room.price} บาท</span>
+                                        <input type="hidden" name="roomnumber" value="${cartList.room.roomnumber}">
+                                    </li>
+                                </c:forEach>
+                                <li class="paypal__cart-item">
+                                    <span class="paypal__cart-total">Total</span>
+                                    <span class="paypal__item-price">${sessionScope.cart.getTotalPrice()} บาท</span>
+                                </li>
+                            </ul>
+                        </div>
 
-                        <ul class="paypal__cart-list">
-                            <li class="paypal__cart-item">
-                                <span class="paypal__index">1</span>
-                                <span class="paypal__item-name">$10 Balance</span>
-                                <span class="paypal__item-price">$10.00</span>
-                            </li>
-                            <!--
-                                      <li class="paypal__cart-item">
-                                        <span class="paypal__index">2</span>
-                                        <span class="paypal__item-name">Snickers Nike</span>
-                                        <span class="paypal__item-price">$125.00</span>
-                                      </li>
-                            
-                                      <li class="paypal__cart-item">
-                                        <span class="paypal__index">3</span>
-                                        <span class="paypal__item-name">All Stars</span>
-                                        <span class="paypal__item-price">$95.00</span>
-                                      </li>
-                            -->
-                            <li class="paypal__cart-item">
-                                <span class="paypal__cart-total">Total</span>
-                                <span class="paypal__item-price">$10.00</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="paypal__footer">
-                        <center>
-                            <button class="btn btn-primary btn-secondary">Check Out</button>
-                        </center>
-                    </div>
+                        <div class="paypal__footer">
+                            <center>
+                                <button class="btn btn-primary btn-secondary">Check Out</button>
+                            </center>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>

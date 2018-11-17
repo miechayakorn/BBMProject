@@ -32,17 +32,16 @@ public class ShowCartServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession(false);
         if (session != null) {
-           List<BigCart> cart = (List<BigCart>) session.getAttribute("cart");
+            BigCart cart = (BigCart) session.getAttribute("cart");
             if (cart != null) {
-                for (BigCart bigCart : cart) {
-                    System.out.println(bigCart.toString());
-                }
+                cart.getQuantity();
                 getServletContext().getRequestDispatcher("/ShowCart.jsp").forward(request, response);
                 return;
             }
         }
+
         response.sendRedirect("RemainingRoom");
     }
 

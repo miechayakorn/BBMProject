@@ -51,15 +51,15 @@ public class AddRoomToCartServlet extends HttpServlet {
         }
 
         String roomNumber = request.getParameter("roomnumber");
-        System.out.println("-------------------------------------"+roomNumber);
+        Room roomSelected = new Room(Integer.parseInt(roomNumber));
+        session.setAttribute("roomSelected", roomSelected);
+        
         RoomJpaController roomJpaCtrl = new RoomJpaController(utx, emf);
-//        List<Room> rooms = roomJpaCtrl.findRoomEntities();
-//        session.setAttribute("rooms", rooms);
         Room room = roomJpaCtrl.findRoom(Integer.parseInt(roomNumber));
         cart.add(room);
         request.setAttribute("message","add successfull");
-       
-        response.sendRedirect("RemainingRoom");
+        session.setAttribute("cart", cart);
+        response.sendRedirect("RemainingRoom#selectRoom");
 
     }
 
