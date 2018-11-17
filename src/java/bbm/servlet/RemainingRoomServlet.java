@@ -70,14 +70,14 @@ public class RemainingRoomServlet extends HttpServlet {
         List<Room> roomByFloor7 = roomJpa.searchByFloor7();
         List<Room> roomByFloor8 = roomJpa.searchByFloor8();
         
-        request.setAttribute("floor1List", roomByFloor1);
-        request.setAttribute("floor2List", roomByFloor2);
-        request.setAttribute("floor3List", roomByFloor3);
-        request.setAttribute("floor4List", roomByFloor4);
-        request.setAttribute("floor5List", roomByFloor5);
-        request.setAttribute("floor6List", roomByFloor6);
-        request.setAttribute("floor7List", roomByFloor7);
-        request.setAttribute("floor8List", roomByFloor8);
+        request.setAttribute("floor1Lists", roomByFloor1);
+        request.setAttribute("floor2Lists", roomByFloor2);
+        request.setAttribute("floor3Lists", roomByFloor3);
+        request.setAttribute("floor4Lists", roomByFloor4);
+        request.setAttribute("floor5Lists", roomByFloor5);
+        request.setAttribute("floor6Lists", roomByFloor6);
+        request.setAttribute("floor7Lists", roomByFloor7);
+        request.setAttribute("floor8Lists", roomByFloor8);
         
         
         getServletContext().getRequestDispatcher("/RemainingRoom.jsp").forward(request, response);

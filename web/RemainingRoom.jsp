@@ -59,7 +59,7 @@
                 padding: 10px;}
 
             .seatSelected {
-                background-color: lightgreen;
+                background-color: lightgreen !important;
                 color: black;
             }
 
@@ -141,8 +141,13 @@
                                     <div class="seatRowNumber">
                                         Floor 8
                                     </div>
-                                    <c:forEach  items="${floor8List}" var="floor8List" varStatus="vs">
-                                        <div id="8_${vs.count}_${floor8List.roomnumber}" title="" role="checkbox" value="${floor8List.price}" aria-checked="false" focusable="true" tabindex="-1" class="seatNumber ${floor8List.available == 1 ?"seatUnavailable":""}">${floor8List.roomnumber}</div>
+                                    <c:forEach  items="${floor8Lists}" var="floor8List" varStatus="vs">
+                                        <div id="8_${vs.count}_${floor8List.roomnumber}" title="" role="checkbox" value="${floor8List.price}" aria-checked="false"
+                                             focusable="true" tabindex="-1" class="seatNumber ${floor8List.available == 1 ? "seatUnavailable" : "" }"
+                                             style="${searchRoomNumber.contains(floor8List.roomnumber) ? "background-color: #FFF633;" : ""}"
+                                             >
+                                            ${floor8List.roomnumber}
+                                        </div>
                                     </c:forEach>
 
                                 </div>
@@ -150,8 +155,13 @@
                                     <div class="seatRowNumber">
                                         Floor 7
                                     </div>
-                                    <c:forEach  items="${floor7List}" var="floor7List" varStatus="vs">
-                                        <div id="7_${vs.count}_${floor7List.roomnumber}" title="" role="checkbox" value="${floor7List.price}" aria-checked="false" focusable="true" tabindex="-1" class="seatNumber ${floor7List.available == 1 ?"seatUnavailable":""}">${floor7List.roomnumber}</div>
+                                    <c:forEach  items="${floor7Lists}" var="floor7List" varStatus="vs">
+                                        <div id="7_${vs.count}_${floor7List.roomnumber}" title="" role="checkbox" value="${floor7List.price}" aria-checked="false"
+                                             focusable="true" tabindex="-1" class="seatNumber ${floor7List.available == 1 ? "seatUnavailable" : "" }"
+                                             style="${searchRoomNumber.contains(floor7List.roomnumber) ? "background-color: #FFF633;" : ""}"
+                                             >
+                                            ${floor7List.roomnumber}
+                                        </div>
                                     </c:forEach>
 
                                 </div>
@@ -159,8 +169,13 @@
                                     <div class="seatRowNumber">
                                         Floor 6
                                     </div>
-                                    <c:forEach  items="${floor6List}" var="floor6List" varStatus="vs">
-                                        <div id="6_${vs.count}_${floor6List.roomnumber}" title="" role="checkbox" value="${floor6List.price}" aria-checked="false" focusable="true" tabindex="-1" class="seatNumber ${floor6List.available == 1 ?"seatUnavailable":""}">${floor6List.roomnumber}</div>
+                                    <c:forEach  items="${floor6Lists}" var="floor6List" varStatus="vs">
+                                        <div id="6_${vs.count}_${floor6List.roomnumber}" title="" role="checkbox" value="${floor6List.price}" aria-checked="false"
+                                             focusable="true" tabindex="-1" class="seatNumber ${floor6List.available == 1 ? "seatUnavailable" : "" }"
+                                             style="${searchRoomNumber.contains(floor6List.roomnumber) ? "background-color: #FFF633;" : ""}"
+                                             >
+                                            ${floor6List.roomnumber}
+                                        </div>
                                     </c:forEach>
 
                                 </div>
@@ -168,8 +183,13 @@
                                     <div class="seatRowNumber">
                                         Floor 5
                                     </div>
-                                    <c:forEach  items="${floor5List}" var="floor5List" varStatus="vs">
-                                        <div id="5_${vs.count}_${floor5List.roomnumber}" title="" role="checkbox" value="${floor5List.price}" aria-checked="false" focusable="true" tabindex="-1" class="seatNumber ${floor5List.available == 1 ?"seatUnavailable":""}">${floor5List.roomnumber}</div>
+                                    <c:forEach  items="${floor5Lists}" var="floor5List" varStatus="vs">
+                                        <div id="6_${vs.count}_${floor5List.roomnumber}" title="" role="checkbox" value="${floor5List.price}" aria-checked="false"
+                                             focusable="true" tabindex="-1" class="seatNumber ${floor5List.available == 1 ? "seatUnavailable" : "" }"
+                                             style="${searchRoomNumber.contains(floor5List.roomnumber) ? "background-color: #FFF633;" : ""}"
+                                             >
+                                            ${floor5List.roomnumber}
+                                        </div>
                                     </c:forEach>
 
                                 </div>
@@ -177,8 +197,13 @@
                                     <div class="seatRowNumber">
                                         Floor 4
                                     </div>
-                                    <c:forEach  items="${floor4List}" var="floor4List" varStatus="vs">
-                                        <div id="4_${vs.count}_${floor4List.roomnumber}" title="" role="checkbox" value="${floor4List.price}" aria-checked="false" focusable="true" tabindex="-1" class="seatNumber ${floor4List.available == 1 ?"seatUnavailable":""}">${floor4List.roomnumber}</div>
+                                    <c:forEach  items="${floor4Lists}" var="floor4List" varStatus="vs">
+                                        <div id="6_${vs.count}_${floor4List.roomnumber}" title="" role="checkbox" value="${floor4List.price}" aria-checked="false"
+                                             focusable="true" tabindex="-1" class="seatNumber ${floor4List.available == 1 ? "seatUnavailable" : "" }"
+                                             style="${searchRoomNumber.contains(floor4List.roomnumber) ? "background-color: #FFF633;" : ""}"
+                                             >
+                                            ${floor4List.roomnumber}
+                                        </div>
                                     </c:forEach>
 
                                 </div>
@@ -186,8 +211,13 @@
                                     <div class="seatRowNumber">
                                         Floor 3
                                     </div>
-                                    <c:forEach  items="${floor3List}" var="floor3List" varStatus="vs">
-                                        <div id="3_${vs.count}_${floor3List.roomnumber}" title="" role="checkbox" value="${floor3List.price}" aria-checked="false" focusable="true" tabindex="-1" class="seatNumber ${floor3List.available == 1 ?"seatUnavailable":""}">${floor3List.roomnumber}</div>
+                                    <c:forEach  items="${floor3Lists}" var="floor3List" varStatus="vs">
+                                        <div id="6_${vs.count}_${floor3List.roomnumber}" title="" role="checkbox" value="${floor3List.price}" aria-checked="false"
+                                             focusable="true" tabindex="-1" class="seatNumber ${floor3List.available == 1 ? "seatUnavailable" : "" }"
+                                             style="${searchRoomNumber.contains(floor3List.roomnumber) ? "background-color: #FFF633;" : ""}"
+                                             >
+                                            ${floor3List.roomnumber}
+                                        </div>
                                     </c:forEach>
 
                                 </div>
@@ -195,8 +225,13 @@
                                     <div class="seatRowNumber">
                                         Floor 2
                                     </div>
-                                    <c:forEach  items="${floor2List}" var="floor2List" varStatus="vs">
-                                        <div id="2_${vs.count}_${floor2List.roomnumber}" title="" role="checkbox" value="${floor2List.price}" aria-checked="false" focusable="true" tabindex="-1" class="seatNumber ${floor2List.available == 1 ?"seatUnavailable":""}">${floor2List.roomnumber}</div>
+                                    <c:forEach  items="${floor2Lists}" var="floor2List" varStatus="vs">
+                                        <div id="6_${vs.count}_${floor2List.roomnumber}" title="" role="checkbox" value="${floor2List.price}" aria-checked="false"
+                                             focusable="true" tabindex="-1" class="seatNumber ${floor2List.available == 1 ? "seatUnavailable" : "" }"
+                                             style="${searchRoomNumber.contains(floor2List.roomnumber) ? "background-color: #FFF633;" : ""}"
+                                             >
+                                            ${floor2List.roomnumber}
+                                        </div>
                                     </c:forEach>
 
                                 </div>
@@ -204,8 +239,13 @@
                                     <div class="seatRowNumber">
                                         Floor 1
                                     </div>
-                                    <c:forEach  items="${floor1List}" var="floor1List" varStatus="vs">
-                                        <div id="1_${vs.count}_${floor1List.roomnumber}" title="" role="checkbox" value="${floor1List.price}" aria-checked="false" focusable="true" tabindex="-1" class="seatNumber ${floor1List.available == 1 ?"seatUnavailable":""}">${floor1List.roomnumber}</div>
+                                    <c:forEach  items="${floor1Lists}" var="floor1List" varStatus="vs">
+                                        <div id="6_${vs.count}_${floor1List.roomnumber}" title="" role="checkbox" value="${floor1List.price}" aria-checked="false"
+                                             focusable="true" tabindex="-1" class="seatNumber ${floor1List.available == 1 ? "seatUnavailable" : "" }"
+                                             style="${searchRoomNumber.contains(floor1List.roomnumber) ? "background-color: #FFF633;" : ""}"
+                                             >
+                                            ${floor1List.roomnumber}
+                                        </div>
                                     </c:forEach>
 
                                 </div>
@@ -295,7 +335,7 @@
                         var thisId = $(this).attr('id');
                         var id = thisId.split("_");
                         var price = $(this).attr('value');
-                        var seatDetails = " ROOMNUMBER:" + id[2] + " Price:" + price +"Baht";
+                        var seatDetails = " ROOMNUMBER:" + id[2] + " Price:" + price + "Baht";
 
 
                         var freeSeats = parseInt($('.freeSeats').first().text());
@@ -307,7 +347,7 @@
                         }
 
                         // Adding this seat to the list
-                        var seatDetails = '<input type="hidden"  name="roomnumber" value=' + id[2] + '>' + " ROOMNUMBER:" + id[2] + " Price:" + price +' ฿'+ '<br> <input id="btnCheckout" type="submit" class="btn-sm btn-primary" value="Add Room">';
+                        var seatDetails = '<input type="hidden"  name="roomnumber" value=' + id[2] + '>' + " ROOMNUMBER:" + id[2] + " Price:" + price + ' ฿' + '<br> <input id="btnCheckout" type="submit" class="btn-sm btn-primary" value="Add Room">';
                         $("#seatsList").append('<li value=' + price + ' class=' + thisId + '>' + seatDetails + "  " + "<button id='remove:" + thisId + "'+ class='btn btn-default btn-sm removeSeat' value='" + price + "'><strong>X</strong></button></li>");
                         $(this).addClass("seatSelected");
 
