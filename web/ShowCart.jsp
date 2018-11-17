@@ -16,7 +16,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
         <link rel="shortcut icon" href="assets/images/bbm-logo-122x122.png" type="image/x-icon">
         <meta name="description" content="Remaining Room">
-        <title>RemainingRoom</title>
+        <title>Show Cart</title>
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
         <link rel="stylesheet" href="assets/tether/tether.min.css">
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
