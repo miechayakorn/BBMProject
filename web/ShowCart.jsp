@@ -366,7 +366,7 @@
                                     <span class="paypal__item-price form-inline"><br>${cartList.room.price} บาท 
                                         <form action="RemoveProductFromCart">
                                             <input type="hidden" name="delectRoom" value="${cartList.room.roomnumber}">
-                                            <button style="cursor: pointer;" id="remove">x</button>
+                                            <button class="btn" style="cursor: pointer;" id="remove">x</button>
                                         </form>
                                     </span>
                                     <input type="hidden" name="roomnumber" value="${cartList.room.roomnumber}">

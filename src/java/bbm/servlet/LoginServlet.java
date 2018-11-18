@@ -52,17 +52,23 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         HttpSession session = request.getSession(false);
 
+        if (session == null) {
+            session = request.getSession(true);
+        }
+        if (session.getAttribute("customer") != null) {
+            response.sendRedirect("/BBMProject");
+            return;
+        }
         if (email != null && password != null && email.length() > 0 && password.length() > 0) {
             AccountJpaController accountJpaCtrl = new AccountJpaController(utx, emf);
             Account account = accountJpaCtrl.findAccount(email);
             password = new EncryptWithMd5().encrypt(password);
+            if (session.getAttribute("customer") != null) {
+                response.sendRedirect("BBMProject");
+                return;
+            }
             if (account != null) {
                 if (account.getPassword().equals(password)) {
-
-                    if (session == null) {
-                        session = request.getSession(true);
-                    }
-
                     CustomerJpaController customerJpaCtrl = new CustomerJpaController(utx, emf);
                     Customer customer = customerJpaCtrl.findByEmail(email);
                     if (customer != null) {

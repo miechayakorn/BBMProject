@@ -33,11 +33,14 @@ public class ShowCartServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        if (session != null || session.getAttribute("cart") != null) {
-            BigCart cart = (BigCart) session.getAttribute("cart");
-            if (cart != null && cart.getQuantity()>0) {
-                getServletContext().getRequestDispatcher("/ShowCart.jsp").forward(request, response);
-                return;
+        
+        if (session != null ) {
+            if(session.getAttribute("cart") != null){
+                BigCart cart = (BigCart) session.getAttribute("cart");
+                if (cart != null && cart.getQuantity() > 0) {
+                    getServletContext().getRequestDispatcher("/ShowCart.jsp").forward(request, response);
+                    return;
+                }
             }
         }
 
