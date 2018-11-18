@@ -40,6 +40,19 @@
             background-size: 150px 150px;
         }
 
+        #remove {
+            padding: .5em;
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: bold;
+            background: #e0e0e0;
+            font-size: .75em;
+            display: inline-block;
+            border-radius: 100%;
+            line-height: .85;
+
+        }
+
         .paypal {
             position: relative;
             left: 50%;
@@ -342,32 +355,35 @@
                             <span class="paypal__help-text">You've purchased from [BBM - Condominium] WebSite:</span>
                         </div>
                     </div>
-                    <form action="Checkout">
-                        <div class="paypal__cart">
-                            <h2 class="paypal__cart-title">Cart:</h2>
+                    <div class="paypal__cart">
+                        <h2 class="paypal__cart-title">Cart:</h2>
 
-                            <ul class="paypal__cart-list">
-                                <c:forEach var="cartList" items="${sessionScope.cart.lineRoom}" varStatus="vs">
-                                    <li class="paypal__cart-item">
-                                        <span class="paypal__index">${vs.count}</span>
-                                        <span class="paypal__item-name"><img src="assets/images/${cartList.room.typeroom}/${cartList.room.typeroom}1.jpg" width="100px;" style="border-radius: 8px;" >&nbsp; ${cartList.room.roomnumber}</span>
-                                        <span class="paypal__item-price"><br>${cartList.room.price} บาท</span>
-                                        <input type="hidden" name="roomnumber" value="${cartList.room.roomnumber}">
-                                    </li>
-                                </c:forEach>
+                        <ul class="paypal__cart-list">
+                            <c:forEach var="cartList" items="${sessionScope.cart.lineRoom}" varStatus="vs">
                                 <li class="paypal__cart-item">
-                                    <span class="paypal__cart-total">Total</span>
-                                    <span class="paypal__item-price">${sessionScope.cart.getTotalPrice()} บาท</span>
+                                    <span class="paypal__index">${vs.count}</span>
+                                    <span class="paypal__item-name"><img src="assets/images/${cartList.room.typeroom}/${cartList.room.typeroom}1.jpg" width="100px;" style="border-radius: 8px;" >&nbsp; ${cartList.room.roomnumber}</span>
+                                    <span class="paypal__item-price form-inline"><br>${cartList.room.price} บาท 
+                                        <form action="RemoveProductFromCart">
+                                            <input type="hidden" name="delectRoom" value="${cartList.room.roomnumber}">
+                                            <button style="cursor: pointer;" id="remove">x</button>
+                                        </form>
+                                    </span>
+                                    <input type="hidden" name="roomnumber" value="${cartList.room.roomnumber}">
                                 </li>
-                            </ul>
-                        </div>
+                            </c:forEach>
+                            <li class="paypal__cart-item">
+                                <span class="paypal__cart-total">Total</span>
+                                <span class="paypal__item-price">${sessionScope.cart.getTotalPrice()} บาท</span>
+                            </li>
+                        </ul>
+                    </div>
 
-                        <div class="paypal__footer">
-                            <center>
-                                <button class="btn btn-primary btn-secondary">Check Out</button>
-                            </center>
-                        </div>
-                    </form>
+                    <div class="paypal__footer">
+                        <center>
+                            <a class="btn btn-primary btn-secondary" href="Checkout">Check Out</a>
+                        </center>
+                    </div>
                 </div>
             </div>
         </section>

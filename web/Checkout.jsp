@@ -820,7 +820,7 @@
 
                                         <div>
                                             <div class="input-group form-search form-inline">
-                                                <input type="text" name="idcard" checked="" class="form-control" placeholder="IDCARD">
+                                                <input type="text" name="idcard" required="" class="form-control" placeholder="IDCARD">
                                                 <div class="input-group-append">
                                                     <button type="submit" class="btn-lg btn btn-primary">Payment</button>
                                                 </div>

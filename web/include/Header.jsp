@@ -29,7 +29,7 @@
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown display-4" data-app-modern-menu="true">
-                <li class="nav-item"><a class="nav-link link text-white" href="Room" aria-expanded="false">รายละเอียดห้อง</a></li>
+                <li class="nav-item"><a class="nav-link link text-white" href="RoomDetail" aria-expanded="false">รายละเอียดห้อง</a></li>
                 <li class="nav-item"><a class="nav-link link text-white" href="RemainingRoom" aria-expanded="false">จำนวนห้องที่เหลืออยู่</a></li>
                 <li class="nav-item"><a class="nav-link link text-white" href="/BBMProject/#form4-k" aria-expanded="false">ข้อมูลโครงการ</a></li>
             </ul>

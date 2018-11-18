@@ -84,11 +84,11 @@ public class AfterPaymentServlet extends HttpServlet {
                     response.sendRedirect("/BBMProject");
                     return;
                 }
-                getServletContext().getRequestDispatcher("/ShowCart").forward(request, response);
+                response.sendRedirect("RemainingRoom#selectRoom");
                 return;
             }
         }
-        getServletContext().getRequestDispatcher("/Login").forward(request, response);
+        response.sendRedirect("Login");
 
     }
 
