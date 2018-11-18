@@ -9,7 +9,7 @@ import bbm.jpa.model.Room;
 import bbm.jpa.model.controller.RoomJpaController;
 import bbm.model.BigCart;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -43,7 +43,6 @@ public class RemoveProductFromCartServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
@@ -55,8 +54,16 @@ public class RemoveProductFromCartServlet extends HttpServlet {
                 Room Room = roomJpaCtrl.findRoom(Integer.parseInt(roomDel));
                 cart.remove(Room);
                 session.setAttribute("cart", cart);
-                response.sendRedirect("ShowCart");
-                return;
+                List<Integer> roomSelectList = (List<Integer>) session.getAttribute("roomSelectList");
+
+                for (Integer indexRoom : roomSelectList) {
+                    if (indexRoom == Integer.parseInt(roomDel)) {
+                        roomSelectList.remove(indexRoom);
+                        session.setAttribute("roomSelectList", roomSelectList);
+                        response.sendRedirect("ShowCart");
+                        return;
+                    }
+                }
             }
         }
         response.sendRedirect("ShowCart");

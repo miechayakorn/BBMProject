@@ -9,6 +9,7 @@ import bbm.jpa.model.Room;
 import bbm.jpa.model.controller.RoomJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
@@ -17,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
 
 /**
@@ -42,7 +44,7 @@ public class RemainingRoomServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         RoomJpaController roomJpa = new RoomJpaController(utx, emf);
         List<Room> roomAvailable = roomJpa.searchRoomStatus(0);
         List<Room> roomNotAvailable = roomJpa.searchRoomStatus(1);
@@ -51,16 +53,16 @@ public class RemainingRoomServlet extends HttpServlet {
         for (Room roomLoop : roomAvailable) {
             if (roomLoop.getAvailable() == 0) {
                 available++;
-            } 
+            }
         }
         for (Room roomLoop : roomNotAvailable) {
             if (roomLoop.getAvailable() == 1) {
                 notAvailable++;
-            } 
+            }
         }
         request.setAttribute("remaining", available);
         request.setAttribute("sold", notAvailable);
-        
+
         List<Room> roomByFloor1 = roomJpa.searchByFloor1();
         List<Room> roomByFloor2 = roomJpa.searchByFloor2();
         List<Room> roomByFloor3 = roomJpa.searchByFloor3();
@@ -69,7 +71,7 @@ public class RemainingRoomServlet extends HttpServlet {
         List<Room> roomByFloor6 = roomJpa.searchByFloor6();
         List<Room> roomByFloor7 = roomJpa.searchByFloor7();
         List<Room> roomByFloor8 = roomJpa.searchByFloor8();
-        
+
         request.setAttribute("floor1Lists", roomByFloor1);
         request.setAttribute("floor2Lists", roomByFloor2);
         request.setAttribute("floor3Lists", roomByFloor3);
@@ -78,8 +80,20 @@ public class RemainingRoomServlet extends HttpServlet {
         request.setAttribute("floor6Lists", roomByFloor6);
         request.setAttribute("floor7Lists", roomByFloor7);
         request.setAttribute("floor8Lists", roomByFloor8);
-        
-        
+
+        HttpSession session = request.getSession(false);
+        if (session == null) {
+            session = request.getSession(true);
+        }
+        if (session.getAttribute("roomSelectList") == null) {
+            List<Integer> roomSelectList = new ArrayList<Integer>();
+            session.setAttribute("roomSelectList", roomSelectList);
+
+        } else if (session.getAttribute("roomSelectList") != null) {
+            List<Integer> roomSelectList = (ArrayList<Integer>) session.getAttribute("roomSelectList");
+            session.setAttribute("roomSelectList", roomSelectList);
+        }
+
         getServletContext().getRequestDispatcher("/RemainingRoom.jsp").forward(request, response);
     }
 

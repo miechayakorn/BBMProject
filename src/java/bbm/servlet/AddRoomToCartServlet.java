@@ -10,6 +10,7 @@ import bbm.jpa.model.controller.RoomJpaController;
 import bbm.model.BigCart;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
@@ -43,21 +44,39 @@ public class AddRoomToCartServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(true);
-        BigCart cart = (BigCart) session.getAttribute("cart");
+        HttpSession session = request.getSession(false);
+        String roomNumber = request.getParameter("roomnumber");
+        
+        
+        if(session == null){
+            request.getSession(true);
+        }
+        
+        BigCart cart = (BigCart)session.getAttribute("cart");
         if (cart == null) {
             cart = new BigCart();
             session.setAttribute("cart", cart);
         }
-
-        String roomNumber = request.getParameter("roomnumber");
         
-        RoomJpaController roomJpaCtrl = new RoomJpaController(utx, emf);
-        Room room = roomJpaCtrl.findRoom(Integer.parseInt(roomNumber));
-        cart.add(room);
-        request.setAttribute("message","add successfull");
-        session.setAttribute("cart", cart);
-        response.sendRedirect("RemainingRoom#selectRoom");
+        if(roomNumber != null){
+            RoomJpaController roomJpaCtrl = new RoomJpaController(utx, emf);
+            Room room = roomJpaCtrl.findRoom(Integer.parseInt(roomNumber));
+            cart.add(room);
+            request.setAttribute("message", "success");
+
+            if (session.getAttribute("roomSelectList") == null) {
+                List<Integer> roomSelectList = new ArrayList<Integer>();
+                roomSelectList.add(Integer.parseInt(roomNumber));
+                session.setAttribute("roomSelectList", roomSelectList);
+
+            } else if (session.getAttribute("roomSelectList") != null) {
+                List<Integer> roomSelectList = (ArrayList<Integer>) session.getAttribute("roomSelectList");
+                roomSelectList.add(Integer.parseInt(roomNumber));
+                session.setAttribute("roomSelectList", roomSelectList);
+            }
+            
+        }
+        getServletContext().getRequestDispatcher("/RemainingRoom").forward(request, response);
 
     }
 
