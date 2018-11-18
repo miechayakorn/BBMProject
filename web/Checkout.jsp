@@ -25,6 +25,12 @@
             font-size: 62.5%;
         }
 
+        .form-search .input-append .btn {
+            -webkit-border-radius: 0 14px 14px 0;
+            -moz-border-radius: 0 14px 14px 0;
+            /* border-radius: 0 14px 14px 0; */
+        }
+
         * {
             box-sizing: border-box;
         }
@@ -342,7 +348,7 @@
             left: 42%;
             -webkit-animation: plane 5000ms ease-in-out infinite;
             animation: plane 5000ms ease-in-out infinite;
-            background-image: url('http://chittagongit.com//images/payment-icon-png/payment-icon-png-13.jpg');
+            background-image: url('https://cdn1.iconfinder.com/data/icons/money-4/512/credit_card_lock-512.png');
         }
         .details .date {
             position: absolute;
@@ -722,26 +728,37 @@
                 font-size: 30%;
             }
         }
-        @media screen and (max-width: 420px) {
-            .seat-layout .legends .legend-wrapper {
-                width: 100%;
-            }
-            .seat-layout .layout .grid .business .seat {
-                width: 1.1rem;
-                height: 0.8rem;
-            }
-            .seat-layout .layout .grid .eco .seat {
-                width: 1.1rem;
-                height: 0.8rem;
-            }
-            .seat-layout .rownumber {
-                top: -0.5rem;
-            }
-        }
         @media screen and (max-width: 320px) {
             .rownumber {
                 top: -0.8rem;
             }
+        }
+        .fixed_header{
+            width: 400px;
+            table-layout: fixed;
+            border-collapse: collapse;
+        }
+
+        .fixed_header tbody{
+            display:block;
+            width: 100%;
+            overflow: auto;
+            height: 150px;
+        }
+
+        .fixed_header thead tr {
+            display: block;
+        }
+
+        .fixed_header thead {
+            background: black;
+            color:#fff;
+        }
+
+        .fixed_header th, .fixed_header td {
+            padding: 5px;
+            text-align: left;
+            width: 200px;
         }
     </style>
 
@@ -760,12 +777,14 @@
                     <div class="city">
                         <div class="from loc">
                             <div class="name">Payment</div>
+                            <br><br>Signature :
+                            <p style="font-size: large;"> ${sessionScope.customer.name}   ${sessionScope.customer.surname}</p>
                         </div>
 
                     </div>
                     <div class="plane"></div>
                     <div class="content">
-                        <div class="seat">SHOW ROOM</div>
+                        <div class="seat">BUY</div>
                     </div>
                 </div>
                 <div class="seat-layout">
@@ -773,31 +792,46 @@
                         <div class="close"><i class="fa fa-times" aria-hidden="true"></i></div>
 
                         <div class="gate"><img width="50px;" src="assets/images/visa-mastercard.png"></div>
-                        <div class="boarding">Total: <span>${sessionScope.cart.getTotalPrice()} bath</span></div>
-                        <div class="seat"><button class="btn btn-primary btn-lg">Pay</button></div>
-                        <!--                        <div class="departure">12:50PM <span>departure</span></div>
-                                                <div class="flight">GO181 <span>flight</span></div>-->
+                        <div class="boarding">Total: <span style="font-size: medium;">${sessionScope.cart.getTotalPrice()} bath</span></div>
                     </div>
                     <div class="layout">
-                        <div class="grid">
-                            <table>
-                                <tr>
-                                    <th>#</th>
-                                    <th>ROOM NUMBER</th>
-                                    <th>PRICE</th>
-                                </tr>
-                                <c:forEach var="cartList" items="${sessionScope.cart.lineRoom}" varStatus="vs">
-                                   <tr>
-                                        <th>${vs.count}</th>
-                                        <th>${cartList.room.roomnumber}</th>
-                                        <th>${cartList.room.price}</th>
-                                    </tr>
-                                </c:forEach>
-                            </table>
 
+                        <div class="container" style="font-size: medium;">
+                            <div class="row">
+                                <div class="col-12">
+                                    <center>
+                                        <form action="AfterPayment">
+                                        <table class="table fixed_header">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>ROOMNUMBER</th>
+                                                <th>PRICE</th>
+                                            </tr>
+
+                                            <c:forEach var="cartList" items="${sessionScope.cart.lineRoom}" varStatus="vs">
+                                                <tr>
+                                                    <th>${vs.count}</th>
+                                                    <th>${cartList.room.roomnumber}</th>
+                                                    <input type="hidden" name="roomnumber" value="${cartList.room.roomnumber}">
+                                                    <th>${cartList.room.price}</th>
+                                                </tr>
+                                            </c:forEach>
+                                        </table>
+
+                                        <div>
+                                            <div class="input-group form-search form-inline">
+                                                <input type="text" name="idcard" checked="" class="form-control" placeholder="IDCARD">
+                                                <div class="input-group-append">
+                                                    <button type="submit" class="btn-lg btn btn-primary">Payment</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </form>
+                                    </center>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

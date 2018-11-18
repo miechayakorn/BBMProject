@@ -42,7 +42,7 @@
                 <a class="btn btn-sm btn-warning p-3" href="ShowCart" style="border-radius:12px; ">${sessionScope.cart.quantity == null ? '0' :sessionScope.cart.quantity}&nbsp;<img src="assets/images/condo-icon.png" width="30px" /></a>    
                         <c:if test="${not empty sessionScope.customer}">
                     <div class="btn-group">
-                        <a class="btn btn-sm btn-primary nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="mbri-user mbr-iconfont mbr-iconfont-btn"></span>    Welcome :   ${sessionScope.customer.getName()}</a>
+                        <a class="btn btn-sm btn-primary nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="mbri-user mbr-iconfont mbr-iconfont-btn"></span>    Welcome :   ${sessionScope.customer.name}</a>
                         <div class="dropdown-content dropdown-menu mx-4" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="MyAccount">My Account</a>
                             <a class="dropdown-item" href="History">History</a>
