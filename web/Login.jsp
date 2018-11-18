@@ -102,21 +102,7 @@
         <script src="assets/formoid/formoid.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script>
-                                    $(document).ready(function () {
-                                        InvalidMessage();
-                                    });
-            <c:if test="${message != null}">
-                                    function InvalidMessage() {
-                                        swal({
-                                            title: "Are you sure?",
-                                            text: "Once deleted, you will not be able to recover this imaginary file!",
-                                            icon: "warning",
-                                            buttons: true,
-                                            dangerMode: true,
-                                        });
-                                    }
-            </c:if>
-
+            ${message == "Invalid" ? 'swal({title: "Invalid!!",text: " Username or Password not correct",icon: "warning",dangerMode: true,});' : ""}
         </script>
 
     </body>

@@ -84,10 +84,10 @@ public class LoginServlet extends HttpServlet {
                         return;
                     }
                 } else {
-                    request.setAttribute("message", "Invalid username or password !!");
+                    request.setAttribute("message", "Invalid");
                 }
             } else {
-                request.setAttribute("message", "Invalid username or password !!");
+                request.setAttribute("message", "Invalid");
             }
         }
         getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
