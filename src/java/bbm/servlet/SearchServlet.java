@@ -94,7 +94,6 @@ public class SearchServlet extends HttpServlet {
                         List<Integer> searchRoomNumber = new ArrayList<Integer>();
                         for (Room room : sizeRoom) {
                             searchRoomNumber.add(room.getRoomnumber());
-
                             System.out.println(room.getRoomnumber());
                         }
                         request.setAttribute("searchRoomNumber", searchRoomNumber);

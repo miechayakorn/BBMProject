@@ -7,6 +7,7 @@ package bbm.model;
 
 import bbm.jpa.model.Room;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import static java.util.Collections.list;
@@ -45,11 +46,11 @@ public class BigCart implements Serializable {
         cart.remove(r.getRoomnumber());
     }
     
-    public double getTotalPrice(){
-        double sumPrice = 0;
+    public BigDecimal getTotalPrice(){
+        BigDecimal sumPrice = BigDecimal.ZERO;
         Collection <LineRoom> lineroom = cart.values();
         for (LineRoom lineRoom : lineroom) {
-            sumPrice += lineRoom.getTotalPrice();
+            sumPrice = sumPrice.add(lineRoom.getTotalPrice());
         }
         return sumPrice;
     }

@@ -52,8 +52,8 @@ public class LineRoom {
         this.quantity = quantity;
     }
 
-    public double getTotalPrice() {
-        return this.salePrice * this.quantity;
+    public BigDecimal getTotalPrice() {
+        return (new BigDecimal(this.salePrice)).multiply(new BigDecimal(this.quantity));
     }
 
 }

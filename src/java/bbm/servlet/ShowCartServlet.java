@@ -35,13 +35,13 @@ public class ShowCartServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         if (session != null || session.getAttribute("cart") != null) {
             BigCart cart = (BigCart) session.getAttribute("cart");
-            if (cart != null) {
+            if (cart != null && cart.getQuantity()>0) {
                 getServletContext().getRequestDispatcher("/ShowCart.jsp").forward(request, response);
                 return;
             }
         }
 
-        response.sendRedirect("RemainingRoom");
+        response.sendRedirect("RemainingRoom#selectRoom");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

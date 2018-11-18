@@ -45,12 +45,12 @@
             
             
             
-            <section class="history" style="padding: 70px; width: 85%;
+            <section class="history" style="padding: 70px; width: 65%;
                      background-color: rgb(150,150,150,0.5);
                      margin: auto;
                      font-family: 'Athiti', sans-serif;
                      font-size: 16px;">
-                <table id="example" class="ui celled table" style="width:100%">
+                <table id="example" class="ui celled table " >
                     <thead>
                         <tr>
                             <th>#</th>

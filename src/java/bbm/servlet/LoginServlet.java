@@ -5,7 +5,6 @@
  */
 package bbm.servlet;
 
-
 import bbm.jpa.model.Account;
 import bbm.jpa.model.Customer;
 import bbm.jpa.model.controller.AccountJpaController;
@@ -54,8 +53,8 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
 
         if (email != null && password != null && email.length() > 0 && password.length() > 0) {
-            AccountJpaController accountJpaCtrl= new AccountJpaController(utx, emf);
-            Account  account = accountJpaCtrl.findAccount(email);
+            AccountJpaController accountJpaCtrl = new AccountJpaController(utx, emf);
+            Account account = accountJpaCtrl.findAccount(email);
             password = new EncryptWithMd5().encrypt(password);
             if (account != null) {
                 if (account.getPassword().equals(password)) {
@@ -63,18 +62,23 @@ public class LoginServlet extends HttpServlet {
                     if (session == null) {
                         session = request.getSession(true);
                     }
+
                     CustomerJpaController customerJpaCtrl = new CustomerJpaController(utx, emf);
                     Customer customer = customerJpaCtrl.findByEmail(email);
-                    if(customer != null){
+                    if (customer != null) {
                         session.setAttribute("customer", customer);
+                        if (session.getAttribute("cart") != null) {
+                            response.sendRedirect("ShowCart");
+                            return;
+                        }
                         response.sendRedirect("/BBMProject");
-                        return;  
-                    }else{
-                     getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
-                     return;
+                        return;
+                    } else {
+                        getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
+                        return;
                     }
                 } else {
-                    request.setAttribute("message", "Invalid username or password !!");   
+                    request.setAttribute("message", "Invalid username or password !!");
                 }
             } else {
                 request.setAttribute("message", "Invalid username or password !!");
