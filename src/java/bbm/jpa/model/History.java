@@ -69,6 +69,14 @@ public class History implements Serializable {
         this.price = price;
     }
 
+    public History(Room roomnumber,int  price, Date purchasedate, Customer customerid) {
+        this.price = price;
+        this.purchasedate = purchasedate;
+        this.customerid = customerid;
+        this.roomnumber = roomnumber;
+    }
+    
+
     public Integer getHistoryid() {
         return historyid;
     }

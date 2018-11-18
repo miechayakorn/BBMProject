@@ -51,8 +51,6 @@ public class AddRoomToCartServlet extends HttpServlet {
         }
 
         String roomNumber = request.getParameter("roomnumber");
-        Room roomSelected = new Room(Integer.parseInt(roomNumber));
-        session.setAttribute("roomSelected", roomSelected);
         
         RoomJpaController roomJpaCtrl = new RoomJpaController(utx, emf);
         Room room = roomJpaCtrl.findRoom(Integer.parseInt(roomNumber));

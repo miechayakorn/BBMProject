@@ -4,6 +4,7 @@
     Author     : Kridtakom
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -52,15 +53,23 @@
                 <table id="example" class="ui celled table" style="width:100%">
                     <thead>
                         <tr>
-                            <th>History Id</th>
+                            <th>#</th>
                             <th>Room Number</th>
                             <th>Type</th>
                             <th>Price</th>
-                            <th>Date</th>
+                            <th>Purchase Date</th>
                         </tr>
                     </thead>
                     <tbody>
-
+                        <c:forEach var="list" items="${listHistory}" varStatus="vs">
+                            <tr>
+                                <td>${vs.count}</td>
+                                <td>${list.roomnumber.roomnumber}</td>
+                                <td>${list.roomnumber.typeroom}</td>
+                                <td>${list.price}</td>
+                                <td>${list.purchasedate}</td>
+                            </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
             </section>

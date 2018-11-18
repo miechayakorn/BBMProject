@@ -6,9 +6,18 @@
 package bbm.servlet;
 
 import bbm.jpa.model.Customer;
+import bbm.jpa.model.History;
+import bbm.jpa.model.Room;
 import bbm.jpa.model.controller.CustomerJpaController;
+import bbm.jpa.model.controller.HistoryJpaController;
+import bbm.jpa.model.controller.RoomJpaController;
+import bbm.jpa.model.controller.exceptions.NonexistentEntityException;
+import bbm.jpa.model.controller.exceptions.RollbackFailureException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -21,14 +30,15 @@ import javax.transaction.UserTransaction;
 
 /**
  *
- * @author Acer_E5
+ * @author Kridtakom
  */
-public class CheckoutServlet extends HttpServlet {
+public class AfterPaymentServlet extends HttpServlet {
 
     @Resource
     UserTransaction utx;
     @PersistenceUnit(unitName = "BBMWebAppPU")
     EntityManagerFactory emf;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -40,20 +50,46 @@ public class CheckoutServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            Customer custSession = (Customer) session.getAttribute("customer");
 
-            if (custSession != null) {
+        HttpSession session = request.getSession(false);
+
+        String[] roomNum = request.getParameterValues("roomnumber");
+        if (session != null) {
+            Customer customerSes = (Customer) session.getAttribute("customer");
+            if (customerSes != null) {
                 CustomerJpaController customerJpaCtrl = new CustomerJpaController(utx, emf);
-                Customer customer = customerJpaCtrl.findCustomer(custSession.getCustomerid());
-                if (customer != null) {
-                    getServletContext().getRequestDispatcher("/Checkout.jsp").forward(request, response);
+                Customer customer = customerJpaCtrl.findCustomer(customerSes.getCustomerid());
+                HistoryJpaController historyJpaCtrl = new HistoryJpaController(utx, emf);
+                if (roomNum != null) {
+                    for (int i = 0; i < roomNum.length; i++) {
+                        System.out.println(roomNum[i]);
+                        RoomJpaController RoomJpaCtrl = new RoomJpaController(utx, emf);
+                        Room room = RoomJpaCtrl.findRoom(Integer.parseInt(roomNum[i]));
+                        room.setAvailable(1);
+                        room.setCustomerid(customer);
+                        History history = new History(room, (int) room.getPrice(), new Date(), customer);
+                        try {
+                            RoomJpaCtrl.edit(room);
+                            historyJpaCtrl.create(history);    
+                        } catch (NonexistentEntityException ex) {
+                            Logger.getLogger(AfterPaymentServlet.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (RollbackFailureException ex) {
+                            Logger.getLogger(AfterPaymentServlet.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (Exception ex) {
+                            Logger.getLogger(AfterPaymentServlet.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                      
+                    }  
+                    session.removeAttribute("cart");
+                    response.sendRedirect("/BBMProject");
                     return;
                 }
+                getServletContext().getRequestDispatcher("/ShowCart").forward(request, response);
+                return;
             }
         }
-        response.sendRedirect("Login");
+        getServletContext().getRequestDispatcher("/Login").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

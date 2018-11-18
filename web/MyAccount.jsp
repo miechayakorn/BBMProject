@@ -438,7 +438,7 @@
                             Email: 
                         </div> 
                         <div class="col-10">
-                            <input type="text" class="form-control" placeholder ="${sessionScope.customer.getEmail().getEmail()}" p><br>
+                            <input type="text" class="form-control" value ="${sessionScope.customer.getEmail().getEmail()}" disabled="" ><br>
                         </div> 
                     </div>
                     <div class="profile-card-loc">
@@ -446,7 +446,7 @@
                             Phone:  
                         </div> 
                         <div class="col-10">
-                            <input type="text" class="form-control" placeholder ="${sessionScope.customer.getPhone()}"><br>
+                            <input type="text" class="form-control " value ="${sessionScope.customer.getPhone()} " disabled=""><br>
                         </div> 
                     </div>
                     <div class="profile-card-loc">
@@ -454,7 +454,7 @@
                             Address:  
                         </div> 
                         <div class="col-10">
-                            <textarea type="text" class="form-control" name="address" rows="4">${sessionScope.customer.getAddress()}</textarea>
+                            <textarea type="text" class="form-control" name="address" rows="4" disabled="">${sessionScope.customer.getAddress()}</textarea>
                         </div> 
                     </div>
 
