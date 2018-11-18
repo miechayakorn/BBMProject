@@ -52,6 +52,10 @@
         <servlet-name>AfterPaymentServlet</servlet-name>
         <servlet-class>bbm.servlet.AfterPaymentServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RoomDetailServlet</servlet-name>
+        <servlet-class>bbm.servlet.RoomDetailServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>AfterPaymentServlet</servlet-name>
         <url-pattern>/AfterPayment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RoomDetailServlet</servlet-name>
+        <url-pattern>/RoomDetail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
