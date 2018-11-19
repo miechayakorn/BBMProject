@@ -800,7 +800,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <center>
-                                        <form action="AfterPayment">
+                                        <form action="AfterPayment" method="post">
                                         <table class="table fixed_header">
                                             <tr>
                                                 <th>#</th>

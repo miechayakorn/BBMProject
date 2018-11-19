@@ -60,7 +60,7 @@
         }
     </style>
     <body>
-        
+
         <jsp:include page="include/Header.jsp"/>
 
         <section class="engine"><a href="https://mobirise.info/j">website templates</a></section>
@@ -74,7 +74,7 @@
 
 
         </section>
-<c:choose>
+        <c:choose>
             <c:when test="${status == 'statusTrue'}">
                 <div class="alert alert-success">
                     <strong>Success!!</strong> กรุณา.. เช็คที่อีเมล์เพื่อ Activate | อีเมล์ของท่านที่ใช้ในการสมัคร คือ ${getEmailInDB}
@@ -156,10 +156,10 @@
                                 <textarea type="text" class="form-control" name="address" rows="7"></textarea>
                             </div>
 
-                            <span class="input-group-btn"><button type="submit" onclick="openSearch()" class="btn btn-primary btn-form display-4">สมัครสมาชิก</button></span>
+                            <span class="input-group-btn"><button type="submit" onclick="accept()" class="btn btn-primary btn-form display-4">สมัครสมาชิก</button></span>
                         </form>
+                    </div>
                 </div>
-            </div>
         </section>
 
         <jsp:include page="include/Footer.jsp"/>
@@ -173,17 +173,39 @@
         <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
         <script src="assets/theme/js/script.js"></script>
         <script src="assets/formoid/formoid.min.js"></script>
-        
-       
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.29.1/dist/sweetalert2.all.min.js"></script>
+
+
     </body>
     <script>
-        function openSearch() {
-            document.getElementById("myOverlay").style.display = "block";
-        }
+                                function accept() {
+                                    (async function acceptTermsAndConditions() {
+                                        const {value: accept} = await swal({
+                                            title: 'Terms and conditions',
+                                            input: 'checkbox',
+                                            inputValue: 1,
+                                            inputPlaceholder:
+                                                    'I agree with the terms and conditions',
+                                            confirmButtonText:
+                                                    'Continue <i class="fa fa-arrow-right></i>',
+                                            inputValidator: (result) => {
+                                                return !result && 'You need to agree with T&C'
+                                            }
+                                        })
 
-        function closeSearch() {
-            document.getElementById("myOverlay").style.display = "none";
-        }
+                                        if (accept) {
+                                           swal({
+                                                title: 'ระบบกำลังประมวลผล',
+                                                html: 'โปรดรอสักครู่..',
+                                                timer: 9800,
+                                                onOpen: () => {
+                                                    swal.showLoading()
+                                                }
+                                            }) 
+                                        }
+
+                                    })()
+                                }                     
     </script>
 </html>
 

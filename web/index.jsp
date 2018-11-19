@@ -81,7 +81,7 @@
                         <div class="card-wrapper ">
                             <div class="card-img">
                                 <div class="mbr-overlay"></div>
-                                <div class="mbr-section-btn text-center"><a href="Room#features11-1e" class="btn btn-primary">
+                                <div class="mbr-section-btn text-center"><a href="RoomDetail#features11-1e" class="btn btn-primary">
                                         View</a></div>
                                 <img src="assets/images/a1-676x526.jpg" alt="Mobirise" title="">
                             </div>
@@ -95,7 +95,7 @@
                         <div class="card-wrapper">
                             <div class="card-img">
                                 <div class="mbr-overlay"></div>
-                                <div class="mbr-section-btn text-center"><a href="Room#features11-1f" class="btn btn-primary">
+                                <div class="mbr-section-btn text-center"><a href="RoomDetail#features11-1f" class="btn btn-primary">
                                         View</a></div>
                                 <img src="assets/images/b1-676x526.jpg" alt="Mobirise" title="">
                             </div>
@@ -110,7 +110,7 @@
                         <div class="card-wrapper">
                             <div class="card-img">
                                 <div class="mbr-overlay"></div>
-                                <div class="mbr-section-btn text-center"><a href="Room#features11-1g" class="btn btn-primary">
+                                <div class="mbr-section-btn text-center"><a href="RoomDetail#features11-1g" class="btn btn-primary">
                                         View</a></div>
                                 <img src="assets/images/c1-676x526.jpg" alt="Mobirise" title="">
                             </div>
@@ -294,5 +294,9 @@
         <script src="assets/theme/js/script.js"></script>
         <script src="assets/slidervideo/script.js"></script>
         <script src="assets/formoid/formoid.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.29.1/dist/sweetalert2.all.min.js"></script>
+        <script>
+            ${messageAfterPayment == "success" ? 'swal({type: "success",title: "Success!!",text: "Thank you for Shopping"}),footer: "<a href='+'"http://www.google.com"'+'>Go to History</a>"' : ""}
+        </script>
     </body>
 </html>

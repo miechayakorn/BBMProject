@@ -70,7 +70,8 @@ public class AfterPaymentServlet extends HttpServlet {
                         History history = new History(room, (int) room.getPrice(), new Date(), customer);
                         try {
                             RoomJpaCtrl.edit(room);
-                            historyJpaCtrl.create(history);    
+                            historyJpaCtrl.create(history);  
+                            request.setAttribute("messageAfterPayment", "success");
                         } catch (NonexistentEntityException ex) {
                             Logger.getLogger(AfterPaymentServlet.class.getName()).log(Level.SEVERE, null, ex);
                         } catch (RollbackFailureException ex) {
@@ -81,7 +82,7 @@ public class AfterPaymentServlet extends HttpServlet {
                       
                     }  
                     session.removeAttribute("cart");
-                    response.sendRedirect("/BBMProject");
+                    getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
                     return;
                 }
                 response.sendRedirect("RemainingRoom#selectRoom");
