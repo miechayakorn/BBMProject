@@ -101,7 +101,7 @@
                                 <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                                 <br>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-lg"  onclick="open()">Reset your password</button>
+                            <button type="submit" class="btn btn-primary btn-lg"  onclick="ShowLoad()">Reset your password</button>
                         </form>
                     </div>
                 </div>
@@ -125,8 +125,8 @@
 
     </body>
     <script>
-    function open() {
-        swal({
+    function ShowLoad() {
+                swal({
                                         title: 'ระบบกำลังประมวลผล',
                                         html: 'โปรดรอสักครู่..',
                                         timer: 9800,
@@ -134,10 +134,6 @@
                                             swal.showLoading()
                                         }
                                     })
-    }
-
-    function closeSearch() {
-        document.getElementById("myOverlay").style.display = "none";
     }
     </script>
 </html>
