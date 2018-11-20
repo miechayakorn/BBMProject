@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package bbm.servlet;
 
 import bbm.jpa.model.Account;
@@ -21,25 +16,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
 
-/**
- *
- * @author Acer_E5
- */
 public class CheckoutServlet extends HttpServlet {
 
     @Resource
     UserTransaction utx;
     @PersistenceUnit(unitName = "BBMWebAppPU")
     EntityManagerFactory emf;
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
@@ -51,10 +34,10 @@ public class CheckoutServlet extends HttpServlet {
                 Customer customer = customerJpaCtrl.findCustomer(custSession.getCustomerid());
                 if (customer != null) {
                     AccountJpaController accJpaCtrl = new AccountJpaController(utx, emf);
-                        Account acc = accJpaCtrl.findAccount(custSession.getEmail().getEmail());
-                        if (acc.getActivatedate() == null) {
-                            request.setAttribute("notactivateDate", "Email: Not Activate");
-                        }
+                    Account acc = accJpaCtrl.findAccount(custSession.getEmail().getEmail());
+                    if (acc.getActivatedate() == null) {
+                        request.setAttribute("notactivateDate", "Email: Not Activate");
+                    }
                     getServletContext().getRequestDispatcher("/Checkout.jsp").forward(request, response);
                     return;
                 }

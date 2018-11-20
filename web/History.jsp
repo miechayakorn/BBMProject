@@ -1,9 +1,3 @@
-<%-- 
-    Document   : History
-    Created on : 8 พ.ย. 2561, 18:20:13
-    Author     : Kridtakom
---%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
         <link rel="shortcut icon" href="assets/images/bbm-logo-122x122.png" type="image/x-icon">
         <meta name="description" content="">
-        <title>MyAccount</title>
+        <title>History - BBMProject</title>
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
         <link rel="stylesheet" href="assets/tether/tether.min.css">
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -42,9 +36,9 @@
                     <h1 class="mbr-section-title py-3 mbr-fonts-style display-1"><strong>History - ประวัติการซื้อขาย</strong></h1>
                 </div>
             </div>
-            
-            
-            
+
+
+
             <section class="history" style="padding: 70px; width: 65%;
                      background-color: rgb(150,150,150,0.5);
                      margin: auto;

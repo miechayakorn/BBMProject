@@ -1,9 +1,3 @@
-<%-- 
-    Document   : Checkout
-    Created on : 17-Nov-2018, 22:18:36
-    Author     : Acer_E5
---%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,7 +7,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="shortcut icon" href="assets/images/bbm-logo-122x122.png" type="image/x-icon">
-        <title>Checkout</title>
+        <title>Checkout - BBMProject</title>
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
@@ -801,31 +795,31 @@
                                 <div class="col-12">
                                     <center>
                                         <form action="AfterPayment" method="post">
-                                        <table class="table fixed_header">
-                                            <tr>
-                                                <th>#</th>
-                                                <th>ROOMNUMBER</th>
-                                                <th>PRICE</th>
-                                            </tr>
-
-                                            <c:forEach var="cartList" items="${sessionScope.cart.lineRoom}" varStatus="vs">
+                                            <table class="table fixed_header">
                                                 <tr>
-                                                    <th>${vs.count}</th>
-                                                    <th>${cartList.room.roomnumber}</th>
+                                                    <th>#</th>
+                                                    <th>ROOMNUMBER</th>
+                                                    <th>PRICE</th>
+                                                </tr>
+
+                                                <c:forEach var="cartList" items="${sessionScope.cart.lineRoom}" varStatus="vs">
+                                                    <tr>
+                                                        <th>${vs.count}</th>
+                                                        <th>${cartList.room.roomnumber}</th>
                                                     <input type="hidden" name="roomnumber" value="${cartList.room.roomnumber}">
                                                     <th>${cartList.room.price}</th>
-                                                </tr>
-                                            </c:forEach>
-                                        </table>
+                                                    </tr>
+                                                </c:forEach>
+                                            </table>
 
-                                        <div>
-                                            <div id="mySelect" class="input-group form-search form-inline">
-                                                <input type="text" name="idcard" required="" class="form-control" placeholder="IDCARD">
-                                                <div class="input-group-append">
-                                                    <button type="submit" class="btn-lg btn btn-primary">Payment</button>
+                                            <div>
+                                                <div id="mySelect" class="input-group form-search form-inline">
+                                                    <input type="text" name="idcard" required="" class="form-control" placeholder="IDCARD">
+                                                    <div class="input-group-append">
+                                                        <button type="submit" class="btn-lg btn btn-primary">Payment</button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
                                         </form>
                                     </center>
                                 </div>
@@ -837,7 +831,7 @@
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.29.1/dist/sweetalert2.all.min.js"></script>
-        
+
         <script>
             $(function () {
                 var qrWidth, qrHeight;

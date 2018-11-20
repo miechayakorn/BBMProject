@@ -1,9 +1,3 @@
-<%-- 
-    Document   : Login
-    Created on : Oct 9, 2018, 12:38:25 PM
-    Author     : Kridtakom
---%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
         <link rel="shortcut icon" href="assets/images/bbm-logo-122x122.png" type="image/x-icon">
         <meta name="description" content="">
-        <title>Please Sign In</title>
+        <title>Please Sign In - BBMProject</title>
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
         <link rel="stylesheet" href="assets/tether/tether.min.css">

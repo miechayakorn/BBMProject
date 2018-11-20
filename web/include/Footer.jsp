@@ -1,9 +1,3 @@
-<%-- 
-    Document   : Footer
-    Created on : Oct 29, 2018, 4:34:22 PM
-    Author     : Student
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <section class="footer4 cid-r7McFOctRn" id="footer4-11">
@@ -16,9 +10,9 @@
                     </a>
                 </div>
                 <a href="/BBMProject" class="text-white">
-                <p class="mb-3 mbr-fonts-style foot-title display-7">
+                    <p class="mb-3 mbr-fonts-style foot-title display-7">
                         HOME
-                </p>
+                    </p>
                 </a>    
                 <p class="mbr-text mbr-fonts-style mbr-links-column display-7"><strong><a href="/BBMProject/#Project-Info" class="text-white">ข้อมูลโครงการ</a></strong><br><a href="RoomDetail" class="text-white">รายละเอียดห้อง</a>
                     <br><a href="RemainingRoom" target="_blank" class="text-white">จำนวนห้องที่เหลืออยู่</a></p>

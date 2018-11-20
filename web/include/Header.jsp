@@ -1,8 +1,3 @@
-<%-- 
-    Document   : Header
-    Created on : Oct 29, 2018, 4:27:32 PM
-    Author     : Student
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -40,7 +35,7 @@
                 </c:if>
                 <a class="btn btn-sm btn-secondary" href="Search#selectRoom"><span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span></a>
                 <a class="btn btn-sm btn-warning p-3" href="ShowCart" style="border-radius:12px; ">${sessionScope.cart.quantity == null ? '0' :sessionScope.cart.quantity}&nbsp;<img src="assets/images/condo-icon.png" width="30px" /></a>    
-                        <c:if test="${not empty sessionScope.customer}">
+                    <c:if test="${not empty sessionScope.customer}">
                     <div class="btn-group">
                         <a class="btn btn-sm btn-primary nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="mbri-user mbr-iconfont mbr-iconfont-btn"></span>    Welcome :   ${sessionScope.customer.name}</a>
                         <div class="dropdown-content dropdown-menu mx-4" aria-labelledby="navbarDropdown">

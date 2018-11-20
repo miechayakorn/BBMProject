@@ -1,8 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 08-Oct-2018, 22:55:48
-    Author     : Acer_E5
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,7 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
         <link rel="shortcut icon" href="assets/images/bbm-logo-122x122.png" type="image/x-icon">
         <meta name="description" content="">
-        <title>Home</title>
+        <title>Home - BBMProject</title>
         <link href="https://fonts.googleapis.com/css?family=Athiti" rel="stylesheet">
         <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
         <link rel="stylesheet" href="assets/tether/tether.min.css">

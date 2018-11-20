@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package bbm.servlet;
 
 import bbm.jpa.model.Customer;
@@ -28,10 +23,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
 
-/**
- *
- * @author Kridtakom
- */
 public class AfterPaymentServlet extends HttpServlet {
 
     @Resource
@@ -39,15 +30,6 @@ public class AfterPaymentServlet extends HttpServlet {
     @PersistenceUnit(unitName = "BBMWebAppPU")
     EntityManagerFactory emf;
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -70,7 +52,7 @@ public class AfterPaymentServlet extends HttpServlet {
                         History history = new History(room, (int) room.getPrice(), new Date(), customer);
                         try {
                             RoomJpaCtrl.edit(room);
-                            historyJpaCtrl.create(history);  
+                            historyJpaCtrl.create(history);
                             request.setAttribute("messageAfterPayment", "success");
                         } catch (NonexistentEntityException ex) {
                             Logger.getLogger(AfterPaymentServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -79,8 +61,8 @@ public class AfterPaymentServlet extends HttpServlet {
                         } catch (Exception ex) {
                             Logger.getLogger(AfterPaymentServlet.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                      
-                    }  
+
+                    }
                     session.removeAttribute("cart");
                     getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
                     return;

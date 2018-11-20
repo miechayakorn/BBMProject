@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package bbm.servlet;
 
 import bbm.jpa.model.Room;
@@ -22,10 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
 
-/**
- *
- * @author INT303
- */
 public class AddRoomToCartServlet extends HttpServlet {
 
     @Resource
@@ -33,32 +24,22 @@ public class AddRoomToCartServlet extends HttpServlet {
     @PersistenceUnit(unitName = "BBMWebAppPU")
     EntityManagerFactory emf;
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         String roomNumber = request.getParameter("roomnumber");
-        
-        
-        if(session == null){
+
+        if (session == null) {
             request.getSession(true);
         }
-        
-        BigCart cart = (BigCart)session.getAttribute("cart");
+
+        BigCart cart = (BigCart) session.getAttribute("cart");
         if (cart == null) {
             cart = new BigCart();
             session.setAttribute("cart", cart);
         }
-        
-        if(roomNumber != null){
+
+        if (roomNumber != null) {
             RoomJpaController roomJpaCtrl = new RoomJpaController(utx, emf);
             Room room = roomJpaCtrl.findRoom(Integer.parseInt(roomNumber));
             cart.add(room);
@@ -74,7 +55,7 @@ public class AddRoomToCartServlet extends HttpServlet {
                 roomSelectList.add(Integer.parseInt(roomNumber));
                 session.setAttribute("roomSelectList", roomSelectList);
             }
-            
+
         }
         getServletContext().getRequestDispatcher("/RemainingRoom").forward(request, response);
 

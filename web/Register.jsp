@@ -1,9 +1,3 @@
-<%-- 
-    Document   : Register
-    Created on : 08-Oct-2018, 16:00:53
-    Author     : Acer_E5
---%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="generator" content="Mobirise v4.8.6, mobirise.com">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    <link rel="shortcut icon" href="assets/images/logo2.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/images/bbm-logo-122x122.png" type="image/x-icon">
     <meta name="description" content="Web Site Creator Description">
-    <title>Register Page</title>
+    <title>Register - BBMProject</title>
     <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
     <link rel="stylesheet" href="assets/tether/tether.min.css">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
