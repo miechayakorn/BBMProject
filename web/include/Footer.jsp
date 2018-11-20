@@ -20,7 +20,7 @@
                         HOME
                 </p>
                 </a>    
-                <p class="mbr-text mbr-fonts-style mbr-links-column display-7"><strong><a href="/BBMProject/#form4-k" class="text-white">ข้อมูลโครงการ</a></strong><br><a href="RoomDetail" class="text-white">รายละเอียดห้อง</a>
+                <p class="mbr-text mbr-fonts-style mbr-links-column display-7"><strong><a href="/BBMProject/#Project-Info" class="text-white">ข้อมูลโครงการ</a></strong><br><a href="RoomDetail" class="text-white">รายละเอียดห้อง</a>
                     <br><a href="RemainingRoom" target="_blank" class="text-white">จำนวนห้องที่เหลืออยู่</a></p>
             </div>
             <div class="col-md-4 col-sm-8">

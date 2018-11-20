@@ -103,7 +103,7 @@
 
 
 
-        <section class="features11 cid-r7074fmFzA" id="features11-1e">
+        <section class="features11 cid-r7074fmFzA" id="Type-A">
             <div class=container>
                 <div class="row">
                     <div class="col-md-6">
@@ -174,7 +174,7 @@
             </div>
         </section>
 
-        <section class="features11 cid-r7074fmFzA" id="features11-1f">
+        <section class="features11 cid-r7074fmFzA" id="Type-B">
             <div class=container>
                 <div class="row">
                     <div class="col-md-6">
@@ -245,7 +245,7 @@
             </div>
         </section>
 
-        <section class="features11 cid-r7074fmFzA" id="features11-1g">
+        <section class="features11 cid-r7074fmFzA" id="Type-C">
             <div class=container>
                 <div class="row">
                     <div class="col-md-6">
