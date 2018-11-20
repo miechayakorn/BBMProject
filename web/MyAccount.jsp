@@ -450,7 +450,7 @@
                             <input type="text" class="form-control" value ="${sessionScope.customer.getEmail().getEmail()}" disabled="" ><br>
                         </div> 
                     </div>
-                    
+
                     <div class="profile-card-loc">
                         <div class="col-2">
                             Phone:  
@@ -469,20 +469,42 @@
                     </div>
 
                     <div class="profile-card-ctr">
-                        <button class="profile-card__button button--blue">Edit Profile</button>
-                        <button class="profile-card__button button--orange js-message-btn">Delete Profile</button>
+                        <button class="profile-card__button button--blue js-message-btn">Edit Profile</button>
+                        <a class="profile-card__button button--orange " href="Recovery?email=${email}&activateKey=${activateKey}">Change Password</a>
                     </div>
                 </div>
 
                 <div class="profile-card-message js-message">
-                    <form class="profile-card-form">
+                    <form class="profile-card-form" action="MyAccount">
                         <div class="profile-card-form__container">
-                            ต้องการลบบัญชี ?
+                            <h3>แก้ไขข้อมูลส่วนตัว</h3><br><br>
+                        </div>
+                        <div class="profile-card-loc">
+                            <div class="col-2">
+                                Phone:  
+                            </div> 
+                            <div class="col-10">
+                                <input type="text" name="phone" class="form-control " value="${sessionScope.customer.getPhone()}"><br>
+                            </div> 
+                        </div>
+                        <div class="profile-card-loc">
+                            <div class="col-2">
+                                Address:  
+                            </div> 
+                            <div class="col-10">
+                                <textarea type="text" class="form-control" name="address" rows="4">${sessionScope.customer.getAddress()}</textarea><br>
+                            </div>
+                        </div>
+                        <div class="profile-card-loc">
+                            <div class="col-12">
+                                <small>*หากต้องการเปลี่ยนข้อมูลบัตรประชาชน หรือติดขัดปัญหาใด โปรดติดต่อเรา</small> 
+                            </div>
                         </div>
 
+
                         <div class="profile-card-form__bottom">
-                            <button class="profile-card__button button--blue js-message-close">
-                                Delete
+                            <button type="submit" class="profile-card__button button--blue">
+                                Submit
                             </button>
 
                             <button class="profile-card__button button--gray js-message-close">

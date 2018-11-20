@@ -9,8 +9,11 @@ import bbm.jpa.model.Account;
 import bbm.jpa.model.Customer;
 import bbm.jpa.model.controller.AccountJpaController;
 import bbm.jpa.model.controller.CustomerJpaController;
+import bbm.jpa.model.controller.exceptions.RollbackFailureException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -43,7 +46,8 @@ public class MyAccountServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        String phone = request.getParameter("phone");
+        String address = request.getParameter("address");
         HttpSession session = request.getSession(false);
 
         if (session != null) {
@@ -53,12 +57,27 @@ public class MyAccountServlet extends HttpServlet {
                 Customer customer = customerJpaCtrl.findCustomer(cusSession.getCustomerid());
                 AccountJpaController accJpaCtrl = new AccountJpaController(utx, emf);
                 Account acc = accJpaCtrl.findAccount(cusSession.getEmail().getEmail());
+                if (phone != null && address != null) {
+                    customer.setPhone(phone);
+                    customer.setAddress(address);
+                    try {
+                        customerJpaCtrl.edit(customer);
+                        response.sendRedirect("MyAccount");
+                        return;
+                    } catch (RollbackFailureException ex) {
+                        Logger.getLogger(MyAccountServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (Exception ex) {
+                        Logger.getLogger(MyAccountServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
                 if (customer != null) {
                     if (acc.getActivatedate() == null) {
                         request.setAttribute("notactivateDate", "Email: Not Activate");
                     } else if (acc.getActivatedate() != null) {
                         request.setAttribute("activateDate", "Activated - " + acc.getActivatedate());
                     }
+                    request.setAttribute("email", acc.getEmail());
+                    request.setAttribute("activateKey", acc.getActivatekey());
                     session.setAttribute("customer", customer);
                     getServletContext().getRequestDispatcher("/MyAccount.jsp").forward(request, response);
                     return;
