@@ -32,7 +32,7 @@ public class LogoutServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         if (session != null) {
-            session.invalidate();
+            session.removeAttribute("customer");
         }
         response.sendRedirect("/BBMProject");
         return;

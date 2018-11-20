@@ -773,7 +773,7 @@
             </div>
             <div class="inner-wrapper">
                 <div class="details">
-                    <div class="date"><img src="assets/images/bbm-logo-122x122.png"></div>
+                    <div class="date"><a href="/BBMProject"><img src="assets/images/bbm-logo-122x122.png"></a></div>
                     <div class="city">
                         <div class="from loc">
                             <div class="name">Payment</div>

@@ -381,7 +381,7 @@
                     var id = $(this).attr('id');
                     var id = id.split("_");
                     var price = $(this).attr('value');
-                    var tooltip = "FLOOR: " + id[0] + " ROOM:" + id[1] + " Price:Baht:" + price;
+                    var tooltip = "FLOOR: " + id[0] + " ROOM: " + id[1] + " Price: " + price +"฿";
 
                     $(this).prop('title', tooltip);
                 } else
