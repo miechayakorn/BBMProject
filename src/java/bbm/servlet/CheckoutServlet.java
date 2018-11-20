@@ -5,7 +5,9 @@
  */
 package bbm.servlet;
 
+import bbm.jpa.model.Account;
 import bbm.jpa.model.Customer;
+import bbm.jpa.model.controller.AccountJpaController;
 import bbm.jpa.model.controller.CustomerJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -48,6 +50,11 @@ public class CheckoutServlet extends HttpServlet {
                 CustomerJpaController customerJpaCtrl = new CustomerJpaController(utx, emf);
                 Customer customer = customerJpaCtrl.findCustomer(custSession.getCustomerid());
                 if (customer != null) {
+                    AccountJpaController accJpaCtrl = new AccountJpaController(utx, emf);
+                        Account acc = accJpaCtrl.findAccount(custSession.getEmail().getEmail());
+                        if (acc.getActivatedate() == null) {
+                            request.setAttribute("notactivateDate", "Email: Not Activate");
+                        }
                     getServletContext().getRequestDispatcher("/Checkout.jsp").forward(request, response);
                     return;
                 }

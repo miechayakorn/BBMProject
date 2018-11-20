@@ -101,7 +101,7 @@
                                 <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                                 <br>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-lg"  onclick="openSearch()">Reset your password</button>
+                            <button type="submit" class="btn btn-primary btn-lg"  onclick="open()">Reset your password</button>
                         </form>
                     </div>
                 </div>
@@ -120,12 +120,20 @@
         <script src="assets/smoothscroll/smooth-scroll.js"></script>
         <script src="assets/theme/js/script.js"></script>
         <script src="assets/formoid/formoid.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.29.1/dist/sweetalert2.all.min.js"></script>
 
 
     </body>
     <script>
-    function openSearch() {
-        document.getElementById("myOverlay").style.display = "block";
+    function open() {
+        swal({
+                                        title: 'ระบบกำลังประมวลผล',
+                                        html: 'โปรดรอสักครู่..',
+                                        timer: 9800,
+                                        onOpen: () => {
+                                            swal.showLoading()
+                                        }
+                                    })
     }
 
     function closeSearch() {

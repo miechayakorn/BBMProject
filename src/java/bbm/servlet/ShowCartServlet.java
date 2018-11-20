@@ -5,21 +5,33 @@
  */
 package bbm.servlet;
 
+import bbm.jpa.model.Account;
+import bbm.jpa.model.Customer;
+import bbm.jpa.model.controller.AccountJpaController;
 import bbm.model.BigCart;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import javax.annotation.Resource;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.transaction.UserTransaction;
 
 /**
  *
  * @author INT303
  */
 public class ShowCartServlet extends HttpServlet {
+
+    @Resource
+    UserTransaction utx;
+    @PersistenceUnit(unitName = "BBMWebAppPU")
+    EntityManagerFactory emf;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,11 +45,21 @@ public class ShowCartServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        
-        if (session != null ) {
-            if(session.getAttribute("cart") != null){
+
+        if (session != null) {
+            if (session.getAttribute("cart") != null) {
                 BigCart cart = (BigCart) session.getAttribute("cart");
                 if (cart != null && cart.getQuantity() > 0) {
+                    Customer custSession = (Customer) session.getAttribute("customer");
+
+                    if (custSession != null) {
+                        AccountJpaController accJpaCtrl = new AccountJpaController(utx, emf);
+                        Account acc = accJpaCtrl.findAccount(custSession.getEmail().getEmail());
+                        if (acc.getActivatedate() == null) {
+                            request.setAttribute("notactivateDate", "Email: Not Activate");
+                        }
+                    }
+
                     getServletContext().getRequestDispatcher("/ShowCart.jsp").forward(request, response);
                     return;
                 }

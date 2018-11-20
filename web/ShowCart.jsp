@@ -381,7 +381,7 @@
 
                     <div class="paypal__footer">
                         <center>
-                            <a class="btn btn-primary btn-secondary" href="Checkout">Check Out</a>
+                            <a id="mySelect" class="btn btn-primary btn-secondary" href="Checkout">Check Out</a>
                         </center>
                     </div>
                 </div>
@@ -398,5 +398,13 @@
         <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
         <script src="assets/theme/js/script.js"></script>
         <script src="assets/formoid/formoid.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.29.1/dist/sweetalert2.all.min.js"></script>
+        <script>
+            <c:if test="${notactivateDate != null}">
+            var x = document.getElementById("mySelect");
+            x.remove();
+            swal({type: "info", title: "Please activate Email!!"})
+            </c:if>
+        </script>
     </body>
 </html>

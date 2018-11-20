@@ -819,7 +819,7 @@
                                         </table>
 
                                         <div>
-                                            <div class="input-group form-search form-inline">
+                                            <div id="mySelect" class="input-group form-search form-inline">
                                                 <input type="text" name="idcard" required="" class="form-control" placeholder="IDCARD">
                                                 <div class="input-group-append">
                                                     <button type="submit" class="btn-lg btn btn-primary">Payment</button>
@@ -836,6 +836,8 @@
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.29.1/dist/sweetalert2.all.min.js"></script>
+        
         <script>
             $(function () {
                 var qrWidth, qrHeight;
@@ -897,6 +899,11 @@
                     $('.inner-wrapper').removeClass('seat-details');
                 });
             })
+            <c:if test="${notactivateDate != null}">
+            var x = document.getElementById("mySelect");
+            x.remove();
+            swal({type: "info", title: "Please activate Email!!"})
+            </c:if>
         </script>
     </body>
 </html>

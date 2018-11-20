@@ -437,6 +437,12 @@
                     <div class="profile-card__name">${sessionScope.customer.getName()} ${sessionScope.customer.getSurname()}</div>
                     <div class="profile-card__txt">IDCARD ${sessionScope.customer.getIdcard()}</div>
                     <div class="profile-card-loc">
+                        <div class="col-12">
+                            <p style="color: #ffcc00">${notactivateDate}</p>
+                            <p style="color: #66ff66">${activateDate}</p>
+                        </div>
+                    </div>
+                    <div class="profile-card-loc">
                         <div class="col-2">
                             Email: 
                         </div> 
@@ -444,6 +450,7 @@
                             <input type="text" class="form-control" value ="${sessionScope.customer.getEmail().getEmail()}" disabled="" ><br>
                         </div> 
                     </div>
+                    
                     <div class="profile-card-loc">
                         <div class="col-2">
                             Phone:  

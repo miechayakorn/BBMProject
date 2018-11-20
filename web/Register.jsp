@@ -179,33 +179,15 @@
     </body>
     <script>
                                 function accept() {
-                                    (async function acceptTermsAndConditions() {
-                                        const {value: accept} = await swal({
-                                            title: 'Terms and conditions',
-                                            input: 'checkbox',
-                                            inputValue: 1,
-                                            inputPlaceholder:
-                                                    'I agree with the terms and conditions',
-                                            confirmButtonText:
-                                                    'Continue <i class="fa fa-arrow-right></i>',
-                                            inputValidator: (result) => {
-                                                return !result && 'You need to agree with T&C'
-                                            }
-                                        })
-
-                                        if (accept) {
-                                           swal({
-                                                title: 'ระบบกำลังประมวลผล',
-                                                html: 'โปรดรอสักครู่..',
-                                                timer: 9800,
-                                                onOpen: () => {
-                                                    swal.showLoading()
-                                                }
-                                            }) 
+                                    swal({
+                                        title: 'ระบบกำลังประมวลผล',
+                                        html: 'โปรดรอสักครู่..',
+                                        timer: 9800,
+                                        onOpen: () => {
+                                            swal.showLoading()
                                         }
-
-                                    })()
-                                }                     
+                                    })
+                                }
     </script>
 </html>
 

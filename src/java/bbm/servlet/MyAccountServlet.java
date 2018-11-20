@@ -5,6 +5,7 @@
  */
 package bbm.servlet;
 
+import bbm.jpa.model.Account;
 import bbm.jpa.model.Customer;
 import bbm.jpa.model.controller.AccountJpaController;
 import bbm.jpa.model.controller.CustomerJpaController;
@@ -25,8 +26,12 @@ import javax.transaction.UserTransaction;
  * @author Kridtakom
  */
 public class MyAccountServlet extends HttpServlet {
-    @Resource UserTransaction utx;
-    @PersistenceUnit (unitName = "BBMWebAppPU") EntityManagerFactory emf;
+
+    @Resource
+    UserTransaction utx;
+    @PersistenceUnit(unitName = "BBMWebAppPU")
+    EntityManagerFactory emf;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,15 +43,22 @@ public class MyAccountServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         HttpSession session = request.getSession(false);
-        
+
         if (session != null) {
             Customer cusSession = (Customer) session.getAttribute("customer");
-            if(cusSession != null){
+            if (cusSession != null) {
                 CustomerJpaController customerJpaCtrl = new CustomerJpaController(utx, emf);
-                Customer customer =  customerJpaCtrl.findCustomer(cusSession.getCustomerid());
-                if(customer != null){
+                Customer customer = customerJpaCtrl.findCustomer(cusSession.getCustomerid());
+                AccountJpaController accJpaCtrl = new AccountJpaController(utx, emf);
+                Account acc = accJpaCtrl.findAccount(cusSession.getEmail().getEmail());
+                if (customer != null) {
+                    if (acc.getActivatedate() == null) {
+                        request.setAttribute("notactivateDate", "Email: Not Activate");
+                    } else if (acc.getActivatedate() != null) {
+                        request.setAttribute("activateDate", "Activated - " + acc.getActivatedate());
+                    }
                     session.setAttribute("customer", customer);
                     getServletContext().getRequestDispatcher("/MyAccount.jsp").forward(request, response);
                     return;

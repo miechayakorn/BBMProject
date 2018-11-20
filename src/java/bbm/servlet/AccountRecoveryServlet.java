@@ -40,7 +40,7 @@ public class AccountRecoveryServlet extends HttpServlet {
             Account account = accountJpaCtrl.findAccount(email);
 
             if (account != null) {
-                /*try {
+                try {
                     String activateKeyInDB = account.getActivatekey();
 
                     //Send Email
@@ -54,7 +54,7 @@ public class AccountRecoveryServlet extends HttpServlet {
                     Logger.getLogger(AccountRecoveryServlet.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (Exception ex) {
                     Logger.getLogger(AccountRecoveryServlet.class.getName()).log(Level.SEVERE, null, ex);
-                }*/
+                }
                 status = "RecoveryTrue";
                 request.setAttribute("status", status);
             } else {

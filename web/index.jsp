@@ -30,31 +30,6 @@
         <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
     </head>
     <body>
-        <c:choose>
-            <c:when test="${status == 'RecoveryTrue'}">
-                <div class="alert alert-success">
-                    <strong>ยินดีต้อนรับการกลับมาของท่าน!!</strong> ในตอนนี้ท่านสามารถใช้รหัสผ่านใหม่ได้เรียบร้อยแล้ว
-                </div>
-            </c:when>
-            <c:when test="${status == 'notEmail'}">
-                <div class="alert alert-danger">
-                    <strong>Error!</strong> ไม่มี Email นี้ในระบบของเรา กรุณาลองใหม่
-                </div>
-            </c:when>
-            <c:when test="${status == 'ActivateTrue'}">
-                <div class="alert alert-success">
-                    <strong>ActivateKey success!!</strong> ในตอนนี้ท่านสามารถใช้งานระบบของเราได้อย่างเต็มรูปแบบ
-                </div>
-            </c:when>
-            <c:when test="${status == 'ActivateFalse'}">
-                <div class="alert alert-danger">
-                    <strong>Activate Error!!</strong> คุณอาจเคยActivateไปแล้ว..
-                </div>
-            </c:when>
-            <c:otherwise>
-
-            </c:otherwise>
-        </c:choose>
 
         <jsp:include page="include/Header.jsp"/>
 
@@ -101,7 +76,7 @@
                             </div>
                             <div class="card-box">
                                 <h4 class="card-title mbr-fonts-style display-7">Type B</h4>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -152,8 +127,8 @@
                         <div class="google-map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5482.754248689906!2d100.53521005781704!3d13.664287423297003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2a251bb6b0cf1%3A0xf656e94ff13324ad!2z4Lih4Lir4Liy4Lin4Li04LiX4Lii4Liy4Lil4Lix4Lii4LmA4LiX4LiE4LmC4LiZ4LmC4Lil4Lii4Li14Lie4Lij4Liw4LiI4Lit4Lih4LmA4LiB4Lil4LmJ4Liy4LiY4LiZ4Lia4Li44Lij4Li1!5e0!3m2!1sth!2sth!4v1541069580727" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe></div>
                     </div>
                     <div class="col-md-6">
-                       <h2 class="pb-3 align-left mbr-fonts-style display-2">  <strong>ที่ตั้ง และข้อมูลการติดต่อ</strong></h2> 
-                            
+                        <h2 class="pb-3 align-left mbr-fonts-style display-2">  <strong>ที่ตั้ง และข้อมูลการติดต่อ</strong></h2> 
+
                         <div>
                             <div class="icon-block pb-3">
                                 <span class="icon-block__icon">
@@ -296,7 +271,21 @@
         <script src="assets/formoid/formoid.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.29.1/dist/sweetalert2.all.min.js"></script>
         <script>
-            ${messageAfterPayment == "success" ? 'swal({type: "success",title: "Success!!",text: "Thank you for Shopping"}),footer: "<a href='+'"http://www.google.com"'+'>Go to History</a>"' : ""}
+            <c:if test="${messageAfterPayment == 'success'}">
+            swal({type: "success", title: "Success!!", text: "Thank you for Shopping", footer: '<a href="/BBMProject/History">Go to History</a>'})
+            </c:if>
+            <c:if test="${status == 'RecoveryTrue'}">
+            swal({type: "success", title: "ยินดีต้อนรับการกลับมาของท่าน!!", text: "ในตอนนี้ท่านสามารถใช้รหัสผ่านใหม่ได้เรียบร้อยแล้ว"})
+            </c:if>
+            <c:if test="${status == 'notEmail'}">
+            swal({type: "error", title: "Error!", text: "ไม่มี Email นี้ในระบบของเรา กรุณาลองใหม่"})
+            </c:if>
+            <c:if test="${status == 'ActivateTrue'}">
+            swal({type: "success", title: "ActivateKey success!!", text: "ในตอนนี้ท่านสามารถใช้งานระบบของเราได้อย่างเต็มรูปแบบ"})
+            </c:if>
+            <c:if test="${status == 'ActivateFalse'}">
+            swal({type: "warning", title: "Activate Error!!", text: "คุณอาจเคยActivateไปแล้ว.."})
+            </c:if>
         </script>
     </body>
 </html>
