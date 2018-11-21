@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -46,7 +47,7 @@ public class History implements Serializable {
     @ManyToOne
     private Customer customerid;
     @JoinColumn(name = "ROOMNUMBER", referencedColumnName = "ROOMNUMBER")
-    @ManyToOne(optional = false)
+    @OneToOne(optional = false)
     private Room roomnumber;
 
     public History() {
@@ -61,13 +62,12 @@ public class History implements Serializable {
         this.price = price;
     }
 
-    public History(Room roomnumber,int  price, Date purchasedate, Customer customerid) {
+    public History(Room roomnumber, int price, Date purchasedate, Customer customerid) {
         this.price = price;
         this.purchasedate = purchasedate;
         this.customerid = customerid;
         this.roomnumber = roomnumber;
     }
-    
 
     public Integer getHistoryid() {
         return historyid;
@@ -132,5 +132,5 @@ public class History implements Serializable {
     public String toString() {
         return "bbm.jpa.model.History[ historyid=" + historyid + " ]";
     }
-    
+
 }
