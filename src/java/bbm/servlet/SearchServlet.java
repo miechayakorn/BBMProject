@@ -1,4 +1,3 @@
-
 package bbm.servlet;
 
 import bbm.jpa.model.Room;
@@ -18,14 +17,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
 
-
 public class SearchServlet extends HttpServlet {
 
     @Resource
     UserTransaction utx;
     @PersistenceUnit(unitName = "BBMWebAppPU")
     EntityManagerFactory emf;
-
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -40,17 +37,16 @@ public class SearchServlet extends HttpServlet {
         for (Room roomLoop : roomAvailable) {
             if (roomLoop.getAvailable() == 0) {
                 available++;
-            } 
+            }
         }
         for (Room roomLoop : roomNotAvailable) {
             if (roomLoop.getAvailable() == 1) {
                 notAvailable++;
-            } 
+            }
         }
         request.setAttribute("remaining", available);
         request.setAttribute("sold", notAvailable);
-        
-        
+
         List<Room> roomByFloor1 = roomJpaCtrl.searchByFloor1();
         List<Room> roomByFloor2 = roomJpaCtrl.searchByFloor2();
         List<Room> roomByFloor3 = roomJpaCtrl.searchByFloor3();
@@ -73,14 +69,19 @@ public class SearchServlet extends HttpServlet {
             switch (search) {
                 case "size":
                     if (value != null) {
-                        value = value + "Sq.M";
-                        List<Room> sizeRoom = roomJpaCtrl.findBySizeRoom(value);
-                        List<Integer> searchRoomNumber = new ArrayList<Integer>();
-                        for (Room room : sizeRoom) {
-                            searchRoomNumber.add(room.getRoomnumber());
-                            System.out.println(room.getRoomnumber());
+                        try {
+                            List<Room> sizeRoom = roomJpaCtrl.findBySizeRoom(Double.parseDouble(value));
+                            if (sizeRoom != null) {
+                                List<Integer> searchRoomNumber = new ArrayList<Integer>();
+                                for (Room room : sizeRoom) {
+                                    searchRoomNumber.add(room.getRoomnumber());
+                                }
+                                request.setAttribute("searchRoomNumber", searchRoomNumber);
+                            }
+                        } catch (Exception e) {
+                            request.getRequestDispatcher("/RemainingRoom.jsp").forward(request, response);
+                            return;
                         }
-                        request.setAttribute("searchRoomNumber", searchRoomNumber);
                         request.getRequestDispatcher("/RemainingRoom.jsp").forward(request, response);
                         return;
                     }
@@ -93,7 +94,6 @@ public class SearchServlet extends HttpServlet {
                         List<Integer> searchTypeRoom = new ArrayList<Integer>();
                         for (Room room : typeRoom) {
                             searchTypeRoom.add(room.getRoomnumber());
-                            System.out.println(room.getRoomnumber() + "  " + room.getTyperoom());
                         }
                         request.setAttribute("searchRoomNumber", searchTypeRoom);
                         request.getRequestDispatcher("/RemainingRoom.jsp").forward(request, response);
@@ -101,29 +101,37 @@ public class SearchServlet extends HttpServlet {
                     }
                     break;
                 case "grather_than":
-                    double priceMore = Double.parseDouble(value);
-                    if (priceMore > 0) {
-                        List<Room> priceRoomMore = roomJpaCtrl.findByPriceMoreThan(priceMore);
-                        List<Integer> searchPriceRoomMore = new ArrayList<Integer>();
-                        for (Room room : priceRoomMore) {
-                            searchPriceRoomMore.add(room.getRoomnumber());
-                            System.out.println(room.getRoomnumber() + "  " + room.getTyperoom());
+                    try {
+                        double priceMore = Double.parseDouble(value);
+                        if (priceMore > 0) {
+                            List<Room> priceRoomMore = roomJpaCtrl.findByPriceMoreThan(priceMore);
+                            List<Integer> searchPriceRoomMore = new ArrayList<Integer>();
+                            for (Room room : priceRoomMore) {
+                                searchPriceRoomMore.add(room.getRoomnumber());
+                            }
+                            request.setAttribute("searchRoomNumber", searchPriceRoomMore);
+                            request.getRequestDispatcher("/RemainingRoom.jsp").forward(request, response);
+                            return;
                         }
-                        request.setAttribute("searchRoomNumber", searchPriceRoomMore);
+                    } catch (Exception e) {
                         request.getRequestDispatcher("/RemainingRoom.jsp").forward(request, response);
                         return;
                     }
                     break;
                 case "less_than":
-                    double priceLess = Double.parseDouble(value);
-                    if (priceLess > 0) {
-                        List<Room> priceRoomLess = roomJpaCtrl.findByPriceLessThan(priceLess);
-                        List<Integer> searchPriceRoomLess = new ArrayList<Integer>();
-                        for (Room room : priceRoomLess) {
-                            searchPriceRoomLess.add(room.getRoomnumber());
-                            System.out.println(room.getRoomnumber() + "  " + room.getTyperoom());
+                    try {
+                        double priceLess = Double.parseDouble(value);
+                        if (priceLess > 0) {
+                            List<Room> priceRoomLess = roomJpaCtrl.findByPriceLessThan(priceLess);
+                            List<Integer> searchPriceRoomLess = new ArrayList<Integer>();
+                            for (Room room : priceRoomLess) {
+                                searchPriceRoomLess.add(room.getRoomnumber());
+                            }
+                            request.setAttribute("searchRoomNumber", searchPriceRoomLess);
+                            request.getRequestDispatcher("/RemainingRoom.jsp").forward(request, response);
+                            return;
                         }
-                        request.setAttribute("searchRoomNumber", searchPriceRoomLess);
+                    } catch (Exception e) {
                         request.getRequestDispatcher("/RemainingRoom.jsp").forward(request, response);
                         return;
                     }

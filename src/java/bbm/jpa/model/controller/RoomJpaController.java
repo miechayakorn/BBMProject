@@ -18,7 +18,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.transaction.UserTransaction;
 
-
 public class RoomJpaController implements Serializable {
 
     public RoomJpaController(UserTransaction utx, EntityManagerFactory emf) {
@@ -234,7 +233,7 @@ public class RoomJpaController implements Serializable {
             em.close();
         }
     }
-    
+
     public List<Room> searchRoomStatus(int checkAvailable) {
         EntityManager em = getEntityManager();
         try {
@@ -245,7 +244,7 @@ public class RoomJpaController implements Serializable {
             em.close();
         }
     }
-    
+
     public List<Room> searchByFloor1() {
         EntityManager em = getEntityManager();
         try {
@@ -255,7 +254,7 @@ public class RoomJpaController implements Serializable {
             em.close();
         }
     }
-    
+
     public List<Room> searchByFloor2() {
         EntityManager em = getEntityManager();
         try {
@@ -265,7 +264,7 @@ public class RoomJpaController implements Serializable {
             em.close();
         }
     }
-    
+
     public List<Room> searchByFloor3() {
         EntityManager em = getEntityManager();
         try {
@@ -275,7 +274,7 @@ public class RoomJpaController implements Serializable {
             em.close();
         }
     }
-    
+
     public List<Room> searchByFloor4() {
         EntityManager em = getEntityManager();
         try {
@@ -285,7 +284,7 @@ public class RoomJpaController implements Serializable {
             em.close();
         }
     }
-    
+
     public List<Room> searchByFloor5() {
         EntityManager em = getEntityManager();
         try {
@@ -295,6 +294,7 @@ public class RoomJpaController implements Serializable {
             em.close();
         }
     }
+
     public List<Room> searchByFloor6() {
         EntityManager em = getEntityManager();
         try {
@@ -304,6 +304,7 @@ public class RoomJpaController implements Serializable {
             em.close();
         }
     }
+
     public List<Room> searchByFloor7() {
         EntityManager em = getEntityManager();
         try {
@@ -313,6 +314,7 @@ public class RoomJpaController implements Serializable {
             em.close();
         }
     }
+
     public List<Room> searchByFloor8() {
         EntityManager em = getEntityManager();
         try {
@@ -322,40 +324,59 @@ public class RoomJpaController implements Serializable {
             em.close();
         }
     }
-    public List<Room> findBySizeRoom(String sizeRoom) {
+
+    public List<Room> findBySizeRoom(double sizeRoom) {
         EntityManager em = getEntityManager();
         try {
-            Query query =em.createNamedQuery("Room.findBySizeroom");
-            query.setParameter("sizeroom", sizeRoom);
+            String sizeroom1 = "";
+            String sizeroom2 = "";
+            if (sizeRoom >= 23.80 && sizeRoom <= 24.30) {
+                sizeroom1 = "23";
+                sizeroom2 = "25";
+            }else if(sizeRoom >= 26.20 && sizeRoom <= 27.10){
+                sizeroom1 = "26";
+                sizeroom2 = "27";
+            }else if(sizeRoom >= 34.30 && sizeRoom <= 35.00){
+                sizeroom1 = "34";
+                sizeroom2 = "35";
+            }else{
+                return null;
+            }
+            Query query = em.createNamedQuery("Room.findBySizeroom");
+            query.setParameter("sizeroom1", sizeroom1 + "Sq.M");
+            query.setParameter("sizeroom2", sizeroom2 + "Sq.M");
             return query.getResultList();
         } finally {
             em.close();
         }
     }
+
     public List<Room> findByTypeRoom(String typeRoom) {
         EntityManager em = getEntityManager();
         try {
-            Query query =em.createNamedQuery("Room.findByTyperoom");
+            Query query = em.createNamedQuery("Room.findByTyperoom");
             query.setParameter("typeroom", typeRoom);
             return query.getResultList();
         } finally {
             em.close();
         }
     }
+
     public List<Room> findByPriceMoreThan(double price) {
         EntityManager em = getEntityManager();
         try {
-            Query query =em.createNamedQuery("Room.findByPriceMoreThan");
+            Query query = em.createNamedQuery("Room.findByPriceMoreThan");
             query.setParameter("price", price);
             return query.getResultList();
         } finally {
             em.close();
         }
     }
+
     public List<Room> findByPriceLessThan(double price) {
         EntityManager em = getEntityManager();
         try {
-            Query query =em.createNamedQuery("Room.findByPriceLessThan");
+            Query query = em.createNamedQuery("Room.findByPriceLessThan");
             query.setParameter("price", price);
             return query.getResultList();
         } finally {
@@ -375,5 +396,5 @@ public class RoomJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

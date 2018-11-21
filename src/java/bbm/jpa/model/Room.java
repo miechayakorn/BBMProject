@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Room.findAll", query = "SELECT r FROM Room r")
     , @NamedQuery(name = "Room.findByRoomnumber", query = "SELECT r FROM Room r WHERE r.roomnumber = :roomnumber")
     , @NamedQuery(name = "Room.findByFloor", query = "SELECT r FROM Room r WHERE r.floor = :floor")
-    , @NamedQuery(name = "Room.findBySizeroom", query = "SELECT r FROM Room r WHERE r.sizeroom BETWEEN 0 AND :sizeroom")
+    , @NamedQuery(name = "Room.findBySizeroom", query = "SELECT r FROM Room r WHERE r.sizeroom BETWEEN :sizeroom1 AND :sizeroom2")
     , @NamedQuery(name = "Room.findByTyperoom", query = "SELECT r FROM Room r WHERE r.typeroom = :typeroom")
     , @NamedQuery(name = "Room.findByAvailable", query = "SELECT r FROM Room r WHERE r.available = :available")
     , @NamedQuery(name = "Room.findByBedroom", query = "SELECT r FROM Room r WHERE r.bedroom = :bedroom")
