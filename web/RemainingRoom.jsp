@@ -140,7 +140,7 @@
                                     <c:forEach  items="${floor8Lists}" var="floor8List" varStatus="vs">
                                         <div id="8_${vs.count}_${floor8List.roomnumber}" title="" role="checkbox" value="${floor8List.price}" aria-checked="false"
                                              focusable="true" tabindex="-1" class="seatNumber ${floor8List.available == 1 ? "seatUnavailable" : "" }"
-                                             style="${searchRoomNumber.contains(floor8List.roomnumber) ? "background-color: #FFF633;" : ""} ${roomSelectList.contains(floor8List.roomnumber) ? "background-color: #D8D8D8;" : ""}"
+                                             style="${searchRoomNumber.contains(floor8List.roomnumber) ? "color: #3e4f01; background-color: #FFF633;" : ""} ${roomSelectList.contains(floor8List.roomnumber) ? "background-color: #D8D8D8;" : ""}"
                                              >
                                             ${floor8List.roomnumber}
                                         </div>
@@ -154,7 +154,7 @@
                                     <c:forEach  items="${floor7Lists}" var="floor7List" varStatus="vs">
                                         <div id="7_${vs.count}_${floor7List.roomnumber}" title="" role="checkbox" value="${floor7List.price}" aria-checked="false"
                                              focusable="true" tabindex="-1" class="seatNumber ${floor7List.available == 1 ? "seatUnavailable" : "" }"
-                                             style="${searchRoomNumber.contains(floor7List.roomnumber) ? "background-color: #FFF633;" : ""} ${roomSelectList.contains(floor7List.roomnumber) ? "background-color: #D8D8D8;" : ""}"
+                                             style="${searchRoomNumber.contains(floor7List.roomnumber) ? "color: #3e4f01; background-color: #FFF633;" : ""} ${roomSelectList.contains(floor7List.roomnumber) ? "background-color: #D8D8D8;" : ""}"
                                              >
                                             ${floor7List.roomnumber}
                                         </div>
@@ -168,7 +168,7 @@
                                     <c:forEach  items="${floor6Lists}" var="floor6List" varStatus="vs">
                                         <div id="6_${vs.count}_${floor6List.roomnumber}" title="" role="checkbox" value="${floor6List.price}" aria-checked="false"
                                              focusable="true" tabindex="-1" class="seatNumber ${floor6List.available == 1 ? "seatUnavailable" : "" }"
-                                             style="${searchRoomNumber.contains(floor6List.roomnumber) ? "background-color: #FFF633;" : ""}  ${roomSelectList.contains(floor6List.roomnumber) ? "background-color: #D8D8D8;" : ""}"
+                                             style="${searchRoomNumber.contains(floor6List.roomnumber) ? "color: #3e4f01; background-color: #FFF633;" : ""}  ${roomSelectList.contains(floor6List.roomnumber) ? "background-color: #D8D8D8;" : ""}"
                                              >
                                             ${floor6List.roomnumber}
                                         </div>
@@ -182,7 +182,7 @@
                                     <c:forEach  items="${floor5Lists}" var="floor5List" varStatus="vs">
                                         <div id="6_${vs.count}_${floor5List.roomnumber}" title="" role="checkbox" value="${floor5List.price}" aria-checked="false"
                                              focusable="true" tabindex="-1" class="seatNumber ${floor5List.available == 1 ? "seatUnavailable" : "" }"
-                                             style="${searchRoomNumber.contains(floor5List.roomnumber) ? "background-color: #FFF633;" : ""}  ${roomSelectList.contains(floor5List.roomnumber) ? "background-color: #D8D8D8;" : ""}"
+                                             style="${searchRoomNumber.contains(floor5List.roomnumber) ? "color: #3e4f01; background-color: #FFF633;" : ""}  ${roomSelectList.contains(floor5List.roomnumber) ? "background-color: #D8D8D8;" : ""}"
                                              >
                                             ${floor5List.roomnumber}
                                         </div>
@@ -196,7 +196,7 @@
                                     <c:forEach  items="${floor4Lists}" var="floor4List" varStatus="vs">
                                         <div id="6_${vs.count}_${floor4List.roomnumber}" title="" role="checkbox" value="${floor4List.price}" aria-checked="false"
                                              focusable="true" tabindex="-1" class="seatNumber ${floor4List.available == 1 ? "seatUnavailable" : "" }"
-                                             style="${searchRoomNumber.contains(floor4List.roomnumber) ? "background-color: #FFF633;" : ""}  ${roomSelectList.contains(floor4List.roomnumber) ? "background-color: #D8D8D8;" : ""}"
+                                             style="${searchRoomNumber.contains(floor4List.roomnumber) ? "color: #3e4f01; background-color: #FFF633;" : ""}  ${roomSelectList.contains(floor4List.roomnumber) ? "background-color: #D8D8D8;" : ""}"
                                              >
                                             ${floor4List.roomnumber}
                                         </div>
@@ -210,7 +210,7 @@
                                     <c:forEach  items="${floor3Lists}" var="floor3List" varStatus="vs">
                                         <div id="6_${vs.count}_${floor3List.roomnumber}" title="" role="checkbox" value="${floor3List.price}" aria-checked="false"
                                              focusable="true" tabindex="-1" class="seatNumber ${floor3List.available == 1 ? "seatUnavailable" : "" }"
-                                             style="${searchRoomNumber.contains(floor3List.roomnumber) ? "background-color: #FFF633;" : ""}  ${roomSelectList.contains(floor3List.roomnumber) ? "background-color: #D8D8D8;" : ""}"
+                                             style="${searchRoomNumber.contains(floor3List.roomnumber) ? "color: #3e4f01; background-color: #FFF633;" : ""}  ${roomSelectList.contains(floor3List.roomnumber) ? "background-color: #D8D8D8;" : ""}"
                                              >
                                             ${floor3List.roomnumber}
                                         </div>
@@ -224,7 +224,7 @@
                                     <c:forEach  items="${floor2Lists}" var="floor2List" varStatus="vs">
                                         <div id="6_${vs.count}_${floor2List.roomnumber}" title="" role="checkbox" value="${floor2List.price}" aria-checked="false"
                                              focusable="true" tabindex="-1" class="seatNumber ${floor2List.available == 1 ? "seatUnavailable" : "" }"
-                                             style="${searchRoomNumber.contains(floor2List.roomnumber) ? "background-color: #FFF633;" : ""} ${roomSelectList.contains(floor2List.roomnumber) ? "background-color: #D8D8D8;" : ""}"
+                                             style="${searchRoomNumber.contains(floor2List.roomnumber) ? "color: #3e4f01; background-color: #FFF633;" : ""} ${roomSelectList.contains(floor2List.roomnumber) ? "background-color: #D8D8D8;" : ""}"
                                              >
                                             ${floor2List.roomnumber}
                                         </div>
@@ -238,7 +238,7 @@
                                     <c:forEach  items="${floor1Lists}" var="floor1List" varStatus="vs">
                                         <div id="6_${vs.count}_${floor1List.roomnumber}" title="" role="checkbox" value="${floor1List.price}" aria-checked="false"
                                              focusable="true" tabindex="-1" class="seatNumber ${floor1List.available == 1 ? "seatUnavailable" : "" }"
-                                             style="${searchRoomNumber.contains(floor1List.roomnumber) ? "background-color: #FFF633;" : ""}  ${roomSelectList.contains(floor1List.roomnumber) ? "background-color: #D8D8D8;" : ""}"
+                                             style="${searchRoomNumber.contains(floor1List.roomnumber) ? "color: #3e4f01; background-color: #FFF633;" : ""}  ${roomSelectList.contains(floor1List.roomnumber) ? "background-color: #D8D8D8;" : ""}"
                                              >
                                             ${floor1List.roomnumber}
                                         </div>
@@ -250,7 +250,7 @@
                     </div>
                     <div class="col-12 col-md-5">
                         <div class="seatsReceipt rounded" style="margin-top: 10px;">
-                            <div class="seatNumber " style="">ห้องที่สามารถจองได้</div> <div class="seatNumber " style="background-color: #FFF633;">ห้องที่ค้นหา</div> <div class="seatNumber seatUnavailable" >ห้องที่ถูกซื้อแล้ว</div><br><br>
+                            <div class="seatNumber " style="">ห้องที่สามารถจองได้</div> <div class="seatNumber " style="color: #3e4f01; background-color: #FFF633;">ห้องที่ค้นหา</div> <div class="seatNumber seatUnavailable" >ห้องที่ถูกซื้อแล้ว</div><br><br>
                             <p><strong>Selected Room: <span class="seatsAmount" />0 </span></strong> <button id="btnClear" class="btn">Clear</button></p>
                             <form action="AddRoomToCart" method="post">
                                 <ul id="seatsList" class="nav nav-stacked"></ul>
