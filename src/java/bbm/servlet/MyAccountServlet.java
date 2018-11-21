@@ -28,6 +28,7 @@ public class MyAccountServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
         HttpSession session = request.getSession(false);

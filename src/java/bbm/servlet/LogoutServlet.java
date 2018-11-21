@@ -16,7 +16,7 @@ public class LogoutServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         if (session != null) {
-            session.removeAttribute("customer");
+            session.invalidate();
         }
         response.sendRedirect("/BBMProject");
         return;
