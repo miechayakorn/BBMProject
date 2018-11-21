@@ -74,7 +74,7 @@ FOREIGN KEY (customerId) REFERENCES customer(customerId));
 ```sql
 create table history (
 historyId int NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1) primary key,
-roomNumber int not null,
+roomNumber int not null unique,
 price int not null,
 purchaseDate timestamp,
 customerId int ,
