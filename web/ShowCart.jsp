@@ -397,7 +397,7 @@
             <c:if test="${notactivateDate != null}">
             var x = document.getElementById("mySelect");
             x.remove();
-            swal({type: "info", title: "Please activate Email!!"})
+            swal({type: "info", title: "${notactivateDate}"})
             </c:if>
         </script>
     </body>

@@ -4,7 +4,6 @@ import bbm.jpa.model.Room;
 import bbm.jpa.model.controller.RoomJpaController;
 import bbm.model.BigCart;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Resource;
@@ -32,21 +31,22 @@ public class AddRoomToCartServlet extends HttpServlet {
         if (session == null) {
             request.getSession(true);
         }
-
-        BigCart cart = (BigCart) session.getAttribute("cart");
-        if (cart == null) {
-            cart = new BigCart();
+        
+        if (session.getAttribute("cart") == null) {
+            BigCart cart = new BigCart();
             session.setAttribute("cart", cart);
         }
 
         if (roomNumber != null) {
             RoomJpaController roomJpaCtrl = new RoomJpaController(utx, emf);
             Room room = roomJpaCtrl.findRoom(Integer.parseInt(roomNumber));
+            BigCart cart = (BigCart) session.getAttribute("cart");
             cart.add(room);
-            request.setAttribute("message", "success");
+            session.setAttribute("cart", cart);
+            request.setAttribute("message", "You add to Bigcart success");
 
             if (session.getAttribute("roomSelectList") == null) {
-                List<Integer> roomSelectList = new ArrayList<Integer>();
+                List<Integer> roomSelectList = new ArrayList<>();
                 roomSelectList.add(Integer.parseInt(roomNumber));
                 session.setAttribute("roomSelectList", roomSelectList);
 

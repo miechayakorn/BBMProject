@@ -5,11 +5,9 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
-import static java.util.Collections.list;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import static jdk.nashorn.internal.objects.NativeArray.map;
 
 
 public class BigCart implements Serializable {

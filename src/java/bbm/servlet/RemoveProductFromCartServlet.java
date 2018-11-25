@@ -9,19 +9,16 @@ import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
 
-@WebServlet(name = "RemoveProductFromCartServlet", urlPatterns = {"/RemoveProductFromCart"})
 public class RemoveProductFromCartServlet extends HttpServlet {
 
     @Resource
     UserTransaction utx;
-
     @PersistenceUnit(unitName = "BBMWebAppPU")
     EntityManagerFactory emf;
 
@@ -51,7 +48,7 @@ public class RemoveProductFromCartServlet extends HttpServlet {
         response.sendRedirect("ShowCart");
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

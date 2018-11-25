@@ -3,7 +3,6 @@ package bbm.servlet;
 import bbm.jpa.model.Room;
 import bbm.jpa.model.controller.RoomJpaController;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Resource;
@@ -20,7 +19,6 @@ public class RemainingRoomServlet extends HttpServlet {
 
     @Resource
     UserTransaction utx;
-
     @PersistenceUnit(unitName = "BBMWebAppPU")
     EntityManagerFactory emf;
 

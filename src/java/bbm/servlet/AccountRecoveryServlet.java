@@ -7,7 +7,6 @@ import bbm.model.EmailMessage;
 import bbm.model.EncryptWithMd5;
 import bbm.model.SendEmail;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
 import java.util.UUID;
 import java.util.logging.Level;

@@ -3,18 +3,15 @@ package bbm.servlet;
 import bbm.jpa.model.Room;
 import bbm.jpa.model.controller.RoomJpaController;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Resource;
-import javax.persistence.Entity;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
 
 public class SearchServlet extends HttpServlet {

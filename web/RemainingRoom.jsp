@@ -36,12 +36,12 @@
             .seatsReceipt {text-align: center;}
 
             .seatNumber {
+                cursor: pointer;
                 display: inline;
                 padding: 10px;
                 background-color: #5c86eb;
                 color: #FFF;
                 border-radius: 5px;
-                cursor: default;
                 height: 25px;
                 width: 25px;
                 line-height: 25px;
@@ -282,10 +282,13 @@
         <script src="assets/theme/js/script.js"></script>
         <script src="assets/formoid/formoid.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.29.1/dist/sweetalert2.all.min.js"></script>
     </body>
 </html>
 <script>
-    ${message == "success" ? 'swal({title: "Successfull!",text: "You add to Bigcart successfull!",icon: "success",button: "OK",});' : ""}
+    <c:if test="${message != null}">
+    swal({type: "success", title: "Successfull!",text: "${message}", footer: '<a href="/BBMProject/ShowCart">Go to ShowCart</a>'})
+    </c:if>
     var ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {
         type: 'doughnut',
@@ -347,7 +350,7 @@
                         }
 
                         // Adding this seat to the list
-                        var seatDetails = '<input type="hidden"  name="roomnumber" value=' + id[2] + '>' + " ROOMNUMBER:" + id[2] + " Price:" + price + ' ฿' + '<br> <input id="btnCheckout" type="submit" class="btn-sm btn-primary" value="Add Room">';
+                        var seatDetails = '<input type="hidden"  name="roomnumber" value=' + id[2] + '>' + " ROOMNUMBER:" + id[2] + " Price:" + price + ' ฿' + '<br> <input style="cursor: pointer;" id="btnCheckout" type="submit" class="btn-sm btn-primary" value="Add Room">';
                         $("#seatsList").append('<li value=' + price + ' class=' + thisId + '>' + seatDetails + "  " + "<button id='remove:" + thisId + "'+ class='btn btn-default btn-sm removeSeat' value='" + price + "'><strong>X</strong></button></li>");
                         $(this).addClass("seatSelected");
 
@@ -375,7 +378,7 @@
                     var id = $(this).attr('id');
                     var id = id.split("_");
                     var price = $(this).attr('value');
-                    var tooltip = "FLOOR: " + id[0] + " ROOM: " + id[1] + " Price: " + price +"฿";
+                    var tooltip = "FLOOR: " + id[0] + " ROOM: " + id[1] + " Price: " + price + "฿";
 
                     $(this).prop('title', tooltip);
                 } else

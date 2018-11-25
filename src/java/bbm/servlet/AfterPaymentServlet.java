@@ -9,7 +9,6 @@ import bbm.jpa.model.controller.RoomJpaController;
 import bbm.jpa.model.controller.exceptions.NonexistentEntityException;
 import bbm.jpa.model.controller.exceptions.RollbackFailureException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,15 +33,16 @@ public class AfterPaymentServlet extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession(false);
-
+        String idcard = request.getParameter("idcard");
         String[] roomNum = request.getParameterValues("roomnumber");
+
         if (session != null) {
             Customer customerSes = (Customer) session.getAttribute("customer");
             if (customerSes != null) {
                 CustomerJpaController customerJpaCtrl = new CustomerJpaController(utx, emf);
                 Customer customer = customerJpaCtrl.findCustomer(customerSes.getCustomerid());
                 HistoryJpaController historyJpaCtrl = new HistoryJpaController(utx, emf);
-                if (roomNum != null) {
+                if (roomNum != null && idcard != null && customer.getEmail().getActivatedate() != null) {
                     for (int i = 0; i < roomNum.length; i++) {
                         System.out.println(roomNum[i]);
                         RoomJpaController RoomJpaCtrl = new RoomJpaController(utx, emf);

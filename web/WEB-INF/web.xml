@@ -56,6 +56,10 @@
         <servlet-name>RoomDetailServlet</servlet-name>
         <servlet-class>bbm.servlet.RoomDetailServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RemoveProductFromCartServlet</servlet-name>
+        <servlet-class>bbm.servlet.RemoveProductFromCartServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>RoomDetailServlet</servlet-name>
         <url-pattern>/RoomDetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoveProductFromCartServlet</servlet-name>
+        <url-pattern>/RemoveProductFromCart</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

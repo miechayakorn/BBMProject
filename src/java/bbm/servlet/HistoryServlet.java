@@ -1,12 +1,9 @@
 package bbm.servlet;
 
-import bbm.jpa.model.Account;
 import bbm.jpa.model.Customer;
 import bbm.jpa.model.History;
-import bbm.jpa.model.controller.AccountJpaController;
 import bbm.jpa.model.controller.CustomerJpaController;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;

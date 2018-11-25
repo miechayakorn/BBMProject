@@ -4,7 +4,6 @@ import bbm.jpa.model.Account;
 import bbm.jpa.model.controller.AccountJpaController;
 import bbm.jpa.model.controller.exceptions.RollbackFailureException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
 import java.util.UUID;
 import java.util.logging.Level;
@@ -16,14 +15,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
 
 public class ActivateServlet extends HttpServlet {
 
     @Resource
     UserTransaction utx;
-
     @PersistenceUnit(unitName = "BBMWebAppPU")
     EntityManagerFactory emf;
 

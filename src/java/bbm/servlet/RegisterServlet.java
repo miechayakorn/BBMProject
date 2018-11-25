@@ -1,6 +1,5 @@
 package bbm.servlet;
 
-
 import bbm.jpa.model.Account;
 import bbm.jpa.model.Customer;
 import bbm.jpa.model.controller.AccountJpaController;
@@ -10,11 +9,8 @@ import bbm.model.EmailMessage;
 import bbm.model.EncryptWithMd5;
 import bbm.model.SendEmail;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
 import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -22,7 +18,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
 
 
@@ -30,7 +25,6 @@ public class RegisterServlet extends HttpServlet {
 
     @Resource
     UserTransaction utx;
-
     @PersistenceUnit(unitName = "BBMWebAppPU")
     EntityManagerFactory emf;
 
@@ -69,22 +63,20 @@ public class RegisterServlet extends HttpServlet {
                 customerJpaCtrl.create(customer);
                 
                 //Send Email
-                /*String em = new EmailMessage(email, activatekey , "Register").getMessageSend();
+                String em = new EmailMessage(email, activatekey , "Register").getMessageSend();
                 int sendResult = SendEmail.send(email, em , "ยินดีต้อนรับเข้าสู่ BBM Project"); //SEND MAIL!
-                if (sendResult == 0) { //IS SENDING EMAIL successful?*/
+                if (sendResult == 0) { //IS SENDING EMAIL successful?
 
                     //getEmailInDB
                     String getEmailInDB = account.getEmail();
                     request.setAttribute("getEmailInDB", getEmailInDB);
                     String status = "statusTrue";
                     request.setAttribute("status", status);
-                /*}*/
+                }
             } catch (RollbackFailureException ex) {
-                //System.out.println("มีชื่อผู้ใช้นี้ในระบบ");
                 request.setAttribute("email", email);
                 request.setAttribute("status", "UserHaveInDB");
             } catch (Exception ex) {
-                System.out.println("-------------------------------------");
                 request.setAttribute("email", email);
                 request.setAttribute("status", "errorException");
             }

@@ -5,7 +5,6 @@ import bbm.jpa.model.Customer;
 import bbm.jpa.model.controller.AccountJpaController;
 import bbm.jpa.model.controller.CustomerJpaController;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -36,7 +35,7 @@ public class CheckoutServlet extends HttpServlet {
                     AccountJpaController accJpaCtrl = new AccountJpaController(utx, emf);
                     Account acc = accJpaCtrl.findAccount(custSession.getEmail().getEmail());
                     if (acc.getActivatedate() == null) {
-                        request.setAttribute("notactivateDate", "Email: Not Activate");
+                        request.setAttribute("notactivateDate", "Please activate Email!!");
                     }
                     getServletContext().getRequestDispatcher("/Checkout.jsp").forward(request, response);
                     return;

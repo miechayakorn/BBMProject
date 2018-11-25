@@ -1,7 +1,6 @@
 package bbm.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +18,6 @@ public class LogoutServlet extends HttpServlet {
             session.invalidate();
         }
         response.sendRedirect("/BBMProject");
-        return;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

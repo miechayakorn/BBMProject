@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>BBM - Condominium</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -270,7 +270,7 @@
             swal({type: "success", title: "Success!!", text: "Thank you for Shopping", footer: '<a href="/BBMProject/History">Go to History</a>'})
             </c:if>
             <c:if test="${status == 'RecoveryTrue'}">
-            swal({type: "success", title: "ยินดีต้อนรับการกลับมาของท่าน!!", text: "ในตอนนี้ท่านสามารถใช้รหัสผ่านใหม่ได้เรียบร้อยแล้ว"})
+            swal({type: "success", title: "Welcome!!", text: "ในตอนนี้ท่านสามารถใช้รหัสผ่านใหม่ได้เรียบร้อยแล้ว"})
             </c:if>
             <c:if test="${status == 'notEmail'}">
             swal({type: "error", title: "Error!", text: "ไม่มี Email นี้ในระบบของเรา กรุณาลองใหม่"})
