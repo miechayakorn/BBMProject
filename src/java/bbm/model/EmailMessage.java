@@ -1,6 +1,6 @@
 package bbm.model;
 
-public class EmailMessage {
+public final class EmailMessage {
 
     private String messageSend = "";
 
@@ -16,7 +16,7 @@ public class EmailMessage {
         return "<div style=\"background-color: #333333; padding: 4px;\">\n"
                 + "    <div style=\"max-width:600px; margin: 8px auto;\">\n"
                 + "        <div style=\"background-color: white; border-radius: 8px; padding: 8px;\">\n"
-                + "            <div align=\"center\"><img src=\"http://icons.iconarchive.com/icons/jozef89/services-flat/256/ecommerce-icon.png\" alt=\"Cart-Commerce\"\n"
+                + "            <div align=\"center\"><img src=\"https://raw.githubusercontent.com/miechayakorn/BBMProject/master/BBM-LOGO.png\" alt=\"Cart-Commerce\"\n"
                 + "                                     style=\"height: 128px; width: 128px;\"></div>\n"
                 + "            <h1 align=\"center\"><b>BBM Condominium</b></h1>\n"
                 + "            <hr>\n"
@@ -44,7 +44,7 @@ public class EmailMessage {
         return "<div style=\"background-color: #333333; padding: 4px;\">\n"
                 + "    <div style=\"max-width:600px; margin: 8px auto;\">\n"
                 + "        <div style=\"background-color: white; border-radius: 8px; padding: 8px;\">\n"
-                + "            <div align=\"center\"><img src=\"http://icons.iconarchive.com/icons/jozef89/services-flat/256/ecommerce-icon.png\" alt=\"Cart-Commerce\"\n"
+                + "            <div align=\"center\"><img src=\"https://raw.githubusercontent.com/miechayakorn/BBMProject/master/BBM-LOGO.png\" alt=\"Cart-Commerce\"\n"
                 + "                                     style=\"height: 128px; width: 128px;\"></div>\n"
                 + "            <h1 align=\"center\"><b>BBM Condominium</b></h1>\n"
                 + "            <hr>\n"
