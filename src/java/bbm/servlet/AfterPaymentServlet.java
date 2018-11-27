@@ -44,7 +44,6 @@ public class AfterPaymentServlet extends HttpServlet {
                 HistoryJpaController historyJpaCtrl = new HistoryJpaController(utx, emf);
                 if (roomNum != null && idcard != null && customer.getEmail().getActivatedate() != null) {
                     for (int i = 0; i < roomNum.length; i++) {
-                        System.out.println(roomNum[i]);
                         RoomJpaController RoomJpaCtrl = new RoomJpaController(utx, emf);
                         Room room = RoomJpaCtrl.findRoom(Integer.parseInt(roomNum[i]));
                         room.setAvailable(1);

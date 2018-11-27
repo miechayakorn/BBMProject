@@ -27,40 +27,6 @@ public class SearchServlet extends HttpServlet {
         String value = request.getParameter("value");
 
         RoomJpaController roomJpaCtrl = new RoomJpaController(utx, emf);
-        List<Room> roomAvailable = roomJpaCtrl.searchRoomStatus(0);
-        List<Room> roomNotAvailable = roomJpaCtrl.searchRoomStatus(1);
-        int available = 0;
-        int notAvailable = 0;
-        for (Room roomLoop : roomAvailable) {
-            if (roomLoop.getAvailable() == 0) {
-                available++;
-            }
-        }
-        for (Room roomLoop : roomNotAvailable) {
-            if (roomLoop.getAvailable() == 1) {
-                notAvailable++;
-            }
-        }
-        request.setAttribute("remaining", available);
-        request.setAttribute("sold", notAvailable);
-
-        List<Room> roomByFloor1 = roomJpaCtrl.searchByFloor1();
-        List<Room> roomByFloor2 = roomJpaCtrl.searchByFloor2();
-        List<Room> roomByFloor3 = roomJpaCtrl.searchByFloor3();
-        List<Room> roomByFloor4 = roomJpaCtrl.searchByFloor4();
-        List<Room> roomByFloor5 = roomJpaCtrl.searchByFloor5();
-        List<Room> roomByFloor6 = roomJpaCtrl.searchByFloor6();
-        List<Room> roomByFloor7 = roomJpaCtrl.searchByFloor7();
-        List<Room> roomByFloor8 = roomJpaCtrl.searchByFloor8();
-
-        request.setAttribute("floor1Lists", roomByFloor1);
-        request.setAttribute("floor2Lists", roomByFloor2);
-        request.setAttribute("floor3Lists", roomByFloor3);
-        request.setAttribute("floor4Lists", roomByFloor4);
-        request.setAttribute("floor5Lists", roomByFloor5);
-        request.setAttribute("floor6Lists", roomByFloor6);
-        request.setAttribute("floor7Lists", roomByFloor7);
-        request.setAttribute("floor8Lists", roomByFloor8);
 
         if (search != null) {
             switch (search) {
@@ -76,10 +42,10 @@ public class SearchServlet extends HttpServlet {
                                 request.setAttribute("searchRoomNumber", searchRoomNumber);
                             }
                         } catch (Exception e) {
-                            request.getRequestDispatcher("/RemainingRoom.jsp").forward(request, response);
+                            request.getRequestDispatcher("/RemainingRoom").forward(request, response);
                             return;
                         }
-                        request.getRequestDispatcher("/RemainingRoom.jsp").forward(request, response);
+                        request.getRequestDispatcher("/RemainingRoom").forward(request, response);
                         return;
                     }
                     break;
@@ -93,7 +59,7 @@ public class SearchServlet extends HttpServlet {
                             searchTypeRoom.add(room.getRoomnumber());
                         }
                         request.setAttribute("searchRoomNumber", searchTypeRoom);
-                        request.getRequestDispatcher("/RemainingRoom.jsp").forward(request, response);
+                        request.getRequestDispatcher("/RemainingRoom").forward(request, response);
                         return;
                     }
                     break;
@@ -107,11 +73,11 @@ public class SearchServlet extends HttpServlet {
                                 searchPriceRoomMore.add(room.getRoomnumber());
                             }
                             request.setAttribute("searchRoomNumber", searchPriceRoomMore);
-                            request.getRequestDispatcher("/RemainingRoom.jsp").forward(request, response);
+                            request.getRequestDispatcher("/RemainingRoom").forward(request, response);
                             return;
                         }
                     } catch (Exception e) {
-                        request.getRequestDispatcher("/RemainingRoom.jsp").forward(request, response);
+                        request.getRequestDispatcher("/RemainingRoom").forward(request, response);
                         return;
                     }
                     break;
@@ -125,11 +91,11 @@ public class SearchServlet extends HttpServlet {
                                 searchPriceRoomLess.add(room.getRoomnumber());
                             }
                             request.setAttribute("searchRoomNumber", searchPriceRoomLess);
-                            request.getRequestDispatcher("/RemainingRoom.jsp").forward(request, response);
+                            request.getRequestDispatcher("/RemainingRoom").forward(request, response);
                             return;
                         }
                     } catch (Exception e) {
-                        request.getRequestDispatcher("/RemainingRoom.jsp").forward(request, response);
+                        request.getRequestDispatcher("/RemainingRoom").forward(request, response);
                         return;
                     }
                     break;
@@ -137,7 +103,7 @@ public class SearchServlet extends HttpServlet {
             };
         }
 
-        getServletContext().getRequestDispatcher("/RemainingRoom.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/RemainingRoom").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
