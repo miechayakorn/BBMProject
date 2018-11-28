@@ -33,7 +33,7 @@
                         <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">Change Password
                             <p class="mbr-text pb-3 mbr-fonts-style display-5">เปลี่ยนรหัสผ่าน</p></h1>
                     </div>
-                    <div class="col-12 mbr-white">
+                    <div class="col-12 mbr-white border border-white p-4">
                         <form class="form-signin" action="Recovery">
                             <div class="form-label-group">
                                 <label>Email address</label>
