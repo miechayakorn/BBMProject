@@ -35,19 +35,22 @@ public class MyAccountServlet extends HttpServlet {
             if (cusSession != null) {
                 CustomerJpaController customerJpaCtrl = new CustomerJpaController(utx, emf);
                 Customer customer = customerJpaCtrl.findCustomer(cusSession.getCustomerid());
-                if (phone != null && address != null) {
-                    customer.setPhone(phone);
-                    customer.setAddress(address);
-                    try {
-                        customerJpaCtrl.edit(customer);
-                        response.sendRedirect("MyAccount");
-                        return;
-                    } catch (RollbackFailureException ex) {
-                        Logger.getLogger(MyAccountServlet.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (Exception ex) {
-                        Logger.getLogger(MyAccountServlet.class.getName()).log(Level.SEVERE, null, ex);
+                if(customer != null){
+                    if (phone != null && address != null) {
+                        customer.setPhone(phone);
+                        customer.setAddress(address);
+                        try {
+                            customerJpaCtrl.edit(customer);
+                            response.sendRedirect("MyAccount");
+                            return;
+                        } catch (RollbackFailureException ex) {
+                            Logger.getLogger(MyAccountServlet.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (Exception ex) {
+                            Logger.getLogger(MyAccountServlet.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     }
                 }
+                
                 if (customer != null) {
                     if (customer.getEmail().getActivatedate() == null) {
                         request.setAttribute("notactivateDate", "Email: Not Activate");

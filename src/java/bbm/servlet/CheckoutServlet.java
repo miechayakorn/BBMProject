@@ -31,7 +31,8 @@ public class CheckoutServlet extends HttpServlet {
                 Customer customer = customerJpaCtrl.findCustomer(custSession.getCustomerid());
                 if (customer != null) {
                     if (customer.getEmail().getActivatedate() == null) {
-                        request.setAttribute("notactivateDate", "Please activate Email!!");
+                        response.sendRedirect("ShowCart");
+                        return;
                     }
                     getServletContext().getRequestDispatcher("/Checkout.jsp").forward(request, response);
                     return;

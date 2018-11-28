@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -424,7 +425,7 @@
 
             <div class="profile-card js-profile-card">
                 <div class="profile-card__img">
-                    <img src="assets/images/user.png"<!--${img}--> alt="profile card">
+                    <img src="assets/images/user.png" alt="profile card">
                 </div>
 
                 <div class="profile-card__cnt js-profile-cnt">
@@ -464,7 +465,20 @@
 
                     <div class="profile-card-ctr">
                         <button class="profile-card__button button--blue js-message-btn">Edit Profile</button>
-                        <a class="profile-card__button button--orange " href="Recovery?email=${email}&activateKey=${activateKey}">Change Password</a>
+                        <c:if test="${not empty activateDate }">
+                            <form action="Recovery" method="post">
+                                <input type="hidden" value="${email}" name="email">
+                                <input type="hidden" value="${activateKey}" name="activateKey">
+                                <button class="profile-card__button button--orange" type="submit" value="Go to Google" >Change Password</button>
+                            </form>
+                        </c:if>
+                        <c:if test="${not empty notactivateDate }">
+                            <form action="Recovery" method="post">
+                                <input type="hidden" value="${email}" name="email">
+                                <button class="profile-card__button button--orange" type="submit" value="Go to Google" >Change Password</button>
+                            </form>
+                        </c:if>
+
                     </div>
                 </div>
 
@@ -531,24 +545,37 @@
         <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
         <script src="assets/theme/js/script.js"></script>
         <script src="assets/formoid/formoid.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.29.1/dist/sweetalert2.all.min.js"></script>
+
         <script>
-            var messageBox = document.querySelector('.js-message');
-            var btn = document.querySelector('.js-message-btn');
-            var card = document.querySelector('.js-profile-card');
-            var closeBtn = document.querySelectorAll('.js-message-close');
+                                var messageBox = document.querySelector('.js-message');
+                                var btn = document.querySelector('.js-message-btn');
+                                var card = document.querySelector('.js-profile-card');
+                                var closeBtn = document.querySelectorAll('.js-message-close');
 
-            btn.addEventListener('click', function (e) {
-                e.preventDefault();
-                card.classList.add('active');
-            });
+                                btn.addEventListener('click', function (e) {
+                                    e.preventDefault();
+                                    card.classList.add('active');
+                                });
 
-            closeBtn.forEach(function (element, index) {
-                console.log(element);
-                element.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    card.classList.remove('active');
-                });
-            });
+                                closeBtn.forEach(function (element, index) {
+                                    console.log(element);
+                                    element.addEventListener('click', function (e) {
+                                        e.preventDefault();
+                                        card.classList.remove('active');
+                                    });
+                                });
+                                function clickButton() {
+                                    swal({
+                                        title: 'ระบบกำลังประมวลผล',
+                                        html: 'โปรดรอสักครู่..',
+                                        timer: 9800,
+                                        onOpen: () => {
+                                            swal.showLoading()
+                                        }
+                                    })
+                                }
+
         </script>
     </body>
 </html>

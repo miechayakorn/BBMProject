@@ -830,7 +830,6 @@
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.29.1/dist/sweetalert2.all.min.js"></script>
 
         <script>
             $(function () {
@@ -893,11 +892,6 @@
                     $('.inner-wrapper').removeClass('seat-details');
                 });
             })
-            <c:if test="${notactivateDate != null}">
-            var x = document.getElementById("mySelect");
-            x.remove();
-            swal({type: "info", title: "${notactivateDate}"})
-            </c:if>
         </script>
     </body>
 </html>

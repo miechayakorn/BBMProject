@@ -1,8 +1,7 @@
 package bbm.servlet;
 
-import bbm.jpa.model.Account;
 import bbm.jpa.model.Customer;
-import bbm.jpa.model.controller.AccountJpaController;
+import bbm.jpa.model.controller.CustomerJpaController;
 import bbm.model.BigCart;
 import java.io.IOException;
 import javax.annotation.Resource;
@@ -33,10 +32,12 @@ public class ShowCartServlet extends HttpServlet {
                     Customer custSession = (Customer) session.getAttribute("customer");
 
                     if (custSession != null) {
-                        AccountJpaController accJpaCtrl = new AccountJpaController(utx, emf);
-                        Account acc = accJpaCtrl.findAccount(custSession.getEmail().getEmail());
-                        if (acc.getActivatedate() == null) {
-                            request.setAttribute("notactivateDate", "Please activate Email!!");
+                        CustomerJpaController customerJpaCtrl = new CustomerJpaController(utx, emf);
+                        Customer customer = customerJpaCtrl.findCustomer(custSession.getCustomerid());
+                        if(customer != null){
+                            if (customer.getEmail().getActivatedate() == null) {
+                                request.setAttribute("notactivateDate", "Please activate Email!!");
+                            }
                         }
                     }
 
