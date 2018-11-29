@@ -17,7 +17,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.transaction.UserTransaction;
 
-
 public class CustomerJpaController implements Serializable {
 
     public CustomerJpaController(UserTransaction utx, EntityManagerFactory emf) {
@@ -267,16 +266,23 @@ public class CustomerJpaController implements Serializable {
             em.close();
         }
     }
-    
+
     public Customer findByEmail(String email) {
         EntityManager em = getEntityManager();
         try {
-            Query query =em.createNamedQuery("Customer.findByEmail");
+            Query query = em.createNamedQuery("Customer.findByEmail");
             query.setParameter("email", email);
             return (Customer) query.getSingleResult();
+        } catch (Exception e) {
+
         } finally {
-            em.close();
+            try {
+                em.close();
+            } catch (Exception e) {
+
+            }
         }
+        return null;
     }
 
     public int getCustomerCount() {
@@ -291,5 +297,5 @@ public class CustomerJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

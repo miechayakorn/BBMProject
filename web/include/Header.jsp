@@ -45,7 +45,7 @@
                             <a class="dropdown-item" href="Logout">Logout</a>
                         </div>
                     </div>
-                </c:if>        
+                    </c:if>        
 
             </div>
         </div>

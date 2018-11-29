@@ -20,14 +20,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.UserTransaction;
 
-
 public class RegisterServlet extends HttpServlet {
 
     @Resource
     UserTransaction utx;
     @PersistenceUnit(unitName = "BBMWebAppPU")
     EntityManagerFactory emf;
-
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -40,45 +38,50 @@ public class RegisterServlet extends HttpServlet {
         String phone = request.getParameter("phone");
         String idcard = request.getParameter("idcard");
         String address = request.getParameter("address");
-       
 
-        if (email != null && email.trim().length() > 0 && password != null && password.trim().length() > 0 &&
-            name != null && name.trim().length() > 0 && surname != null && surname.trim().length() > 0 &&
-            phone != null && phone.trim().length() > 0 && idcard != null && idcard.trim().length() > 0 &&
-            address != null && address.trim().length() > 0) {
-            
+        if (email != null && email.trim().length() > 0 && password != null && password.trim().length() > 0
+                && name != null && name.trim().length() > 0 && surname != null && surname.trim().length() > 0
+                && phone != null && phone.trim().length() > 0 && idcard != null && idcard.trim().length() > 0
+                && address != null && address.trim().length() > 0) {
+
             String activatekey = UUID.randomUUID().toString().replace("-", "").substring(0, 15);
             password = new EncryptWithMd5().encrypt(password);
-            
+
             AccountJpaController accountJpaCtrl = new AccountJpaController(utx, emf);
-            Account account = new Account(email, password, new Date(), activatekey);
+            Account accountFindAccount = accountJpaCtrl.findAccount(email);
             
+            if (accountFindAccount == null) {
+                Account account = new Account(email, password, new Date(), activatekey);
 
-            try {
-                accountJpaCtrl.create(account);
-                
-                CustomerJpaController customerJpaCtrl = new CustomerJpaController(utx, emf);
-                Customer customer = new Customer(name, surname, phone, idcard, address);
-                customer.setEmail(account);
-                customerJpaCtrl.create(customer);
-                
-                //Send Email
-                String em = new EmailMessage(email, activatekey , "Register").getMessageSend();
-                int sendResult = SendEmail.send(email, em , "ยินดีต้อนรับเข้าสู่ BBM Project"); //SEND MAIL!
-                if (sendResult == 0) { //IS SENDING EMAIL successful?
+                try {
+                    accountJpaCtrl.create(account);
 
-                    //getEmailInDB
-                    String getEmailInDB = account.getEmail();
-                    request.setAttribute("getEmailInDB", getEmailInDB);
-                    String status = "statusTrue";
-                    request.setAttribute("status", status);
+                    CustomerJpaController customerJpaCtrl = new CustomerJpaController(utx, emf);
+                    Customer customer = new Customer(name, surname, phone, idcard, address);
+                    customer.setEmail(account);
+                    customerJpaCtrl.create(customer);
+
+                    //Send Email
+                    String em = new EmailMessage(email, activatekey, "Register").getMessageSend();
+                    int sendResult = SendEmail.send(email, em, "ยินดีต้อนรับเข้าสู่ BBM Project"); //SEND MAIL!
+                    if (sendResult == 0) { //IS SENDING EMAIL successful?
+
+                        //getEmailInDB
+                        String getEmailInDB = account.getEmail();
+                        request.setAttribute("getEmailInDB", getEmailInDB);
+                        String status = "statusTrue";
+                        request.setAttribute("status", status);
+                    }
+                } catch (RollbackFailureException ex) {
+                    request.setAttribute("email", email);
+                    request.setAttribute("status", "errorException");
+                } catch (Exception ex) {
+                    request.setAttribute("email", email);
+                    request.setAttribute("status", "errorException");
                 }
-            } catch (RollbackFailureException ex) {
+            } else {
                 request.setAttribute("email", email);
                 request.setAttribute("status", "UserHaveInDB");
-            } catch (Exception ex) {
-                request.setAttribute("email", email);
-                request.setAttribute("status", "errorException");
             }
 
         }
