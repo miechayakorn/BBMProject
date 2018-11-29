@@ -39,25 +39,20 @@ public class LoginServlet extends HttpServlet {
             return;
         }
         if (email != null && password != null && email.length() > 0 && password.length() > 0) {
-            AccountJpaController accountJpaCtrl = new AccountJpaController(utx, emf);
-            Account account = accountJpaCtrl.findAccount(email);
+            CustomerJpaController customerJpaCtrl = new CustomerJpaController(utx, emf);
+            Customer customer = customerJpaCtrl.findByEmail(email);
             password = new EncryptWithMd5().encrypt(password);
-            if (account != null) {
-                if (account.getPassword().equals(password)) {
-                    CustomerJpaController customerJpaCtrl = new CustomerJpaController(utx, emf);
-                    Customer customer = customerJpaCtrl.findByEmail(email);
-                    if (customer != null) {
-                        session.setAttribute("customer", customer);
-                        if (session.getAttribute("cart") != null) {
-                            response.sendRedirect("ShowCart");
-                            return;
-                        }
-                        response.sendRedirect("/BBMProject");
-                        return;
-                    } else {
-                        getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
+            if (customer != null) {
+                if (customer.getEmail().getPassword().equals(password)) {
+
+                    session.setAttribute("customer", customer);
+                    if (session.getAttribute("cart") != null) {
+                        response.sendRedirect("ShowCart");
                         return;
                     }
+                    response.sendRedirect("/BBMProject");
+                    return;
+
                 } else {
                     request.setAttribute("message", "Invalid");
                 }
