@@ -814,7 +814,7 @@
 
                                             <div>
                                                 <div id="mySelect" class="input-group form-search form-inline">
-                                                    <input type="text" name="idcard" required="" class="form-control" placeholder="IDCARD">
+                                                    <input type="text" name="idcard" required="" class="form-control" placeholder="IDCARD" pattern="[0-9]{16}" >
                                                     <div class="input-group-append">
                                                         <button type="submit" class="btn-lg btn btn-primary">Payment</button>
                                                     </div>
