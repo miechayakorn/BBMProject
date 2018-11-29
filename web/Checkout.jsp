@@ -36,7 +36,7 @@
         }
 
         body {
-            background: linear-gradient(to bottom right, #9575CD, #311B92);
+            background-image: url("47026300_2039472592810551_1303082786864758784_n.png");
             display: flex;
             justify-content: center;
             align-items: center;
