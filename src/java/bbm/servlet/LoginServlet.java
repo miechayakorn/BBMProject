@@ -53,12 +53,10 @@ public class LoginServlet extends HttpServlet {
                     response.sendRedirect("/BBMProject");
                     return;
 
-                } else {
-                    request.setAttribute("message", "Invalid");
                 }
-            } else {
-                request.setAttribute("message", "Invalid");
             }
+            request.setAttribute("message", "Invalid");
+
         }
         getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
 
