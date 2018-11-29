@@ -469,13 +469,13 @@
                             <form action="Recovery" method="post">
                                 <input type="hidden" value="${email}" name="email">
                                 <input type="hidden" value="${activateKey}" name="activateKey">
-                                <button class="profile-card__button button--orange" type="submit" value="Go to Google" >Change Password</button>
+                                <button onclick="clickButton()" class="profile-card__button button--orange" type="submit" value="Go to Google" >Change Password</button>
                             </form>
                         </c:if>
                         <c:if test="${not empty notactivateDate }">
                             <form action="Recovery" method="post">
                                 <input type="hidden" value="${email}" name="email">
-                                <button class="profile-card__button button--orange" type="submit" value="Go to Google" >Change Password</button>
+                                <button onclick="clickButton()" class="profile-card__button button--orange" type="submit" value="Go to Google" >Change Password</button>
                             </form>
                         </c:if>
 
