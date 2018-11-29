@@ -42,10 +42,6 @@ public class LoginServlet extends HttpServlet {
             AccountJpaController accountJpaCtrl = new AccountJpaController(utx, emf);
             Account account = accountJpaCtrl.findAccount(email);
             password = new EncryptWithMd5().encrypt(password);
-            if (session.getAttribute("customer") != null) {
-                response.sendRedirect("BBMProject");
-                return;
-            }
             if (account != null) {
                 if (account.getPassword().equals(password)) {
                     CustomerJpaController customerJpaCtrl = new CustomerJpaController(utx, emf);
