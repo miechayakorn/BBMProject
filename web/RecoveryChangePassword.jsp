@@ -34,7 +34,7 @@
                             <p class="mbr-text pb-3 mbr-fonts-style display-5">เปลี่ยนรหัสผ่าน</p></h1>
                     </div>
                     <div class="col-12 mbr-white border border-white p-4">
-                        <form class="form-signin" action="Recovery">
+                        <form class="form-signin" action="Recovery" method="post">
                             <div class="form-label-group">
                                 <label>Email address</label>
                                 <input type="email" name="email" value="${email}" readonly="readonly" id="inputEmail" class="form-control" placeholder="Email address">

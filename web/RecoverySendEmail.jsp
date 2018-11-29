@@ -95,7 +95,7 @@
                         
                     </div>
                     <div class="col-12 form-container mbr-white">
-                        <form class="form-signin" action="Recovery">
+                        <form class="form-signin" action="Recovery" method="post">
                             <div class="form-label-group">
                                 <label>Email address</label>
                                 <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>

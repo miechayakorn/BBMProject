@@ -39,23 +39,16 @@ public class AccountRecoveryServlet extends HttpServlet {
             Account account = accountJpaCtrl.findAccount(email);
 
             if (account != null) {
-                try {
-                    String activateKeyInDB = account.getActivatekey();
+                String activateKeyInDB = account.getActivatekey();
 
-                    //Send Email
-                    String em = new EmailMessage(email, activateKeyInDB, "Recovery").getMessageSend();
-                    int sendResult = SendEmail.send(email, em, "RecoveryPassword - BBMProject"); //SEND MAIL!
-                    if (sendResult == 0) { //IS SENDING EMAIL successful?
-                        accountJpaCtrl.edit(account);
-                    }
-
-                } catch (RollbackFailureException ex) {
-                    Logger.getLogger(AccountRecoveryServlet.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (Exception ex) {
-                    Logger.getLogger(AccountRecoveryServlet.class.getName()).log(Level.SEVERE, null, ex);
+                //Send Email
+                String em = new EmailMessage(email, activateKeyInDB, "Recovery").getMessageSend();
+                int sendResult = SendEmail.send(email, em, "RecoveryPassword - BBMProject"); //SEND MAIL!
+                if (sendResult == 0) { //IS SENDING EMAIL successful?
+                    status = "RecoveryTrue";
+                    request.setAttribute("status", status);
                 }
-                status = "RecoveryTrue";
-                request.setAttribute("status", status);
+
             } else {
                 request.setAttribute("status", status);
             }
