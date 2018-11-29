@@ -6,8 +6,6 @@ import java.security.NoSuchAlgorithmException;
 
 public class EncryptWithMd5 {
 
-    public EncryptWithMd5() {
-    }
 
     public String encrypt(String pass) {
          try {
